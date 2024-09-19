@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClienteCRUD {
-    public static ArrayList insertarCliente (ArrayList<Usuario> lista, Usuario user){
+    public static ArrayList insertarCliente (ArrayList<Usuario> lista){
         Scanner reader = new Scanner(System.in);
         String mail, contraseña;
         double descuento;
         boolean semaforo = false; // atributo boolean para definir si un usuario esta o no registrado
         int clientePremium;
+        Usuario user;
         System.out.println("**************AÑADIR CLIENTE*************");
         System.out.println("¿Qué usuario desea añadir?. Mail: ");
         mail = reader.next();
@@ -29,7 +30,7 @@ public class ClienteCRUD {
                 System.out.println("Ese mail ya esta registrado por otro usuario. Prueba con otro, por favor");
                 mail = reader.next();
             } // if si ese usuario si existe
-        } while (semaforo); // bucle para saber si ese mail ya esta registrado
+        } while (semaforo); // bucle para repetir el mail hasta que no este registrado
 
         System.out.println("Contraseña: ");
         contraseña = reader.next();
@@ -41,7 +42,7 @@ public class ClienteCRUD {
         while(clientePremium > 2 || clientePremium < 1) {
             System.out.println("Elige una opcion entre 1 y 2");
             clientePremium = reader.nextInt();
-        } // while para que el cliente solo elija una de las 2 opciones
+        } // while para validar que el cliente solo elija una de las 2 opciones
 
         if(clientePremium == 1){
             user = new Usuario(mail, contraseña, descuento, true);
@@ -53,7 +54,7 @@ public class ClienteCRUD {
             System.out.println("Se ha añadido correctamente");
         } // if para si el usuario es premium o no
         return lista;
-    }
+    } // METODO PARA INSERTAR UN NUEVO CLIENTE
 
 
     public static void buscarUsuario (ArrayList<Usuario> lista, String mail){
@@ -65,11 +66,11 @@ public class ClienteCRUD {
             }
         }
         if(semaforo){
-            System.out.println("Existe ese usuario");
+            System.out.println("El usuario " + mail + " esta registrado");
         } else {
             System.out.println("No se ha encontrado ningun usuario con ese mail");
-        }
-    }
+        } // if si el usuario se encuentra, se mostrara un mensaje
+    } // METODO PARA BUSCAR UN USUARIO POR MAIL
 
 
     public static void totalIngreso (ArrayList<Usuario> lista){
@@ -83,5 +84,5 @@ public class ClienteCRUD {
             }
         }
         System.out.println("El total de ingresos es de: " + totalIngresos);
-    }
+    } // METODO PARA CALCULAR EL TOTAL DE INGRESOS DE LOS USUARIOS
 }

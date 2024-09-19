@@ -12,7 +12,6 @@ public class Main {
         String mail;
         try {
             ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-            Usuario user = new Usuario();
             System.out.println("Bienvenido! ¿Qué desea hacer?");
             do {
                 System.out.println("MENU DE OPCIONES:" +
@@ -25,7 +24,7 @@ public class Main {
 
                 switch (opcion){
                     case 1:
-                        ClienteCRUD.insertarCliente(listaUsuarios, user);
+                        ClienteCRUD.insertarCliente(listaUsuarios);
                         break;
                     case 2:
                         System.out.println("¿Qué usuario desea buscar?. Mail: ");
@@ -36,13 +35,11 @@ public class Main {
                         ClienteCRUD.totalIngreso(listaUsuarios);
                         break;
                 } //SWITCH
-            } while (opcion != 0); //WHILE
-
+            } while (opcion != 0); //DoWhile
             System.out.println("Hasta pronto!");
             reader.close();
-            System.exit(0);
         } catch (Exception e) {
-            System.out.println("Uoop! Error!");
+            System.out.println("Entrada no válida");
         } //TRY
     }
 }

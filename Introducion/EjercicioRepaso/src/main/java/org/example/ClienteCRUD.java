@@ -1,12 +1,13 @@
 package org.example;
 
+import org.example.Model.Cliente;
 import org.example.Model.Usuario;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClienteCRUD {
-    public static ArrayList insertarCliente (ArrayList<Usuario> lista){
+    public static ArrayList insertarCliente (ArrayList lista, Cliente cli){
         Scanner reader = new Scanner(System.in);
         String mail, contraseña;
         double descuento;

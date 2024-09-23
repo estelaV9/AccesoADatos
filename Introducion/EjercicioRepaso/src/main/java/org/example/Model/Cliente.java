@@ -37,4 +37,13 @@ public class Cliente {
     public void setDescuentoCl(double descuentoCl) {
         this.descuentoCl = descuentoCl;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "mailCl='" + mailCl + '\'' +
+                ", contraseñaCl='" + contraseñaCl + '\'' +
+                ", descuentoCl=" + descuentoCl +
+                '}';
+    }
 }

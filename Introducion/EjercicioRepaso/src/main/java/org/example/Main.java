@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Model.Cliente;
 import org.example.Model.Usuario;
 
 import java.util.ArrayList;
@@ -11,7 +12,9 @@ public class Main {
         int opcion = -1;
         String mail;
         try {
-            ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+            ArrayList<Cliente> listaCliente = new ArrayList<>(); // CREAMOS EL ARRAY DONDE SE GUARDARAN LOS CLIENTES
+            Usuario cliente1 = new Usuario("user@gmail.com", "pass", 10, true);
+            listaCliente = ClienteCRUD.insertarCliente(listaCliente, cliente1);
             System.out.println("Bienvenido! ¿Qué desea hacer?");
             do {
                 System.out.println("MENU DE OPCIONES:" +

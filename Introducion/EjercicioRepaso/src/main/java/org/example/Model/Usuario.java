@@ -19,4 +19,11 @@ public class Usuario extends Cliente{
     public void setPremiumUs(boolean premiumUs) {
         PremiumUs = premiumUs;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "PremiumUs=" + PremiumUs +
+                '}';
+    }
 }

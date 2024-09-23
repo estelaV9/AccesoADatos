@@ -1,6 +1,7 @@
 package com.example.ejerciciorepasofx.Controller;
 
 import com.example.ejerciciorepasofx.Model.Usuario;
+import com.example.ejerciciorepasofx.Utilities.GeneralCode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,7 +9,7 @@ import javafx.scene.control.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class ClientesCtrller {
+public class ClienteCtrller {
     @FXML
     private ToggleGroup clientePremium;
     @FXML
@@ -27,11 +28,8 @@ public class ClientesCtrller {
         RadioButton seleccionado = (RadioButton) clientePremium.getSelectedToggle();
         if (contraseñaTxt.getText().isEmpty() || usuarioTxt.getText().isEmpty() || descuentoTxt.getText().isEmpty()
                 || clientePremium.getSelectedToggle() == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Campos vacíos.");
-            alert.setHeaderText("¡ERROR!");
-            alert.setContentText("Por favor, rellene todos los datos antes de continuar.");
-            alert.showAndWait();
+            // GENERAR ALERTA
+            GeneralCode.Alerts("ERROR", "Campos vacíos.", "¡ERROR!", "Por favor, rellene todos los datos antes de continuar.");
         } else {
             double descuento = Double.parseDouble(descuentoTxt.getText());
             do {
@@ -44,11 +42,7 @@ public class ClientesCtrller {
                     }
                 } // for para buscar ese usuario
                 if (semaforo) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Usuario ya registrado.");
-                    alert.setHeaderText("¡ERROR!");
-                    alert.setContentText("Ese usuario ya existe. Prueba con otro, por favor.");
-                    alert.showAndWait();
+                    GeneralCode.Alerts("ERROR", "Usuario ya registrado.", "¡ERROR!", "Ese usuario ya existe. Prueba con otro, por favor.");
                 } // if si ese usuario si existe
             } while (semaforo); // bucle para repetir el mail hasta que no este registrado
 
@@ -56,17 +50,13 @@ public class ClientesCtrller {
             if (seleccionado.getText().equals("Si")) {
                 user = new Usuario(usuarioTxt.getText(), contraseñaTxt.getText(), descuento, true);
                 listaClientes.add(user);
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Se añadió.");
-                alert.setContentText("El usuario se ha añadido correctamente.");
-                alert.showAndWait();
+                GeneralCode.Alerts("CONFIRMATION", "Se añadió.", null,
+                        "El usuario se ha añadido correctamente.");
             } else {
                 user = new Usuario(usuarioTxt.getText(), contraseñaTxt.getText(), descuento, false);
                 listaClientes.add(user);
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Se añadió.");
-                alert.setContentText("El usuario se ha añadido correctamente.");
-                alert.showAndWait();
+                GeneralCode.Alerts("CONFIRMATION", "Se añadió.", null,
+                        "El usuario se ha añadido correctamente.");
             } // if para si el usuario es premium o no
         }
     } // METODO PARA INSERTAR UN NUEVO CLIENTE
@@ -74,11 +64,8 @@ public class ClientesCtrller {
     @FXML
     void onBuscarBtt(ActionEvent event) {
         if (usuarioTxt.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Campos vacíos.");
-            alert.setHeaderText("¡ERROR!");
-            alert.setContentText("Por favor, rellene el nombre de usuario que desea buscar.");
-            alert.showAndWait();
+            GeneralCode.Alerts("ERROR", "Campos vacíos.", "¡ERROR!",
+                    "Por favor, rellene el nombre de usuario que desea buscar.");
         } else {
             boolean semaforo = false; // atributo boolean para definir si ese usuario esta o no en la lista
             for (Usuario user : listaClientes) {
@@ -88,15 +75,11 @@ public class ClientesCtrller {
                 }
             }
             if (semaforo) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Usuario existente.");
-                alert.setContentText("El usuario " + usuarioTxt.getText() + " esta registrado.");
-                alert.showAndWait();
+                GeneralCode.Alerts("CONFIRMATION", "Usuario existente.",
+                        null, "El usuario " + usuarioTxt.getText() + " esta registrado.");
             } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Usuario NO existente.");
-                alert.setContentText("No se ha encontrado ningun usuario con ese mail");
-                alert.showAndWait();
+                GeneralCode.Alerts("INFORMATION", "Usuario NO existente.",
+                        null, "No se ha encontrado ningún usuario con ese mail.");
             } // if si el usuario se encuentra, se mostrara un mensaje
         }
     } // METODO PARA BUSCAR UN USUARIO POR MAIL
@@ -112,10 +95,8 @@ public class ClientesCtrller {
                 totalIngresos = totalIngresos + 20.5 - user.getDescuentoCl();
             }
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Total.");
-        alert.setContentText("El total de ingresos es de: " + totalIngresos + "€");
-        alert.showAndWait();
+        GeneralCode.Alerts("INFORMATION", "Total.",
+                null, "El total de ingresos es de: " + totalIngresos + "€");
     } // METODO PARA CALCULAR EL TOTAL DE INGRESOS DE LOS USUARIOS
 
 

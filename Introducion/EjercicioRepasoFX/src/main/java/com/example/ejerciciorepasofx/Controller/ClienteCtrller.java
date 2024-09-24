@@ -44,19 +44,19 @@ public class ClienteCtrller {
                 if (semaforo) {
                     GeneralCode.Alerts("ERROR", "Usuario ya registrado.", "¡ERROR!",
                             "Ese usuario ya existe. Prueba con otro, por favor.");
+                } else{
+                    if (seleccionado.getText().equals("Si")) {
+                        user = new Usuario(usuarioTxt.getText(), contraseñaTxt.getText(), descuento, true);
+                        listaClientes.add(user);
+                        GeneralCode.Alerts("CONFIRMATION", "Se añadió.", null,
+                                "El usuario se ha añadido correctamente.");
+                    } else {
+                        user = new Usuario(usuarioTxt.getText(), contraseñaTxt.getText(), descuento, false);
+                        listaClientes.add(user);
+                        GeneralCode.Alerts("CONFIRMATION", "Se añadió.", null,
+                                "El usuario se ha añadido correctamente.");
+                    } // if para si el usuario es premium o no
                 } // if si ese usuario si existe
-
-                if (seleccionado.getText().equals("Si")) {
-                    user = new Usuario(usuarioTxt.getText(), contraseñaTxt.getText(), descuento, true);
-                    listaClientes.add(user);
-                    GeneralCode.Alerts("CONFIRMATION", "Se añadió.", null,
-                            "El usuario se ha añadido correctamente.");
-                } else {
-                    user = new Usuario(usuarioTxt.getText(), contraseñaTxt.getText(), descuento, false);
-                    listaClientes.add(user);
-                    GeneralCode.Alerts("CONFIRMATION", "Se añadió.", null,
-                            "El usuario se ha añadido correctamente.");
-                } // if para si el usuario es premium o no
             } catch (NumberFormatException e) {
                 GeneralCode.Alerts("ERROR", "Descuento no válido.", "¡ERROR!",
                         "Por favor, introduzca un número válido para el descuento.");

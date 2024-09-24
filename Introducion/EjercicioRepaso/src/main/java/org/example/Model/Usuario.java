@@ -1,22 +1,22 @@
 package org.example.Model;
 
 public class Usuario extends Cliente{
-    private boolean PremiumUs;
+    private int PremiumUs;
 
     public Usuario(){
 
     }
 
-    public Usuario(String mailCl, String contraseñaCl, double descuentoCl, boolean premiumUs) {
+    public Usuario(String mailCl, String contraseñaCl, double descuentoCl, int premiumUs) {
         super(mailCl, contraseñaCl, descuentoCl);
         PremiumUs = premiumUs;
     }
 
-    public boolean isPremiumUs() {
+    public int isPremiumUs() {
         return PremiumUs;
     }
 
-    public void setPremiumUs(boolean premiumUs) {
+    public void setPremiumUs(int premiumUs) {
         PremiumUs = premiumUs;
     }
 

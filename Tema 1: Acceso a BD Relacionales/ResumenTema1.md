@@ -1,7 +1,7 @@
 # TEMA 1: ACCESO A BASE DE DATOS RELACIONALES
 ## Leer ficheros properties en Java
 > [!NOTE]
-> EJERCICIO DE INICIO
+> <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema%201%3A%20Acceso%20a%20BD%20Relacionales/FicheroPropiedades">EJERCICIO DE INICIO</a>
 
 Un **archivo de propiedad** es un fichero con la extension **.properties** con sus contenido almacenado como una pareja clave=valor.
   ``` java

@@ -3,6 +3,7 @@ package com.example.esteladevega_ejercicioformulario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -10,9 +11,11 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/ui/hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/ui/beginning.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("CubeX Galaxy!");
+        // AÑADIR IMAGEN EN EL STAGE DEL LOGO DE LA APLICACION
+        stage.getIcons().add(new Image(this.getClass().getResource("/ui/Imagen/cubeX_GalaxyLogo.png").toString()));
         stage.setScene(scene);
         stage.show();
     }

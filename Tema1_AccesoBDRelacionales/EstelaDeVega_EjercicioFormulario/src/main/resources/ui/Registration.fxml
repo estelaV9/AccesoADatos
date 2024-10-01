@@ -11,172 +11,221 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="727.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esteladevega_ejercicioformulario.Controller.RegistrationCtrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0"
+            prefWidth="727.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.esteladevega_ejercicioformulario.Controller.RegistrationCtrller">
     <children>
         <ImageView fitHeight="388.0" fitWidth="736.0" layoutX="-6.0" pickOnBounds="true">
             <image>
-                <Image url="@Imagen/blurBackgroundApp.png" />
+                <Image url="@Imagen/blurBackgroundApp.png"/>
             </image>
         </ImageView>
-        <ImageView fitHeight="77.0" fitWidth="174.0" layoutX="23.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="77.0" fitWidth="174.0" layoutX="23.0" layoutY="6.0" pickOnBounds="true"
+                   preserveRatio="true">
             <image>
-                <Image url="@Imagen/whiteStripes.png" />
+                <Image url="@Imagen/whiteStripes.png"/>
             </image>
         </ImageView>
-        <ImageView fitHeight="77.0" fitWidth="149.0" layoutX="564.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="77.0" fitWidth="149.0" layoutX="564.0" layoutY="308.0" pickOnBounds="true"
+                   preserveRatio="true">
             <image>
-                <Image url="@Imagen/whiteStripesOthre.png" />
+                <Image url="@Imagen/whiteStripesOthre.png"/>
             </image>
         </ImageView>
         <ImageView fitHeight="66.0" fitWidth="301.0" layoutX="203.0" layoutY="12.0" pickOnBounds="true">
             <image>
-                <Image url="@Imagen/nameApp.png" />
+                <Image url="@Imagen/nameApp.png"/>
             </image>
         </ImageView>
-      <Button fx:id="backBtt" layoutX="14.0" layoutY="330.0" mnemonicParsing="false" onAction="#onBackAction" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Imagen/backIcon.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="closeBtt" layoutX="650.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseAction" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Imagen/close.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Pane fx:id="logginVision" layoutX="191.0" layoutY="95.0" prefHeight="292.0" prefWidth="325.0">
-         <children>
-            <Pane layoutX="35.0" layoutY="-5.0" prefHeight="269.0" prefWidth="256.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
-               <children>
-                  <Button fx:id="logBtt" layoutX="15.0" layoutY="171.0" mnemonicParsing="false" onAction="#onLogInAction" prefHeight="34.0" prefWidth="159.0" style="-fx-background-color: #781ddd; -fx-background-radius: 5; -fx-border-color: #000; -fx-border-radius: 5; -fx-text-fill: #000;" text="Log in">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="204.0" layoutY="14.0" style="-fx-text-fill: black;" text="Email">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="80.0" style="-fx-text-fill: #000;" text="Password">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="emailTxt" layoutX="66.0" layoutY="35.0" prefHeight="25.0" prefWidth="174.0" promptText="example@example.com" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
-                  <Label layoutX="14.0" layoutY="224.0" style="-fx-text-fill: #000;" text="Don't have an account? ">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="signBtt" layoutX="173.0" layoutY="221.0" mnemonicParsing="false" onAction="#onSignViewAction" prefHeight="30.0" prefWidth="72.0" style="-fx-underline: true; -fx-background-color: #421195; -fx-text-fill: #bca5fa; -fx-border-color: #000; -fx-border-radius: 5; -fx-background-radius: 5;" text="Sign up" textFill="WHITE">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="loginMessage" layoutX="21.0" layoutY="136.0" textFill="#a82f2a">
-                     <font>
-                        <Font name="DejaVu Sans Bold Oblique" size="13.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="cancelBtt" layoutX="174.0" layoutY="172.0" mnemonicParsing="false" onAction="#onCancelAction" prefHeight="31.0" prefWidth="72.0" style="-fx-background-color: #8656cb; -fx-text-fill: #000;" text="Cancel">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <Button layoutY="19.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button" />
-                  <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -17;">
-                     <image>
-                        <Image url="@Imagen/cube.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="passwordTxt" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="174.0" promptText="Ps.contains(8)" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
-                  <Button layoutX="221.0" layoutY="85.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" />
-                  <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="226.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 17;">
-                     <image>
-                        <Image url="@Imagen/cube.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-      <Pane fx:id="signUpVision" layoutX="191.0" layoutY="95.0" prefHeight="292.0" prefWidth="325.0">
-         <children>
-            <Pane layoutX="35.0" layoutY="-5.0" prefHeight="269.0" prefWidth="256.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
-               <children>
-                  <Button fx:id="logSBtt" layoutX="183.0" layoutY="231.0" mnemonicParsing="false" onAction="#onLogViewAction" prefHeight="30.0" prefWidth="54.0" style="-fx-underline: true; -fx-background-color: #8656cb; -fx-text-fill: #000;" text="Log in">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="signBtt" layoutX="12.0" layoutY="200.0" mnemonicParsing="false" onAction="#onSignUpAction" prefHeight="34.0" prefWidth="230.0" style="-fx-background-color: #781ddd; -fx-background-radius: 5; -fx-border-color: #000; -fx-border-radius: 5; -fx-text-fill: #000;" text="Sign Up">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="17.0" layoutY="14.0" style="-fx-text-fill: black;" text="Name">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="80.0" style="-fx-text-fill: #000;" text="Password">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="userNameTxt" layoutX="65.0" layoutY="11.0" prefHeight="25.0" prefWidth="174.0" promptText="Name user" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
-                  <Label layoutX="15.0" layoutY="236.0" style="-fx-text-fill: #000;" text="Already have an account?">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="loginMessage1" layoutX="21.0" layoutY="136.0" textFill="#a82f2a">
-                     <font>
-                        <Font name="DejaVu Sans Bold Oblique" size="13.0" />
-                     </font>
-                  </Label>
-                  <Button layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button" />
-                  <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -17;">
-                     <image>
-                        <Image url="@Imagen/cube.png" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="221.0" layoutY="85.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" />
-                  <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="226.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 17;">
-                     <image>
-                        <Image url="@Imagen/cube.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="19.0" layoutY="45.0" style="-fx-text-fill: black;" text="Email">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="emailSignTxt" layoutX="65.0" layoutY="42.0" prefHeight="25.0" prefWidth="174.0" promptText="example@example.com" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
-                  <PasswordField fx:id="confirmPssTxt" layoutX="51.0" layoutY="165.0" prefHeight="27.0" prefWidth="191.0" promptText="Ps.contains(8)" />
-                  <Label layoutX="122.0" layoutY="143.0" style="-fx-text-fill: #000;" text="Confirm password">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="passwordSignTxt" layoutX="12.0" layoutY="101.0" prefHeight="27.0" prefWidth="191.0" promptText="Ps.contains(8)" />
-               </children>
-            </Pane>
-         </children>
-      </Pane>
+        <Button fx:id="backBtt" layoutX="14.0" layoutY="330.0" mnemonicParsing="false" onAction="#onBackAction"
+                prefHeight="42.0" prefWidth="46.0"
+                style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
+            <graphic>
+                <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Imagen/backIcon.png"/>
+                    </image>
+                    <effect>
+                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0"/>
+                    </effect>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="closeBtt" layoutX="650.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseAction"
+                prefHeight="42.0" prefWidth="46.0"
+                style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Imagen/close.png"/>
+                    </image>
+                    <effect>
+                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0"/>
+                    </effect>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Pane fx:id="logginVision" layoutX="191.0" layoutY="95.0" prefHeight="292.0" prefWidth="325.0">
+            <children>
+                <Pane layoutX="35.0" layoutY="-5.0" prefHeight="269.0" prefWidth="256.0"
+                      style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;"
+                      stylesheets="@Style.css">
+                    <children>
+                        <Button fx:id="logBtt" layoutX="15.0" layoutY="171.0" mnemonicParsing="false"
+                                onAction="#onLogInAction" prefHeight="34.0" prefWidth="159.0"
+                                style="-fx-background-color: #781ddd; -fx-background-radius: 5; -fx-border-color: #000; -fx-border-radius: 5; -fx-text-fill: #000;"
+                                text="Log in">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Button>
+                        <Label layoutX="204.0" layoutY="14.0" style="-fx-text-fill: black;" text="Email">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="80.0" style="-fx-text-fill: #000;" text="Password">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="emailTxt" layoutX="66.0" layoutY="35.0" prefHeight="25.0" prefWidth="174.0"
+                                   promptText="example@example.com"
+                                   style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                        <Label layoutX="14.0" layoutY="224.0" style="-fx-text-fill: #000;"
+                               text="Don't have an account? ">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <Button fx:id="signBtt" layoutX="173.0" layoutY="221.0" mnemonicParsing="false"
+                                onAction="#onSignViewAction" prefHeight="30.0" prefWidth="72.0"
+                                style="-fx-underline: true; -fx-background-color: #421195; -fx-text-fill: #bca5fa; -fx-border-color: #000; -fx-border-radius: 5; -fx-background-radius: 5;"
+                                text="Sign up" textFill="WHITE">
+                            <font>
+                                <Font size="13.0"/>
+                            </font>
+                        </Button>
+                        <Label fx:id="loginMessage" layoutX="21.0" layoutY="136.0" textFill="#a82f2a">
+                            <font>
+                                <Font name="DejaVu Sans Bold Oblique" size="13.0"/>
+                            </font>
+                        </Label>
+                        <Button fx:id="cancelBtt" layoutX="174.0" layoutY="172.0" mnemonicParsing="false"
+                                onAction="#onCancelAction" prefHeight="31.0" prefWidth="72.0"
+                                style="-fx-background-color: #8656cb; -fx-text-fill: #000;" text="Cancel">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Button>
+                        <Button layoutY="19.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0"
+                                prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;"
+                                text="Button"/>
+                        <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true" style="-fx-rotate: -17;">
+                            <image>
+                                <Image url="@Imagen/cube.png"/>
+                            </image>
+                        </ImageView>
+                        <TextField fx:id="passwordTxt" layoutX="14.0" layoutY="101.0" prefHeight="25.0"
+                                   prefWidth="174.0" promptText="Ps.contains(8)"
+                                   style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                        <Button layoutX="221.0" layoutY="85.0" mnemonicParsing="false" prefHeight="50.0"
+                                prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;"/>
+                        <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="226.0" layoutY="89.0" pickOnBounds="true"
+                                   preserveRatio="true" style="-fx-rotate: 17;">
+                            <image>
+                                <Image url="@Imagen/cube.png"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+        <Pane fx:id="signUpVision" layoutX="191.0" layoutY="95.0" prefHeight="292.0" prefWidth="325.0">
+            <children>
+                <Pane layoutX="35.0" layoutY="-5.0" prefHeight="269.0" prefWidth="256.0"
+                      style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;"
+                      stylesheets="@Style.css">
+                    <children>
+                        <Button fx:id="logSBtt" layoutX="183.0" layoutY="231.0" mnemonicParsing="false"
+                                onAction="#onLogViewAction" prefHeight="30.0" prefWidth="54.0"
+                                style="-fx-underline: true; -fx-background-color: #8656cb; -fx-text-fill: #000;"
+                                text="Log in">
+                            <font>
+                                <Font size="13.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="signBtt" layoutX="12.0" layoutY="200.0" mnemonicParsing="false"
+                                onAction="#onSignUpAction" prefHeight="34.0" prefWidth="230.0"
+                                style="-fx-background-color: #781ddd; -fx-background-radius: 5; -fx-border-color: #000; -fx-border-radius: 5; -fx-text-fill: #000;"
+                                text="Sign Up">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Button>
+                        <Label layoutX="17.0" layoutY="14.0" style="-fx-text-fill: black;" text="Name">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="80.0" style="-fx-text-fill: #000;" text="Password">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="userNameTxt" layoutX="65.0" layoutY="11.0" prefHeight="25.0" prefWidth="174.0"
+                                   promptText="Name user"
+                                   style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                        <Label layoutX="15.0" layoutY="236.0" style="-fx-text-fill: #000;"
+                               text="Already have an account?">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="loginMessage1" layoutX="21.0" layoutY="136.0" textFill="#a82f2a">
+                            <font>
+                                <Font name="DejaVu Sans Bold Oblique" size="13.0"/>
+                            </font>
+                        </Label>
+                        <Button layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT"
+                                prefHeight="50.0" prefWidth="35.0"
+                                style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button"/>
+                        <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="140.0" pickOnBounds="true"
+                                   preserveRatio="true" style="-fx-rotate: -17;">
+                            <image>
+                                <Image url="@Imagen/cube.png"/>
+                            </image>
+                        </ImageView>
+                        <Button layoutX="221.0" layoutY="85.0" mnemonicParsing="false" prefHeight="50.0"
+                                prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;"/>
+                        <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="226.0" layoutY="89.0" pickOnBounds="true"
+                                   preserveRatio="true" style="-fx-rotate: 17;">
+                            <image>
+                                <Image url="@Imagen/cube.png"/>
+                            </image>
+                        </ImageView>
+                        <Label layoutX="19.0" layoutY="45.0" style="-fx-text-fill: black;" text="Email">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="emailSignTxt" layoutX="65.0" layoutY="42.0" prefHeight="25.0"
+                                   prefWidth="174.0" promptText="example@example.com"
+                                   style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                        <PasswordField fx:id="confirmPssTxt" layoutX="51.0" layoutY="165.0" prefHeight="27.0"
+                                       prefWidth="191.0" promptText="Ps.contains(8)"/>
+                        <Label layoutX="122.0" layoutY="143.0" style="-fx-text-fill: #000;" text="Confirm password">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="passwordSignTxt" layoutX="12.0" layoutY="101.0" prefHeight="27.0"
+                                       prefWidth="191.0" promptText="Ps.contains(8)"/>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
     </children>
 </AnchorPane>

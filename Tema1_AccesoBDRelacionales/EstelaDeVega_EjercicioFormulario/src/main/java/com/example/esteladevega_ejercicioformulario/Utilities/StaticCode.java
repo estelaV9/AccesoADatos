@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class StaticCode {
@@ -31,5 +32,13 @@ public class StaticCode {
             e.printStackTrace(); // SI HAY ERROR EN LA CARGA DEL FXML, SE LANZA LA EXCEPCION
         }
     } // METODO ESTATICO PARA CAMBIAR DE VISTA CON UN ID DE UN BOTON
+
+    public static void exitApp() {
+        int opcion = JOptionPane.showConfirmDialog(null,
+                "¿Está seguro de que desea salir?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            System.exit(0); // CERRAR APLICACIÓN
+        }
+    } // SALIR DE LA APLICACIÓN
 
 }

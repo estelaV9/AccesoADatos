@@ -69,8 +69,11 @@ public class RegistrationCtrller implements Initializable {
 
     @FXML
     void onLogInAction(ActionEvent event) {
-
-    }
+        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DE TIENDA
+        // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
+        // EL TITULO QUE VA A TENER ESE STAGE
+        StaticCode.cambiarVistaBtt("/ui/CubeShop.fxml", logBtt, "Cube Shop");
+    } // IR A LA PAGINA DE TIENDA
 
     @FXML
     void onLogViewAction(ActionEvent event) {

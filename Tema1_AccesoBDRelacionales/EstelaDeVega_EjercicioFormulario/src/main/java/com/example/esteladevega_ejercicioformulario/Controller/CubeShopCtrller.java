@@ -53,6 +53,8 @@ public class CubeShopCtrller implements Initializable {
 
     @FXML
     private Button yourProductBtt;
+    // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
+    boolean pulsarOption = false;
 
     @FXML
     void onBackAction(ActionEvent event) {
@@ -69,7 +71,7 @@ public class CubeShopCtrller implements Initializable {
     } // SALIR DE LA APLICACIÓN
 
     @FXML
-    void onCloseSettingAction(ActionEvent event) {
+    void onCloseSettingAction() {
         settingMenu.setVisible(false);
     }
 
@@ -80,8 +82,14 @@ public class CubeShopCtrller implements Initializable {
 
     @FXML
     void onSettingAction(ActionEvent event) {
-        settingMenu.setVisible(true);
-    }
+        if (!pulsarOption) { // SI NO SE HA PULSADO, SE ABRE EL MENU
+            settingMenu.setVisible(true);
+            pulsarOption = true;
+        } else { // SI SE HA PULSADO, SE CIERRA EL MENU
+            onCloseSettingAction();
+            pulsarOption = false;
+        }
+    } // SE ABRE UN POPUP PARA ACCEDER A LOS AJUSTES
 
     @FXML
     void onSettingsMenuAction(ActionEvent event) {

@@ -76,7 +76,12 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onDeleteAction(ActionEvent event) {
-
+        deleteBtt.setStyle("-fx-background-color : #cc87e0");
+        personalBtt.setStyle("-fx-background-color : #781ddd");
+        passwordBtt.setStyle("-fx-background-color : #781ddd");
+        personalPane.setVisible(false);
+        passwordPane.setVisible(false);
+        deletePane.setVisible(true);
     }
 
     @FXML
@@ -99,17 +104,31 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onPasswordAction(ActionEvent event) {
-
+        passwordBtt.setStyle("-fx-background-color : #cc87e0");
+        personalBtt.setStyle("-fx-background-color : #781ddd");
+        deleteBtt.setStyle("-fx-background-color : #781ddd");
+        personalPane.setVisible(false);
+        passwordPane.setVisible(true);
+        deletePane.setVisible(false);
     }
 
     @FXML
     void onPersonalAction(ActionEvent event) {
-
+        personalBtt.setStyle("-fx-background-color : #cc87e0");
+        deleteBtt.setStyle("-fx-background-color : #781ddd");
+        passwordBtt.setStyle("-fx-background-color : #781ddd");
+        personalPane.setVisible(true);
+        passwordPane.setVisible(false);
+        deletePane.setVisible(false);
     }
 
     @FXML
     void onProfileAction(ActionEvent event) {
-
+        accountPane.setVisible(true);
+        personalPane.setStyle("-fx-background-color : #cc87e0");
+        personalPane.setVisible(true);
+        passwordPane.setVisible(false);
+        deletePane.setVisible(false);
     }
 
     @FXML
@@ -137,6 +156,6 @@ public class SettingCtrller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        accountPane.setVisible(false); // AL INICIAR LA VISTA, EL PANE DE CUENTA NO ESTARA VISIBLE HASTA QUE SE PULSE UNA OPCION
     }
 }

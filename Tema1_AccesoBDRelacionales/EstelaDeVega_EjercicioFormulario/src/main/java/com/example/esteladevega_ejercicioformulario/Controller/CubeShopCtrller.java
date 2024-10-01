@@ -93,8 +93,11 @@ public class CubeShopCtrller implements Initializable {
 
     @FXML
     void onSettingsMenuAction(ActionEvent event) {
-
-    }
+        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DE AJUSTES
+        // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
+        // EL TITULO QUE VA A TENER ESE STAGE
+        StaticCode.cambiarVistaBtt("/ui/Setting.fxml", settingBtt, "Setting Page");
+    } // IR A LA PAGINA DE SETTINGS
 
     @FXML
     void onShopCartAction(ActionEvent event) {

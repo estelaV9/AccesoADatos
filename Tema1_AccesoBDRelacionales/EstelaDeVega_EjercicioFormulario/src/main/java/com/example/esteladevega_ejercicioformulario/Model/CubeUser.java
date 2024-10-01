@@ -1,5 +1,7 @@
 package com.example.esteladevega_ejercicioformulario.Model;
 
+import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
+
 import javax.management.relation.Role;
 import java.time.LocalDate;
 
@@ -10,6 +12,10 @@ public class CubeUser {
     private int levelUser;
     private String mail;
     private LocalDate registrationDate;
+
+    public CubeUser () {
+
+    }
 
     public CubeUser(int idUser, String nameUser, String passwordUser, int levelUser, String mail, LocalDate registrationDate) {
         this.idUser = idUser;

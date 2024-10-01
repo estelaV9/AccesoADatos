@@ -6,13 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegistrationCtrller {
+public class RegistrationCtrller implements Initializable {
     @FXML
     private Button backBtt;
     @FXML
@@ -20,19 +21,31 @@ public class RegistrationCtrller {
     @FXML
     private Button closeBtt;
     @FXML
+    private PasswordField confirmPssTxt;
+    @FXML
+    private TextField emailSignTxt;
+    @FXML
     private TextField emailTxt;
     @FXML
-    private Button goBtt;
-    @FXML
     private Button logBtt;
+    @FXML
+    private Button logSBtt;
     @FXML
     private Pane logginVision;
     @FXML
     private Label loginMessage;
     @FXML
+    private Label loginMessage1;
+    @FXML
+    private PasswordField passwordSignTxt;
+    @FXML
     private TextField passwordTxt;
     @FXML
     private Button signBtt;
+    @FXML
+    private Pane signUpVision;
+    @FXML
+    private TextField userNameTxt;
 
     @FXML
     void onBackAction(ActionEvent event) {
@@ -55,17 +68,29 @@ public class RegistrationCtrller {
     } // SALIR DE LA APLICACIÓN
 
     @FXML
-    void onGoAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void onLogInAction(ActionEvent event) {
 
     }
 
     @FXML
-    void onSignAction(ActionEvent event) {
+    void onLogViewAction(ActionEvent event) {
+        signUpVision.setVisible(false);
+        logginVision.setVisible(true);
+    } // MOSTRAR LA VISTA DE LOGIN
 
+    @FXML
+    void onSignUpAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onSignViewAction(ActionEvent event) {
+        signUpVision.setVisible(true);
+        logginVision.setVisible(false);
+    } // MOSTRAR LA VISTA DE SIGN UP
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        signUpVision.setVisible(false);
     }
 }

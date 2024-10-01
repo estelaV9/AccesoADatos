@@ -5,3 +5,20 @@
     -fx-background-radius: 5; /* RADIO DE LAS ESQUINAS DEL FONDO */
     -fx-prompt-text-fill: gray; /* COLOR DEL PROMPTTEXT */
 }
+
+/****************************** SCROLLPANE *****************************/
+.scroll-pane .scroll-bar {
+    -fx-background-color: #781ddd;
+} /* DEFINIR EL COLOR DEL FONDO DEL SCROLL */
+
+.scroll-pane .scroll-bar .increment-button {
+    -fx-background-color: #cc87e0;
+} /* DEFINIR EL COLOR DEL BOTON DE ARRIBA DEL SCROLL */
+
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-background-color: #cc87e0;
+} /* DEFINIR EL COLOR DEL BOTON DE ABAJO DEL SCROLL */
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #cc87e0;
+} /* DEFINIR EL COLOR DEL BOTON DEL SCROLL */

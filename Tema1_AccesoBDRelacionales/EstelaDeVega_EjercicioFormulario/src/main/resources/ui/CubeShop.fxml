@@ -58,21 +58,21 @@
                           <Font name="DejaVu Sans Bold Oblique" size="13.0" />
                       </font>
                   </Label>
-                  <Button layoutY="95.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button" />
-                  <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -17;">
+                  <Button layoutY="196.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button" />
+                  <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -17;">
                       <image>
                           <Image url="@Imagen/cube.png" />
                       </image>
                   </ImageView>
-                  <Button layoutX="584.0" layoutY="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" />
-                  <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="589.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 17;">
+                  <Button layoutX="584.0" layoutY="39.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" />
+                  <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="589.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 17;">
                       <image>
                           <Image url="@Imagen/cube.png" />
                       </image>
                   </ImageView>
-            <Button fx:id="shopCartBtt" layoutX="21.0" layoutY="200.0" mnemonicParsing="false" onAction="#onShopCartAction" prefHeight="66.0" prefWidth="95.0" style="-fx-background-color: #1a1822; -fx-border-color: #cc87e0; -fx-border-width: 3; -fx-border-radius: 5; -fx-background-radius: 10;">
+            <Button fx:id="shopCartBtt" layoutX="476.0" layoutY="10.0" mnemonicParsing="false" onAction="#onShopCartAction" prefHeight="42.0" prefWidth="90.0" style="-fx-background-color: #1a1822; -fx-border-color: #cc87e0; -fx-border-width: 3; -fx-border-radius: 5; -fx-background-radius: 10;">
                <graphic>
-                  <ImageView fitHeight="53.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="35.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Imagen/shopCart.jpg" />
                      </image>
@@ -84,9 +84,9 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <ScrollPane fx:id="scrollPane" layoutX="170.0" layoutY="77.0" prefHeight="185.0" prefWidth="396.0">
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="62.0" layoutY="77.0" prefHeight="185.0" prefWidth="504.0" style="-fx-background-color: #000;">
               <content>
-                <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="188.0" prefWidth="394.0" />
+                <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="188.0" prefWidth="490.0" style="-fx-background-color: #781ddd;" />
               </content>
             </ScrollPane>
               </children>

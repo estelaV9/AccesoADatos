@@ -1,0 +1,7 @@
+.text-field {
+    -fx-background-color: #bca5fa; /* COLOR DE FONDO */
+    -fx-border-color: black; /* COLOR DEL BORDE */
+    -fx-border-radius: 5; /* RADIO DE LAS ESQUINAS DEL BORDE */
+    -fx-background-radius: 5; /* RADIO DE LAS ESQUINAS DEL FONDO */
+    -fx-prompt-text-fill: gray; /* COLOR DEL PROMPTTEXT */
+}

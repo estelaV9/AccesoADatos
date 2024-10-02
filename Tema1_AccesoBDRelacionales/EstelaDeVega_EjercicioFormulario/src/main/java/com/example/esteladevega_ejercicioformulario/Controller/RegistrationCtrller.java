@@ -77,29 +77,29 @@ public class RegistrationCtrller implements Initializable {
 
     @FXML
     void onLogInAction(ActionEvent event) {
-        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DE TIENDA
-        // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
-        // EL TITULO QUE VA A TENER ESE STAGE
         if(emailTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()){
-
+            // SI LOS CAMPOS ESTAN VACIOS, SE MOSTRARA UN ERROR
+            StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
+                    "Por favor, completa todos los campos antes de continuar.");
         } else if (!Validator.isValidMail(emailTxt.getText())) {
+            // SI EL EMAIL NO ES CORRECTO MOSTRARA UN MENSAJE DE ERROR
             StaticCode.Alerts("ERROR", "Correo no válido", "¡ERROR!",
                     "Por favor, introduzca un correo válido:\nexample@example.com");
         } else if (!Validator.isValidPassword(passwordTxt.getText())) {
+            // SI LA CONTRASEÑA NO ES CORRECTA MOSTRARA UN MENSAJE DE ERROR
             StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         } else {
-            CubeUser cubeUser = new CubeUser(emailTxt.getText(), passwordTxt.getText());
+            CubeUser cubeUser = new CubeUser(emailTxt.getText(), passwordTxt.getText()); // SE CREA UN USUARIO
             if(!CubeUserDAO.isExistsUser(BeginningCtrller.con, cubeUser)) {
-                StaticCode.Alerts("ERROR", "Usuario NO existente", "¡ERROR!",
-                        "Ese usuario no existe.\nSi no tienes una cuenta, registrate");
+                // SI NO EXISTE EL USUARIO MOSTRAR UN MENSAJE EN LA VISTA DE ERROR
+                loginMessage.setText("Invalid login");
             } else {
-
+                // SI EXISTE EL USUARIO, REDIRIGIRA A LA PAGINA D ETIENDA
                 StaticCode.cambiarVistaBtt("/ui/CubeShop.fxml", logBtt, "Cube Shop");
             }
-
         }
-    } // IR A LA PAGINA DE TIENDA
+    } // METODO LOGIN PARA INICIAR SESION E IR A LA PAGINA DE TIENDA
 
     @FXML
     void onLogViewAction(ActionEvent event) {

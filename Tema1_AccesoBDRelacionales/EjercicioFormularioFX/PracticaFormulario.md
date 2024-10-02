@@ -29,7 +29,7 @@ Desarrollar una aplicación JavaFX con mínimo dos formularios y dos tablas en l
 ### Visión General de la Aplicación
 Inicio                                   			                    
 :------------------------------------------:|
- <img src="EjercicioFormularioFX/projectFiles/beginning.png" width="300"> | 
+ <img src="projectFiles/beginning.png" width="300"> | 
 
 
 <br>

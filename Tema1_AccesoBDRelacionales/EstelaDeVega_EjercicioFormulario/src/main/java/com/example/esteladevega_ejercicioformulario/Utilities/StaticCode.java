@@ -4,6 +4,7 @@ import com.example.esteladevega_ejercicioformulario.App;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -40,5 +41,13 @@ public class StaticCode {
             System.exit(0); // CERRAR APLICACIÓN
         }
     } // SALIR DE LA APLICACIÓN
+
+    public static void Alerts (String tipoAlert, String tituloAlert, String headerText, String contentText){
+        Alert alert = new Alert(Alert.AlertType.valueOf(tipoAlert.toUpperCase()));
+        alert.setTitle(tituloAlert);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
+    } // METODO ESTATICO PARA GENERA UNA ALERTA
 
 }

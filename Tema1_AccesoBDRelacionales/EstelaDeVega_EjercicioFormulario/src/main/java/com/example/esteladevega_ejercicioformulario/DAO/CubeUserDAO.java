@@ -26,12 +26,13 @@ public class CubeUserDAO {
             // COMPROBAR SI EL NOMBRE INTRODUCIDO YA EXISTE
             if (rowsInserted > 0) {
                 return true;
+            } else {
+                return false;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         }
-        return false;
     }
 
 

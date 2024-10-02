@@ -4,6 +4,7 @@ import com.example.esteladevega_ejercicioformulario.ConnectionDB.ConnectionDB;
 import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
 import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
+import com.example.esteladevega_ejercicioformulario.Validator.Validator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -91,8 +92,32 @@ public class RegistrationCtrller implements Initializable {
     @FXML
     void onSignUpAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         LocalDate currentDate = LocalDate.now();
-        CubeUser cubeUser = new CubeUser(userNameTxt.getText(), passwordSignTxt.getText(), 0, emailSignTxt.getText(), currentDate);
-        CubeUserDAO.insertUser(BeginningCtrller.con, cubeUser);
+        if (userNameTxt.getText().isEmpty() || emailSignTxt.getText().isEmpty() || passwordSignTxt.getText().isEmpty()
+                || confirmPssTxt.getText().isEmpty()) {
+            StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
+                    "Por favor, completa todos los campos antes de continuar.");
+        } else if (!passwordSignTxt.getText().equals(confirmPssTxt.getText())) {
+            StaticCode.Alerts("ERROR", "Contraseñas no coinciden", "¡ERROR!",
+                    "Las contraseñas no coinciden. Por favor, verifica e intenta nuevamente.");
+        } else if (!Validator.isValidMail(emailSignTxt.getText())) {
+            StaticCode.Alerts("ERROR", "Correo no válido", "¡ERROR!",
+                    "Por favor, introduzca un correo válido:\nexample@example.com");
+        } else if (!Validator.isValidPassword(passwordSignTxt.getText())) {
+            StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
+                    "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
+        } else {
+            CubeUser cubeUser = new CubeUser(userNameTxt.getText(), passwordSignTxt.getText(), 0, emailSignTxt.getText(), currentDate);
+            if(CubeUserDAO.insertUser(BeginningCtrller.con, cubeUser)){
+                // SI SE INSERTO EL USUARIO, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("INFORMATION", "Creación de usuario", "Creación exitosa",
+                        "Se ha creado el usuario correctamente.");
+                // IR A LA PAGINA DE TIENDA DESPUES DE HABER CREADO EL USUARIO
+                StaticCode.cambiarVistaBtt("/ui/CubeShop.fxml", signBtt, "Cube Shop");
+            } else {
+                StaticCode.Alerts("ERROR", "Creación de usuario", "Creación fallida",
+                        "No se ha podido crear el usuario.");
+            }
+        }
     } // METODO PARA CREAR UNA CUENTA
 
     @FXML

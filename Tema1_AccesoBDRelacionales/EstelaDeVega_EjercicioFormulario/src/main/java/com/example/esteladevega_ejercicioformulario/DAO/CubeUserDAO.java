@@ -2,13 +2,11 @@ package com.example.esteladevega_ejercicioformulario.DAO;
 
 import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
 import com.example.esteladevega_ejercicioformulario.Utilities.R;
+import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
 import javafx.scene.control.Alert;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.Properties;
 
@@ -26,14 +24,33 @@ public class CubeUserDAO {
             // COMPROBAR SI EL NOMBRE INTRODUCIDO YA EXISTE
             if (rowsInserted > 0) {
                 return true;
-            } else {
-                return false;
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
             return false;
         }
+        return false;
     }
+
+    public static boolean isExistsUser(Connection con, CubeUser cubeUser) {
+        try {
+            String sqlQuery = "SELECT * FROM CUBE_USERS WHERE MAIL = ? AND PASSWORD_USER = ?";
+            PreparedStatement statementQuery = con.prepareStatement(sqlQuery);
+            statementQuery.setString(1, cubeUser.getMail());
+            statementQuery.setString(2, cubeUser.getPasswordUser());
+            ResultSet resultSet = statementQuery.executeQuery();
+            if (resultSet.next()) {
+                // SI EL USUARIO EXISTE, MOSTRAR UN MENSAJE DE ERROR
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    } // METODO PARA COMPROBAR SI EL USUARIO INTRODUCIDO YA EXISTE
 
 
 }

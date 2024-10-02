@@ -17,6 +17,11 @@ public class CubeUser {
 
     }
 
+    public CubeUser(String mail, String passwordUser) {
+        this.mail = mail;
+        this.passwordUser = passwordUser;
+    }
+
     public CubeUser(String nameUser, String passwordUser, int levelUser, String mail, LocalDate registrationDate) {
         this.nameUser = nameUser;
         this.passwordUser = passwordUser;

@@ -80,7 +80,25 @@ public class RegistrationCtrller implements Initializable {
         // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DE TIENDA
         // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
         // EL TITULO QUE VA A TENER ESE STAGE
-        StaticCode.cambiarVistaBtt("/ui/CubeShop.fxml", logBtt, "Cube Shop");
+        if(emailTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()){
+
+        } else if (!Validator.isValidMail(emailTxt.getText())) {
+            StaticCode.Alerts("ERROR", "Correo no válido", "¡ERROR!",
+                    "Por favor, introduzca un correo válido:\nexample@example.com");
+        } else if (!Validator.isValidPassword(passwordTxt.getText())) {
+            StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
+                    "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
+        } else {
+            CubeUser cubeUser = new CubeUser(emailTxt.getText(), passwordTxt.getText());
+            if(!CubeUserDAO.isExistsUser(BeginningCtrller.con, cubeUser)) {
+                StaticCode.Alerts("ERROR", "Usuario NO existente", "¡ERROR!",
+                        "Ese usuario no existe.\nSi no tienes una cuenta, registrate");
+            } else {
+
+                StaticCode.cambiarVistaBtt("/ui/CubeShop.fxml", logBtt, "Cube Shop");
+            }
+
+        }
     } // IR A LA PAGINA DE TIENDA
 
     @FXML

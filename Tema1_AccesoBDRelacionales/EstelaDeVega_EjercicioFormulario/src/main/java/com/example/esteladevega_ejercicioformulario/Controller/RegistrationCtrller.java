@@ -1,5 +1,8 @@
 package com.example.esteladevega_ejercicioformulario.Controller;
 
+import com.example.esteladevega_ejercicioformulario.ConnectionDB.ConnectionDB;
+import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
+import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class RegistrationCtrller implements Initializable {
@@ -47,6 +53,7 @@ public class RegistrationCtrller implements Initializable {
     @FXML
     private TextField userNameTxt;
 
+
     @FXML
     void onBackAction(ActionEvent event) {
         // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL PRINCIPIO
@@ -82,9 +89,11 @@ public class RegistrationCtrller implements Initializable {
     } // MOSTRAR LA VISTA DE LOGIN
 
     @FXML
-    void onSignUpAction(ActionEvent event) {
-
-    }
+    void onSignUpAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        LocalDate currentDate = LocalDate.now();
+        CubeUser cubeUser = new CubeUser(userNameTxt.getText(), passwordSignTxt.getText(), 0, emailSignTxt.getText(), currentDate);
+        CubeUserDAO.insertUser(BeginningCtrller.con, cubeUser);
+    } // METODO PARA CREAR UNA CUENTA
 
     @FXML
     void onSignViewAction(ActionEvent event) {

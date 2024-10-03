@@ -53,4 +53,23 @@ public class CubeUserDAO {
     } // METODO PARA COMPROBAR SI EL USUARIO INTRODUCIDO YA EXISTE
 
 
+    public static boolean deleteUser(Connection con, String mailUser) {
+        try {
+            String sqlDelete = "DELETE FROM CUBE_USERS WHERE MAIL = ?";
+            PreparedStatement statement = con.prepareStatement(sqlDelete);
+            statement.setString(1, mailUser);
+            int rowsDelete = statement.executeUpdate();
+            if (rowsDelete > 0) {
+                // SI HA ELIMINADO CORRECTAMETNE RETURN TRUE
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    }
+
+
 }

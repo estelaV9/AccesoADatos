@@ -76,9 +76,9 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onDeleteAction(ActionEvent event) {
-        deleteBtt.setStyle("-fx-background-color : #cc87e0");
-        personalBtt.setStyle("-fx-background-color : #781ddd");
-        passwordBtt.setStyle("-fx-background-color : #781ddd");
+        deleteBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
         personalPane.setVisible(false);
         passwordPane.setVisible(false);
         deletePane.setVisible(true);
@@ -104,9 +104,9 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onPasswordAction(ActionEvent event) {
-        passwordBtt.setStyle("-fx-background-color : #cc87e0");
-        personalBtt.setStyle("-fx-background-color : #781ddd");
-        deleteBtt.setStyle("-fx-background-color : #781ddd");
+        passwordBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+        personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
         personalPane.setVisible(false);
         passwordPane.setVisible(true);
         deletePane.setVisible(false);
@@ -114,9 +114,9 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onPersonalAction(ActionEvent event) {
-        personalBtt.setStyle("-fx-background-color : #cc87e0");
-        deleteBtt.setStyle("-fx-background-color : #781ddd");
-        passwordBtt.setStyle("-fx-background-color : #781ddd");
+        personalBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
         personalPane.setVisible(true);
         passwordPane.setVisible(false);
         deletePane.setVisible(false);
@@ -129,6 +129,9 @@ public class SettingCtrller implements Initializable {
         personalPane.setVisible(true);
         passwordPane.setVisible(false);
         deletePane.setVisible(false);
+        personalBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
     }
 
     @FXML

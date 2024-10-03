@@ -70,21 +70,6 @@ public class SettingCtrller implements Initializable {
     } // IR A LA PAGINA DE TIENDA
 
     @FXML
-    void onDeleteAccAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onDeleteAction(ActionEvent event) {
-        deleteBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
-        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        personalPane.setVisible(false);
-        passwordPane.setVisible(false);
-        deletePane.setVisible(true);
-    }
-
-    @FXML
     void onExitAction(ActionEvent event) {
         // SE LLAMA AL METODO ESTATICO PARA SALIR DE LA APLICACION
         StaticCode.exitApp();
@@ -100,27 +85,15 @@ public class SettingCtrller implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    } // METODO QUE REDIRIGE A MI PERFIL DE GITHUB
 
     @FXML
-    void onPasswordAction(ActionEvent event) {
-        passwordBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
-        personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        personalPane.setVisible(false);
-        passwordPane.setVisible(true);
-        deletePane.setVisible(false);
-    }
-
-    @FXML
-    void onPersonalAction(ActionEvent event) {
-        personalBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
-        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        personalPane.setVisible(true);
-        passwordPane.setVisible(false);
-        deletePane.setVisible(false);
-    }
+    void onSignOutAction(ActionEvent event) {
+        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL LOGIN
+        // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
+        // EL TITULO QUE VA A TENER ESE STAGE
+        StaticCode.cambiarVistaBtt("/ui/Registration.fxml", backBtt, "Registration Page");
+    } // IR A LA PAGINA DEL LOGIN
 
     @FXML
     void onProfileAction(ActionEvent event) {
@@ -132,15 +105,42 @@ public class SettingCtrller implements Initializable {
         personalBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
         passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
         deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-    }
+    } // BOTON PARA CAMBIAR AL PANEL DE PERSONAL INFO EN PROFILE
 
     @FXML
-    void onSignOutAction(ActionEvent event) {
-        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL LOGIN
-        // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
-        // EL TITULO QUE VA A TENER ESE STAGE
-        StaticCode.cambiarVistaBtt("/ui/Registration.fxml", backBtt, "Registration Page");
-    } // IR A LA PAGINA DEL LOGIN
+    void onPasswordAction(ActionEvent event) {
+        passwordBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+        personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        personalPane.setVisible(false);
+        passwordPane.setVisible(true);
+        deletePane.setVisible(false);
+    } // BOTON PARA CAMBIAR AL PANEL DE CONTRASEÑA EN PROFILE
+
+    @FXML
+    void onPersonalAction(ActionEvent event) {
+        personalBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        personalPane.setVisible(true);
+        passwordPane.setVisible(false);
+        deletePane.setVisible(false);
+    } // BOTON PARA MOSTRAR EL PANEL DE PROFILE (POR DEFECTO SE INICIARA EN PERSONAL INFO)
+
+    @FXML
+    void onDeleteAction(ActionEvent event) {
+        deleteBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        personalPane.setVisible(false);
+        passwordPane.setVisible(false);
+        deletePane.setVisible(true);
+    } // BOTON PARA CAMBIAR AL PANEL DE DELETE EN PROFILE
+
+    @FXML
+    void onDeleteAccAction(ActionEvent event) {
+
+    }
 
     @FXML
     void onUpdateInfoAction(ActionEvent event) {
@@ -159,6 +159,7 @@ public class SettingCtrller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        accountPane.setVisible(false); // AL INICIAR LA VISTA, EL PANE DE CUENTA NO ESTARA VISIBLE HASTA QUE SE PULSE UNA OPCION
+        // AL INICIAR LA VISTA, EL PANE DE CUENTA NO ESTARA VISIBLE HASTA QUE SE PULSE EL BOTON DE PROFILE
+        accountPane.setVisible(false);
     }
 }

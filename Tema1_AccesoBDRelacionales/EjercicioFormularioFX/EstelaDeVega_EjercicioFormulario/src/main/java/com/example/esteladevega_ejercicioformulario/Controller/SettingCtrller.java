@@ -170,8 +170,15 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onUserManualAction(ActionEvent event) {
-
-    }
+        try {
+            Desktop.getDesktop().browse(new URI("https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/EjercicioFormularioFX/PracticaFormulario.md"));
+            /*SE USA LA CLASE DESKTOP QUE PERMITE HACER COSAS RELACIONADAS CON EL ESCRITORIO DEL ORDENADOR
+            getDesktop() ES UN METODO QUE PROPORCIONA UNA INSTANCIA, ES DECIR, UN OBJETO DE LA CLASE DESKTOP.
+            EL METODO browse() NOS PERMITE ABRIR UNA URL EN EL NAVEGADOR WEB PREDETERMINADO*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } // METODO QUE REDIRIGE A UN RESUMEN DE LA APLICACION CON TODAS SUS VISTAS
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException, ClassNotFoundException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/ui/Setting.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/ui/beginning.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("CubeX Galaxy!");
         // AÑADIR IMAGEN EN EL STAGE DEL LOGO DE LA APLICACION

@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="727.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esteladevega_ejercicioformulario.Controller.SettingCtrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="727.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esteladevega_ejercicioformulario.Controller.SettingCtrller">
     <children>
         <ImageView fitHeight="388.0" fitWidth="736.0" layoutX="-6.0" pickOnBounds="true">
             <image>
@@ -154,11 +154,6 @@
                         <Font name="Britannic Bold" size="27.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../1_DAM/programacion/ProyectoFinal_Estela_deVega/CubeX/src/main/resources/com/example/cubex/Imagen/warning.png" />
-                     </image>
-                  </ImageView>
                   <Line endX="196.66015625" layoutX="178.0" layoutY="32.0" startX="-171.0" stroke="#a82f2a" strokeWidth="2.0" />
                   <Button fx:id="deleteAccountBtt" layoutX="85.0" layoutY="147.0" mnemonicParsing="false" onAction="#onDeleteAccAction" prefHeight="42.0" prefWidth="251.0" style="-fx-background-color: #a82f2a; -fx-background-radius: 10; -fx-border-color: #000; -fx-border-radius: 10; -fx-text-fill: #000;" text="DELETE ACCOUNT">
                      <font>

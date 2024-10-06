@@ -12,7 +12,7 @@ import java.util.Properties;
 
 
 public class ConnectionDB {
-    private static Connection con;
+    public static Connection con;
 
     public static Connection conectar() throws ClassNotFoundException, SQLException {
         boolean connect = false;

@@ -1,5 +1,6 @@
 package com.example.esteladevega_ejercicioformulario.DAO;
 
+import com.example.esteladevega_ejercicioformulario.Controller.RegistrationCtrller;
 import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
 import com.example.esteladevega_ejercicioformulario.Utilities.R;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
@@ -60,6 +61,7 @@ public class CubeUserDAO {
             statement.setString(1, mailUser);
             int rowsDelete = statement.executeUpdate();
             if (rowsDelete > 0) {
+                RegistrationCtrller.cubeUser = null; // INVALIDAR USUARIO
                 // SI HA ELIMINADO CORRECTAMETNE RETURN TRUE
                 return true;
             }

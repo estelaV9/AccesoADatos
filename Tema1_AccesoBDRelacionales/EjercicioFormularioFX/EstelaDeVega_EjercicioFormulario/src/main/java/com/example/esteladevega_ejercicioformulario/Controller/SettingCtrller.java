@@ -1,5 +1,6 @@
 package com.example.esteladevega_ejercicioformulario.Controller;
 
+import com.example.esteladevega_ejercicioformulario.ConnectionDB.ConnectionDB;
 import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
 import javafx.event.ActionEvent;
@@ -62,6 +63,11 @@ public class SettingCtrller implements Initializable {
     private Button updatePsswBtt;
     @FXML
     private Button userManualBtt;
+
+    String mailUser;
+    public void display (String mail){
+        mailUser = mail;
+    }
 
     @FXML
     void onBackAction(ActionEvent event) {
@@ -144,12 +150,12 @@ public class SettingCtrller implements Initializable {
         int opcion = JOptionPane.showConfirmDialog(null,
                 "¿Está seguro de que desea eliminar la cuenta?", "Confirmación", JOptionPane.YES_NO_OPTION);
         if (opcion == JOptionPane.YES_OPTION) {
-            if (CubeUserDAO.deleteUser() {
+            if (CubeUserDAO.deleteUser(ConnectionDB.con, RegistrationCtrller.cubeUser.getMail())) {
                 // SI SE ELIMINA EL USUARIO SE MUESTRA EL MENSAJE
                 StaticCode.Alerts("INFORMATION", "Eliminación de usuario", "Eliminación exitosa",
                         "Se ha eliminado el usuario correctamente");
                 // UNA VEZ ELIMINADO EL USUARIO, VOLVERA A LA PAGINA DE INICIAR SESION
-                StaticCode.cambiarVistaBtt("Registration.fxml", deleteBtt, "Registration Page");
+                StaticCode.cambiarVistaBtt("/ui/Registration.fxml", deleteBtt, "Registration Page");
             } else {
                 // SI NO SE ENCONTRO USUARIO SE MUESTRA UN MENSAJE (POR SI ACASO)
                 StaticCode.Alerts("ERROR", "Error al eliminar usuario", "¡ERROR!",

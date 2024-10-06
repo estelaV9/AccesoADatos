@@ -54,6 +54,8 @@ public class RegistrationCtrller implements Initializable {
     @FXML
     private TextField userNameTxt;
 
+    public static CubeUser cubeUser;
+
 
     @FXML
     void onBackAction(ActionEvent event) {
@@ -90,8 +92,8 @@ public class RegistrationCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         } else {
-            CubeUser cubeUser = new CubeUser(emailTxt.getText(), passwordTxt.getText()); // SE CREA UN USUARIO
-            if(!CubeUserDAO.isExistsUser(BeginningCtrller.con, cubeUser)) {
+            cubeUser = new CubeUser(emailTxt.getText(), passwordTxt.getText()); // SE CREA UN USUARIO
+            if(!CubeUserDAO.isExistsUser(ConnectionDB.con, cubeUser)) {
                 // SI NO EXISTE EL USUARIO MOSTRAR UN MENSAJE EN LA VISTA DE ERROR
                 loginMessage.setText("Invalid login");
             } else {
@@ -124,8 +126,8 @@ public class RegistrationCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         } else {
-            CubeUser cubeUser = new CubeUser(userNameTxt.getText(), passwordSignTxt.getText(), 0, emailSignTxt.getText(), currentDate);
-            if(CubeUserDAO.insertUser(BeginningCtrller.con, cubeUser)){
+            cubeUser = new CubeUser(userNameTxt.getText(), passwordSignTxt.getText(), 0, emailSignTxt.getText(), currentDate);
+            if(CubeUserDAO.insertUser(ConnectionDB.con, cubeUser)){
                 // SI SE INSERTO EL USUARIO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Creación de usuario", "Creación exitosa",
                         "Se ha creado el usuario correctamente.");

@@ -1,6 +1,8 @@
 package com.example.esteladevega_ejercicioformulario.Utilities;
 
 import com.example.esteladevega_ejercicioformulario.App;
+import com.example.esteladevega_ejercicioformulario.Controller.SettingCtrller;
+import com.sun.tools.javac.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,7 +14,7 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class StaticCode {
-    public static void cambiarVistaBtt(String nameFxml, Button button, String title){
+    public static void cambiarVistaBtt(String nameFxml, Button button, String title) {
         try {
             // CARGAR EL ARCHIVO FXML
             FXMLLoader fxmlLoader = new
@@ -42,7 +44,7 @@ public class StaticCode {
         }
     } // SALIR DE LA APLICACIÓN
 
-    public static void Alerts (String tipoAlert, String tituloAlert, String headerText, String contentText){
+    public static void Alerts(String tipoAlert, String tituloAlert, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.valueOf(tipoAlert.toUpperCase()));
         alert.setTitle(tituloAlert);
         alert.setHeaderText(headerText);

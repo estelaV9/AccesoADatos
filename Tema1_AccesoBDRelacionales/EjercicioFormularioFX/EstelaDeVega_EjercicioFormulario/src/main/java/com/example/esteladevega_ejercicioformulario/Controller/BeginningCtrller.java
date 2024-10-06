@@ -12,8 +12,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class BeginningCtrller implements Initializable{
-    public static Connection con;
+public class BeginningCtrller implements Initializable {
 
     @FXML
     private Button goBtt;
@@ -29,7 +28,7 @@ public class BeginningCtrller implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            con = ConnectionDB.conectar();
+            ConnectionDB.con = ConnectionDB.conectar();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {

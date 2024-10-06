@@ -73,5 +73,23 @@ public class CubeUserDAO {
         return false;
     }
 
+    public static boolean modifyPassword(Connection con, String newPassword, String mailUser) {
+        try {
+            String sqlUpdate = "UPDATE CUBE_USERS SET PASSWORD_USER = ? WHERE MAIL = ?";
+            PreparedStatement statement = con.prepareStatement(sqlUpdate);
+            statement.setString(1, newPassword);
+            statement.setString(2, mailUser);
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    }
+
 
 }

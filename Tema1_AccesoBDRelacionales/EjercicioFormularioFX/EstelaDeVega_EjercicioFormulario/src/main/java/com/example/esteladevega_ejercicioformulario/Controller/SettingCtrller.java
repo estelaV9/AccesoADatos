@@ -3,12 +3,13 @@ package com.example.esteladevega_ejercicioformulario.Controller;
 import com.example.esteladevega_ejercicioformulario.ConnectionDB.ConnectionDB;
 import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
+import com.example.esteladevega_ejercicioformulario.Validator.Validator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
@@ -65,7 +66,8 @@ public class SettingCtrller implements Initializable {
     private Button userManualBtt;
 
     String mailUser;
-    public void display (String mail){
+
+    public void display(String mail) {
         mailUser = mail;
     }
 
@@ -171,7 +173,29 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onUpdatePasswAction(ActionEvent event) {
-
+        if (txtNewPasswordUp.getText().isEmpty() || txtNewPasswordConfirm.getText().isEmpty()) {
+            // SI LOS CAMPOS ESTAN VACIOS, SE MOSTRARA UN ERROR
+            StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
+                    "Por favor, completa todos los campos antes de continuar.");
+        } else if (!txtNewPasswordUp.getText().equals(txtNewPasswordConfirm.getText())) {
+            // SI LAS CONTRASEÑAS NO COINCIDEN, SE MOSTRARA UN ERROR
+            StaticCode.Alerts("ERROR", "Contraseñas no coinciden", "¡ERROR!",
+                    "Las contraseñas no coinciden. Por favor, verifica e intenta nuevamente.");
+        } else if (Validator.isValidPassword(txtNewPasswordUp.getText())) {
+            if (CubeUserDAO.modifyPassword(ConnectionDB.con, txtNewPasswordUp.getText(), RegistrationCtrller.cubeUser.getMail())) {
+                // SI SE ACTUALIZO EL USUARIO, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("INFORMATION", "Actualización de contraseña", "Actualizacion exitosa",
+                        "Se ha actualizado la contraseña correctamente.");
+            } else {
+                // SI NO SE ACTUALIZO, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("ERROR", "Error al modificar usuario", "¡ERROR!",
+                        "No se pudo modificar la contraseña");
+            }
+        } else {
+            // SI LA CONTRASEÑA NO ES CORRECTA MOSTRARA UN MENSAJE DE ERROR
+            StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
+                    "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
+        }
     }
 
     @FXML

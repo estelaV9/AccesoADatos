@@ -8,51 +8,43 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.esteladevega_ejerciciojson.Controller.ImdbCtrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.esteladevega_ejerciciojson.Controller.ImdbCtrller">
     <children>
-        <Text fill="#ff3333" layoutX="257.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMDB"
-              wrappingWidth="86.26171875">
+        <Text fill="#ff3333" layoutX="257.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMDB" wrappingWidth="86.26171875">
             <font>
-                <Font size="26.0"/>
+                <Font size="26.0" />
             </font>
         </Text>
-        <TextField fx:id="titleTxt" editable="false" layoutX="155.0" layoutY="71.0" prefHeight="25.0"
-                   prefWidth="188.0"/>
-        <TextField fx:id="genderTxt" editable="false" layoutX="155.0" layoutY="176.0" prefHeight="25.0"
-                   prefWidth="152.0"/>
-        <TextField fx:id="dateTxt" editable="false" layoutX="155.0" layoutY="122.0" prefHeight="25.0" prefWidth="74.0"/>
-        <TextField fx:id="directorTxt" editable="false" layoutX="155.0" layoutY="232.0" prefHeight="25.0"
-                   prefWidth="196.0"/>
+        <TextField fx:id="titleTxt" editable="false" layoutX="155.0" layoutY="71.0" prefHeight="25.0" prefWidth="188.0" />
+        <TextField fx:id="genderTxt" editable="false" layoutX="155.0" layoutY="176.0" prefHeight="25.0" prefWidth="152.0" />
+        <TextField fx:id="dateTxt" editable="false" layoutX="155.0" layoutY="122.0" prefHeight="25.0" prefWidth="74.0" />
+        <TextField fx:id="directorTxt" editable="false" layoutX="155.0" layoutY="232.0" prefHeight="25.0" prefWidth="196.0" />
         <Label layoutX="61.0" layoutY="71.0" text="Titulo">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
         <Label layoutX="61.0" layoutY="122.0" text="Fecha">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
         <Label layoutX="61.0" layoutY="176.0" text="Género">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
         <Label layoutX="61.0" layoutY="232.0" text="Director">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
-        <Button fx:id="importarBtt" layoutX="155.0" layoutY="303.0" mnemonicParsing="false" onAction="#onImportarAction"
-                prefHeight="45.0" prefWidth="133.0" text="Importar"/>
+        <Button fx:id="importarBtt" layoutX="155.0" layoutY="303.0" mnemonicParsing="false" onAction="#onImportarAction" prefHeight="45.0" prefWidth="133.0" text="Importar" />
         <Label layoutX="427.0" layoutY="21.0" text="Listado de peliculas">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
-        <ListView fx:id="listView" layoutX="390.0" layoutY="52.0" onMouseClicked="#onMostrarPeliculasClick"
-                  prefHeight="275.0" prefWidth="196.0"/>
+        <ListView fx:id="listView" layoutX="390.0" layoutY="52.0" onMouseClicked="#onMostrarPeliculasClick" prefHeight="275.0" prefWidth="196.0" />
     </children>
 </AnchorPane>

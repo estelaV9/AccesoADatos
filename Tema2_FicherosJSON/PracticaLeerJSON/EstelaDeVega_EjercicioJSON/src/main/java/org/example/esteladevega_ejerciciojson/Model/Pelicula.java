@@ -5,11 +5,15 @@ import java.util.Date;
 public class Pelicula {
     private int id;
     private String titulo;
-    private Date fecha;
+    private String fecha;
     private String director;
     private String genero;
 
-    public Pelicula(int id, String titulo, Date fecha, String director, String genero) {
+    public Pelicula () {
+
+    }
+
+    public Pelicula(int id, String titulo, String fecha, String director, String genero) {
         this.id = id;
         this.titulo = titulo;
         this.fecha = fecha;
@@ -33,11 +37,11 @@ public class Pelicula {
         this.titulo = titulo;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -55,5 +59,12 @@ public class Pelicula {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    @Override
+    public String toString() {
+        return id + " - Titulo: " + titulo + "; Fecha: " + fecha +
+                "; Director: " + director +
+                "; Genero: " + genero;
     }
 }

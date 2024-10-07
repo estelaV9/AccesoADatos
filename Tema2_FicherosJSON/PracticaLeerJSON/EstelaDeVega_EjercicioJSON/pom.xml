@@ -70,7 +70,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.example.esteladevega_ejerciciojson/org.example.esteladevega_ejerciciojson.HelloApplication
+                                org.example.esteladevega_ejerciciojson/org.example.esteladevega_ejerciciojson.App
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

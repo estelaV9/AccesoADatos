@@ -1,4 +1,4 @@
-package org.example.esteladevega_ejerciciojson;
+package org.example.esteladevega_ejerciciojson.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

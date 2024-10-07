@@ -3,7 +3,7 @@ package org.example.esteladevega_ejerciciojson.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class ImdbCtrller {
     @FXML
     private Label welcomeText;
 

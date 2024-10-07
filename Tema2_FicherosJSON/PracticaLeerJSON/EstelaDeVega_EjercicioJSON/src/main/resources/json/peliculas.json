@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "titulo": "El sexto sentido",
+    "fecha": "14-01-2000",
+    "director": "M. Night Shyamalan",
+    "genero": "Drama"
+  },
+  {
+    "id": 2,
+    "titulo": "Pulp Fiction",
+    "fecha": "13-01-1995",
+    "director": "Tarantino",
+    "genero": "Acción"
+  },
+  {
+    "id": 3,
+    "titulo": "Todo Sobre Mi Madre",
+    "fecha": "08-04-1999",
+    "director": "Almodobar",
+    "genero": "Drama"
+  },
+  {
+    "id": 4,
+    "titulo": "300",
+    "fecha": "09-03-2007",
+    "director": "Zack Snyder",
+    "genero": "Acción"
+  },
+  {
+    "id": 5,
+    "titulo": "El silencio de los corderos",
+    "fecha": "06-09-1991",
+    "director": "Jonathan Demme",
+    "genero": "Drama"
+  },
+  {
+    "id": 6,
+    "titulo": "Forrest Gump",
+    "fecha": "23-09-1994",
+    "director": "Robert Zemeckis",
+    "genero": "Comedia"
+  },
+  {
+    "id": 7,
+    "titulo": "Las Hurdes",
+    "fecha": "01-12-1933",
+    "director": "Luis Buñuel",
+    "genero": "Documental"
+  }
+]

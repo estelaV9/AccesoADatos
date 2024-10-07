@@ -28,6 +28,22 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  </tr>
 </table>
 
+## Tema 2: Leer ficheros JSON
+### **Práctica <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema2_FicherosJSON/PracticaLeerJSON/EstelaDeVega_EjercicioJSON">ficheros JSON</a>**:
+ <table>
+  <tr>
+    <td width="30%">
+     <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema2_FicherosJSON/PracticaLeerJSON/enunciadoJson.md" target="_blank">
+        <img src="https://github.com/estelaV9/AccesoADatos/blob/master/Tema2_FicherosJSON/PracticaLeerJSON/myProjectFiles/ejercicioJson.png" width="300" alt="FicheroJson">
+      </a>
+    </td>
+    <td width="70%">
+         Desarrollar una <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema2_FicherosJSON/PracticaLeerJSON">aplicación</a> que importe datos en un fichero JSON. 
+      Enunciado del ejercicio: <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema2_FicherosJSON/PracticaLeerJSON/enunciadoJson.md" target="_blank"> Practica Leer Ficheros Json</a>
+    </td>        
+ </tr>
+</table>
+
 
 ---
 <div align="center">

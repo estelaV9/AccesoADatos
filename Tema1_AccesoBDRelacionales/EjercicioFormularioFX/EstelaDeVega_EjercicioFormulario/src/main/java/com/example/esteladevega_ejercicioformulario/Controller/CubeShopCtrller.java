@@ -1,12 +1,11 @@
 package com.example.esteladevega_ejercicioformulario.Controller;
 
+import com.example.esteladevega_ejercicioformulario.Model.Product;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -14,12 +13,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CubeShopCtrller implements Initializable {
-
     @FXML
-    private AnchorPane anchorPane;
+    private TableView<Product> CubeTable;
 
     @FXML
     private Button backBtt;
+
+    @FXML
+    private TableColumn<?, ?> categoryCol;
 
     @FXML
     private Button closeBtt;
@@ -31,10 +32,16 @@ public class CubeShopCtrller implements Initializable {
     private Label loginMessage;
 
     @FXML
+    private TableColumn<Product, String> nameProductCol;
+
+    @FXML
     private Button newProductBtt;
 
     @FXML
-    private ScrollPane scrollPane;
+    private TableColumn<Product, String> ownerCol;
+
+    @FXML
+    private TableColumn<Product, Double> priceCol;
 
     @FXML
     private Button settingBtt;
@@ -49,10 +56,9 @@ public class CubeShopCtrller implements Initializable {
     private Button shopCartBtt;
 
     @FXML
-    private Button signOutBtt;
-
-    @FXML
     private Button yourProductBtt;
+
+
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     boolean pulsarOption = false;
 

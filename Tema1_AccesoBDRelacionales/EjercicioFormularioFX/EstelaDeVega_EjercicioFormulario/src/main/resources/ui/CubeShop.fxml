@@ -2,7 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -85,11 +86,6 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="62.0" layoutY="77.0" prefHeight="185.0" prefWidth="504.0" style="-fx-background-color: #000;">
-              <content>
-                <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="188.0" prefWidth="490.0" style="-fx-background-color: #781ddd;" />
-              </content>
-            </ScrollPane>
             <Button fx:id="settingBtt" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#onSettingAction" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -102,7 +98,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Pane fx:id="settingMenu" layoutX="11.0" layoutY="60.0" prefHeight="120.0" prefWidth="276.0" style="-fx-background-color: #781ddd; -fx-background-radius: 24; -fx-border-color: #000; -fx-border-radius: 24;">
+            <Pane fx:id="settingMenu" layoutX="11.0" layoutY="60.0" prefHeight="120.0" prefWidth="276.0" style="-fx-background-color: #781ddd; -fx-background-radius: 24; -fx-border-color: #000; -fx-border-radius: 24;" visible="false">
                <children>
                   <Button fx:id="closeSeBtt" layoutX="13.0" layoutY="74.0" mnemonicParsing="false" onAction="#onCloseSettingAction" prefHeight="31.0" prefWidth="251.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="CLOSE">
                      <font>
@@ -117,6 +113,14 @@
                   <Line endX="100.0" layoutX="138.0" layoutY="62.0" startX="-100.0" stroke="#262626" strokeWidth="2.0" />
                </children>
             </Pane>
+            <TableView fx:id="CubeTable" layoutX="83.0" layoutY="82.0" prefHeight="164.0" prefWidth="427.0">
+              <columns>
+                <TableColumn fx:id="nameProductCol" prefWidth="141.5999755859375" text="Name of Product" />
+                <TableColumn fx:id="categoryCol" prefWidth="104.79998779296875" text="Category" />
+                  <TableColumn fx:id="priceCol" minWidth="5.5999755859375" prefWidth="67.20001220703125" text="Price" />
+                  <TableColumn fx:id="ownerCol" prefWidth="111.80001831054688" text="Owner" />
+              </columns>
+            </TableView>
               </children>
           </Pane>
         <ImageView fitHeight="77.0" fitWidth="149.0" layoutX="564.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">

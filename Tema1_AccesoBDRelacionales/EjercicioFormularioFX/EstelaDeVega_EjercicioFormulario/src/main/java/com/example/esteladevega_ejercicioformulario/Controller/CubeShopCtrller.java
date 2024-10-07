@@ -1,11 +1,16 @@
 package com.example.esteladevega_ejercicioformulario.Controller;
 
+import com.example.esteladevega_ejercicioformulario.ConnectionDB.ConnectionDB;
+import com.example.esteladevega_ejercicioformulario.DAO.ProductDAO;
 import com.example.esteladevega_ejercicioformulario.Model.Product;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -57,6 +62,9 @@ public class CubeShopCtrller implements Initializable {
 
     @FXML
     private Button yourProductBtt;
+    ObservableList<Product> listProduct;
+
+
 
 
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
@@ -118,5 +126,14 @@ public class CubeShopCtrller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         settingMenu.setVisible(false);
+
+        // CONFIGURAR COLUMNAS
+        nameProductCol.setCellValueFactory(new PropertyValueFactory<>("nameProduct"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
+        ownerCol.setCellValueFactory(new PropertyValueFactory<>("owner"));
+
+        listProduct = FXCollections.observableArrayList(ProductDAO.listProduct(ConnectionDB.con));
+        CubeTable.setItems(listProduct); // ESTABLECER LISTA
     }
 }

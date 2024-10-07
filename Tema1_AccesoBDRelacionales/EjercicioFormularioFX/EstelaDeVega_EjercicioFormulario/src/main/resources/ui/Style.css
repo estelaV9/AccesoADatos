@@ -6,19 +6,37 @@
     -fx-prompt-text-fill: gray; /* COLOR DEL PROMPTTEXT */
 }
 
-/****************************** SCROLLPANE *****************************/
-.scroll-pane .scroll-bar {
+
+
+
+.table-view {
+    -fx-background-color:  #cc87e0; /* COLOR DEL FONDO DE LA TABLA */
+    -fx-border-color:  #000;
+    -fx-border-width: 1px;
+} /* Estilo para la TableView */
+
+
+.table-view .column-header {
     -fx-background-color: #781ddd;
-} /* DEFINIR EL COLOR DEL FONDO DEL SCROLL */
+}/* Estilo para la cabecera de la columna */
 
-.scroll-pane .scroll-bar .increment-button {
-    -fx-background-color: #cc87e0;
-} /* DEFINIR EL COLOR DEL BOTON DE ARRIBA DEL SCROLL */
 
-.scroll-pane .scroll-bar .decrement-button {
+.table-view .table-row-cell {
     -fx-background-color: #cc87e0;
-} /* DEFINIR EL COLOR DEL BOTON DE ABAJO DEL SCROLL */
+} /* Estilo para las filas de la tabla */
 
-.scroll-pane .scroll-bar .thumb {
-    -fx-background-color: #cc87e0;
-} /* DEFINIR EL COLOR DEL BOTON DEL SCROLL */
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #781ddd;
+} /* Color de fondo para las filas al pasar el mouse */
+
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #8656cb;
+    -fx-text-fill: white;
+} /* Estilo para las celdas seleccionadas */
+
+.scroll-bar .thumb {
+    -fx-background-color: #781ddd; /* COLOR DEL THUM */
+    -fx-background-radius: 10;
+}/* Estilo para el "thumb" de la barra de desplazamiento */

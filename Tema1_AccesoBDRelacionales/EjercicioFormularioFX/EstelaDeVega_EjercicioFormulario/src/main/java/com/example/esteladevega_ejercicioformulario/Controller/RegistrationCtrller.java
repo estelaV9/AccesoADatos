@@ -148,6 +148,8 @@ public class RegistrationCtrller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        emailTxt.setText("s@gmail.com");
+        passwordTxt.setText("Ps.contains(8)");
         signUpVision.setVisible(false);
     }
 }

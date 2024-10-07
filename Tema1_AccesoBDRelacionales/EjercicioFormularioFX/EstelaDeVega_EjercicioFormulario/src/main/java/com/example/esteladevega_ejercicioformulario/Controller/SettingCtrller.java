@@ -2,6 +2,7 @@ package com.example.esteladevega_ejercicioformulario.Controller;
 
 import com.example.esteladevega_ejercicioformulario.ConnectionDB.ConnectionDB;
 import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
+import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
 import com.example.esteladevega_ejercicioformulario.Validator.Validator;
 import javafx.event.ActionEvent;
@@ -168,8 +169,30 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onUpdateInfoAction(ActionEvent event) {
-
-    }
+        if (txtNameUser.getText().isEmpty() || txtEmailUser.getText().isEmpty()) {
+            // SI LOS CAMPOS ESTAN VACIOS, SE MOSTRARA UN ERROR
+            StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
+                    "Por favor, completa todos los campos antes de continuar.");
+        } else if (!Validator.isValidMail(txtEmailUser.getText())) {
+            // SI EL MAIL NO ES CORRECTO MOSTRARA UN MENSAJE DE ERROR
+            StaticCode.Alerts("ERROR", "Email no válida", "¡ERROR!",
+                    "Por favor, introduzca un correo válido:\nexample@example.com");
+        } else if (CubeUserDAO.isExistsNameUser(ConnectionDB.con, txtNameUser.getText(), RegistrationCtrller.cubeUser.getMail())) {
+            // SI EL NOMBRE DE USUARIO YA EXISTE, MOSTRAR UN MENSAJE DE ERROR
+            StaticCode.Alerts("ERROR", "Nombre no válido", "¡ERROR!",
+                    "Ese nombre ya esta en uso. Por favor, pruebe con otro");
+        } else {
+            CubeUser cubeUser = new CubeUser(txtEmailUser.getText(), txtEmailUser.getText());
+            if (!CubeUserDAO.modifyUser(ConnectionDB.con, cubeUser, RegistrationCtrller.cubeUser.getMail())) {
+                // SI NO SE HA MODIFICADO CORRECTAMENTE, LANZA UN MENSAJE DE ERROR
+                StaticCode.Alerts("ERROR", "Error al modificar usuario", "¡ERROR!",
+                        "No se ha podido modificar el usuario.");
+            } else {
+                StaticCode.Alerts("INFORMATION", "Modificación de usuario", "Modificación exitosa",
+                        "Se ha modificado el usuario correctamente");
+            }
+        }
+    } // METODO PARA MODIFICAR USUARIO
 
     @FXML
     void onUpdatePasswAction(ActionEvent event) {

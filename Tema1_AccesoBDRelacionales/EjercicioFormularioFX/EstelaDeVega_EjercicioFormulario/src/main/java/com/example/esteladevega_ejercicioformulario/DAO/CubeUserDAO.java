@@ -53,6 +53,25 @@ public class CubeUserDAO {
         return false;
     } // METODO PARA COMPROBAR SI EL USUARIO INTRODUCIDO YA EXISTE
 
+    public static boolean isExistsNameUser(Connection con, String name, String mail) {
+        try {
+            String sqlQuery = "SELECT * FROM CUBE_USERS WHERE NAME_USER = ? AND MAIL != ?";
+            PreparedStatement statementQuery = con.prepareStatement(sqlQuery);
+            statementQuery.setString(1, name);
+            statementQuery.setString(2, mail);
+            ResultSet resultSet = statementQuery.executeQuery();
+            if (resultSet.next()) {
+                // SI EL NOMBRE DE USUARIO EXISTE, MOSTRAR UN MENSAJE DE ERROR
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    } // METODO PARA COMPROBAR SI EL NOMBRE DE USUARIO YA EXISTE
+
 
     public static boolean deleteUser(Connection con, String mailUser) {
         try {
@@ -81,6 +100,25 @@ public class CubeUserDAO {
             statement.setString(2, mailUser);
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    }
+
+    public static boolean modifyUser(Connection connection, CubeUser cubeUser, String mailUser) {
+        try {
+            String sqlUpdate = "UPDATE CUBE_USERS SET NAME_USER = ?, MAIL = ? WHERE MAIL = ?";
+            PreparedStatement statement = connection.prepareStatement(sqlUpdate);
+            statement.setString(1, cubeUser.getNameUser());
+            statement.setString(2, cubeUser.getMail());
+            statement.setString(3, mailUser);
+            int rowsUpdate = statement.executeUpdate();
+            if (rowsUpdate > 0) {
                 return true;
             }
         } catch (SQLException e) {

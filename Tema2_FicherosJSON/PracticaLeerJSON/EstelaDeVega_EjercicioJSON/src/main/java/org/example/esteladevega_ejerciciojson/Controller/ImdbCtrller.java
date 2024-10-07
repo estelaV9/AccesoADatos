@@ -1,5 +1,6 @@
 package org.example.esteladevega_ejerciciojson.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,6 +26,7 @@ public class ImdbCtrller {
 
     @FXML
     private TextField titleTxt;
+    public static final ObjectMapper JSON_MAPPER = new ObjectMapper();
 
     @FXML
     void onImportarAction(ActionEvent event) {

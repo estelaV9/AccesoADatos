@@ -2,13 +2,13 @@
 Repositorio para el módulo de Acceso a Datos.
 
 ## Introducción
-### Ejercicio de repaso de programación
+### · Ejercicio de repaso de programación
 Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Introducion/EjercicioRepaso.md" target="_blank">aplicación</a> para llevar un registro de sus cliente.
 1. Aplicación en <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Introducion/EjercicioRepaso" target="_blank">linea de comandos</a>.
 2. Aplicación en <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Introducion/EjercicioRepasoFX" target="_blank">JavaFX</a>.
 
 ## Tema 0: JavaFX
-### <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Introducion/EjercicioRepasoFX" target="_blank">Ejercicio</a> repaso JavaFx.
+### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Introducion/EjercicioRepasoFX" target="_blank">Ejercicio</a> repaso JavaFx.
 <table>
   <tr>
     <td width="30%">
@@ -24,9 +24,9 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
 
 ## Tema 1: Acceso a BD Relacionales
 ### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/ResumenTema1.md">Explicación</a> sobre como leer ficheros properties.
-### <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema1_AccesoBDRelacionales/FicheroPropiedades">Ejercicio inicial</a> para leer ficheros properties.
+### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema1_AccesoBDRelacionales/FicheroPropiedades">Ejercicio inicial</a> para leer ficheros properties.
 
-### **Práctica <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/EjercicioFormularioFX/PracticaFormulario.md">formulario JavaFX</a>**:
+### **· Práctica <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/EjercicioFormularioFX/PracticaFormulario.md">formulario JavaFX</a>**:
   <table>
   <tr>
     <td width="30%">
@@ -41,7 +41,8 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
 </table>
 
 ## Tema 2: Leer ficheros JSON
-### **Práctica <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema2_FicherosJSON/PracticaLeerJSON/EstelaDeVega_EjercicioJSON">ficheros JSON</a>**:
+### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema2_FicherosJSON/ResumenTema2.md">Explicación</a> sobre cómo leer ficheros JSON.
+### **· Práctica <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema2_FicherosJSON/PracticaLeerJSON/EstelaDeVega_EjercicioJSON">ficheros JSON</a>**:
  <table>
   <tr>
     <td width="30%">

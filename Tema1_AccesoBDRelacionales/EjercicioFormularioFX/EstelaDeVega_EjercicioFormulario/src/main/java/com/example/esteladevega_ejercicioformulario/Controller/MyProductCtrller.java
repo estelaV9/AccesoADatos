@@ -98,7 +98,7 @@ public class MyProductCtrller implements Initializable {
     void onModifyAction() {
         isSelectedProduct();
         if(isSelectedProduct()){
-            
+
         }
     }
 

@@ -34,4 +34,26 @@ public class ProductDAO {
         return products;
     }
 
+    public static List<Product> myListProduct (Connection con, String mail) {
+        List<Product> products = new ArrayList<>();
+        try {
+            String sql = "SELECT NAME_PRODUCT, CATEGORY, PRICE FROM CUBE_PRODUCT " +
+                    "WHERE NAME_OWNER_PRODUCT = (SELECT NAME_USER FROM CUBE_USERS WHERE MAIL = ?);";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, mail);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String nameProduct = resultSet.getString("NAME_PRODUCT");
+                int price = resultSet.getInt("PRICE");
+                String category = resultSet.getString("CATEGORY");
+                Product product = new Product(nameProduct, category, price);
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+        }
+        return products;
+    }
+
 }

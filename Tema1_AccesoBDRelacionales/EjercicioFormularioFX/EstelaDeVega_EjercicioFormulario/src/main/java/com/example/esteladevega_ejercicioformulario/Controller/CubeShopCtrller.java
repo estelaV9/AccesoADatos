@@ -120,8 +120,11 @@ public class CubeShopCtrller implements Initializable {
 
     @FXML
     void onYourProductAction(ActionEvent event) {
-
-    }
+        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DE SUS PRODUCTOS
+        // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
+        // EL TITULO QUE VA A TENER ESE STAGE
+        StaticCode.cambiarVistaBtt("/ui/MyProduct.fxml", yourProductBtt, "Your Products");
+    } // IR A LA PAGINA DE SUS PRODUCTOS
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

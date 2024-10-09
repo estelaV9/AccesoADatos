@@ -7,6 +7,12 @@ public class Product {
     private double price;
     private String owner;
 
+    public Product(String nameProduct, String category, double price) {
+        this.nameProduct = nameProduct;
+        this.category = category;
+        this.price = price;
+    }
+
     public Product(String nameProduct, String category, double price, String owner) {
         this.nameProduct = nameProduct;
         this.category = category;
@@ -21,6 +27,8 @@ public class Product {
         this.price = price;
         this.owner = owner;
     }
+
+
 
     public int getIdProduct() {
         return idProduct;

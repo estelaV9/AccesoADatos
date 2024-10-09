@@ -73,11 +73,6 @@
                         <Image url="@Imagen/cube.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="deleteBtt" layoutX="201.0" layoutY="14.0" mnemonicParsing="false" onAction="#onDeleteAction" prefHeight="42.0" prefWidth="124.0" style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="Delete">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
                 <Button fx:id="settingBtt" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#onSettingAction" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -90,7 +85,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <TableView fx:id="CubeTable" layoutX="83.0" layoutY="82.0" prefHeight="164.0" prefWidth="418.0">
+                <TableView fx:id="CubeTable" layoutX="83.0" layoutY="82.0" onMouseClicked="#onRowClicked" prefHeight="164.0" prefWidth="418.0">
                     <columns>
                         <TableColumn fx:id="nameProductCol" prefWidth="194.0" text="Name of Product" />
                         <TableColumn fx:id="categoryCol" prefWidth="135.0" text="Category" />

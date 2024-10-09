@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -81,14 +82,33 @@ public class MyProductCtrller implements Initializable {
         settingMenu.setVisible(false);
     }
 
-    @FXML
-    void onDeleteAction(ActionEvent event) {
+    private boolean isSelectedProduct () {
+        Product product = CubeTable.getSelectionModel().getSelectedItem(); // SE GUARDA EL OBJETO PRODUCTO SELECCIONADO
+        if (product == null) {
+            // MOSTRAR ALERTA EN CASO DE QUE SE SELECCIONE UNA FILA VACIA
+            StaticCode.Alerts("ERROR", "Producto vacío", "ERROR",
+                    "No has seleccionado ningún producto.\nPor favor, elija un prodcuto para acceder a sus opciones.");
+            return false;
+        }
+        return true;
+    }
 
+
+    @FXML
+    void onModifyAction() {
+        isSelectedProduct();
+        if(isSelectedProduct()){
+            
+        }
     }
 
     @FXML
-    void onModifyAction(ActionEvent event) {
-
+    void onRowClicked(MouseEvent event) {
+        isSelectedProduct();
+        if(isSelectedProduct()){
+            // LLAMAR AL METODO MODIFY
+            onModifyAction();
+        }
     }
 
     @FXML

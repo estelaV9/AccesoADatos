@@ -126,7 +126,7 @@ public class MyProductCtrller implements Initializable {
                         "Se ha actualizado el producto correctamente.");
                 // UNA VEZ ELIMINADO EL PRODUCTO, SE CERRARA EL PANEL
                 modifyPane.setVisible(false);
-                CubeTable.refresh();
+                StaticCode.refresh(CubeTable); // ACTUALIZAR LA TABLA
             } else {
                 // SI NO SE ACTUALIZO CORRECTAMENTE EL PRODUCTO, MANDARA UNA ALERTA
                 StaticCode.Alerts("ERROR", "Actualización NO exitosa", "¡ERROR!",
@@ -148,6 +148,7 @@ public class MyProductCtrller implements Initializable {
                         "Se ha eliminado el producto correctamente");
                 // UNA VEZ ELIMINADO EL PRODUCTO, SE CERRARA EL PANEL
                 modifyPane.setVisible(false);
+                StaticCode.refresh(CubeTable); // ACTUALIZAR LA TABLA
             } else {
                 // SI NO SE ENCONTRO PRODUCTO SE MUESTRA UN MENSAJE (POR SI ACASO)
                 StaticCode.Alerts("ERROR", "Error al eliminar producto", "¡ERROR!",

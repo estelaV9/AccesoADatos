@@ -147,7 +147,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Imagen/threeDots.png" />
+                        <Image url="@Imagen/crossIcon.png" />
                      </image>
                      <effect>
                         <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0" />

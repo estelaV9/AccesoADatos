@@ -92,9 +92,9 @@
                         <DropShadow />
                     </effect>
                 </TableView>
-                <Pane fx:id="settingMenu" layoutX="11.0" layoutY="60.0" prefHeight="128.0" prefWidth="276.0" style="-fx-background-color: #781ddd; -fx-background-radius: 24; -fx-border-color: #000; -fx-border-radius: 24;">
+                <Pane fx:id="settingMenu" layoutX="11.0" layoutY="60.0" prefHeight="172.0" prefWidth="276.0" style="-fx-background-color: #781ddd; -fx-background-radius: 24; -fx-border-color: #000; -fx-border-radius: 24;">
                     <children>
-                        <Button fx:id="closeSeBtt" layoutX="13.0" layoutY="74.0" mnemonicParsing="false" onAction="#onCloseSettingAction" prefHeight="31.0" prefWidth="251.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="CLOSE">
+                        <Button fx:id="closeSeBtt" layoutX="13.0" layoutY="118.0" mnemonicParsing="false" onAction="#onCloseSettingAction" prefHeight="31.0" prefWidth="251.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="CLOSE">
                             <font>
                                 <Font name="DejaVu Sans Bold" size="17.0" />
                             </font>
@@ -104,7 +104,12 @@
                                 <Font name="DejaVu Sans Bold" size="17.0" />
                             </font>
                         </Button>
-                        <Line endX="100.0" layoutX="138.0" layoutY="62.0" startX="-100.0" stroke="#262626" strokeWidth="2.0" />
+                        <Line endX="100.0" layoutX="138.0" layoutY="109.0" startX="-100.0" stroke="#262626" strokeWidth="2.0" />
+                  <Button fx:id="signOutBtt" layoutX="13.0" layoutY="60.0" mnemonicParsing="false" onAction="#onSignOutAction" prefHeight="31.0" prefWidth="251.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="SIGN OUT">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="17.0" />
+                     </font>
+                  </Button>
                     </children>
                 </Pane>
             </children>

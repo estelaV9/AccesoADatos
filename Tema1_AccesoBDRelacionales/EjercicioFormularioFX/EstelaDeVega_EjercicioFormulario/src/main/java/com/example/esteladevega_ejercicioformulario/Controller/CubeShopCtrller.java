@@ -62,16 +62,25 @@ public class CubeShopCtrller implements Initializable {
 
     @FXML
     private Button yourProductBtt;
+
+    @FXML
+    private Button signOutBtt;
+
+
     ObservableList<Product> listProduct;
-
-
-
-
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     boolean pulsarOption = false;
 
     @FXML
     void onBackAction(ActionEvent event) {
+        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL LOGIN
+        // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
+        // EL TITULO QUE VA A TENER ESE STAGE
+        StaticCode.cambiarVistaBtt("/ui/Registration.fxml", backBtt, "Registration Page");
+    } // IR A LA PAGINA DEL LOGIN
+
+    @FXML
+    void onSignOutAction(ActionEvent event) {
         // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL LOGIN
         // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
         // EL TITULO QUE VA A TENER ESE STAGE
@@ -113,10 +122,6 @@ public class CubeShopCtrller implements Initializable {
         StaticCode.cambiarVistaBtt("/ui/Setting.fxml", settingBtt, "Setting Page");
     } // IR A LA PAGINA DE SETTINGS
 
-    @FXML
-    void onShopCartAction(ActionEvent event) {
-
-    }
 
     @FXML
     void onYourProductAction(ActionEvent event) {

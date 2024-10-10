@@ -67,6 +67,10 @@ public class MyProductCtrller implements Initializable {
     @FXML
     private Button settingsMenuBtt;
 
+    @FXML
+    private Button signOutBtt;
+
+
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     boolean pulsarOption = false;
 
@@ -97,6 +101,14 @@ public class MyProductCtrller implements Initializable {
         // SE LLAMA AL METODO ESTATICO PARA SALIR DE LA APLICACION
         StaticCode.exitApp();
     } // SALIR DE LA APLICACIÓN
+
+    @FXML
+    void onSignOutAction(ActionEvent event) {
+        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL LOGIN
+        // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
+        // EL TITULO QUE VA A TENER ESE STAGE
+        StaticCode.cambiarVistaBtt("/ui/Registration.fxml", backBtt, "Registration Page");
+    } // IR A LA PAGINA DEL LOGIN
 
     @FXML
     void onCloseSettingAction() {

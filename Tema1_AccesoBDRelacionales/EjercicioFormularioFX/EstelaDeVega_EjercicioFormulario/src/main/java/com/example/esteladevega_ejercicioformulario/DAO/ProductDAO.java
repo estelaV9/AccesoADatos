@@ -117,4 +117,26 @@ public class ProductDAO {
         return false;
     }
 
+    public static boolean insertProdut(Connection con, Product product) {
+        try {
+            String sqlInsert = "INSERT INTO CUBE_PRODUCT (NAME_PRODUCT, CATEGORY, PRICE, NAME_OWNER_PRODUCT) " +
+                    "VALUES (?, ?, ?, ?);";
+            PreparedStatement statement = con.prepareStatement(sqlInsert);
+            statement.setString(1, product.getNameProduct());
+            statement.setString(2, product.getCategory());
+            statement.setDouble(3, product.getPrice());
+            statement.setString(4, product.getOwner());
+            int rowsInserted = statement.executeUpdate();
+            // COMPROBAR SI SE HA INSERTADO CORRECTAMENTE
+            if (rowsInserted > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    }
+
 }

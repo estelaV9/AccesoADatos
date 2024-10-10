@@ -237,7 +237,33 @@ public class MyProductCtrller implements Initializable {
 
     @FXML
     void onCreateProductAction(ActionEvent event) {
-
+        if(productNameTxt.getText().isEmpty() || productPriceTxt.getText().isEmpty() || newProductComboBox.getValue() == null) {
+            // SI LOS CAMPOS ESTAN VACIOS, SE MOSTRARA UN ERROR
+            StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
+                    "Por favor, completa todos los campos antes de continuar.");
+        } else if(ProductDAO.isExistsNameUser(ConnectionDB.con, productNameTxt.getText())){
+            // CONTROLAR QUE NO PONGA EL MISMO NOMBRE DEL PRODUCTO
+            StaticCode.Alerts("ERROR", "Nombre de producto YA existente", "¡ERROR!",
+                    "Ese nombre ya esta en uso. Por favor, elija otro nombre.");
+        } else {
+            // AÑADIR EL PRODUCTO
+            Product product = new Product(productNameTxt.getText(), newProductComboBox.getValue(), Double.parseDouble(productPriceTxt.getText()),
+                    CubeUserDAO.searchNameUser(ConnectionDB.con, RegistrationCtrller.cubeUser.getMail()));
+            if(ProductDAO.insertProdut(ConnectionDB.con, product)) {
+                // SI SE INSERTO EL PRODUCTO, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("INFORMATION", "Creación de producto", "Creación exitosa",
+                        "Se ha creado el producto correctamente.");
+                // UNA VEZ INSERTADO EL PRODUCTO, SE CERRARA EL PANEL
+                createPane.setVisible(false);
+                StaticCode.refresh(CubeTable); // ACTUALIZAR LA TABLA
+            } else {
+                // SI NO SE CREO CORRECTAMENTE EL PRODUCTO, MANDARA UNA ALERTA
+                StaticCode.Alerts("ERROR", "Creación NO exitosa", "¡ERROR!",
+                        "NO se ha creado el producto correctamente.");
+                // SE CERRARA EL PANEL
+                modifyPane.setVisible(false);
+            }
+        }
     }
 
     @Override

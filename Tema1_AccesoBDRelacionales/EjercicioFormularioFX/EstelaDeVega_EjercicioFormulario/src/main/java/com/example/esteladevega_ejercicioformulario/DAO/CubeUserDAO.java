@@ -129,5 +129,22 @@ public class CubeUserDAO {
         return false;
     }
 
+    public static String searchNameUser (Connection con, String mail) {
+        try {
+            String sqlQuery = "SELECT NAME_USER FROM CUBE_USERS WHERE MAIL = ?";
+            PreparedStatement statementQuery = con.prepareStatement(sqlQuery);
+            statementQuery.setString(1, mail);
+            ResultSet resultSet = statementQuery.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getString("NAME_USER");
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return null;
+        }
+        return null;
+    } // METODO PARA DEVOVER EL NOMBRE DE UN USUARIO MEDIANTE SU MAIL
+
 
 }

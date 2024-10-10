@@ -114,62 +114,6 @@
                 <Image url="@Imagen/whiteStripesOthre.png" />
             </image>
         </ImageView>
-      <Pane fx:id="modifyPane" layoutX="204.0" layoutY="45.0" prefHeight="315.0" prefWidth="333.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
-         <children>
-            <Button fx:id="modifyProductPaneBtt" layoutX="13.0" layoutY="244.0" mnemonicParsing="false" onAction="#onModifyProductAction" prefHeight="42.0" prefWidth="149.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="MODIFY">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutY="69.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button" />
-            <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -17;">
-               <image>
-                  <Image url="@Imagen/cube.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="298.0" layoutY="173.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" />
-            <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="304.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 17;">
-               <image>
-                  <Image url="@Imagen/cube.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="ExitMenuBtt" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#onExitMenuBtt" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Imagen/crossIcon.png" />
-                     </image>
-                     <effect>
-                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0" />
-                     </effect>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="deleteBtt" layoutX="167.0" layoutY="245.0" mnemonicParsing="false" onAction="#onDeleteAction" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="DELETE">
-               <font>
-                  <Font name="DejaVu Sans Bold" size="17.0" />
-               </font>
-            </Button>
-            <Label layoutX="199.0" layoutY="31.0" style="-fx-text-fill: black;" text="Product Name">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="newProductName" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="59.0" prefHeight="27.0" prefWidth="235.0" promptText="Product Name" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
-            <Label layoutX="210.0" layoutY="98.0" style="-fx-text-fill: black;" text="Product Price">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="newProductPrice" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="126.0" prefHeight="27.0" prefWidth="235.0" promptText="Product Price" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
-            <Label layoutX="26.0" layoutY="169.0" style="-fx-text-fill: black;" text="Product &#10;Category">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="comboBox" layoutX="124.0" layoutY="172.0" prefHeight="50.0" prefWidth="150.0" promptText="CATEGORY" style="-fx-background-color: #781ddd; -fx-border-color: #000; -fx-border-width: 1;" />
-         </children>
-      </Pane>
       <Pane fx:id="createPane" layoutX="204.0" layoutY="45.0" prefHeight="315.0" prefWidth="333.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
          <children>
             <Button fx:id="createProductPane" layoutX="11.0" layoutY="253.0" mnemonicParsing="false" onAction="#onCreateProductAction" prefHeight="42.0" prefWidth="311.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="CREATE">
@@ -220,6 +164,67 @@
             </Label>
             <ComboBox fx:id="newProductComboBox" layoutX="124.0" layoutY="185.0" prefHeight="50.0" prefWidth="150.0" promptText="CATEGORY" style="-fx-background-color: #781ddd; -fx-border-color: #000; -fx-border-width: 1;" />
             <Label layoutX="88.0" layoutY="16.0" style="-fx-text-fill: black;" text="NEW PRODUCT">
+               <font>
+                  <Font name="Berlin Sans FB" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="modifyPane" layoutX="204.0" layoutY="45.0" prefHeight="315.0" prefWidth="333.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
+         <children>
+            <Button fx:id="modifyProductPaneBtt" layoutX="13.0" layoutY="256.0" mnemonicParsing="false" onAction="#onModifyProductAction" prefHeight="42.0" prefWidth="149.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="MODIFY">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutY="69.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button" />
+            <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -17;">
+               <image>
+                  <Image url="@Imagen/cube.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="298.0" layoutY="185.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" />
+            <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="304.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 17;">
+               <image>
+                  <Image url="@Imagen/cube.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="ExitMenuBtt" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#onExitMenuBtt" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Imagen/crossIcon.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="deleteBtt" layoutX="167.0" layoutY="257.0" mnemonicParsing="false" onAction="#onDeleteAction" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="DELETE">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="17.0" />
+               </font>
+            </Button>
+            <Label layoutX="199.0" layoutY="49.0" style="-fx-text-fill: black;" text="Product Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newProductName" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="77.0" prefHeight="27.0" prefWidth="235.0" promptText="Product Name" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
+            <Label layoutX="210.0" layoutY="110.0" style="-fx-text-fill: black;" text="Product Price">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newProductPrice" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="138.0" prefHeight="27.0" prefWidth="235.0" promptText="Product Price" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
+            <Label layoutX="26.0" layoutY="181.0" style="-fx-text-fill: black;" text="Product &#10;Category">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboBox" layoutX="124.0" layoutY="184.0" prefHeight="50.0" prefWidth="150.0" promptText="CATEGORY" style="-fx-background-color: #781ddd; -fx-border-color: #000; -fx-border-width: 1;" />
+            <Label layoutX="69.0" layoutY="16.0" style="-fx-text-fill: black;" text="MODIFY PRODUCT">
                <font>
                   <Font name="Berlin Sans FB" size="28.0" />
                </font>

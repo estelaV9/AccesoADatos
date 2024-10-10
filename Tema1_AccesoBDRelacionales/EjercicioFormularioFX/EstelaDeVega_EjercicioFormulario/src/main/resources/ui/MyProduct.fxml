@@ -53,11 +53,6 @@
         </Button>
         <Pane layoutX="60.0" layoutY="68.0" prefHeight="282.0" prefWidth="619.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
             <children>
-                <Button fx:id="modifyBtt" layoutX="69.0" layoutY="14.0" mnemonicParsing="false" onAction="#onModifyAction" prefHeight="42.0" prefWidth="124.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="MODIFY">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
                 <Label fx:id="loginMessage" layoutX="21.0" layoutY="136.0" textFill="#a82f2a">
                     <font>
                         <Font name="DejaVu Sans Bold Oblique" size="13.0" />
@@ -87,7 +82,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <TableView fx:id="CubeTable" layoutX="83.0" layoutY="82.0" prefHeight="164.0" prefWidth="418.0">
+                <TableView fx:id="CubeTable" layoutX="101.0" layoutY="32.0" onMouseClicked="#onTableClicked" prefHeight="228.0" prefWidth="418.0">
                     <columns>
                         <TableColumn fx:id="nameProductCol" prefWidth="194.0" text="Name of Product" />
                         <TableColumn fx:id="categoryCol" prefWidth="135.0" text="Category" />
@@ -119,7 +114,7 @@
                 <Image url="@Imagen/whiteStripesOthre.png" />
             </image>
         </ImageView>
-      <Pane fx:id="modifyPane" layoutX="204.0" layoutY="68.0" prefHeight="282.0" prefWidth="333.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
+      <Pane fx:id="modifyPane" layoutX="204.0" layoutY="45.0" prefHeight="315.0" prefWidth="333.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
          <children>
             <Button fx:id="modifyProductPaneBtt" layoutX="13.0" layoutY="227.0" mnemonicParsing="false" onAction="#onModifyProductAction" prefHeight="42.0" prefWidth="149.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="MODIFY">
                <font>

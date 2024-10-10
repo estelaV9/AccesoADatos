@@ -1,6 +1,7 @@
 package com.example.esteladevega_ejercicioformulario.Controller;
 
 import com.example.esteladevega_ejercicioformulario.ConnectionDB.ConnectionDB;
+import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
 import com.example.esteladevega_ejercicioformulario.DAO.ProductDAO;
 import com.example.esteladevega_ejercicioformulario.Model.Product;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
@@ -19,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
@@ -65,9 +67,11 @@ public class MyProductCtrller implements Initializable {
     @FXML
     private Button settingsMenuBtt;
 
-
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     boolean pulsarOption = false;
+
+    // ATRIBUTO PARA GUARDAR EL NOMBRE DEL PRODUCTO SELECIONADO
+    String nameProductSelected = "";
 
     private boolean isSelectedProduct () {
         Product product = CubeTable.getSelectionModel().getSelectedItem(); // SE GUARDA EL OBJETO PRODUCTO SELECCIONADO
@@ -115,22 +119,59 @@ public class MyProductCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Nombre de producto YA existente", "¡ERROR!",
                     "Ese nombre ya esta en uso. Por favor, elija otro nombre.");
         } else {
-            // SI SE ACTUALIZO EL PRODUCTO, MOSTRAR UN MENSAJE DE EXITO
-            StaticCode.Alerts("INFORMATION", "Actualización de producto", "Actualizacion exitosa",
-                    "Se ha actualizado el producto correctamente.");
+            Product product = new Product(newProductName.getText(), comboBox.getValue(), Double.parseDouble(newProductPrice.getText()));
+            if(ProductDAO.modifyProduct(ConnectionDB.con, product, nameProductSelected)) {
+                // SI SE ACTUALIZO EL PRODUCTO, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("INFORMATION", "Actualización de producto", "Actualizacion exitosa",
+                        "Se ha actualizado el producto correctamente.");
+                // UNA VEZ ELIMINADO EL PRODUCTO, SE CERRARA EL PANEL
+                modifyPane.setVisible(false);
+                CubeTable.refresh();
+            } else {
+                // SI NO SE ACTUALIZO CORRECTAMENTE EL PRODUCTO, MANDARA UNA ALERTA
+                StaticCode.Alerts("ERROR", "Actualización NO exitosa", "¡ERROR!",
+                        "NO se ha actualizado el producto correctamente.");
+                // SE CERRARA EL PANEL
+                modifyPane.setVisible(false);
+            }
         }
     }
 
     @FXML
     void onDeleteAction(ActionEvent event) {
+        int opcion = JOptionPane.showConfirmDialog(null,
+                "¿Está seguro de que desea eliminar el producto?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            if (ProductDAO.deleteProduct(ConnectionDB.con, nameProductSelected)) {
+                // SI SE ELIMINA EL PRODUCTO SE MUESTRA EL MENSAJE
+                StaticCode.Alerts("INFORMATION", "Eliminación de producto", "Eliminación exitosa",
+                        "Se ha eliminado el producto correctamente");
+                // UNA VEZ ELIMINADO EL PRODUCTO, SE CERRARA EL PANEL
+                modifyPane.setVisible(false);
+            } else {
+                // SI NO SE ENCONTRO PRODUCTO SE MUESTRA UN MENSAJE (POR SI ACASO)
+                StaticCode.Alerts("ERROR", "Error al eliminar producto", "¡ERROR!",
+                        "No se encontró el producto para eliminar.");
+            } // LLAMAR AL METODO ELIMINAR PRODUCTO
+        } // SI EL USUARIO HA ELEGIDO QUE SI QUE QUIERE ELIMINAR ENTRA
+    } // METODO PARA ELIMINAR PRODUCTO
 
-    }
 
     @FXML
-    void onModifyAction() {
+    void onTableClicked(MouseEvent event) {
         if(isSelectedProduct()){
+            // LIMPIAR LOS CAMPOS
+            newProductPrice.clear();
+            newProductName.clear();
+            comboBox.setValue(null);
+
+            // ABRIR EL PANEL
             modifyPane.setVisible(true);
-        }
+
+            // GUARDAR EL NOMBRE DEL PRODUCTO SELECCIONADO
+            Product product = CubeTable.getSelectionModel().getSelectedItem();
+            nameProductSelected = product.getNameProduct();
+        } // SI SE HA PULSADO UNA FILA, ENTONCES SE MOSTRARA EL PANEL
     }
 
     @FXML

@@ -1,5 +1,6 @@
 package com.example.esteladevega_ejercicioformulario.DAO;
 
+import com.example.esteladevega_ejercicioformulario.Controller.RegistrationCtrller;
 import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
 import com.example.esteladevega_ejercicioformulario.Model.Product;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
@@ -96,5 +97,24 @@ public class ProductDAO {
         }
         return false;
     } // METODO PARA COMPROBAR SI EL NOMBRE DE PRODUCTO YA EXISTE
+
+
+    public static boolean deleteProduct(Connection con, String nameProduct) {
+        try {
+            String sqlDelete = "DELETE FROM CUBE_PRODUCT WHERE NAME_PRODUCT = ?";
+            PreparedStatement statement = con.prepareStatement(sqlDelete);
+            statement.setString(1, nameProduct);
+            int rowsDelete = statement.executeUpdate();
+            if (rowsDelete > 0) {
+                // SI HA ELIMINADO CORRECTAMENTE RETURN TRUE
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    }
 
 }

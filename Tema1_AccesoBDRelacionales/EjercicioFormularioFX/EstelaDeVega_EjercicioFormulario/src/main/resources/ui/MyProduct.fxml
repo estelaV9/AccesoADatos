@@ -87,7 +87,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <TableView fx:id="CubeTable" layoutX="83.0" layoutY="82.0" onMouseClicked="#onRowClicked" prefHeight="164.0" prefWidth="418.0">
+                <TableView fx:id="CubeTable" layoutX="83.0" layoutY="82.0" prefHeight="164.0" prefWidth="418.0">
                     <columns>
                         <TableColumn fx:id="nameProductCol" prefWidth="194.0" text="Name of Product" />
                         <TableColumn fx:id="categoryCol" prefWidth="135.0" text="Category" />
@@ -155,7 +155,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="deleteBtt" layoutX="167.0" layoutY="228.0" mnemonicParsing="false" onAction="#onDeleteAction" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="SETTINGS">
+            <Button fx:id="deleteBtt" layoutX="167.0" layoutY="228.0" mnemonicParsing="false" onAction="#onDeleteAction" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="DELETE">
                <font>
                   <Font name="DejaVu Sans Bold" size="17.0" />
                </font>

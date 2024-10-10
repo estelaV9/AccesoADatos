@@ -109,11 +109,6 @@ public class MyProductCtrller implements Initializable {
     }
 
     @FXML
-    void onModifyAction(ActionEvent event) {
-        modifyPane.setVisible(true);
-    }
-
-    @FXML
     void onModifyProductAction(ActionEvent event) {
 
     }
@@ -121,18 +116,8 @@ public class MyProductCtrller implements Initializable {
 
     @FXML
     void onModifyAction() {
-        isSelectedProduct();
         if(isSelectedProduct()){
-
-        }
-    }
-
-    @FXML
-    void onRowClicked(MouseEvent event) {
-        isSelectedProduct();
-        if(isSelectedProduct()){
-            // LLAMAR AL METODO MODIFY
-            onModifyAction();
+            modifyPane.setVisible(true);
         }
     }
 

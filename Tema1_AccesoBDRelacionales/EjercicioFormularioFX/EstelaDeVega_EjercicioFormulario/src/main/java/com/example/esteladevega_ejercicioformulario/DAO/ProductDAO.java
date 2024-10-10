@@ -56,4 +56,45 @@ public class ProductDAO {
         return products;
     }
 
+    public static boolean modifyProduct(Connection con, Product product, String oldName) {
+        try {
+            String sqlUpdate = "UPDATE CUBE_PRODUCT SET NAME_PRODUCT = ?, CATEGORY = ?, PRICE = ? WHERE NAME_PRODUCT = ?;";
+            PreparedStatement statement = con.prepareStatement(sqlUpdate);
+            statement.setString(1, product.getNameProduct());
+            statement.setString(2, product.getCategory());
+            statement.setDouble(3, product.getPrice());
+            statement.setString(4, oldName);
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    }
+
+
+
+
+    public static boolean isExistsNameUser(Connection con, String name) {
+        try {
+            String sqlQuery = "SELECT NAME_PRODUCT FROM CUBE_PRODUCT WHERE NAME_PRODUCT = ?;";
+            PreparedStatement statementQuery = con.prepareStatement(sqlQuery);
+            statementQuery.setString(1, name);
+            ResultSet resultSet = statementQuery.executeQuery();
+            if (resultSet.next()) {
+                // SI EL NOMBRE DE PRODUCTO EXISTE, DEVUELVE TRUE
+                return true;
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false;
+        }
+        return false;
+    } // METODO PARA COMPROBAR SI EL NOMBRE DE PRODUCTO YA EXISTE
+
 }

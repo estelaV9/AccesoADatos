@@ -165,13 +165,13 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="emailTxt" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="42.0" prefHeight="27.0" prefWidth="235.0" promptText="Product Name" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
+            <TextField fx:id="newProductName" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="42.0" prefHeight="27.0" prefWidth="235.0" promptText="Product Name" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
             <Label layoutX="210.0" layoutY="81.0" style="-fx-text-fill: black;" text="Product Price">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="emailTxt1" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="109.0" prefHeight="27.0" prefWidth="235.0" promptText="Product Price" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
+            <TextField fx:id="newProductPrice" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="109.0" prefHeight="27.0" prefWidth="235.0" promptText="Product Price" style="-fx-background-color: #bca5fa; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
             <Label layoutX="26.0" layoutY="152.0" style="-fx-text-fill: black;" text="Product &#10;Category">
                <font>
                   <Font size="18.0" />

@@ -20,6 +20,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 
 public class MyProductCtrller implements Initializable {
@@ -44,9 +45,9 @@ public class MyProductCtrller implements Initializable {
     @FXML
     private Button deleteBtt;
     @FXML
-    private TextField emailTxt;
+    private TextField newProductName;
     @FXML
-    private TextField emailTxt1;
+    private TextField newProductPrice;
     @FXML
     private Label loginMessage;
     @FXML
@@ -68,6 +69,17 @@ public class MyProductCtrller implements Initializable {
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     boolean pulsarOption = false;
 
+    private boolean isSelectedProduct () {
+        Product product = CubeTable.getSelectionModel().getSelectedItem(); // SE GUARDA EL OBJETO PRODUCTO SELECCIONADO
+        if (product == null) {
+            // MOSTRAR ALERTA EN CASO DE QUE SE SELECCIONE UNA FILA VACIA
+            StaticCode.Alerts("ERROR", "Producto vacío", "ERROR",
+                    "No has seleccionado ningún producto.\nPor favor, elija un prodcuto para acceder a sus opciones.");
+            return false;
+        }
+        return true;
+    }
+
     @FXML
     void onBackAction(ActionEvent event) {
         // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DE TIENDA
@@ -87,22 +99,6 @@ public class MyProductCtrller implements Initializable {
         settingMenu.setVisible(false);
     }
 
-    private boolean isSelectedProduct () {
-        Product product = CubeTable.getSelectionModel().getSelectedItem(); // SE GUARDA EL OBJETO PRODUCTO SELECCIONADO
-        if (product == null) {
-            // MOSTRAR ALERTA EN CASO DE QUE SE SELECCIONE UNA FILA VACIA
-            StaticCode.Alerts("ERROR", "Producto vacío", "ERROR",
-                    "No has seleccionado ningún producto.\nPor favor, elija un prodcuto para acceder a sus opciones.");
-            return false;
-        }
-        return true;
-    }
-
-    @FXML
-    void onDeleteAction(ActionEvent event) {
-
-    }
-
     @FXML
     void onExitMenuBtt(ActionEvent event) {
         modifyPane.setVisible(false);
@@ -110,9 +106,25 @@ public class MyProductCtrller implements Initializable {
 
     @FXML
     void onModifyProductAction(ActionEvent event) {
-
+        if(newProductName.getText().isEmpty() || newProductPrice.getText().isEmpty() || comboBox.getValue() == null) {
+            // SI LOS CAMPOS ESTAN VACIOS, SE MOSTRARA UN ERROR
+            StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
+                    "Por favor, completa todos los campos antes de continuar.");
+        } else if(ProductDAO.isExistsNameUser(ConnectionDB.con, newProductName.getText())){
+            // CONTROLAR QUE NO PONGA EL MISMO NOMBRE DEL PRODUCTO
+            StaticCode.Alerts("ERROR", "Nombre de producto YA existente", "¡ERROR!",
+                    "Ese nombre ya esta en uso. Por favor, elija otro nombre.");
+        } else {
+            // SI SE ACTUALIZO EL PRODUCTO, MOSTRAR UN MENSAJE DE EXITO
+            StaticCode.Alerts("INFORMATION", "Actualización de producto", "Actualizacion exitosa",
+                    "Se ha actualizado el producto correctamente.");
+        }
     }
 
+    @FXML
+    void onDeleteAction(ActionEvent event) {
+
+    }
 
     @FXML
     void onModifyAction() {

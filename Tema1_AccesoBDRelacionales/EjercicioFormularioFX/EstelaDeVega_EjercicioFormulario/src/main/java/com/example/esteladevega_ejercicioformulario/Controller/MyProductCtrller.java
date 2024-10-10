@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MyProductCtrller implements Initializable {
@@ -70,12 +71,35 @@ public class MyProductCtrller implements Initializable {
     @FXML
     private Button signOutBtt;
 
+    @FXML
+    private Button createProductPane;
+
+    @FXML
+    private Button exitMenuNewProductBtt;
+
+    @FXML
+    private Pane createPane;
+
+    @FXML
+    private ComboBox<String> newProductComboBox;
+
+    @FXML
+    private TextField productNameTxt;
+
+    @FXML
+    private TextField productPriceTxt;
+
 
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     boolean pulsarOption = false;
 
     // ATRIBUTO PARA GUARDAR EL NOMBRE DEL PRODUCTO SELECIONADO
     String nameProductSelected = "";
+
+    // ARRAY PARA GUARDAR LAS CATEGORIAS DE LOS CUBOS
+    String [] categorias = {"2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
+            "PYRAMINX", "MEGAMINX", "SKEWB", "SQUARE-1", "CLOCK",
+            "3x3x3 MIRROR", "PYRAMORPHIX", "MASTERMORPHIX"};
 
     private boolean isSelectedProduct () {
         Product product = CubeTable.getSelectionModel().getSelectedItem(); // SE GUARDA EL OBJETO PRODUCTO SELECCIONADO
@@ -206,11 +230,28 @@ public class MyProductCtrller implements Initializable {
         StaticCode.cambiarVistaBtt("/ui/Setting.fxml", settingBtt, "Setting Page");
     } // IR A LA PAGINA DE SETTINGS
 
+    @FXML
+    void onExitMenuNewAction(ActionEvent event) {
+        createPane.setVisible(false);
+    }
+
+    @FXML
+    void onCreateProductAction(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // AL INICAR, NO SE VISUALIZA LOS PANELES DE SETTINGS Y MODIFY
         settingMenu.setVisible(false);
-        modifyPane.setVisible(false);
+        if(CubeShopCtrller.isNewSelected){
+            modifyPane.setVisible(false);
+            createPane.setVisible(true);
+        } else {
+            modifyPane.setVisible(false);
+            createPane.setVisible(false);
+        }
+
 
         // CONFIGURAR COLUMNAS
         nameProductCol.setCellValueFactory(new PropertyValueFactory<>("nameProduct"));
@@ -222,11 +263,8 @@ public class MyProductCtrller implements Initializable {
                 FXCollections.observableArrayList(ProductDAO.myListProduct(ConnectionDB.con, RegistrationCtrller.cubeUser.getMail()));
         CubeTable.setItems(listProduct); // ESTABLECER LISTA
 
-        // INICIALIZAR EL COMBOBOX
-        comboBox.getItems().addAll(
-                "2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
-                "PYRAMINX", "MEGAMINX", "SKEWB", "SQUARE-1", "CLOCK",
-                "3x3x3 MIRROR", "PYRAMORPHIX", "MASTERMORPHIX"
-        ); // AÑADIR LOS VALORES AL COMBOBOX
+        // INICIALIZAR LOS COMBOBOX
+        comboBox.getItems().addAll(categorias); // AÑADIR LOS VALORES AL COMBOBOX
+        newProductComboBox.getItems().addAll(categorias); // AÑADIR LOS VALORES AL COMBOBOX
     }
 }

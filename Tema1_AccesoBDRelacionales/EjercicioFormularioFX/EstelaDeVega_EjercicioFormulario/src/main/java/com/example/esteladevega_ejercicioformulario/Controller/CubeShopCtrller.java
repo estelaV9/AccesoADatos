@@ -71,6 +71,9 @@ public class CubeShopCtrller implements Initializable {
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     boolean pulsarOption = false;
 
+    // ATRIBUTO PARA SABER SI PULSO EL BOTON DE NEW
+    public static boolean isNewSelected;
+
     @FXML
     void onBackAction(ActionEvent event) {
         // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL LOGIN
@@ -100,8 +103,10 @@ public class CubeShopCtrller implements Initializable {
 
     @FXML
     void onNewProductAction(ActionEvent event) {
-
-    }
+        isNewSelected = true; // HA SELECCIONADO EL BOTON NEW PRODUCT
+        // CAMBIAR DE VISTA PARA IR A LA PAGINA DE YOUR PRODUCT CON EL PANEL DE CREATE ACTIVADO
+        StaticCode.cambiarVistaBtt("/ui/MyProduct.fxml", newProductBtt, "My products");
+    } // IR A LA PAGINA DE YOUR PRODUCT
 
     @FXML
     void onSettingAction(ActionEvent event) {
@@ -134,6 +139,7 @@ public class CubeShopCtrller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         settingMenu.setVisible(false);
+        isNewSelected = false;
 
         // CONFIGURAR COLUMNAS
         nameProductCol.setCellValueFactory(new PropertyValueFactory<>("nameProduct"));

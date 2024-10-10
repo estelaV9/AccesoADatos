@@ -16,50 +16,55 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MyProductCtrller implements Initializable {
-
     @FXML
     private TableView<Product> CubeTable;
-
-    @FXML
-    private Button backBtt;
-
     @FXML
     private TableColumn<String, Product> categoryCol;
-
-    @FXML
-    private Button closeBtt;
-
-    @FXML
-    private Button closeSeBtt;
-
-    @FXML
-    private Button deleteBtt;
-
-    @FXML
-    private Label loginMessage;
-
-    @FXML
-    private Button modifyBtt;
-
     @FXML
     private TableColumn<String, Product> nameProductCol;
-
     @FXML
     private TableColumn<Integer, Product> priceCol;
-
+    @FXML
+    private Button ExitMenuBtt;
+    @FXML
+    private Button backBtt;
+    @FXML
+    private Button closeBtt;
+    @FXML
+    private Button closeSeBtt;
+    @FXML
+    private ComboBox<String> comboBox;
+    @FXML
+    private Button deleteBtt;
+    @FXML
+    private TextField emailTxt;
+    @FXML
+    private TextField emailTxt1;
+    @FXML
+    private Label loginMessage;
+    @FXML
+    private Label loginMessage1;
+    @FXML
+    private Button modifyBtt;
+    @FXML
+    private Pane modifyPane;
+    @FXML
+    private Button modifyProductPaneBtt;
     @FXML
     private Button settingBtt;
-
     @FXML
     private Pane settingMenu;
-
     @FXML
     private Button settingsMenuBtt;
+
+
     // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     boolean pulsarOption = false;
 
@@ -91,6 +96,26 @@ public class MyProductCtrller implements Initializable {
             return false;
         }
         return true;
+    }
+
+    @FXML
+    void onDeleteAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onExitMenuBtt(ActionEvent event) {
+        modifyPane.setVisible(false);
+    }
+
+    @FXML
+    void onModifyAction(ActionEvent event) {
+        modifyPane.setVisible(true);
+    }
+
+    @FXML
+    void onModifyProductAction(ActionEvent event) {
+
     }
 
 
@@ -132,7 +157,9 @@ public class MyProductCtrller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // AL INICAR, NO SE VISUALIZA LOS PANELES DE SETTINGS Y MODIFY
         settingMenu.setVisible(false);
+        modifyPane.setVisible(false);
 
         // CONFIGURAR COLUMNAS
         nameProductCol.setCellValueFactory(new PropertyValueFactory<>("nameProduct"));
@@ -143,5 +170,12 @@ public class MyProductCtrller implements Initializable {
         ObservableList<Product>  listProduct =
                 FXCollections.observableArrayList(ProductDAO.myListProduct(ConnectionDB.con, RegistrationCtrller.cubeUser.getMail()));
         CubeTable.setItems(listProduct); // ESTABLECER LISTA
+
+        // INICIALIZAR EL COMBOBOX
+        comboBox.getItems().addAll(
+                "2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
+                "PYRAMINX", "MEGAMINX", "SKEWB", "SQUARE-1", "CLOCK",
+                "3x3x3 MIRROR", "PYRAMORPHIX", "MASTERMORPHIX"
+        ); // AÑADIR LOS VALORES AL COMBOBOX
     }
 }

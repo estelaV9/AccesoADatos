@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,7 +67,7 @@ public class SettingCtrller implements Initializable {
     @FXML
     private Button userManualBtt;
 
-    String mailUser;
+    String mailUser, contraseñaCifrada;
 
     public void display(String mail) {
         mailUser = mail;
@@ -205,6 +206,7 @@ public class SettingCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Contraseñas no coinciden", "¡ERROR!",
                     "Las contraseñas no coinciden. Por favor, verifica e intenta nuevamente.");
         } else if (Validator.isValidPassword(txtNewPasswordUp.getText())) {
+            contraseñaCifrada = DigestUtils.sha256Hex(txtNewPasswordUp.getText()); // CIFRAR CONTRASEÑA
             if (CubeUserDAO.modifyPassword(ConnectionDB.con, txtNewPasswordUp.getText(), RegistrationCtrller.cubeUser.getMail())) {
                 // SI SE ACTUALIZO EL USUARIO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Actualización de contraseña", "Actualizacion exitosa",

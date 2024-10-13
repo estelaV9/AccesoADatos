@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -55,6 +56,7 @@ public class RegistrationCtrller implements Initializable {
     private TextField userNameTxt;
 
     public static CubeUser cubeUser;
+    String contraseñaCifrada;
 
 
     @FXML
@@ -92,7 +94,9 @@ public class RegistrationCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         } else {
-            cubeUser = new CubeUser(emailTxt.getText(), passwordTxt.getText()); // SE CREA UN USUARIO
+            contraseñaCifrada = DigestUtils.sha256Hex(passwordTxt.getText()); // CIFRAR CONTRASEÑA
+            System.out.println(contraseñaCifrada);
+            cubeUser = new CubeUser(emailTxt.getText(), contraseñaCifrada); // SE CREA UN USUARIO
             if(!CubeUserDAO.isExistsUser(ConnectionDB.con, cubeUser)) {
                 // SI NO EXISTE EL USUARIO MOSTRAR UN MENSAJE EN LA VISTA DE ERROR
                 loginMessage.setText("Invalid login");
@@ -126,7 +130,9 @@ public class RegistrationCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         } else {
-            cubeUser = new CubeUser(userNameTxt.getText(), passwordSignTxt.getText(), 0, emailSignTxt.getText(), currentDate);
+            contraseñaCifrada = DigestUtils.sha256Hex(passwordSignTxt.getText()); // CIFRAR CONTRASEÑA
+            System.out.println(contraseñaCifrada);
+            cubeUser = new CubeUser(userNameTxt.getText(), contraseñaCifrada, 0, emailSignTxt.getText(), currentDate);
             if(CubeUserDAO.insertUser(ConnectionDB.con, cubeUser)){
                 // SI SE INSERTO EL USUARIO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Creación de usuario", "Creación exitosa",

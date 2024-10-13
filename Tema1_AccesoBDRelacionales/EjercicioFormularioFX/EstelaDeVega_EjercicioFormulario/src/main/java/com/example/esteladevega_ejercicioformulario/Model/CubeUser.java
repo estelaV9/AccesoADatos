@@ -17,6 +17,8 @@ public class CubeUser {
 
     }
 
+
+
     public CubeUser(String mail, String passwordUser) {
         this.mail = mail;
         this.passwordUser = passwordUser;

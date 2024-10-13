@@ -110,12 +110,12 @@ public class CubeUserDAO {
         return false;
     }
 
-    public static boolean modifyUser(Connection connection, CubeUser cubeUser, String mailUser) {
+    public static boolean modifyUser(Connection connection, String nameUser, String emailUser, String mailUser) {
         try {
             String sqlUpdate = "UPDATE CUBE_USERS SET NAME_USER = ?, MAIL = ? WHERE MAIL = ?";
             PreparedStatement statement = connection.prepareStatement(sqlUpdate);
-            statement.setString(1, cubeUser.getNameUser());
-            statement.setString(2, cubeUser.getMail());
+            statement.setString(1, nameUser);
+            statement.setString(2, emailUser);
             statement.setString(3, mailUser);
             int rowsUpdate = statement.executeUpdate();
             if (rowsUpdate > 0) {

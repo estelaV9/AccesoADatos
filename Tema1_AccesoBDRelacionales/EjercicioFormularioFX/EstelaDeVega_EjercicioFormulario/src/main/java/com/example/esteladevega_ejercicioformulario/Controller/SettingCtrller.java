@@ -183,8 +183,7 @@ public class SettingCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Nombre no válido", "¡ERROR!",
                     "Ese nombre ya esta en uso. Por favor, pruebe con otro");
         } else {
-            CubeUser cubeUser = new CubeUser(txtEmailUser.getText(), txtEmailUser.getText());
-            if (!CubeUserDAO.modifyUser(ConnectionDB.con, cubeUser, RegistrationCtrller.cubeUser.getMail())) {
+            if (!CubeUserDAO.modifyUser(ConnectionDB.con, txtNameUser.getText(), txtEmailUser.getText(), RegistrationCtrller.cubeUser.getMail())) {
                 // SI NO SE HA MODIFICADO CORRECTAMENTE, LANZA UN MENSAJE DE ERROR
                 StaticCode.Alerts("ERROR", "Error al modificar usuario", "¡ERROR!",
                         "No se ha podido modificar el usuario.");
@@ -207,7 +206,7 @@ public class SettingCtrller implements Initializable {
                     "Las contraseñas no coinciden. Por favor, verifica e intenta nuevamente.");
         } else if (Validator.isValidPassword(txtNewPasswordUp.getText())) {
             contraseñaCifrada = DigestUtils.sha256Hex(txtNewPasswordUp.getText()); // CIFRAR CONTRASEÑA
-            if (CubeUserDAO.modifyPassword(ConnectionDB.con, txtNewPasswordUp.getText(), RegistrationCtrller.cubeUser.getMail())) {
+            if (CubeUserDAO.modifyPassword(ConnectionDB.con, contraseñaCifrada, RegistrationCtrller.cubeUser.getMail())) {
                 // SI SE ACTUALIZO EL USUARIO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Actualización de contraseña", "Actualizacion exitosa",
                         "Se ha actualizado la contraseña correctamente.");

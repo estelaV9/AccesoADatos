@@ -78,7 +78,6 @@ public class SettingCtrller implements Initializable {
 
     @FXML
     void onExitAction(ActionEvent event) throws SQLException {
-        ConnectionDB.desconectar(); // ANTES DE SALIR DE LA APLICACION, DESCONECTAMOS LA CONEXION
         // SE LLAMA AL METODO ESTATICO PARA SALIR DE LA APLICACION
         StaticCode.exitApp();
     } // SALIR DE LA APLICACIÓN

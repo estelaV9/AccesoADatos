@@ -71,7 +71,6 @@ public class CubeShopCtrller implements Initializable {
 
     @FXML
     void onCloseAction(ActionEvent event) throws SQLException {
-        ConnectionDB.desconectar(); // ANTES DE SALIR DE LA APLICACION, DESCONECTAMOS LA CONEXION
         // SE LLAMA AL METODO ESTATICO PARA SALIR DE LA APLICACION
         StaticCode.exitApp();
     } // SALIR DE LA APLICACIÓN

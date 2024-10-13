@@ -16,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class StaticCode {
     public static void cambiarVistaBtt(String nameFxml, Button button, String title) {
@@ -40,11 +41,12 @@ public class StaticCode {
         }
     } // METODO ESTATICO PARA CAMBIAR DE VISTA CON UN ID DE UN BOTON
 
-    public static void exitApp() {
+    public static void exitApp() throws SQLException {
         int opcion = JOptionPane.showConfirmDialog(null,
                 "¿Está seguro de que desea salir?", "Confirmación", JOptionPane.YES_NO_OPTION);
         if (opcion == JOptionPane.YES_OPTION) {
             System.exit(0); // CERRAR APLICACIÓN
+            ConnectionDB.desconectar(); // ANTES DE SALIR DE LA APLICACION, DESCONECTAMOS LA CONEXION
         }
     } // SALIR DE LA APLICACIÓN
 

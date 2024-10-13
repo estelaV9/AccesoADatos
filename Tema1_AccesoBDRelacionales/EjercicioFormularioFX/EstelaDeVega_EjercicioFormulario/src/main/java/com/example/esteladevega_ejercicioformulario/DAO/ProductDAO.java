@@ -22,14 +22,14 @@ public class ProductDAO {
                 String category = resultSet.getString("CATEGORY");
                 String nameOwner = resultSet.getString("NAME_OWNER_PRODUCT");
                 Product product = new Product(nameProduct, category, price, nameOwner);
-                products.add(product);
+                products.add(product); // SE AÑADE
             }
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
         }
         return products;
-    }
+    } // METODO PARA DEVOLVER UNA LISTA DE TODOS LOS PRODUCTOS
 
     public static List<Product> myListProduct(Connection con, String mail) {
         List<Product> products = new ArrayList<>();
@@ -44,14 +44,14 @@ public class ProductDAO {
                 int price = resultSet.getInt("PRICE");
                 String category = resultSet.getString("CATEGORY");
                 Product product = new Product(nameProduct, category, price);
-                products.add(product);
+                products.add(product); // AÑADIR PRODUCTO
             }
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
         }
         return products;
-    }
+    } // METODO PARA DEVOLVER UNA LISTA DE TODOS LOS PRODUCTOS DE UN USUARIO
 
     public static boolean modifyProduct(Connection con, Product product, String oldName) {
         try {
@@ -64,14 +64,14 @@ public class ProductDAO {
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 return true;
-            }
+            } // SI SE HA ACTUALIZADO CORRECTAMENTE, RETORNARA TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
             return false;
         }
         return false;
-    }
+    } // METODO PARA MODIFICAR PRODUCTO
 
 
     public static boolean isExistsNameUser(Connection con, String name) {
@@ -81,9 +81,8 @@ public class ProductDAO {
             statementQuery.setString(1, name);
             ResultSet resultSet = statementQuery.executeQuery();
             if (resultSet.next()) {
-                // SI EL NOMBRE DE PRODUCTO EXISTE, DEVUELVE TRUE
                 return true;
-            }
+            } // SI EL NOMBRE DE PRODUCTO EXISTE, DEVUELVE TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
@@ -100,16 +99,15 @@ public class ProductDAO {
             statement.setString(1, nameProduct);
             int rowsDelete = statement.executeUpdate();
             if (rowsDelete > 0) {
-                // SI HA ELIMINADO CORRECTAMENTE RETURN TRUE
                 return true;
-            }
+            } // SI HA ELIMINADO CORRECTAMENTE RETURN TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
             return false;
         }
         return false;
-    }
+    } // METODO PARA ELIMINAR UN PRODUCTO
 
     public static boolean insertProdut(Connection con, Product product) {
         try {
@@ -121,15 +119,14 @@ public class ProductDAO {
             statement.setDouble(3, product.getPrice());
             statement.setString(4, product.getOwner());
             int rowsInserted = statement.executeUpdate();
-            // COMPROBAR SI SE HA INSERTADO CORRECTAMENTE
             if (rowsInserted > 0) {
                 return true;
-            }
+            } // SI SE HA INSERTADO CORRECTAMENTE, RETORNARA TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
             return false;
         }
         return false;
-    }
+    } // METODO PARA INSERTAR PRODUCTO
 }

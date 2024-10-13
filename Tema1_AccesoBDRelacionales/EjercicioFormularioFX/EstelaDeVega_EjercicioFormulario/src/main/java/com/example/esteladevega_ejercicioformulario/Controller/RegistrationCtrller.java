@@ -99,7 +99,7 @@ public class RegistrationCtrller implements Initializable {
             } else {
                 // SI EXISTE EL USUARIO, REDIRIGIRA A LA PAGINA D ETIENDA
                 StaticCode.cambiarVistaBtt("/ui/CubeShop.fxml", logBtt, "Cube Shop");
-            }
+            } // COMPROBAR SI EXISTE EL USUARIO
         }
     } // METODO LOGIN PARA INICIAR SESION E IR A LA PAGINA DE TIENDA
 
@@ -108,20 +108,24 @@ public class RegistrationCtrller implements Initializable {
         LocalDate currentDate = LocalDate.now();
         if (userNameTxt.getText().isEmpty() || emailSignTxt.getText().isEmpty() || passwordSignTxt.getText().isEmpty()
                 || confirmPssTxt.getText().isEmpty()) {
+            // MOSTRAR UN ERROR SI LOS CAMPOS ESTAN VACIOS
             StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
                     "Por favor, completa todos los campos antes de continuar.");
         } else if (!passwordSignTxt.getText().equals(confirmPssTxt.getText())) {
+            // MOSTRAR UN ERROR SI LA CONTRASEÑA NO COINCIDE
             StaticCode.Alerts("ERROR", "Contraseñas no coinciden", "¡ERROR!",
                     "Las contraseñas no coinciden. Por favor, verifica e intenta nuevamente.");
         } else if (!Validator.isValidMail(emailSignTxt.getText())) {
+            // MOSTRAR UN ERROR SI EL MAIL NO ESTA CON UN FORMATO VALIDO
             StaticCode.Alerts("ERROR", "Correo no válido", "¡ERROR!",
                     "Por favor, introduzca un correo válido:\nexample@example.com");
         } else if (!Validator.isValidPassword(passwordSignTxt.getText())) {
+            // MOSTRAR UN ERROR SI LA CONTRASEÑA NO TIENE UN FORMATO VALIDO
             StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         } else {
             contraseñaCifrada = DigestUtils.sha256Hex(passwordSignTxt.getText()); // CIFRAR CONTRASEÑA
-            cubeUser = new CubeUser(userNameTxt.getText(), contraseñaCifrada, 0, emailSignTxt.getText(), currentDate);
+            cubeUser = new CubeUser(userNameTxt.getText(), contraseñaCifrada, emailSignTxt.getText(), currentDate);
             if (CubeUserDAO.insertUser(ConnectionDB.con, cubeUser)) {
                 // SI SE INSERTO EL USUARIO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Creación de usuario", "Creación exitosa",
@@ -129,9 +133,10 @@ public class RegistrationCtrller implements Initializable {
                 // IR A LA PAGINA DE TIENDA DESPUES DE HABER CREADO EL USUARIO
                 StaticCode.cambiarVistaBtt("/ui/CubeShop.fxml", signBtt, "Cube Shop");
             } else {
+                // SI NO SE INSERTO, SE MUESTRA UN ERROR
                 StaticCode.Alerts("ERROR", "Creación de usuario", "Creación fallida",
                         "No se ha podido crear el usuario.");
-            }
+            } // INSERTAR USUARIO
         }
     } // METODO PARA CREAR UNA CUENTA
 

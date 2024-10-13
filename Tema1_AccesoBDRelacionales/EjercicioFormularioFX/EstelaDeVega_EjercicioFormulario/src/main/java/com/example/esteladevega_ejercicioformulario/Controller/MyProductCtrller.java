@@ -77,10 +77,9 @@ public class MyProductCtrller implements Initializable {
 
     boolean pulsarOption = false; // VARIABLE PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
     String nameProductSelected = ""; // ATRIBUTO PARA GUARDAR EL NOMBRE DEL PRODUCTO SELECIONADO
-    // ARRAY PARA GUARDAR LAS CATEGORIAS DE LOS CUBOS
     String[] categorias = {"2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
             "PYRAMINX", "MEGAMINX", "SKEWB", "SQUARE-1", "CLOCK",
-            "3x3x3 MIRROR", "PYRAMORPHIX", "MASTERMORPHIX"};
+            "3x3x3 MIRROR", "PYRAMORPHIX", "MASTERMORPHIX"}; // ARRAY PARA GUARDAR LAS CATEGORIAS DE LOS CUBOS
 
     private boolean isSelectedProduct() {
         Product product = CubeTable.getSelectionModel().getSelectedItem(); // SE GUARDA EL OBJETO PRODUCTO SELECCIONADO
@@ -91,7 +90,7 @@ public class MyProductCtrller implements Initializable {
             return false;
         }
         return true;
-    }
+    } // METODO PARA SABER SI HA PULSADO UN PRODUCTO
 
     @FXML
     void onBackAction(ActionEvent event) {
@@ -119,12 +118,12 @@ public class MyProductCtrller implements Initializable {
     @FXML
     void onCloseSettingAction() {
         settingMenu.setVisible(false);
-    }
+    } // CERRAR MENU DE AJUSTES
 
     @FXML
     void onExitMenuBtt(ActionEvent event) {
         modifyPane.setVisible(false);
-    }
+    } // CERRAR MENU DE MODIFICAR
 
     @FXML
     void onModifyProductAction(ActionEvent event) {
@@ -155,9 +154,9 @@ public class MyProductCtrller implements Initializable {
                         "NO se ha actualizado el producto correctamente.");
                 // SE CERRARA EL PANEL
                 modifyPane.setVisible(false);
-            }
+            } // MODIFICAR PRODUCTO
         }
-    }
+    } // METODO PARA MODIFICAR PRODUCTO
 
     @FXML
     void onDeleteAction(ActionEvent event) {
@@ -195,7 +194,7 @@ public class MyProductCtrller implements Initializable {
             Product product = CubeTable.getSelectionModel().getSelectedItem();
             nameProductSelected = product.getNameProduct();
         } // SI SE HA PULSADO UNA FILA, ENTONCES SE MOSTRARA EL PANEL
-    }
+    } // METODO PARA CUANDO SELECCIONAS UN PRODUCTO EN LA TABLA
 
     @FXML
     void onSettingAction(ActionEvent event) {
@@ -219,7 +218,7 @@ public class MyProductCtrller implements Initializable {
     @FXML
     void onExitMenuNewAction(ActionEvent event) {
         createPane.setVisible(false);
-    }
+    } // CERRAR EL MENU DE CREAR PRODUCTO
 
     @FXML
     void onCreateProductAction(ActionEvent event) {
@@ -252,9 +251,9 @@ public class MyProductCtrller implements Initializable {
                         "NO se ha creado el producto correctamente.");
                 // SE CERRARA EL PANEL
                 modifyPane.setVisible(false);
-            }
+            } // INSERTAR PRODUCTO
         }
-    }
+    } // METODO PARA CREAR PRODUCTOS
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -266,8 +265,7 @@ public class MyProductCtrller implements Initializable {
         } else {
             modifyPane.setVisible(false);
             createPane.setVisible(false);
-        }
-
+        } // SI HA SELECCIONADO NEW PRODUCTO SE INICIARA CON EL PANEL DE CREATE ABIERTO
 
         // CONFIGURAR COLUMNAS
         nameProductCol.setCellValueFactory(new PropertyValueFactory<>("nameProduct"));
@@ -282,5 +280,5 @@ public class MyProductCtrller implements Initializable {
         // INICIALIZAR LOS COMBOBOX
         comboBox.getItems().addAll(categorias); // AÑADIR LOS VALORES AL COMBOBOX
         newProductComboBox.getItems().addAll(categorias); // AÑADIR LOS VALORES AL COMBOBOX
-    }
+    } // SE INICIALIZA CERRANDO TODOS LOS MENUS Y CARGANDO LOS DATOS
 }

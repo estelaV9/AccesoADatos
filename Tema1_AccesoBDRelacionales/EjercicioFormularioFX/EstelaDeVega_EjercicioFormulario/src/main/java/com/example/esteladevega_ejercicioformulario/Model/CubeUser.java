@@ -3,35 +3,29 @@ package com.example.esteladevega_ejercicioformulario.Model;
 import java.time.LocalDate;
 
 public class CubeUser {
-    private int idUser;
-    private String nameUser;
-    private String passwordUser;
-    private int levelUser;
-    private String mail;
-    private LocalDate registrationDate;
+    private int idUser; // ATRIBUTO PARA GUARDAR EL ID DEL USUARIO
+    private String nameUser; // ATRIBUTO PARA GUARDAR EL NOMBRE DEL USUARIO
+    private String passwordUser; // ATRIBUTO PARA GUARDAR LA CONTRASEÑA DEL USUARIO
+    private String mail; // ATRIBUTO PARA GUARDAR EL MAIL DEL USUARIO
+    private LocalDate registrationDate; // ATRIBUTO PARA GUARDAR LA FECHA DE CREACION DEL USUARIO
 
     public CubeUser() {
 
     }
-
     public CubeUser(String mail, String passwordUser) {
         this.mail = mail;
         this.passwordUser = passwordUser;
     }
-
-    public CubeUser(String nameUser, String passwordUser, int levelUser, String mail, LocalDate registrationDate) {
+    public CubeUser(String nameUser, String passwordUser, String mail, LocalDate registrationDate) {
         this.nameUser = nameUser;
         this.passwordUser = passwordUser;
-        this.levelUser = levelUser;
         this.mail = mail;
         this.registrationDate = registrationDate;
     }
-
-    public CubeUser(int idUser, String nameUser, String passwordUser, int levelUser, String mail, LocalDate registrationDate) {
+    public CubeUser(int idUser, String nameUser, String passwordUser, String mail, LocalDate registrationDate) {
         this.idUser = idUser;
         this.nameUser = nameUser;
         this.passwordUser = passwordUser;
-        this.levelUser = levelUser;
         this.mail = mail;
         this.registrationDate = registrationDate;
     }
@@ -53,12 +47,6 @@ public class CubeUser {
     }
     public void setPasswordUser(String passwordUser) {
         this.passwordUser = passwordUser;
-    }
-    public int getLevelUser() {
-        return levelUser;
-    }
-    public void setLevelUser(int levelUser) {
-        this.levelUser = levelUser;
     }
     public String getMail() {
         return mail;

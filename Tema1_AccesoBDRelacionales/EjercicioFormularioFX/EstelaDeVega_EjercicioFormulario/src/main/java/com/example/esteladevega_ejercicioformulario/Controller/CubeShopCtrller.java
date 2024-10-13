@@ -79,7 +79,7 @@ public class CubeShopCtrller implements Initializable {
     @FXML
     void onCloseSettingAction() {
         settingMenu.setVisible(false);
-    }
+    } // CERRAR EL MENU
 
     @FXML
     void onNewProductAction(ActionEvent event) {

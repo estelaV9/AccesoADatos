@@ -16,17 +16,16 @@ public class CubeUserDAO {
             statement.setString(3, cubeUser.getMail());
             statement.setString(4, String.valueOf(cubeUser.getRegistrationDate()));
             int rowsInserted = statement.executeUpdate();
-            // COMPROBAR SI EL NOMBRE INTRODUCIDO YA EXISTE
             if (rowsInserted > 0) {
                 return true;
-            }
+            } // SI SE HA INSERTADO, RETORNARA TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
             return false;
         }
         return false;
-    }
+    } // METODO PARA INSERTAR USUARIO
 
     public static boolean isExistsUser(Connection con, CubeUser cubeUser) {
         try {
@@ -36,9 +35,8 @@ public class CubeUserDAO {
             statementQuery.setString(2, cubeUser.getPasswordUser());
             ResultSet resultSet = statementQuery.executeQuery();
             if (resultSet.next()) {
-                // SI EL USUARIO EXISTE, MOSTRAR UN MENSAJE DE ERROR
                 return true;
-            }
+            } // SI EL USUARIO EXISTE, RETORNARA TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
@@ -55,9 +53,8 @@ public class CubeUserDAO {
             statementQuery.setString(2, mail);
             ResultSet resultSet = statementQuery.executeQuery();
             if (resultSet.next()) {
-                // SI EL NOMBRE DE USUARIO EXISTE, MOSTRAR UN MENSAJE DE ERROR
                 return true;
-            }
+            } // SI EL NOMBRE DE USUARIO EXISTE, RETORNARA TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
@@ -75,16 +72,15 @@ public class CubeUserDAO {
             int rowsDelete = statement.executeUpdate();
             if (rowsDelete > 0) {
                 RegistrationCtrller.cubeUser = null; // INVALIDAR USUARIO
-                // SI HA ELIMINADO CORRECTAMETNE RETURN TRUE
                 return true;
-            }
+            } // SI HA ELIMINADO CORRECTAMETNE RETURN TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
             return false;
         }
         return false;
-    }
+    } // METODO PARA ELIMINAR USUARIO
 
     public static boolean modifyPassword(Connection con, String newPassword, String mailUser) {
         try {
@@ -95,14 +91,14 @@ public class CubeUserDAO {
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 return true;
-            }
+            } // SI SE HA ACTUALIZADO CORRECTAMENTE, RETORNARA TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
             return false;
         }
         return false;
-    }
+    } // METODO PARA MODIFICAR CONTRASEÑA
 
     public static boolean modifyUser(Connection connection, String nameUser, String emailUser, String mailUser) {
         try {
@@ -114,14 +110,14 @@ public class CubeUserDAO {
             int rowsUpdate = statement.executeUpdate();
             if (rowsUpdate > 0) {
                 return true;
-            }
+            } // SI SE HA ACTUALIZADO CORRECTAMENTE, RETORNARA TRUE
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
             return false;
         }
         return false;
-    }
+    } // METODO PARA MODIFICAR AL USUARIO
 
     public static String searchNameUser(Connection con, String mail) {
         try {
@@ -131,12 +127,12 @@ public class CubeUserDAO {
             ResultSet resultSet = statementQuery.executeQuery();
             if (resultSet.next()) {
                 return resultSet.getString("NAME_USER");
-            }
+            } // SI DEVUELVE DATOS EN LA CONSULTA, RETORNARA EL NOMBRE DEL USUARIO
         } catch (SQLException e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
             return null;
         }
         return null;
-    } // METODO PARA DEVOVER EL NOMBRE DE UN USUARIO MEDIANTE SU MAIL
+    } // METODO PARA DEVOLVER EL NOMBRE DE UN USUARIO MEDIANTE SU MAIL
 }

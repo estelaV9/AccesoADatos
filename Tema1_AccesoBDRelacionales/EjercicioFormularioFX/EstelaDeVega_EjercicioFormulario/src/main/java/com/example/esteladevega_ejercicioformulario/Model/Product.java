@@ -1,25 +1,26 @@
 package com.example.esteladevega_ejercicioformulario.Model;
 
 public class Product {
-    private int idProduct;
-    private String nameProduct;
-    private String category;
-    private double price;
-    private String owner;
+    private int idProduct; // ATRIBUTO PARA GUARDAR EL ID DEL PRODUCTO
+    private String nameProduct; // ATRIBUTO PARA GUARDAR EL NOMBRE DEL PRODUCTO
+    private String category; // ATRIBUTO PARA GUARDAR LA CATEGORIA DEL PRODUCTO
+    private double price; // ATRIBUTO PARA GUARDAR EL PRECIO DEL PRODUCTO
+    private String owner; // ATRIBUTO PARA GUARDAR EL PROPIETARIO DEL PRODUCTO
 
+    public Product(){
+
+    }
     public Product(String nameProduct, String category, double price) {
         this.nameProduct = nameProduct;
         this.category = category;
         this.price = price;
     }
-
     public Product(String nameProduct, String category, double price, String owner) {
         this.nameProduct = nameProduct;
         this.category = category;
         this.price = price;
         this.owner = owner;
     }
-
     public Product(int idProduct, String nameProduct, String category, double price, String owner) {
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;

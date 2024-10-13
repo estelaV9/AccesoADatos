@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CubeShopCtrller implements Initializable {
@@ -69,7 +70,8 @@ public class CubeShopCtrller implements Initializable {
     } // IR A LA PAGINA DEL LOGIN
 
     @FXML
-    void onCloseAction(ActionEvent event) {
+    void onCloseAction(ActionEvent event) throws SQLException {
+        ConnectionDB.desconectar(); // ANTES DE SALIR DE LA APLICACION, DESCONECTAMOS LA CONEXION
         // SE LLAMA AL METODO ESTATICO PARA SALIR DE LA APLICACION
         StaticCode.exitApp();
     } // SALIR DE LA APLICACIÓN

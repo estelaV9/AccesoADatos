@@ -22,6 +22,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javax.swing.*;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class MyProductCtrller implements Initializable {
@@ -101,7 +102,8 @@ public class MyProductCtrller implements Initializable {
     } // VOLVER A LA PAGINA DE TIENDA
 
     @FXML
-    void onCloseAction(ActionEvent event) {
+    void onCloseAction(ActionEvent event)  throws SQLException {
+        ConnectionDB.desconectar(); // ANTES DE SALIR DE LA APLICACION, DESCONECTAMOS LA CONEXION
         // SE LLAMA AL METODO ESTATICO PARA SALIR DE LA APLICACION
         StaticCode.exitApp();
     } // SALIR DE LA APLICACIÓN

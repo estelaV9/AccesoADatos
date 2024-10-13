@@ -17,6 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.URI;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class SettingCtrller implements Initializable {
@@ -65,7 +66,7 @@ public class SettingCtrller implements Initializable {
     @FXML
     private Button userManualBtt;
 
-    String mailUser, contraseñaCifrada;
+    String contraseñaCifrada; // VARIABLE PARA GUARDAR LA CONTRASEÑA CIFRADA
 
     @FXML
     void onBackAction(ActionEvent event) {
@@ -76,7 +77,8 @@ public class SettingCtrller implements Initializable {
     } // IR A LA PAGINA DE TIENDA
 
     @FXML
-    void onExitAction(ActionEvent event) {
+    void onExitAction(ActionEvent event) throws SQLException {
+        ConnectionDB.desconectar(); // ANTES DE SALIR DE LA APLICACION, DESCONECTAMOS LA CONEXION
         // SE LLAMA AL METODO ESTATICO PARA SALIR DE LA APLICACION
         StaticCode.exitApp();
     } // SALIR DE LA APLICACIÓN

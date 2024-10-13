@@ -104,48 +104,6 @@ public class SettingCtrller implements Initializable {
     } // IR A LA PAGINA DEL LOGIN
 
     @FXML
-    void onProfileAction(ActionEvent event) {
-        accountPane.setVisible(true);
-        personalPane.setStyle("-fx-background-color : #cc87e0");
-        personalPane.setVisible(true);
-        passwordPane.setVisible(false);
-        deletePane.setVisible(false);
-        personalBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
-        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-    } // BOTON PARA CAMBIAR AL PANEL DE PERSONAL INFO EN PROFILE
-
-    @FXML
-    void onPasswordAction(ActionEvent event) {
-        passwordBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
-        personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        personalPane.setVisible(false);
-        passwordPane.setVisible(true);
-        deletePane.setVisible(false);
-    } // BOTON PARA CAMBIAR AL PANEL DE CONTRASEÑA EN PROFILE
-
-    @FXML
-    void onPersonalAction(ActionEvent event) {
-        personalBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
-        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        personalPane.setVisible(true);
-        passwordPane.setVisible(false);
-        deletePane.setVisible(false);
-    } // BOTON PARA MOSTRAR EL PANEL DE PROFILE (POR DEFECTO SE INICIARA EN PERSONAL INFO)
-
-    @FXML
-    void onDeleteAction(ActionEvent event) {
-        deleteBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
-        passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
-        personalPane.setVisible(false);
-        passwordPane.setVisible(false);
-        deletePane.setVisible(true);
-    } // BOTON PARA CAMBIAR AL PANEL DE DELETE EN PROFILE
-
-    @FXML
     void onDeleteAccAction(ActionEvent event) {
         int opcion = JOptionPane.showConfirmDialog(null,
                 "¿Está seguro de que desea eliminar la cuenta?", "Confirmación", JOptionPane.YES_NO_OPTION);
@@ -184,9 +142,12 @@ public class SettingCtrller implements Initializable {
                 StaticCode.Alerts("ERROR", "Error al modificar usuario", "¡ERROR!",
                         "No se ha podido modificar el usuario.");
             } else {
+                // SI SE MODIFICO CORRECTAMENTE, MOSTRAR MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Modificación de usuario", "Modificación exitosa",
-                        "Se ha modificado el usuario correctamente");
-            }
+                        "Se ha modificado el usuario correctamente");// SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL LOGIN
+                // CUANDO SE HAYA MODIFICADO, MANDAMOS AL USUARIO A QUE SE REGISTRE DE NUEVO (como un reinicio)
+                StaticCode.cambiarVistaBtt("/ui/Registration.fxml", backBtt, "Registration Page"); // IR A LA PAGINA DEL LOGIN
+            } // MODIFICAR USUARIO
         }
     } // METODO PARA MODIFICAR USUARIO
 
@@ -210,13 +171,13 @@ public class SettingCtrller implements Initializable {
                 // SI NO SE ACTUALIZO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("ERROR", "Error al modificar usuario", "¡ERROR!",
                         "No se pudo modificar la contraseña");
-            }
+            } // MODIFICAR CONTRASEÑA
         } else {
             // SI LA CONTRASEÑA NO ES CORRECTA MOSTRARA UN MENSAJE DE ERROR
             StaticCode.Alerts("ERROR", "Contraseña no válida", "¡ERROR!",
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         }
-    }
+    } // METODO ACTUALIZAR CONTRASEÑA
 
     @FXML
     void onUserManualAction(ActionEvent event) {
@@ -229,6 +190,52 @@ public class SettingCtrller implements Initializable {
             e.printStackTrace();
         }
     } // METODO QUE REDIRIGE A UN RESUMEN DE LA APLICACION CON TODAS SUS VISTAS
+
+    public void cambiarVistaPanel (boolean personalPaneB, boolean passwordPaneB, boolean deletePaneB){
+        // MOSTRAR EL PANEL QUE HA SELECCINADO
+        personalPane.setVisible(personalPaneB);
+        passwordPane.setVisible(passwordPaneB);
+        deletePane.setVisible(deletePaneB);
+
+        if(personalPaneB){
+            personalBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+            passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+            deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        } // SI SE HA PULSADO EL PANEL PERSONAL
+        if(passwordPaneB){
+            passwordBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+            personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+            deleteBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        } // SI SE HA PULSADO EL PANEL CONTRASEÑA
+
+        if(deletePaneB){
+            deleteBtt.setStyle("-fx-background-color: #cc87e0; -fx-border-color: #000; -fx-text-fill: #000");
+            passwordBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+            personalBtt.setStyle("-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000");
+        } // SI SE HA PULSADO EL PANEL ELIMINAR
+    } // METODO PARA CAMBIAR DE ESTILOS LOS BOTONES Y MOSTRAR LOS PANELES CORRESPONDIENTES
+
+    @FXML
+    void onProfileAction(ActionEvent event) {
+        accountPane.setVisible(true);
+        personalPane.setStyle("-fx-background-color : #cc87e0");
+        cambiarVistaPanel( true, false, false);
+    } // BOTON PARA CAMBIAR AL PANEL DE PERSONAL INFO EN PROFILE
+
+    @FXML
+    void onPasswordAction(ActionEvent event) {
+        cambiarVistaPanel(false, true, false);
+    } // BOTON PARA CAMBIAR AL PANEL DE CONTRASEÑA EN PROFILE
+
+    @FXML
+    void onPersonalAction(ActionEvent event) {
+        cambiarVistaPanel( true, false, false);
+    } // BOTON PARA MOSTRAR EL PANEL DE PROFILE (POR DEFECTO SE INICIARA EN PERSONAL INFO)
+
+    @FXML
+    void onDeleteAction(ActionEvent event) {
+        cambiarVistaPanel(false, false, true);
+    } // BOTON PARA CAMBIAR AL PANEL DE DELETE EN PROFILE
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -57,11 +57,11 @@ public class RegistrationCtrller implements Initializable {
 
     @FXML
     void onBackAction(ActionEvent event) {
-        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL PRINCIPIO
+        // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DEL INICIO
         // SE INSERTA LOS PARAMETROS: NOMBRE DEL FXML AL QUE SE QUIERE IR, UN BOTON Y
         // EL TITULO QUE VA A TENER ESE STAGE
         StaticCode.cambiarVistaBtt("/ui/beginning.fxml", backBtt, "CubeX Galaxy!");
-    } // IR A LA PAGINA DEL PRINCIPIO
+    } // IR A LA PAGINA DEL INICIO
 
     @FXML
     void onCancelAction(ActionEvent event) {
@@ -104,12 +104,6 @@ public class RegistrationCtrller implements Initializable {
     } // METODO LOGIN PARA INICIAR SESION E IR A LA PAGINA DE TIENDA
 
     @FXML
-    void onLogViewAction(ActionEvent event) {
-        signUpVision.setVisible(false);
-        logginVision.setVisible(true);
-    } // MOSTRAR LA VISTA DE LOGIN
-
-    @FXML
     void onSignUpAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         LocalDate currentDate = LocalDate.now();
         if (userNameTxt.getText().isEmpty() || emailSignTxt.getText().isEmpty() || passwordSignTxt.getText().isEmpty()
@@ -143,9 +137,18 @@ public class RegistrationCtrller implements Initializable {
 
     @FXML
     void onSignViewAction(ActionEvent event) {
-        signUpVision.setVisible(true);
-        logginVision.setVisible(false);
+        visiblePane(true, false);
     } // MOSTRAR LA VISTA DE SIGN UP
+
+    @FXML
+    void onLogViewAction(ActionEvent event) {
+        visiblePane(false, true);
+    } // MOSTRAR LA VISTA DE LOGIN
+
+    public void visiblePane(Boolean signUp, Boolean loggin){
+        signUpVision.setVisible(signUp);
+        logginVision.setVisible(loggin);
+    } // METODO PARA PASARLE CUAL DE LOS PANELES QUEREMOS MOSTRAR
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

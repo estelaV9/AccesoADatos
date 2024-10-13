@@ -1,11 +1,7 @@
 package com.example.esteladevega_ejercicioformulario.DAO;
 
-import com.example.esteladevega_ejercicioformulario.Controller.RegistrationCtrller;
-import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
 import com.example.esteladevega_ejercicioformulario.Model.Product;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
-import javafx.scene.control.Alert;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,7 +31,7 @@ public class ProductDAO {
         return products;
     }
 
-    public static List<Product> myListProduct (Connection con, String mail) {
+    public static List<Product> myListProduct(Connection con, String mail) {
         List<Product> products = new ArrayList<>();
         try {
             String sql = "SELECT NAME_PRODUCT, CATEGORY, PRICE FROM CUBE_PRODUCT " +
@@ -76,8 +72,6 @@ public class ProductDAO {
         }
         return false;
     }
-
-
 
 
     public static boolean isExistsNameUser(Connection con, String name) {
@@ -138,5 +132,4 @@ public class ProductDAO {
         }
         return false;
     }
-
 }

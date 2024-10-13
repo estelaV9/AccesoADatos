@@ -1,6 +1,5 @@
 package com.example.esteladevega_ejercicioformulario.ConnectionDB;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,18 +9,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-
 public class ConnectionDB {
+    // ATRIBUTO ESTATICO DE TIPO CONEXION PARA PODER LLAMARLO DESDE CUALQUIER CLASE
     public static Connection con;
-
     public static Connection conectar() throws ClassNotFoundException, SQLException {
-        boolean connect = false;
         Properties properties = new Properties();
-        String host = "";
-        String port = "";
-        String name = "";
-        String username = "";
-        String password = "";
+        String host = "", port = "", name = "", username = "", password = "";
 
         try {
             properties.load(new FileInputStream(new File("src/main/resources/Configuration/database.properties")));
@@ -48,6 +41,5 @@ public class ConnectionDB {
     public static void desconectar() throws SQLException {
         con.close();
     } // METODO PARA DESCONECTAR UNA APP A LA DATABASE
-
 }
 

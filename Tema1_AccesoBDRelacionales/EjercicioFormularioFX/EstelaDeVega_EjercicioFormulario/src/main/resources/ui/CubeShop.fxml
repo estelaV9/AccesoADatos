@@ -13,119 +13,153 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="727.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esteladevega_ejercicioformulario.Controller.CubeShopCtrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0"
+            prefWidth="727.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.esteladevega_ejercicioformulario.Controller.CubeShopCtrller">
     <children>
         <ImageView fitHeight="388.0" fitWidth="736.0" layoutX="-6.0" pickOnBounds="true">
             <image>
-                <Image url="@Imagen/blurBackgroundApp.png" />
+                <Image url="@Imagen/blurBackgroundApp.png"/>
             </image>
         </ImageView>
         <ImageView fitHeight="34.0" fitWidth="149.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true">
             <image>
-                <Image url="@Imagen/nameApp.png" />
+                <Image url="@Imagen/nameApp.png"/>
             </image>
         </ImageView>
-        <Button fx:id="backBtt" layoutX="14.0" layoutY="331.0" mnemonicParsing="false" onAction="#onBackAction" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
+        <Button fx:id="backBtt" layoutX="14.0" layoutY="331.0" mnemonicParsing="false" onAction="#onBackAction"
+                prefHeight="42.0" prefWidth="46.0"
+                style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
             <graphic>
                 <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Imagen/backIcon.png" />
+                        <Image url="@Imagen/backIcon.png"/>
                     </image>
                     <effect>
-                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0" />
+                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0"/>
                     </effect>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="closeBtt" layoutX="650.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseAction" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
+        <Button fx:id="closeBtt" layoutX="650.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseAction"
+                prefHeight="42.0" prefWidth="46.0"
+                style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
             <graphic>
                 <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Imagen/close.png" />
+                        <Image url="@Imagen/close.png"/>
                     </image>
                     <effect>
-                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0" />
+                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0"/>
                     </effect>
                 </ImageView>
             </graphic>
         </Button>
-          <Pane layoutX="60.0" layoutY="68.0" prefHeight="282.0" prefWidth="619.0" style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;" stylesheets="@Style.css">
-              <children>
-                  <Button fx:id="newProductBtt" layoutX="69.0" layoutY="14.0" mnemonicParsing="false" onAction="#onNewProductAction" prefHeight="42.0" prefWidth="124.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="New Product">
-                      <font>
-                          <Font size="15.0" />
-                      </font>
-                  </Button>
-                  <Label fx:id="loginMessage" layoutX="21.0" layoutY="136.0" textFill="#a82f2a">
-                      <font>
-                          <Font name="DejaVu Sans Bold Oblique" size="13.0" />
-                      </font>
-                  </Label>
-                  <Button layoutY="196.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button" />
-                  <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -17;">
-                      <image>
-                          <Image url="@Imagen/cube.png" />
-                      </image>
-                  </ImageView>
-                  <Button layoutX="584.0" layoutY="39.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" />
-                  <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="589.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 17;">
-                      <image>
-                          <Image url="@Imagen/cube.png" />
-                      </image>
-                  </ImageView>
-            <Button fx:id="yourProductBtt" layoutX="201.0" layoutY="14.0" mnemonicParsing="false" onAction="#onYourProductAction" prefHeight="42.0" prefWidth="124.0" style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="Your Products">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="settingBtt" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#onSettingAction" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Imagen/threeDots.png" />
-                     </image>
-                     <effect>
-                        <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0" />
-                     </effect>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <TableView fx:id="CubeTable" layoutX="83.0" layoutY="82.0" prefHeight="164.0" prefWidth="413.0">
-              <columns>
-                <TableColumn fx:id="nameProductCol" prefWidth="141.5999755859375" text="Name of Product" />
-                <TableColumn fx:id="categoryCol" prefWidth="104.79998779296875" text="Category" />
-                  <TableColumn fx:id="priceCol" minWidth="5.5999755859375" prefWidth="67.20001220703125" text="Price" />
-                  <TableColumn fx:id="ownerCol" prefWidth="111.80001831054688" text="Owner" />
-              </columns>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </TableView>
-            <Pane fx:id="settingMenu" layoutX="11.0" layoutY="60.0" prefHeight="178.0" prefWidth="276.0" style="-fx-background-color: #781ddd; -fx-background-radius: 24; -fx-border-color: #000; -fx-border-radius: 24;">
-               <children>
-                  <Button fx:id="closeSeBtt" layoutX="13.0" layoutY="125.0" mnemonicParsing="false" onAction="#onCloseSettingAction" prefHeight="31.0" prefWidth="251.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="CLOSE">
-                     <font>
-                        <Font name="DejaVu Sans Bold" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="settingsMenuBtt" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#onSettingsMenuAction" prefHeight="31.0" prefWidth="251.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="SETTINGS">
-                     <font>
-                        <Font name="DejaVu Sans Bold" size="17.0" />
-                     </font>
-                  </Button>
-                  <Line endX="100.0" layoutX="138.0" layoutY="113.0" startX="-100.0" stroke="#262626" strokeWidth="2.0" />
-                  <Button fx:id="signOutBtt" layoutX="13.0" layoutY="62.0" mnemonicParsing="false" onAction="#onSignOutAction" prefHeight="31.0" prefWidth="251.0" style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;" text="SIGN OUT">
-                     <font>
-                        <Font name="DejaVu Sans Bold" size="17.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-              </children>
-          </Pane>
-        <ImageView fitHeight="77.0" fitWidth="149.0" layoutX="564.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+        <Pane layoutX="60.0" layoutY="68.0" prefHeight="282.0" prefWidth="619.0"
+              style="-fx-background-color: #8656cb; -fx-background-radius: 24; -fx-border-color: black; -fx-border-radius: 24;"
+              stylesheets="@Style.css">
+            <children>
+                <Button fx:id="newProductBtt" layoutX="69.0" layoutY="14.0" mnemonicParsing="false"
+                        onAction="#onNewProductAction" prefHeight="42.0" prefWidth="124.0"
+                        style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;"
+                        text="New Product">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="loginMessage" layoutX="21.0" layoutY="136.0" textFill="#a82f2a">
+                    <font>
+                        <Font name="DejaVu Sans Bold Oblique" size="13.0"/>
+                    </font>
+                </Label>
+                <Button layoutY="196.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0"
+                        prefWidth="35.0" style="-fx-background-color: #781ddd; -fx-border-color: #000;" text="Button"/>
+                <ImageView fitHeight="42.0" fitWidth="67.0" layoutX="-18.0" layoutY="199.0" pickOnBounds="true"
+                           preserveRatio="true" style="-fx-rotate: -17;">
+                    <image>
+                        <Image url="@Imagen/cube.png"/>
+                    </image>
+                </ImageView>
+                <Button layoutX="584.0" layoutY="39.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0"
+                        style="-fx-background-color: #781ddd; -fx-border-color: #000;"/>
+                <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="589.0" layoutY="43.0" pickOnBounds="true"
+                           preserveRatio="true" style="-fx-rotate: 17;">
+                    <image>
+                        <Image url="@Imagen/cube.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="yourProductBtt" layoutX="201.0" layoutY="14.0" mnemonicParsing="false"
+                        onAction="#onYourProductAction" prefHeight="42.0" prefWidth="124.0"
+                        style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;"
+                        text="Your Products">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="settingBtt" layoutX="8.0" layoutY="14.0" mnemonicParsing="false"
+                        onAction="#onSettingAction" prefHeight="42.0" prefWidth="46.0"
+                        style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: black; -fx-border-radius: 100;">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Imagen/threeDots.png"/>
+                            </image>
+                            <effect>
+                                <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="1.0"/>
+                            </effect>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <TableView fx:id="CubeTable" layoutX="83.0" layoutY="82.0" prefHeight="164.0" prefWidth="413.0">
+                    <columns>
+                        <TableColumn fx:id="nameProductCol" prefWidth="141.5999755859375" text="Name of Product"/>
+                        <TableColumn fx:id="categoryCol" prefWidth="104.79998779296875" text="Category"/>
+                        <TableColumn fx:id="priceCol" minWidth="5.5999755859375" prefWidth="67.20001220703125"
+                                     text="Price"/>
+                        <TableColumn fx:id="ownerCol" prefWidth="111.80001831054688" text="Owner"/>
+                    </columns>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </TableView>
+                <Pane fx:id="settingMenu" layoutX="11.0" layoutY="60.0" prefHeight="178.0" prefWidth="276.0"
+                      style="-fx-background-color: #781ddd; -fx-background-radius: 24; -fx-border-color: #000; -fx-border-radius: 24;">
+                    <children>
+                        <Button fx:id="closeSeBtt" layoutX="13.0" layoutY="125.0" mnemonicParsing="false"
+                                onAction="#onCloseSettingAction" prefHeight="31.0" prefWidth="251.0"
+                                style="-fx-background-color: #cc87e0; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;"
+                                text="CLOSE">
+                            <font>
+                                <Font name="DejaVu Sans Bold" size="17.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="settingsMenuBtt" layoutX="13.0" layoutY="14.0" mnemonicParsing="false"
+                                onAction="#onSettingsMenuAction" prefHeight="31.0" prefWidth="251.0"
+                                style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;"
+                                text="SETTINGS">
+                            <font>
+                                <Font name="DejaVu Sans Bold" size="17.0"/>
+                            </font>
+                        </Button>
+                        <Line endX="100.0" layoutX="138.0" layoutY="113.0" startX="-100.0" stroke="#262626"
+                              strokeWidth="2.0"/>
+                        <Button fx:id="signOutBtt" layoutX="13.0" layoutY="62.0" mnemonicParsing="false"
+                                onAction="#onSignOutAction" prefHeight="31.0" prefWidth="251.0"
+                                style="-fx-background-color: #8656cb; -fx-background-radius: 100; -fx-border-color: #000; -fx-border-radius: 100; -fx-text-fill: #000;"
+                                text="SIGN OUT">
+                            <font>
+                                <Font name="DejaVu Sans Bold" size="17.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+        <ImageView fitHeight="77.0" fitWidth="149.0" layoutX="564.0" layoutY="308.0" pickOnBounds="true"
+                   preserveRatio="true">
             <image>
-                <Image url="@Imagen/whiteStripesOthre.png" />
+                <Image url="@Imagen/whiteStripesOthre.png"/>
             </image>
         </ImageView>
     </children>

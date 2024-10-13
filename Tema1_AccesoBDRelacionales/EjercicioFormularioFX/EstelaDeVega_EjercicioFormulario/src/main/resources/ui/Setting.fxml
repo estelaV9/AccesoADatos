@@ -11,158 +11,205 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="727.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esteladevega_ejercicioformulario.Controller.SettingCtrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0"
+            prefWidth="727.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.esteladevega_ejercicioformulario.Controller.SettingCtrller">
     <children>
         <ImageView fitHeight="388.0" fitWidth="736.0" layoutX="-6.0" pickOnBounds="true">
             <image>
-                <Image url="@Imagen/blurBackgroundApp.png" />
+                <Image url="@Imagen/blurBackgroundApp.png"/>
             </image>
         </ImageView>
-      <Pane fx:id="settingGMenu" prefHeight="388.0" prefWidth="270.0" style="-fx-background-color: #8656cb; -fx-border-color: #000;">
-         <children>
-            <Button fx:id="githubBtt" layoutX="50.0" layoutY="321.0" mnemonicParsing="false" onAction="#onGithubAction" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #8656cb; -fx-text-fill: #000;" text="estelaV9" textFill="#201f1f">
-               <font>
-                  <Font name="DejaVu Sans Bold" size="17.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Imagen/Github.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Line endX="100.0" layoutX="140.0" layoutY="265.0" startX="-100.0" stroke="#262626" strokeWidth="2.0" />
-              <ImageView fitHeight="42.0" fitWidth="202.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true">
-                  <image>
-                      <Image url="@Imagen/nameApp.png" />
-                  </image>
-              </ImageView>
-            <Button fx:id="profileBtt" layoutX="9.0" layoutY="66.0" mnemonicParsing="false" onAction="#onProfileAction" prefHeight="42.0" prefWidth="251.0" style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="PROFILE">
-               <font>
-                  <Font name="Britannic Bold" size="22.0" />
-               </font>
-            </Button>
-            <Button fx:id="userManualBtt" layoutX="9.0" layoutY="116.0" mnemonicParsing="false" onAction="#onUserManualAction" prefHeight="42.0" prefWidth="251.0" style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="USER MANUAL">
-               <font>
-                  <Font name="Britannic Bold" size="22.0" />
-               </font>
-            </Button>
-            <Button fx:id="signOutBtt" layoutX="10.0" layoutY="165.0" mnemonicParsing="false" onAction="#onSignOutAction" prefHeight="42.0" prefWidth="251.0" style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="SIGN OUT">
-               <font>
-                  <Font name="Britannic Bold" size="22.0" />
-               </font>
-            </Button>
-            <Button fx:id="backBtt" layoutX="9.0" layoutY="214.0" mnemonicParsing="false" onAction="#onBackAction" prefHeight="42.0" prefWidth="251.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="BACK">
-               <font>
-                  <Font name="Britannic Bold" size="22.0" />
-               </font>
-            </Button>
-            <Button fx:id="exitBtt" layoutX="10.0" layoutY="273.0" mnemonicParsing="false" onAction="#onExitAction" prefHeight="42.0" prefWidth="251.0" style="-fx-background-color: #a82f2a; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;" text="EXIT">
-               <font>
-                  <Font name="Britannic Bold" size="22.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <Pane fx:id="accountPane" layoutX="284.0" layoutY="4.0" prefHeight="375.0" prefWidth="434.0">
-         <children>
-            <Pane layoutY="99.0" prefHeight="276.0" prefWidth="434.0" style="-fx-background-color: #cc87e0; -fx-background-radius: 5; -fx-border-color: #000; -fx-border-width: 2;" />
-            <Label fx:id="accountTitle" layoutX="141.0" layoutY="9.0" text="ACCOUNT" textFill="#8656cb">
-               <font>
-                  <Font name="Britannic Bold" size="45.0" />
-               </font>
-            </Label>
-            <Button fx:id="personalBtt" layoutY="62.0" mnemonicParsing="false" onAction="#onPersonalAction" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000;" text="PERSONAL INFO">
-               <font>
-                  <Font name="Britannic Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="passwordBtt" layoutX="127.0" layoutY="62.0" mnemonicParsing="false" onAction="#onPasswordAction" prefHeight="44.0" prefWidth="164.0" style="-fx-background-color: #781ddd; -fx-text-fill: #000; -fx-border-color: #000;" text="MODIFY PASSWORD">
-               <font>
-                  <Font name="Britannic Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="deleteBtt" layoutX="288.0" layoutY="62.0" mnemonicParsing="false" onAction="#onDeleteAction" prefHeight="44.0" prefWidth="146.0" style="-fx-background-color: #781ddd; -fx-text-fill: #000; -fx-border-color: #000;" text="DELETE ACCOUNT">
-               <font>
-                  <Font name="Britannic Bold" size="15.0" />
-               </font>
-            </Button>
-            <Pane fx:id="passwordPane" layoutX="21.0" layoutY="111.0" prefHeight="222.0" prefWidth="393.0">
-               <children>
-                  <Label layoutX="2.0" layoutY="106.0" style="-fx-text-fill: #000;" text="CONFIRM PASSWORD">
-                     <font>
-                        <Font name="Britannic Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="txtNewPasswordConfirm" layoutX="3.0" layoutY="129.0" prefHeight="27.0" prefWidth="363.0" style="-fx-background-color: #8656cb;" />
-                  <Label layoutX="2.0" layoutY="47.0" style="-fx-text-fill: #000;" text="PASSWORD">
-                     <font>
-                        <Font name="Britannic Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="2.0" layoutY="14.0" style="-fx-text-fill: #000;" text="NEW PASSWORD">
-                     <font>
-                        <Font name="Britannic Bold" size="28.0" />
-                     </font>
-                  </Label>
-                  <Line endX="99.59375" layoutX="103.0" layoutY="42.0" startX="-100.0" strokeWidth="2.0" />
-                  <PasswordField fx:id="txtNewPasswordUp" layoutX="1.0" layoutY="71.0" prefHeight="27.0" prefWidth="363.0" style="-fx-background-color: #8656cb;" />
-                  <Button fx:id="updatePsswBtt" layoutX="4.0" layoutY="166.0" mnemonicParsing="false" onAction="#onUpdatePasswAction" prefHeight="42.0" prefWidth="363.0" style="-fx-background-color: #781ddd; -fx-background-radius: 10; -fx-border-color: #000; -fx-border-radius: 10; -fx-text-fill: #000;" text="UPDATE PASSWORD">
-                     <font>
-                        <Font name="Britannic Bold" size="22.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane fx:id="personalPane" layoutX="17.0" layoutY="121.0" prefHeight="248.0" prefWidth="402.0">
-               <children>
-                  <Line endX="47.974609375" endY="19.0" layoutX="152.0" layoutY="14.0" startX="-147.0" startY="19.0" strokeWidth="2.0" />
-                  <Button fx:id="updateInfoBtt" layoutX="20.0" layoutY="172.0" mnemonicParsing="false" onAction="#onUpdateInfoAction" prefHeight="42.0" prefWidth="363.0" style="-fx-background-color: #781ddd; -fx-background-radius: 10; -fx-border-color: #000; -fx-border-radius: 10; -fx-text-fill: #000;" text="UPDATE INFO">
-                     <font>
-                        <Font name="Britannic Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <TextField fx:id="txtNameUser" layoutX="16.0" layoutY="60.0" prefHeight="27.0" prefWidth="363.0" style="-fx-background-color: #8656cb;" />
-                  <Label layoutX="5.0" layoutY="4.0" style="-fx-text-fill: #000;" text="PERSONAL INFO">
-                     <font>
-                        <Font name="Britannic Bold" size="28.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtEmailUser" layoutX="16.0" layoutY="116.0" prefHeight="27.0" prefWidth="363.0" style="-fx-background-color: #8656cb;" />
-                  <Label layoutX="16.0" layoutY="38.0" style="-fx-text-fill: #000;" text="NAME">
-                     <font>
-                        <Font name="Britannic Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="16.0" layoutY="94.0" style="-fx-text-fill: #000;" text="MAIL">
-                     <font>
-                        <Font name="Britannic Bold" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="deletePane" layoutX="23.0" layoutY="124.0" prefHeight="203.0" prefWidth="393.0">
-               <children>
-                  <Label layoutX="9.0" layoutY="41.0" style="-fx-text-fill: #000;" text="Are you sure you want to permanently &#10;delete your account? &#10;This action cannot be undone &#10;and all associated data will be lost.&#10;">
-                     <font>
-                        <Font name="Britannic Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="9.0" layoutY="6.0" text="Account Deletion Confirmation" textFill="#a82f2a">
-                     <font>
-                        <Font name="Britannic Bold" size="27.0" />
-                     </font>
-                  </Label>
-                  <Line endX="196.66015625" layoutX="178.0" layoutY="32.0" startX="-171.0" stroke="#a82f2a" strokeWidth="2.0" />
-                  <Button fx:id="deleteAccountBtt" layoutX="85.0" layoutY="147.0" mnemonicParsing="false" onAction="#onDeleteAccAction" prefHeight="42.0" prefWidth="251.0" style="-fx-background-color: #a82f2a; -fx-background-radius: 10; -fx-border-color: #000; -fx-border-radius: 10; -fx-text-fill: #000;" text="DELETE ACCOUNT">
-                     <font>
-                        <Font name="Britannic Bold" size="22.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
+        <Pane fx:id="settingGMenu" prefHeight="388.0" prefWidth="270.0"
+              style="-fx-background-color: #8656cb; -fx-border-color: #000;">
+            <children>
+                <Button fx:id="githubBtt" layoutX="50.0" layoutY="321.0" mnemonicParsing="false"
+                        onAction="#onGithubAction" prefHeight="40.0" prefWidth="170.0"
+                        style="-fx-background-color: #8656cb; -fx-text-fill: #000;" text="estelaV9" textFill="#201f1f">
+                    <font>
+                        <Font name="DejaVu Sans Bold" size="17.0"/>
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Imagen/Github.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Line endX="100.0" layoutX="140.0" layoutY="265.0" startX="-100.0" stroke="#262626" strokeWidth="2.0"/>
+                <ImageView fitHeight="42.0" fitWidth="202.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@Imagen/nameApp.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="profileBtt" layoutX="9.0" layoutY="66.0" mnemonicParsing="false"
+                        onAction="#onProfileAction" prefHeight="42.0" prefWidth="251.0"
+                        style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;"
+                        text="PROFILE">
+                    <font>
+                        <Font name="Britannic Bold" size="22.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="userManualBtt" layoutX="9.0" layoutY="116.0" mnemonicParsing="false"
+                        onAction="#onUserManualAction" prefHeight="42.0" prefWidth="251.0"
+                        style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;"
+                        text="USER MANUAL">
+                    <font>
+                        <Font name="Britannic Bold" size="22.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="signOutBtt" layoutX="10.0" layoutY="165.0" mnemonicParsing="false"
+                        onAction="#onSignOutAction" prefHeight="42.0" prefWidth="251.0"
+                        style="-fx-background-color: #781ddd; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;"
+                        text="SIGN OUT">
+                    <font>
+                        <Font name="Britannic Bold" size="22.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="backBtt" layoutX="9.0" layoutY="214.0" mnemonicParsing="false" onAction="#onBackAction"
+                        prefHeight="42.0" prefWidth="251.0"
+                        style="-fx-background-color: #cc87e0; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;"
+                        text="BACK">
+                    <font>
+                        <Font name="Britannic Bold" size="22.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="exitBtt" layoutX="10.0" layoutY="273.0" mnemonicParsing="false" onAction="#onExitAction"
+                        prefHeight="42.0" prefWidth="251.0"
+                        style="-fx-background-color: #a82f2a; -fx-background-radius: 20; -fx-border-color: #000; -fx-border-radius: 20; -fx-text-fill: #000;"
+                        text="EXIT">
+                    <font>
+                        <Font name="Britannic Bold" size="22.0"/>
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+        <Pane fx:id="accountPane" layoutX="284.0" layoutY="4.0" prefHeight="375.0" prefWidth="434.0">
+            <children>
+                <Pane layoutY="99.0" prefHeight="276.0" prefWidth="434.0"
+                      style="-fx-background-color: #cc87e0; -fx-background-radius: 5; -fx-border-color: #000; -fx-border-width: 2;"/>
+                <Label fx:id="accountTitle" layoutX="141.0" layoutY="9.0" text="ACCOUNT" textFill="#8656cb">
+                    <font>
+                        <Font name="Britannic Bold" size="45.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="personalBtt" layoutY="62.0" mnemonicParsing="false" onAction="#onPersonalAction"
+                        prefHeight="44.0" prefWidth="134.0"
+                        style="-fx-background-color: #781ddd; -fx-border-color: #000; -fx-text-fill: #000;"
+                        text="PERSONAL INFO">
+                    <font>
+                        <Font name="Britannic Bold" size="15.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="passwordBtt" layoutX="127.0" layoutY="62.0" mnemonicParsing="false"
+                        onAction="#onPasswordAction" prefHeight="44.0" prefWidth="164.0"
+                        style="-fx-background-color: #781ddd; -fx-text-fill: #000; -fx-border-color: #000;"
+                        text="MODIFY PASSWORD">
+                    <font>
+                        <Font name="Britannic Bold" size="15.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="deleteBtt" layoutX="288.0" layoutY="62.0" mnemonicParsing="false"
+                        onAction="#onDeleteAction" prefHeight="44.0" prefWidth="146.0"
+                        style="-fx-background-color: #781ddd; -fx-text-fill: #000; -fx-border-color: #000;"
+                        text="DELETE ACCOUNT">
+                    <font>
+                        <Font name="Britannic Bold" size="15.0"/>
+                    </font>
+                </Button>
+                <Pane fx:id="passwordPane" layoutX="21.0" layoutY="111.0" prefHeight="222.0" prefWidth="393.0">
+                    <children>
+                        <Label layoutX="2.0" layoutY="106.0" style="-fx-text-fill: #000;" text="CONFIRM PASSWORD">
+                            <font>
+                                <Font name="Britannic Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="txtNewPasswordConfirm" layoutX="3.0" layoutY="129.0" prefHeight="27.0"
+                                       prefWidth="363.0" style="-fx-background-color: #8656cb;"/>
+                        <Label layoutX="2.0" layoutY="47.0" style="-fx-text-fill: #000;" text="PASSWORD">
+                            <font>
+                                <Font name="Britannic Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="2.0" layoutY="14.0" style="-fx-text-fill: #000;" text="NEW PASSWORD">
+                            <font>
+                                <Font name="Britannic Bold" size="28.0"/>
+                            </font>
+                        </Label>
+                        <Line endX="99.59375" layoutX="103.0" layoutY="42.0" startX="-100.0" strokeWidth="2.0"/>
+                        <PasswordField fx:id="txtNewPasswordUp" layoutX="1.0" layoutY="71.0" prefHeight="27.0"
+                                       prefWidth="363.0" style="-fx-background-color: #8656cb;"/>
+                        <Button fx:id="updatePsswBtt" layoutX="4.0" layoutY="166.0" mnemonicParsing="false"
+                                onAction="#onUpdatePasswAction" prefHeight="42.0" prefWidth="363.0"
+                                style="-fx-background-color: #781ddd; -fx-background-radius: 10; -fx-border-color: #000; -fx-border-radius: 10; -fx-text-fill: #000;"
+                                text="UPDATE PASSWORD">
+                            <font>
+                                <Font name="Britannic Bold" size="22.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </Pane>
+                <Pane fx:id="personalPane" layoutX="17.0" layoutY="121.0" prefHeight="248.0" prefWidth="402.0">
+                    <children>
+                        <Line endX="47.974609375" endY="19.0" layoutX="152.0" layoutY="14.0" startX="-147.0"
+                              startY="19.0" strokeWidth="2.0"/>
+                        <Button fx:id="updateInfoBtt" layoutX="20.0" layoutY="172.0" mnemonicParsing="false"
+                                onAction="#onUpdateInfoAction" prefHeight="42.0" prefWidth="363.0"
+                                style="-fx-background-color: #781ddd; -fx-background-radius: 10; -fx-border-color: #000; -fx-border-radius: 10; -fx-text-fill: #000;"
+                                text="UPDATE INFO">
+                            <font>
+                                <Font name="Britannic Bold" size="22.0"/>
+                            </font>
+                        </Button>
+                        <TextField fx:id="txtNameUser" layoutX="16.0" layoutY="60.0" prefHeight="27.0" prefWidth="363.0"
+                                   style="-fx-background-color: #8656cb;"/>
+                        <Label layoutX="5.0" layoutY="4.0" style="-fx-text-fill: #000;" text="PERSONAL INFO">
+                            <font>
+                                <Font name="Britannic Bold" size="28.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtEmailUser" layoutX="16.0" layoutY="116.0" prefHeight="27.0"
+                                   prefWidth="363.0" style="-fx-background-color: #8656cb;"/>
+                        <Label layoutX="16.0" layoutY="38.0" style="-fx-text-fill: #000;" text="NAME">
+                            <font>
+                                <Font name="Britannic Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="16.0" layoutY="94.0" style="-fx-text-fill: #000;" text="MAIL">
+                            <font>
+                                <Font name="Britannic Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane fx:id="deletePane" layoutX="23.0" layoutY="124.0" prefHeight="203.0" prefWidth="393.0">
+                    <children>
+                        <Label layoutX="9.0" layoutY="41.0" style="-fx-text-fill: #000;"
+                               text="Are you sure you want to permanently &#10;delete your account? &#10;This action cannot be undone &#10;and all associated data will be lost.&#10;">
+                            <font>
+                                <Font name="Britannic Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="9.0" layoutY="6.0" text="Account Deletion Confirmation" textFill="#a82f2a">
+                            <font>
+                                <Font name="Britannic Bold" size="27.0"/>
+                            </font>
+                        </Label>
+                        <Line endX="196.66015625" layoutX="178.0" layoutY="32.0" startX="-171.0" stroke="#a82f2a"
+                              strokeWidth="2.0"/>
+                        <Button fx:id="deleteAccountBtt" layoutX="85.0" layoutY="147.0" mnemonicParsing="false"
+                                onAction="#onDeleteAccAction" prefHeight="42.0" prefWidth="251.0"
+                                style="-fx-background-color: #a82f2a; -fx-background-radius: 10; -fx-border-color: #000; -fx-border-radius: 10; -fx-text-fill: #000;"
+                                text="DELETE ACCOUNT">
+                            <font>
+                                <Font name="Britannic Bold" size="22.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
     </children>
 </AnchorPane>

@@ -14,9 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import org.apache.commons.codec.digest.DigestUtils;
-
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -54,10 +52,8 @@ public class RegistrationCtrller implements Initializable {
     private Pane signUpVision;
     @FXML
     private TextField userNameTxt;
-
     public static CubeUser cubeUser;
-    String contraseñaCifrada;
-
+    String contraseñaCifrada; // VARIABLE PARA GUARDAR LA CONTRASEÑA CIFRADA
 
     @FXML
     void onBackAction(ActionEvent event) {
@@ -81,7 +77,7 @@ public class RegistrationCtrller implements Initializable {
 
     @FXML
     void onLogInAction(ActionEvent event) {
-        if(emailTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()){
+        if (emailTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()) {
             // SI LOS CAMPOS ESTAN VACIOS, SE MOSTRARA UN ERROR
             StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
                     "Por favor, completa todos los campos antes de continuar.");
@@ -95,9 +91,8 @@ public class RegistrationCtrller implements Initializable {
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         } else {
             contraseñaCifrada = DigestUtils.sha256Hex(passwordTxt.getText()); // CIFRAR CONTRASEÑA
-            System.out.println(contraseñaCifrada);
             cubeUser = new CubeUser(emailTxt.getText(), contraseñaCifrada); // SE CREA UN USUARIO
-            if(!CubeUserDAO.isExistsUser(ConnectionDB.con, cubeUser)) {
+            if (!CubeUserDAO.isExistsUser(ConnectionDB.con, cubeUser)) {
                 // SI NO EXISTE EL USUARIO MOSTRAR UN MENSAJE EN LA VISTA DE ERROR
                 loginMessage.setText("Invalid login");
             } else {
@@ -131,9 +126,8 @@ public class RegistrationCtrller implements Initializable {
                     "Por favor, introduzca una contraseña válida:\nPs.contains(8)");
         } else {
             contraseñaCifrada = DigestUtils.sha256Hex(passwordSignTxt.getText()); // CIFRAR CONTRASEÑA
-            System.out.println(contraseñaCifrada);
             cubeUser = new CubeUser(userNameTxt.getText(), contraseñaCifrada, 0, emailSignTxt.getText(), currentDate);
-            if(CubeUserDAO.insertUser(ConnectionDB.con, cubeUser)){
+            if (CubeUserDAO.insertUser(ConnectionDB.con, cubeUser)) {
                 // SI SE INSERTO EL USUARIO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Creación de usuario", "Creación exitosa",
                         "Se ha creado el usuario correctamente.");
@@ -154,8 +148,6 @@ public class RegistrationCtrller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        emailTxt.setText("s@gmail.com");
-        passwordTxt.setText("Ps.contains(8)");
         signUpVision.setVisible(false);
-    }
+    } // SE INICIALIZA CON LA VENTANA DE CREAR CUENTA CERRADA
 }

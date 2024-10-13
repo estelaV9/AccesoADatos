@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -20,59 +19,38 @@ import java.util.ResourceBundle;
 public class CubeShopCtrller implements Initializable {
     @FXML
     private TableView<Product> CubeTable;
-
     @FXML
     private Button backBtt;
-
     @FXML
     private TableColumn<?, ?> categoryCol;
-
     @FXML
     private Button closeBtt;
-
     @FXML
     private Button closeSeBtt;
-
     @FXML
     private Label loginMessage;
-
     @FXML
     private TableColumn<Product, String> nameProductCol;
-
     @FXML
     private Button newProductBtt;
-
     @FXML
     private TableColumn<Product, String> ownerCol;
-
     @FXML
     private TableColumn<Product, Double> priceCol;
-
     @FXML
     private Button settingBtt;
-
     @FXML
     private Pane settingMenu;
-
     @FXML
     private Button settingsMenuBtt;
-
-    @FXML
-    private Button shopCartBtt;
-
     @FXML
     private Button yourProductBtt;
-
     @FXML
     private Button signOutBtt;
 
-
-    ObservableList<Product> listProduct;
-    // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
-    boolean pulsarOption = false;
-
-    // ATRIBUTO PARA SABER SI PULSO EL BOTON DE NEW
-    public static boolean isNewSelected;
+    ObservableList<Product> listProduct; // OBSERVABLELIST DE TIPO PRODUCTO PARA GUARDAR LOS PRODUCTOS
+    boolean pulsarOption = false; // VARIABLE PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
+    public static boolean isNewSelected; // ATRIBUTO PARA SABER SI PULSO EL BOTON DE NEW
 
     @FXML
     void onBackAction(ActionEvent event) {
@@ -127,7 +105,6 @@ public class CubeShopCtrller implements Initializable {
         StaticCode.cambiarVistaBtt("/ui/Setting.fxml", settingBtt, "Setting Page");
     } // IR A LA PAGINA DE SETTINGS
 
-
     @FXML
     void onYourProductAction(ActionEvent event) {
         // SE LLAMA AL METODO ESTATICO CAMBIAR VISTA POR BOTON PARA IR A LA PAGINA DE SUS PRODUCTOS
@@ -149,5 +126,5 @@ public class CubeShopCtrller implements Initializable {
 
         listProduct = FXCollections.observableArrayList(ProductDAO.listProduct(ConnectionDB.con));
         CubeTable.setItems(listProduct); // ESTABLECER LISTA
-    }
+    } // INICIALIZAR CON LOS DATOS DE LA TABLA Y EL MENU CERRADO
 }

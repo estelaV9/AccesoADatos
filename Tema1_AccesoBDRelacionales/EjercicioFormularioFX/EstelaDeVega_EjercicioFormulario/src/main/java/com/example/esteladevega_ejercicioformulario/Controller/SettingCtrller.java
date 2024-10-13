@@ -2,7 +2,6 @@ package com.example.esteladevega_ejercicioformulario.Controller;
 
 import com.example.esteladevega_ejercicioformulario.ConnectionDB.ConnectionDB;
 import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
-import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
 import com.example.esteladevega_ejercicioformulario.Validator.Validator;
 import javafx.event.ActionEvent;
@@ -14,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import org.apache.commons.codec.digest.DigestUtils;
-
 import javax.swing.*;
 import java.awt.*;
 import java.net.URI;
@@ -68,10 +66,6 @@ public class SettingCtrller implements Initializable {
     private Button userManualBtt;
 
     String mailUser, contraseñaCifrada;
-
-    public void display(String mail) {
-        mailUser = mail;
-    }
 
     @FXML
     void onBackAction(ActionEvent event) {

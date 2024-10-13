@@ -28,44 +28,33 @@ public class Product {
         this.owner = owner;
     }
 
-
-
     public int getIdProduct() {
         return idProduct;
     }
-
     public void setIdProduct(int idProduct) {
         this.idProduct = idProduct;
     }
-
     public String getNameProduct() {
         return nameProduct;
     }
-
     public void setNameProduct(String nameProduct) {
         this.nameProduct = nameProduct;
     }
-
     public String getCategory() {
         return category;
     }
-
     public void setCategory(String category) {
         this.category = category;
     }
-
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
-
     public String getOwner() {
         return owner;
     }
-
     public void setOwner(String owner) {
         this.owner = owner;
     }

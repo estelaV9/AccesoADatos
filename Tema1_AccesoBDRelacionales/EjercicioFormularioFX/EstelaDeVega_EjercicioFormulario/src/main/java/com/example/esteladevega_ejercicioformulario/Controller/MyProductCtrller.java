@@ -5,6 +5,7 @@ import com.example.esteladevega_ejercicioformulario.DAO.CubeUserDAO;
 import com.example.esteladevega_ejercicioformulario.DAO.ProductDAO;
 import com.example.esteladevega_ejercicioformulario.Model.Product;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
+import com.example.esteladevega_ejercicioformulario.Validator.Validator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,11 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-
 import javax.swing.*;
 import java.net.URL;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MyProductCtrller implements Initializable {
@@ -52,12 +50,6 @@ public class MyProductCtrller implements Initializable {
     @FXML
     private TextField newProductPrice;
     @FXML
-    private Label loginMessage;
-    @FXML
-    private Label loginMessage1;
-    @FXML
-    private Button modifyBtt;
-    @FXML
     private Pane modifyPane;
     @FXML
     private Button modifyProductPaneBtt;
@@ -67,41 +59,29 @@ public class MyProductCtrller implements Initializable {
     private Pane settingMenu;
     @FXML
     private Button settingsMenuBtt;
-
     @FXML
     private Button signOutBtt;
-
     @FXML
     private Button createProductPane;
-
     @FXML
     private Button exitMenuNewProductBtt;
-
     @FXML
     private Pane createPane;
-
     @FXML
     private ComboBox<String> newProductComboBox;
-
     @FXML
     private TextField productNameTxt;
-
     @FXML
     private TextField productPriceTxt;
 
-
-    // ATRIBUTOS SEMAFOROS PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
-    boolean pulsarOption = false;
-
-    // ATRIBUTO PARA GUARDAR EL NOMBRE DEL PRODUCTO SELECIONADO
-    String nameProductSelected = "";
-
+    boolean pulsarOption = false; // VARIABLE PARA ABRIR Y CERRAR DESDE EL MISMO BOTON
+    String nameProductSelected = ""; // ATRIBUTO PARA GUARDAR EL NOMBRE DEL PRODUCTO SELECIONADO
     // ARRAY PARA GUARDAR LAS CATEGORIAS DE LOS CUBOS
-    String [] categorias = {"2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
+    String[] categorias = {"2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
             "PYRAMINX", "MEGAMINX", "SKEWB", "SQUARE-1", "CLOCK",
             "3x3x3 MIRROR", "PYRAMORPHIX", "MASTERMORPHIX"};
 
-    private boolean isSelectedProduct () {
+    private boolean isSelectedProduct() {
         Product product = CubeTable.getSelectionModel().getSelectedItem(); // SE GUARDA EL OBJETO PRODUCTO SELECCIONADO
         if (product == null) {
             // MOSTRAR ALERTA EN CASO DE QUE SE SELECCIONE UNA FILA VACIA
@@ -146,17 +126,21 @@ public class MyProductCtrller implements Initializable {
 
     @FXML
     void onModifyProductAction(ActionEvent event) {
-        if(newProductName.getText().isEmpty() || newProductPrice.getText().isEmpty() || comboBox.getValue() == null) {
+        if (newProductName.getText().isEmpty() || newProductPrice.getText().isEmpty() || comboBox.getValue() == null) {
             // SI LOS CAMPOS ESTAN VACIOS, SE MOSTRARA UN ERROR
             StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
                     "Por favor, completa todos los campos antes de continuar.");
-        } else if(ProductDAO.isExistsNameUser(ConnectionDB.con, newProductName.getText())){
+        } else if (ProductDAO.isExistsNameUser(ConnectionDB.con, newProductName.getText())) {
             // CONTROLAR QUE NO PONGA EL MISMO NOMBRE DEL PRODUCTO
             StaticCode.Alerts("ERROR", "Nombre de producto YA existente", "¡ERROR!",
                     "Ese nombre ya esta en uso. Por favor, elija otro nombre.");
+        } else if (!Validator.contieneNumeros(newProductPrice.getText())) {
+            // CONTROLAR QUE NO PONGA NUMEROS EN UN CAMPO NUMERICO
+            StaticCode.Alerts("ERROR", "NO introducir cadenas", "¡ERROR!",
+                    "El precio es un campo numerico no se pueden introducir cadenas.");
         } else {
             Product product = new Product(newProductName.getText(), comboBox.getValue(), Double.parseDouble(newProductPrice.getText()));
-            if(ProductDAO.modifyProduct(ConnectionDB.con, product, nameProductSelected)) {
+            if (ProductDAO.modifyProduct(ConnectionDB.con, product, nameProductSelected)) {
                 // SI SE ACTUALIZO EL PRODUCTO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Actualización de producto", "Actualizacion exitosa",
                         "Se ha actualizado el producto correctamente.");
@@ -196,7 +180,7 @@ public class MyProductCtrller implements Initializable {
 
     @FXML
     void onTableClicked(MouseEvent event) {
-        if(isSelectedProduct()){
+        if (isSelectedProduct()) {
             // LIMPIAR LOS CAMPOS
             newProductPrice.clear();
             newProductName.clear();
@@ -237,19 +221,23 @@ public class MyProductCtrller implements Initializable {
 
     @FXML
     void onCreateProductAction(ActionEvent event) {
-        if(productNameTxt.getText().isEmpty() || productPriceTxt.getText().isEmpty() || newProductComboBox.getValue() == null) {
+        if (productNameTxt.getText().isEmpty() || productPriceTxt.getText().isEmpty() || newProductComboBox.getValue() == null) {
             // SI LOS CAMPOS ESTAN VACIOS, SE MOSTRARA UN ERROR
             StaticCode.Alerts("ERROR", "Campos vacíos", "¡ERROR!",
                     "Por favor, completa todos los campos antes de continuar.");
-        } else if(ProductDAO.isExistsNameUser(ConnectionDB.con, productNameTxt.getText())){
+        } else if (ProductDAO.isExistsNameUser(ConnectionDB.con, productNameTxt.getText())) {
             // CONTROLAR QUE NO PONGA EL MISMO NOMBRE DEL PRODUCTO
             StaticCode.Alerts("ERROR", "Nombre de producto YA existente", "¡ERROR!",
                     "Ese nombre ya esta en uso. Por favor, elija otro nombre.");
+        } else if (!Validator.contieneNumeros(productPriceTxt.getText())) {
+            // CONTROLAR QUE NO PONGA NUMEROS EN UN CAMPO NUMERICO
+            StaticCode.Alerts("ERROR", "NO introducir cadenas", "¡ERROR!",
+                    "El precio es un campo numerico no se pueden introducir cadenas.");
         } else {
             // AÑADIR EL PRODUCTO
             Product product = new Product(productNameTxt.getText(), newProductComboBox.getValue(), Double.parseDouble(productPriceTxt.getText()),
                     CubeUserDAO.searchNameUser(ConnectionDB.con, RegistrationCtrller.cubeUser.getMail()));
-            if(ProductDAO.insertProdut(ConnectionDB.con, product)) {
+            if (ProductDAO.insertProdut(ConnectionDB.con, product)) {
                 // SI SE INSERTO EL PRODUCTO, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Creación de producto", "Creación exitosa",
                         "Se ha creado el producto correctamente.");
@@ -270,7 +258,7 @@ public class MyProductCtrller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // AL INICAR, NO SE VISUALIZA LOS PANELES DE SETTINGS Y MODIFY
         settingMenu.setVisible(false);
-        if(CubeShopCtrller.isNewSelected){
+        if (CubeShopCtrller.isNewSelected) {
             modifyPane.setVisible(false);
             createPane.setVisible(true);
         } else {
@@ -285,7 +273,7 @@ public class MyProductCtrller implements Initializable {
         categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
 
         // AÑADIR LOS DATOS A UN OBSERVABLELIST
-        ObservableList<Product>  listProduct =
+        ObservableList<Product> listProduct =
                 FXCollections.observableArrayList(ProductDAO.myListProduct(ConnectionDB.con, RegistrationCtrller.cubeUser.getMail()));
         CubeTable.setItems(listProduct); // ESTABLECER LISTA
 

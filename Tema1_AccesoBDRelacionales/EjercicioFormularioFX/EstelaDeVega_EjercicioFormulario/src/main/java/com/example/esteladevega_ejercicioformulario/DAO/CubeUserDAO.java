@@ -2,14 +2,8 @@ package com.example.esteladevega_ejercicioformulario.DAO;
 
 import com.example.esteladevega_ejercicioformulario.Controller.RegistrationCtrller;
 import com.example.esteladevega_ejercicioformulario.Model.CubeUser;
-import com.example.esteladevega_ejercicioformulario.Utilities.R;
 import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
-import javafx.scene.control.Alert;
-
-import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDate;
-import java.util.Properties;
 
 public class CubeUserDAO {
     public static boolean insertUser(Connection con, CubeUser cubeUser) {
@@ -129,7 +123,7 @@ public class CubeUserDAO {
         return false;
     }
 
-    public static String searchNameUser (Connection con, String mail) {
+    public static String searchNameUser(Connection con, String mail) {
         try {
             String sqlQuery = "SELECT NAME_USER FROM CUBE_USERS WHERE MAIL = ?";
             PreparedStatement statementQuery = con.prepareStatement(sqlQuery);
@@ -145,6 +139,4 @@ public class CubeUserDAO {
         }
         return null;
     } // METODO PARA DEVOVER EL NOMBRE DE UN USUARIO MEDIANTE SU MAIL
-
-
 }

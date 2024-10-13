@@ -1,7 +1,5 @@
 package com.example.esteladevega_ejercicioformulario.Validator;
 
-import com.example.esteladevega_ejercicioformulario.Utilities.StaticCode;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,4 +44,15 @@ public class Validator {
             return false;
         }
     } // VALIDAR LA CONTRASEÑA
+
+    public static boolean contieneNumeros(String texto) {
+        /** Este método verifica si la cadena de texto proporcionada contiene solamente números.
+         * Se utiliza el método matches() para comprobar si la cadena coincide con la expresión regular.
+         * En este caso, la expresión regular utilizada es "\\d+", que significa:
+         *  - '\\d': representa cualquier dígito (del 0 al 9).
+         *  - '+': indica que debe haber al menos uno o más dígitos consecutivos.
+         * Si la cadena contiene solo números, el método `matches()` devolverá true.
+         * Si la cadena contiene cualquier otro carácter que no sea un número, devolverá false. */
+        return texto.matches("\\d+");
+    } // VALIDACION PARA QUE LOS CAMPOS NO CONTENGAN CADENAS
 }

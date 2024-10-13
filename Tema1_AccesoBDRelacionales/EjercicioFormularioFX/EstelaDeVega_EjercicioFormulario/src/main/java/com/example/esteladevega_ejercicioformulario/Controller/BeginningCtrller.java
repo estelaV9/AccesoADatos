@@ -6,14 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class BeginningCtrller implements Initializable {
-
     @FXML
     private Button goBtt;
 
@@ -34,5 +31,5 @@ public class BeginningCtrller implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    } // INICIALIZAR LA CONEXION
 }

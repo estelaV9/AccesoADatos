@@ -16,7 +16,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
-import java.util.List;
 
 public class StaticCode {
     public static void cambiarVistaBtt(String nameFxml, Button button, String title) {
@@ -57,13 +56,10 @@ public class StaticCode {
         alert.showAndWait();
     } // METODO ESTATICO PARA GENERA UNA ALERTA
 
-
     public static void refresh(TableView<Product> myTable) {
         // AÑADIR LOS DATOS A UN OBSERVABLELIST
         ObservableList<Product> listProduct =
                 FXCollections.observableArrayList(ProductDAO.myListProduct(ConnectionDB.con, RegistrationCtrller.cubeUser.getMail()));
         myTable.setItems(listProduct); // ESTABLECER LISTA
     } // METODO PARA REFRESCAR LA TABLA
-
-
 }

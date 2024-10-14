@@ -23,7 +23,6 @@ Desarrollar una aplicación JavaFX con mínimo dos formularios y dos tablas en l
  - **Iniciar sesión y modificar datos**: Los usuarios pueden iniciar sesión en la aplicación, gestionar sus datos y actualizar su información personal.
  - **Catálogo de productos**: La aplicación ofrece un catálogo de cubos de Rubik disponibles para comprar, con detalles como nombre, precio y la opción de añadir al carrito.
  - **Gestión de productos**: La aplicación permitirá a los usuarios registrados crear y gestionar productos dentro del catálogo.
- - **Carrito de compras**: Los usuarios podrán seleccionar productos y agregarlos al carrito, visualizar el total y proceder a la compra.
 
 ### Ejecución del proyecto
 Este proyecto no tiene el archivo module, por lo que, la ejecución tiene que añadirse a mano.
@@ -126,15 +125,15 @@ Este proyecto no tiene el archivo module, por lo que, la ejecución tiene que a�
   <tr>
      <td width="60%">
       Cuando pulsas la opción de <b>settings</b>, te abrirá una ventana con varias opciones: <br><br>
-      - <b>PROFILE</b>: Aparecerá un panel sobre la cuenta del usuario con tres opciones:
-         · <b>Editar información</b>: cambiará la información sobre el nombre y el mail del usuario. Una vez finalizado, se "reiniciará" y le llevará a la página de resgistrarse.
-       · <b>Editar contraseña</b>: cambiará la información de la contraseña del usuario.
-       · <b>Eliminar Usuario</b>: se eliminará el usuario de forma inmediata. Redirigirá a la página de registro.
-      - <b>User Manual</b>: Nos llevará a este archivo.
-      - <b>Sign Out</b>: Cerrará sesión.
-      - <b>Back</b>: Volverá a la página de tienda.
-      - <b>Exit</b>: Cerrará la aplicación.
-      - <b>estelaV9</b>: Redirigirá a mi github.
+      - <b>PROFILE</b>: Aparecerá un panel sobre la cuenta del usuario con tres opciones:<br>
+         · <b>Editar información</b>: cambiará la información sobre el nombre y el mail del usuario. Una vez finalizado, se "reiniciará" y le llevará a la página de resgistrarse.<br>
+         · <b>Editar contraseña</b>: cambiará la información de la contraseña del usuario.<br>
+         · <b>Eliminar Usuario</b>: se eliminará el usuario de forma inmediata. Redirigirá a la página de registro.<br>
+      - <b>User Manual</b>: Nos llevará a este archivo.<br>
+      - <b>Sign Out</b>: Cerrará sesión.<br>
+      - <b>Back</b>: Volverá a la página de tienda.<br>
+      - <b>Exit</b>: Cerrará la aplicación.<br>
+      - <b>estelaV9</b>: Redirigirá a mi github.<br>
     </td>
     <td width="40%">
       <p>PROFILE SETTINGS</p>

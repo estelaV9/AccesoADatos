@@ -18,13 +18,12 @@ public class ConnectionDB {
         String host = "", port = "", name = "", username = "", password = "";
 
         try {
-            properties.load(new FileInputStream("src/main/resources/Configuration/database.properties"));
+            properties.load(new FileInputStream("src/main/resources/configuration/database.properties"));
             host = String.valueOf(properties.get("host"));
             port = String.valueOf(properties.get("port"));
             name = String.valueOf(properties.get("name"));
             username = String.valueOf(properties.get("username"));
             password = String.valueOf(properties.get("password"));
-            Class.forName("com.mysql.cj.jdbc.Driver");
             con = new MongoClient(new MongoClientURI("mongodb://" + username + ":" + password + "@" + host + ":" + port + "/?authSource=admin"));
             return con;
         } catch (FileNotFoundException e) {
@@ -34,8 +33,6 @@ public class ConnectionDB {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
     } // METODO PARA CONECTAR UNA APP A LA DATABASE DE MONGODB
 

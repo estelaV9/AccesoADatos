@@ -34,13 +34,14 @@ public class GestionCocheCtrller implements Initializable {
     @FXML
     private TableView<?> cochesTable;
     @FXML
-    private ComboBox<?> tipoComboBox;
+    private ComboBox<String> tipoComboBox;
     @FXML
     private Button modificarBtt;
     @FXML
     private Button eliminarBtt;
 
     static MongoClient con;
+    String[] tipoCoches = {"Diesel", "Gasolina", "Electrico"};
 
     @FXML
     void onCancelarAction(ActionEvent event) {
@@ -67,16 +68,14 @@ public class GestionCocheCtrller implements Initializable {
 
     @FXML
     void onNuevoCocheAction(ActionEvent event) {
-        Coche coche = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), (String) tipoComboBox.getValue());
+        Coche coche = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
         CocheDAO.insertCar(con, coche);
     }
-    String[] sfdsafdsa = {"2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
-            "PYRAMINX", "MEGAMINX", "SKEWB", "SQUARE-1", "CLOCK",
-            "3x3x3 MIRROR", "PYRAMORPHIX", "MASTERMORPHIX"}; // ARRAY PARA GUARDAR LAS CATEGORIAS DE LOS CUBOS
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         con = ConnectionDB.conectar();
         // INICIALIZAR LOS COMBOBOX
-       // tipoComboBox.getItems().addAll(sfdsafdsa); // AÑADIR LOS VALORES AL COMBOBOX
+        tipoComboBox.getItems().addAll(tipoCoches); // AÑADIR LOS VALORES AL COMBOBOX
     }
 }

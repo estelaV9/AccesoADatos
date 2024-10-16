@@ -37,8 +37,8 @@
         <Button fx:id="nuevoBtt" layoutX="71.0" layoutY="218.0" mnemonicParsing="false" onAction="#onNuevoCocheAction" text="Nuevo" />
         <Button fx:id="guardarBtt" layoutX="138.0" layoutY="218.0" mnemonicParsing="false" onAction="#onGuardarAction" text="Guardar" />
         <Button fx:id="cancelarBtt" layoutX="213.0" layoutY="218.0" mnemonicParsing="false" onAction="#onCancelarAction" text="Cancelar" />
-        <Button layoutX="290.0" layoutY="218.0" mnemonicParsing="false" text="Modificar" />
-        <Button layoutX="373.0" layoutY="218.0" mnemonicParsing="false" text="Eliminar" />
+        <Button fx:id="modificarBtt" layoutX="290.0" layoutY="218.0" mnemonicParsing="false" onAction="#onModificarAction" text="Modificar" />
+        <Button fx:id="eliminarBtt" layoutX="373.0" layoutY="218.0" mnemonicParsing="false" onAction="#onEliminarAction" text="Eliminar" />
       <TableView fx:id="cochesTable" layoutX="28.0" layoutY="276.0" prefHeight="200.0" prefWidth="545.0" />
       <Label layoutX="29.0" layoutY="484.0" text="Coches v5">
          <font>

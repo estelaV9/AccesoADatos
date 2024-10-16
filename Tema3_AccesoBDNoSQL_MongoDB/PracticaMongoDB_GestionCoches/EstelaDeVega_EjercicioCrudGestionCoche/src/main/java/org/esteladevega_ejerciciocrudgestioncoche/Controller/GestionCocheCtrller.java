@@ -24,14 +24,31 @@ public class GestionCocheCtrller {
     private TableView<?> cochesTable;
     @FXML
     private ComboBox<?> tipoComboBox;
+    @FXML
+    private Button modificarBtt;
+    @FXML
+    private Button eliminarBtt;
 
     @FXML
     void onCancelarAction(ActionEvent event) {
+        matriculaTxt.clear();
+        marcaTxt.clear();
+        modeloTxt.clear();
+        tipoComboBox.setValue(null);
+    }
+
+    @FXML
+    void onEliminarAction(ActionEvent event) {
 
     }
 
     @FXML
     void onGuardarAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onModificarAction(ActionEvent event) {
 
     }
 

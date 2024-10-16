@@ -9,6 +9,13 @@ public class Coche {
     public Coche () {
 
     }
+
+    public Coche(String matricula, String marca, String modelo) {
+        this.matricula = matricula;
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+
     public Coche(String matricula, String marca, String modelo, String tipo) {
         this.matricula = matricula;
         this.marca = marca;

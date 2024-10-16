@@ -10,7 +10,7 @@ import org.esteladevega_ejerciciocrudgestioncoche.Model.Coche;
 import org.esteladevega_ejerciciocrudgestioncoche.Utilities.StaticCode;
 
 public class CocheDAO {
-    public static boolean insertCar(MongoClient con, Coche coche) {
+    public static void insertCar(MongoClient con, Coche coche) {
         MongoCollection<Document> collection = null;
         String json;
         Document doc;
@@ -31,13 +31,14 @@ public class CocheDAO {
             // INSERTAR DOCUMENTOS, PARA ELLO TENDREMOS QUE CONVERTIRLO Y PARSEAR UN DOC BSON E INSERTAR
             doc = Document.parse(json); // PARSEAR UN DOCUMENTO BSON E INSERTAR
             collection.insertOne(doc);
-
+            StaticCode.Alerts("INFORMATION", "Insertar Coche", "INFORMATION",
+                    "Se ha insertado el coche correctamente");
         } catch (Exception e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
-            return false;
         }
-        return false;
+        StaticCode.Alerts("ERROR", "Ha ocurrido un error", "¡ERROR!",
+                "Ha ocurrido un error al insertar un coche");
     } // METODO PARA INSERTAR COCHE
 
 

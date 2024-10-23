@@ -1,6 +1,8 @@
 package org.esteladevega_ejerciciocrudgestioncoche.Utilities;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 public class StaticCode {
     public static void Alerts(String tipoAlert, String tituloAlert, String headerText, String contentText) {
@@ -10,5 +12,16 @@ public class StaticCode {
         alert.setContentText(contentText);
         alert.showAndWait();
     } // METODO ESTATICO PARA GENERA UNA ALERTA
+
+    public static boolean camposVacios (ComboBox<?> combobox, TextField... textFields) {
+        for (TextField textField : textFields) {
+            if (textField.getText().isEmpty()) {
+                return false;
+            } // SI ESTA VACIO UN TEXTFIELD DEVUELVE FALSE
+        } // RECORRE LOS TEXTFIELDS
+
+        // VERIFICAR SI HAY VALOR EN EL COMBOBOX
+        return combobox.getSelectionModel().getSelectedItem() != null;
+    } // METODO PARA COMPROBAR CAMPOS VACIOS
 
 }

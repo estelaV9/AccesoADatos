@@ -6,6 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -89,5 +90,46 @@ public class CocheDAO {
         return false;
 
     } // METODO PARA ELIMINAR COCHES
+
+
+    public static boolean modifyCar(String matricula, Coche coche) {
+        // SI NO HAY UN COCHE CON LA NUEVA MATRICULA ENTONCES LA MODIFICA
+        if (!estaMatricula(coche.getMatricula())) {
+            collection.findOneAndUpdate(Filters.eq("matricula", matricula),
+                    Updates.combine(
+                            Updates.set("matricula", coche.getMatricula()),
+                            Updates.set("marca", coche.getMarca()),
+                            Updates.set("modelo", coche.getModelo()),
+                            Updates.set("tipo", coche.getTipo())
+                    ));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaMatricula(String matricula) {
+        // CREAR UN CURSOR PARA ITERAR SOBRE LOS DOCMENTOS DE LA COLECCION
+        MongoCursor<Document> cursor3 = collection.find().iterator();
+        Gson gson = new Gson(); // CREAR UBSTABCUA DE GSON PARA LA SERIALIZACION
+        Coche coche;
+        ArrayList<Coche> listaCoches = new ArrayList<>(); // LISTA PARA ALMACENAR LOS COCHES ANTES DE CONVERTIRLA A UN OBSERVABLELIST
+        try {
+            while (cursor3.hasNext()) {
+                //SERIALIZAR: CONVIERTE EL DOCUMENTO A UN OBJETO COCHE
+                coche = gson.fromJson(cursor3.next().toJson(), Coche.class);
+                listaCoches.add(coche); // AÑADIR LOS DATOS AL ARRAYLIST
+            } // RECORRER EL CURSOR
+        } finally {
+            cursor3.close(); // SE CIERRA EL CURSOR
+        }
+
+        for (Coche coche1 : listaCoches) {
+            if (Objects.equals(coche1.getMatricula(), matricula)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

@@ -86,7 +86,21 @@ public class GestionCocheCtrller implements Initializable {
 
     @FXML
     void onModificarAction(ActionEvent event) {
-
+        Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem();
+        if (seleccionada != null) {
+            Coche cocheModificar = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
+            if (CocheDAO.modifyCar(seleccionada.getMatricula(), cocheModificar)) {
+                StaticCode.Alerts("INFORMATION", "Modificar Coche", "INFORMATION",
+                        "Se ha modificado los datos del coche correctamente.");
+            } else {
+                StaticCode.Alerts("ERROR", "Error al modificar", "¡ERROR!",
+                        "Error al modificar el coche. Ya existe esa matricula.");
+            }
+        } else {
+            StaticCode.Alerts("ERROR", "Coche vacio", "¡ERROR!",
+                    "Por favor, seleccione un coche para eliminar.");
+        }
+        refreshTable();
     }
 
     @FXML

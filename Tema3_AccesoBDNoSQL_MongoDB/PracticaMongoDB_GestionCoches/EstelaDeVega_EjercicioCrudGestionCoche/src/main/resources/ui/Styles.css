@@ -11,6 +11,9 @@
     -fx-border-color: #000;
     -fx-border-width: 1.5;
     -fx-border-radius: 10;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #000;
 }
 
 /* ESTILOS PARA EL PANE DEL MENU*/
@@ -42,10 +45,78 @@
 
 /* ESTILO PARA EL TITULO */
 #labelTitulo{
-    -fx-font-family: "Britannic Bold";
+    -fx-font-family: "Gill Sans Nova Cond Ultra Bold";
     -fx-font-size: 25px;
     -fx-text-fill: #171664;
 }
+
+
+/************************** COMBOBOX *********************/
+.combo-box {
+    -fx-background-color: #4975ed;
+    -fx-border-color: #000;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #000;
+} /* SE DEFINE EL COLOR Y TIPO DE LETRA DEL COMBOBOX */
+
+.combo-box .list-cell {
+    -fx-text-fill: #000;
+} /* DEFINE EL COLOR DEL TEXTO DE LAS FILAS DEL COMBOBOX */
+
+.combo-box-popup .list-view .list-cell{
+    -fx-background-color: #6a7de3;
+} /* DEFINE EL COLOR DE FONDO DEL POPUP DEL COMBOBOX */
+
+.combo-box-popup .list-view{
+    -fx-background-color:  #000;
+} /* DEFINE EL COLOR DEL MARCO DEL POPUP */
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover{
+    -fx-background-color: #0454ec;
+} /* EFECTO PARA RESALTAR EL FONDO CUANDO UNA OPCION ESTE SELECCIONADA */
+
+.combo-box-popup .list-view .list-cell:filled:hover{
+    -fx-background-color: #4975ed;
+} /* EFECTO PARA CAMBIAR EL COLOR DE FONDO CUANDO EL MOUSE PASA POR ENCIMA DE UNA OPCION DEL COMBOBOX */
+
+
+
+/******************** TABLA ***********************************/
+.table-view {
+    -fx-background-color: #6a7de3; /* COLOR DEL FONDO DE LA TABLA */
+    -fx-border-color:  #000;
+    -fx-border-width: 1px;
+    -fx-opacity: 0.95;
+} /* Estilo para la TableView */
+
+
+.table-view .column-header {
+    -fx-background-color: #4975ed;
+}/* Estilo para la cabecera de la columna */
+
+
+.table-view .table-row-cell {
+    -fx-background-color: #6a7de3;
+} /* Estilo para las filas de la tabla */
+
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #6a7de3;
+} /* Color de fondo para las filas al pasar el mouse */
+
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #4975ed;
+    -fx-text-fill: white;
+} /* Estilo para las celdas seleccionadas */
+
+.scroll-bar .thumb {
+    -fx-background-color: #6a7de3; /* COLOR DEL THUM */
+    -fx-background-radius: 10;
+}/* Estilo para el "thumb" de la barra de desplazamiento */
 
 
 

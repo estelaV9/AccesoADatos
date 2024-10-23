@@ -13,24 +13,17 @@ import org.esteladevega_ejerciciocrudgestioncoche.Connection.ConnectionDB;
 import org.esteladevega_ejerciciocrudgestioncoche.Model.Coche;
 import org.esteladevega_ejerciciocrudgestioncoche.Utilities.StaticCode;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.esteladevega_ejerciciocrudgestioncoche.Controller.GestionCocheCtrller.collection;
+
 public class CocheDAO {
-    public static void insertCar(MongoClient con, Coche coche) {
-        MongoCollection<Document> collection = null;
+    public static void insertCar(Coche coche) {
         String json;
         Document doc;
-
         try {
-            con = ConnectionDB.conectar();
-            MongoDatabase database = con.getDatabase("Coches");
-            // CREAR UNA COLECCION
-            database.createCollection("Coches");
-
-            // INSERTAR UN DOCUMENTO EN LA COLECCION coches
-            collection = database.getCollection("Coches");
-
             // DESERIALIZAR OBJETO A STRING JSON
             Gson gson = new Gson();
             json = gson.toJson(coche); // INSERTAR COCHE
@@ -44,18 +37,10 @@ public class CocheDAO {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
                     "Error al conectar a la base de datos: " + e.getMessage());
         }
-        StaticCode.Alerts("ERROR", "Ha ocurrido un error", "¡ERROR!",
-                "Ha ocurrido un error al insertar un coche");
     } // METODO PARA INSERTAR COCHE
 
 
-    public static ObservableList<Coche> listCar(MongoClient con) {
-        // OBTENER LA BASE DE DATOS DESDE LA CONEXION
-        MongoDatabase database = con.getDatabase("Coches");
-
-        // OBTENER LA COLECCION LLAMADA 'Coches' DE LA DB
-        MongoCollection<Document> collection = database.getCollection("Coches");
-
+    public static ObservableList<Coche> listCar() {
         // CREAR UN CURSOR PARA ITERAR SOBRE LOS DOCMENTOS DE LA COLECCION
         MongoCursor<Document> cursor3 = collection.find().iterator();
         Gson gson = new Gson(); // CREAR UBSTABCUA DE GSON PARA LA SERIALIZACION
@@ -74,6 +59,4 @@ public class CocheDAO {
         }
         return listCoches; // RETORNA LA LISTA
     } // METODO PARA LISTAR LOS COCHES
-
-
 }

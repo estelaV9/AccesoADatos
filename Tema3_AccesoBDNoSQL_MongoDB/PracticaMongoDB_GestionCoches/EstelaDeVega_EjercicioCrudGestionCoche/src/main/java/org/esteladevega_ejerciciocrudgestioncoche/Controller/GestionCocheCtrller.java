@@ -54,6 +54,7 @@ public class GestionCocheCtrller implements Initializable {
     private Button eliminarBtt;
 
     static MongoClient con;
+    public static MongoCollection<Document> collection;
     String[] tipoCoches = {"Diesel", "Gasolina", "Electrico"};
 
     @FXML
@@ -82,20 +83,32 @@ public class GestionCocheCtrller implements Initializable {
     @FXML
     void onNuevoCocheAction(ActionEvent event) {
         Coche coche = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
-        CocheDAO.insertCar(con, coche);
+        CocheDAO.insertCar(coche);
+        refreshTable();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         con = ConnectionDB.conectar();
+        // OBTENER LA BASE DE DATOS DESDE LA CONEXION
+        MongoDatabase database = con.getDatabase("Coches");
+
+        // OBTENER LA COLECCION LLAMADA 'Coches' DE LA DB
+        collection = database.getCollection("Coches");
+
         // INICIALIZAR LOS COMBOBOX
         tipoComboBox.getItems().addAll(tipoCoches); // AÑADIR LOS VALORES AL COMBOBOX
 
+        refreshTable();
+    }
+
+
+    public void refreshTable() {
         // PASAR LOS DATOS A LA TABLA CUANDO SE INICIE EL PROGRAMA
         marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));
         tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         matriculaCol.setCellValueFactory(new PropertyValueFactory<>("matricula"));
         modeloCol.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-        cochesTable.setItems(CocheDAO.listCar(con)); // ESTABLECER LISTA
+        cochesTable.setItems(CocheDAO.listCar()); // ESTABLECER LISTA
     }
 }

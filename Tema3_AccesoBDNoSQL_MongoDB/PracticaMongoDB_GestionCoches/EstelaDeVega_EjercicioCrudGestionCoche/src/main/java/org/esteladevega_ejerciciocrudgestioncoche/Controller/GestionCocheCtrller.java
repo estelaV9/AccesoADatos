@@ -17,6 +17,7 @@ import org.bson.Document;
 import org.esteladevega_ejerciciocrudgestioncoche.Connection.ConnectionDB;
 import org.esteladevega_ejerciciocrudgestioncoche.DAO.CocheDAO;
 import org.esteladevega_ejerciciocrudgestioncoche.Model.Coche;
+import org.esteladevega_ejerciciocrudgestioncoche.Utilities.StaticCode;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -67,12 +68,20 @@ public class GestionCocheCtrller implements Initializable {
 
     @FXML
     void onEliminarAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onGuardarAction(ActionEvent event) {
-
+        Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem();
+        if (seleccionada != null) {
+            if (CocheDAO.deleteCar(seleccionada.getMatricula())) {
+                StaticCode.Alerts("INFORMATION", "Eliminar Coche", "INFORMATION",
+                        "Se ha eliminado el coche correctamente.");
+            } else {
+                StaticCode.Alerts("ERROR", "Error al eliminar", "¡ERROR!",
+                        "Error al eliminar el coche.");
+            }
+        } else {
+            StaticCode.Alerts("ERROR", "Coche vacio", "¡ERROR!",
+                    "Por favor, seleccione un coche para eliminar.");
+        }
+        refreshTable();
     }
 
     @FXML

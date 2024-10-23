@@ -65,30 +65,7 @@ public class CocheDAO {
 
 
     public static boolean deleteCar(String matricula) {
-        // CREAR UN CURSOR PARA ITERAR SOBRE LOS DOCMENTOS DE LA COLECCION
-        MongoCursor<Document> cursor3 = collection.find().iterator();
-        Gson gson = new Gson(); // CREAR UBSTABCUA DE GSON PARA LA SERIALIZACION
-        Coche coche;
-        ArrayList<Coche> listaCoches = new ArrayList<>(); // LISTA PARA ALMACENAR LOS COCHES ANTES DE CONVERTIRLA A UN OBSERVABLELIST
-        try {
-            while (cursor3.hasNext()) {
-                //SERIALIZAR: CONVIERTE EL DOCUMENTO A UN OBJETO COCHE
-                coche = gson.fromJson(cursor3.next().toJson(), Coche.class);
-                listaCoches.add(coche); // AÑADIR LOS DATOS AL ARRAYLIST
-            } // RECORRER EL CURSOR
-        } finally {
-            cursor3.close(); // SE CIERRA EL CURSOR
-        }
-
-        for (Coche coche1 : listaCoches) {
-            if (Objects.equals(coche1.getMatricula(), matricula)) {
-                collection.findOneAndDelete(Filters.eq("matricula", matricula));
-                return true;
-            }
-        }
-
-        return false;
-
+        collection.findOneAndDelete(Filters.eq("matricula", matricula));
     } // METODO PARA ELIMINAR COCHES
 
 

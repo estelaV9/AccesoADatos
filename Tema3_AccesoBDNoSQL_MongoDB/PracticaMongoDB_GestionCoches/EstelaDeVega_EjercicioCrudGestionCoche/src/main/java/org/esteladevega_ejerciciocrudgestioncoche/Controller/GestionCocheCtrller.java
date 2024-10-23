@@ -69,19 +69,17 @@ public class GestionCocheCtrller implements Initializable {
     @FXML
     void onEliminarAction(ActionEvent event) {
         Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem();
+        // COMPROBAR SI EL USUARIO HA SELECCIONADO UN COCHE PARA MODIFICAR
         if (seleccionada != null) {
-            if (CocheDAO.deleteCar(seleccionada.getMatricula())) {
-                StaticCode.Alerts("INFORMATION", "Eliminar Coche", "INFORMATION",
-                        "Se ha eliminado el coche correctamente.");
-            } else {
-                StaticCode.Alerts("ERROR", "Error al eliminar", "¡ERROR!",
-                        "Error al eliminar el coche.");
-            }
+            CocheDAO.deleteCar(seleccionada.getMatricula());
+            StaticCode.Alerts("INFORMATION", "Eliminar Coche", "INFORMATION",
+                    "Se ha eliminado los datos del coche correctamente.");
         } else {
             StaticCode.Alerts("ERROR", "Coche vacio", "¡ERROR!",
                     "Por favor, seleccione un coche para eliminar.");
-        }
-        refreshTable();
+        } // coche vacio
+
+        refreshTable(); // ACTUALIZAR LA TABLA
     }
 
     @FXML

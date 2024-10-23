@@ -6,51 +6,79 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_ejerciciocrudgestioncoche.Controller.GestionCocheCtrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="867.0" styleClass="anchor-pane" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_ejerciciocrudgestioncoche.Controller.GestionCocheCtrller">
     <children>
-        <Label layoutX="35.0" layoutY="48.0" text="Matricula">
+      <Pane layoutX="469.0" layoutY="270.0" prefHeight="191.0" prefWidth="337.0" styleClass="pane" />
+        <Label id="label1" layoutX="29.0" layoutY="82.0" text="Matricula">
             <font>
                 <Font size="15.0" />
             </font>
+         <effect>
+            <DropShadow />
+         </effect>
         </Label>
-        <Label layoutX="35.0" layoutY="84.0" text="Marca">
+        <Label id="label2" layoutX="29.0" layoutY="118.0" text="Marca">
             <font>
                 <Font size="15.0" />
             </font>
+         <effect>
+            <DropShadow />
+         </effect>
         </Label>
-        <Label layoutX="35.0" layoutY="120.0" text="Modelo">
+        <Label id="label3" layoutX="29.0" layoutY="154.0" text="Modelo">
             <font>
                 <Font size="15.0" />
             </font>
+         <effect>
+            <DropShadow />
+         </effect>
         </Label>
-        <Label layoutX="35.0" layoutY="159.0" text="Tipo">
+        <Label id="label4" layoutX="29.0" layoutY="193.0" text="Tipo">
             <font>
                 <Font size="15.0" />
             </font>
+         <effect>
+            <DropShadow />
+         </effect>
         </Label>
-        <TextField fx:id="matriculaTxt" layoutX="128.0" layoutY="46.0" />
-        <TextField fx:id="marcaTxt" layoutX="128.0" layoutY="82.0" />
-        <TextField fx:id="modeloTxt" layoutX="128.0" layoutY="118.0" />
-        <ComboBox fx:id="tipoComboBox" layoutX="128.0" layoutY="157.0" prefHeight="25.0" prefWidth="169.0" />
-        <Button fx:id="nuevoBtt" layoutX="71.0" layoutY="218.0" mnemonicParsing="false" onAction="#onNuevoCocheAction" text="Nuevo" />
-        <Button fx:id="guardarBtt" layoutX="138.0" layoutY="218.0" mnemonicParsing="false" onAction="#onGuardarAction" text="Guardar" />
-        <Button fx:id="cancelarBtt" layoutX="213.0" layoutY="218.0" mnemonicParsing="false" onAction="#onCancelarAction" text="Cancelar" />
-        <Button fx:id="modificarBtt" layoutX="290.0" layoutY="218.0" mnemonicParsing="false" onAction="#onModificarAction" text="Modificar" />
-        <Button fx:id="eliminarBtt" layoutX="373.0" layoutY="218.0" mnemonicParsing="false" onAction="#onEliminarAction" text="Eliminar" />
-      <TableView fx:id="cochesTable" layoutX="28.0" layoutY="276.0" prefHeight="200.0" prefWidth="545.0">
+        <TextField fx:id="matriculaTxt" layoutX="156.0" layoutY="86.0" />
+        <TextField fx:id="marcaTxt" layoutX="156.0" layoutY="122.0" />
+        <TextField fx:id="modeloTxt" layoutX="156.0" layoutY="158.0" />
+        <ComboBox fx:id="tipoComboBox" layoutX="156.0" layoutY="197.0" prefHeight="25.0" prefWidth="169.0" />
+      <TableView fx:id="cochesTable" layoutX="28.0" layoutY="276.0" prefHeight="200.0" prefWidth="396.0" style="-fx-opacity: 0.9;">
          <columns>
-            <TableColumn fx:id="matriculaCol" prefWidth="127.0" text="Matricula" />
-            <TableColumn fx:id="marcaCol" prefWidth="135.0" text="Marca" />
-            <TableColumn fx:id="modeloCol" prefWidth="147.0" text="Modelo" />
-            <TableColumn fx:id="tipoCol" prefWidth="135.0" text="Tipo" />
-         </columns></TableView>
+            <TableColumn fx:id="matriculaCol" prefWidth="90.0" text="Matricula" />
+            <TableColumn fx:id="marcaCol" prefWidth="101.0" text="Marca" />
+            <TableColumn fx:id="modeloCol" prefWidth="97.0" text="Modelo" />
+            <TableColumn fx:id="tipoCol" prefWidth="107.0" text="Tipo" />
+         </columns>
+      </TableView>
       <Label layoutX="29.0" layoutY="484.0" text="Coches v5">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
+      <Pane prefHeight="41.0" prefWidth="867.0" styleClass="paneMenu">
+         <children>
+              <Button fx:id="nuevoBtt" layoutX="522.0" layoutY="6.0" mnemonicParsing="false" onAction="#onNuevoCocheAction" text="Nuevo" />
+              <Button fx:id="cancelarBtt" layoutX="772.0" layoutY="6.0" mnemonicParsing="false" onAction="#onCancelarAction" text="Cancelar" />
+              <Button fx:id="modificarBtt" layoutX="592.0" layoutY="6.0" mnemonicParsing="false" onAction="#onModificarAction" text="Modificar" />
+              <Button fx:id="eliminarBtt" layoutX="685.0" layoutY="6.0" mnemonicParsing="false" onAction="#onEliminarAction" text="Eliminar">
+               <font>
+                  <Font name="Britannic Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label id="labelTitulo" layoutX="14.0" layoutY="7.0" text="Gestión de coches" />
+         </children>
+      </Pane>
     </children>
+   <effect>
+      <GaussianBlur radius="0.0" />
+   </effect>
 </AnchorPane>

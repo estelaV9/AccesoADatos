@@ -1,0 +1,52 @@
+.anchor-pane{
+    -fx-background-image: url("Image/img.png");
+    -fx-background-size: cover; /* AJUSTA LA IMAGEN AL TAMAÑO DEL AnchorPane */
+}
+
+/* ESTILOS LABEL ATRIBUTOS DEL COCHE*/
+.text-field {
+    -fx-background-color: #6a7de3;
+    -fx-opacity: 0.8;
+    -fx-background-radius: 20;
+    -fx-border-color: #000;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+}
+
+/* ESTILOS PARA EL PANE DEL MENU*/
+.paneMenu {
+    -fx-background-color: #6a7de3;
+    -fx-opacity: 0.85;
+    -fx-border-color: #000;
+    -fx-border-width: 0 0 2 0; /* SOLO APLICA EL BORDER AL DE ABAJO*/
+}
+
+/* ESTILOS PARA LOS BOTONES DEL MENU*/
+.button {
+    -fx-background-color: #4975ed;
+    -fx-border-color: #000;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #000;
+}
+
+
+/* ESTILO PARA LAS LETRAS */
+#label1, #label2, #label3, #label4 {
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 25px;
+    -fx-text-fill: #9f94df;
+}
+
+/* ESTILO PARA EL TITULO */
+#labelTitulo{
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 25px;
+    -fx-text-fill: #171664;
+}
+
+
+
+

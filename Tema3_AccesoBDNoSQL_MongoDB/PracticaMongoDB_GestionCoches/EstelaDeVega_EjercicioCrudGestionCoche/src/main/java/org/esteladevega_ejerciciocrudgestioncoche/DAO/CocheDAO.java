@@ -64,7 +64,7 @@ public class CocheDAO {
     } // METODO PARA LISTAR LOS COCHES
 
 
-    public static boolean deleteCar(String matricula) {
+    public static void deleteCar(String matricula) {
         collection.findOneAndDelete(Filters.eq("matricula", matricula));
     } // METODO PARA ELIMINAR COCHES
 

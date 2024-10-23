@@ -40,13 +40,13 @@ public class GestionCocheCtrller implements Initializable {
     @FXML
     private TableView<Coche> cochesTable;
     @FXML
-    private TableColumn<String, Coche> tipoCol;
+    private TableColumn<Coche, String> tipoCol;
     @FXML
-    private TableColumn<String, Coche> modeloCol;
+    private TableColumn<Coche, String> modeloCol;
     @FXML
-    private TableColumn<String, Coche> matriculaCol;
+    private TableColumn<Coche, String> matriculaCol;
     @FXML
-    private TableColumn<String, Coche> marcaCol;
+    private TableColumn<Coche, String> marcaCol;
     @FXML
     private ComboBox<String> tipoComboBox;
     @FXML

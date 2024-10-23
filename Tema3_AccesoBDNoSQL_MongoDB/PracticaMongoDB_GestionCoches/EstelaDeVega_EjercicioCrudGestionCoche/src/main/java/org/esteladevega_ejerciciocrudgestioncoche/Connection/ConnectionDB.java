@@ -2,6 +2,7 @@ package org.esteladevega_ejerciciocrudgestioncoche.Connection;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import org.esteladevega_ejerciciocrudgestioncoche.Utilities.StaticCode;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,9 +29,14 @@ public class ConnectionDB {
             return con;
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
+            StaticCode.Alerts("ERROR", "Error de conexión",
+                    "Archivo de configuración no encontrado",
+                    "No se ha encontrado el archivo database.properties: " + e.getMessage());
             return null;
         } catch (IOException e) {
             // TODO Auto-generated catch block
+            StaticCode.Alerts("ERROR", "Error de conexión",
+                    "Error de E/S", "Hubo un problema al leer el archivo de configuración: " + e.getMessage());
             e.printStackTrace();
             return null;
         }

@@ -35,6 +35,18 @@
     -fx-text-fill: #000;
 }
 
+/* ESTILO PARA EL BOTON SALIR*/
+#salirApp {
+    -fx-background-color: #9f173a;
+    -fx-border-color: #000;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #fff;
+}
+
+
 
 /* ESTILO PARA LAS LETRAS */
 #label1, #label2, #label3, #label4 {

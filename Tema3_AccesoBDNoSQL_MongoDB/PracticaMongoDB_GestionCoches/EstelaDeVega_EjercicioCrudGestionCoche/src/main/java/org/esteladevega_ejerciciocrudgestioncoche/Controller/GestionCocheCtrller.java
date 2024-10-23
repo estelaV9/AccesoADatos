@@ -19,6 +19,7 @@ import org.esteladevega_ejerciciocrudgestioncoche.DAO.CocheDAO;
 import org.esteladevega_ejerciciocrudgestioncoche.Model.Coche;
 import org.esteladevega_ejerciciocrudgestioncoche.Utilities.StaticCode;
 
+import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.Arrays;
@@ -52,11 +53,24 @@ public class GestionCocheCtrller implements Initializable {
     @FXML
     private Button modificarBtt;
     @FXML
+    private Button exitBtt;
+    @FXML
     private Button eliminarBtt;
 
     static MongoClient con;
     public static MongoCollection<Document> collection;
     String[] tipoCoches = {"Diesel", "Gasolina", "Electrico"};
+
+    @FXML
+    void onExitAction() {
+        int opcion = JOptionPane.showConfirmDialog(null,
+                "¿Está seguro de que desea salir?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            System.exit(0); // CERRAR APLICACIÓN
+            ConnectionDB.desconectar(con); // DESPUES DE SALIR DE LA APLICACION, DESCONECTAMOS LA CONEXION
+        }
+    } // SALIR DE LA APLICACIÓN
+
 
     @FXML
     void onCancelarAction(ActionEvent event) {

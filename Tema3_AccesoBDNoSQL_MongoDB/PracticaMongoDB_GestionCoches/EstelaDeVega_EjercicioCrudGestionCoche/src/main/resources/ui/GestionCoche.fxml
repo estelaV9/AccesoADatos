@@ -10,9 +10,10 @@
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="867.0" styleClass="anchor-pane" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_ejerciciocrudgestioncoche.Controller.GestionCocheCtrller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="867.0" styleClass="anchor-pane" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_ejerciciocrudgestioncoche.Controller.GestionCocheCtrller">
     <children>
       <Pane layoutX="469.0" layoutY="270.0" prefHeight="191.0" prefWidth="337.0" styleClass="pane" />
         <Label id="label1" layoutX="29.0" layoutY="82.0" text="Matricula">
@@ -51,7 +52,7 @@
         <TextField fx:id="marcaTxt" layoutX="156.0" layoutY="122.0" />
         <TextField fx:id="modeloTxt" layoutX="156.0" layoutY="158.0" />
         <ComboBox fx:id="tipoComboBox" layoutX="156.0" layoutY="197.0" prefHeight="25.0" prefWidth="169.0" />
-      <TableView fx:id="cochesTable" layoutX="28.0" layoutY="276.0" prefHeight="200.0" prefWidth="396.0" style="-fx-opacity: 0.9;">
+      <TableView fx:id="cochesTable" layoutX="28.0" layoutY="276.0" prefHeight="200.0" prefWidth="396.0">
          <columns>
             <TableColumn fx:id="matriculaCol" prefWidth="90.0" text="Matricula" />
             <TableColumn fx:id="marcaCol" prefWidth="101.0" text="Marca" />
@@ -66,15 +67,23 @@
       </Label>
       <Pane prefHeight="41.0" prefWidth="867.0" styleClass="paneMenu">
          <children>
-              <Button fx:id="nuevoBtt" layoutX="522.0" layoutY="6.0" mnemonicParsing="false" onAction="#onNuevoCocheAction" text="Nuevo" />
-              <Button fx:id="cancelarBtt" layoutX="772.0" layoutY="6.0" mnemonicParsing="false" onAction="#onCancelarAction" text="Cancelar" />
-              <Button fx:id="modificarBtt" layoutX="592.0" layoutY="6.0" mnemonicParsing="false" onAction="#onModificarAction" text="Modificar" />
-              <Button fx:id="eliminarBtt" layoutX="685.0" layoutY="6.0" mnemonicParsing="false" onAction="#onEliminarAction" text="Eliminar">
+              <Button fx:id="nuevoBtt" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" onAction="#onNuevoCocheAction" text="Nuevo" />
+              <Button fx:id="cancelarBtt" layoutX="728.0" layoutY="6.0" mnemonicParsing="false" onAction="#onCancelarAction" text="Cancelar" />
+              <Button fx:id="modificarBtt" layoutX="548.0" layoutY="6.0" mnemonicParsing="false" onAction="#onModificarAction" text="Modificar" />
+              <Button fx:id="eliminarBtt" layoutX="641.0" layoutY="6.0" mnemonicParsing="false" onAction="#onEliminarAction" text="Eliminar">
                <font>
                   <Font name="Britannic Bold" size="12.0" />
                </font>
             </Button>
-            <Label id="labelTitulo" layoutX="14.0" layoutY="7.0" text="Gestión de coches" />
+            <Label id="labelTitulo" layoutX="14.0" layoutY="3.0" text="GESTION DE COCHES">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.6901960968971252" green="0.5921568870544434" blue="0.8352941274642944" />
+                     </color>
+                  </DropShadow>
+               </effect></Label>
+            <Button id="salirApp" fx:id="exitBtt" layoutX="819.0" layoutY="6.0" mnemonicParsing="false" onAction="#onExitAction" prefHeight="29.0" prefWidth="38.0" text="X" />
          </children>
       </Pane>
     </children>

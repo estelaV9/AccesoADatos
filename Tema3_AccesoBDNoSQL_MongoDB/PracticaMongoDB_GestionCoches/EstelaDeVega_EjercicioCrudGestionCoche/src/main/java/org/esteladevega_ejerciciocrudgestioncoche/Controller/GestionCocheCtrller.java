@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import org.bson.Document;
 import org.esteladevega_ejerciciocrudgestioncoche.Connection.ConnectionDB;
 import org.esteladevega_ejerciciocrudgestioncoche.DAO.CocheDAO;
@@ -133,6 +134,17 @@ public class GestionCocheCtrller implements Initializable {
                     "Por favor, rellene todos los datos del formulario.");
         }
     } // CREAR UN COCHE NUEVO
+
+    @FXML
+    void onClickedTable(MouseEvent event) {
+        Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
+        if (seleccionada != null) {
+            matriculaTxt.setText(seleccionada.getMatricula());
+            marcaTxt.setText(seleccionada.getMarca());
+            modeloTxt.setText(seleccionada.getModelo());
+            tipoComboBox.setValue(seleccionada.getTipo());
+        } // SI SELECCIONADO NO ES NULO, SE PONEN LOS VALORES AL TEXTFIELD
+    } // CUANDO PULSA UN COCHE, SE SETTEAN LOS VALORES
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

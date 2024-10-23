@@ -3,17 +3,15 @@ package org.esteladevega_ejerciciocrudgestioncoche.Connection;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import org.esteladevega_ejerciciocrudgestioncoche.Utilities.StaticCode;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.DriverManager;
 import java.util.Properties;
 
 public class ConnectionDB {
     // ATRIBUTO ESTATICO DE TIPO CONEXION PARA PODER LLAMARLO DESDE CUALQUIER CLASE
     public static MongoClient con;
+
     public static MongoClient conectar() {
         Properties properties = new Properties();
         String host = "", port = "", name = "", username = "", password = "";

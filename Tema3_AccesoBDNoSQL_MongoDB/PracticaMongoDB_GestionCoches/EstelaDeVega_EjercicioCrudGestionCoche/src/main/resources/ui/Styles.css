@@ -62,6 +62,13 @@
     -fx-text-fill: #171664;
 }
 
+/* ESTILO PARA EL LABEL DE COCHES V5 */
+#cochesV5 {
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #9f94df;
+}
+
 
 /************************** COMBOBOX *********************/
 .combo-box {

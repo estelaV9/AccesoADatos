@@ -13,7 +13,7 @@ public class StaticCode {
         alert.showAndWait();
     } // METODO ESTATICO PARA GENERA UNA ALERTA
 
-    public static boolean camposVacios (ComboBox<?> combobox, TextField... textFields) {
+    public static boolean camposVacios(ComboBox<?> combobox, TextField... textFields) {
         for (TextField textField : textFields) {
             if (textField.getText().isEmpty()) {
                 return false;
@@ -23,5 +23,4 @@ public class StaticCode {
         // VERIFICAR SI HAY VALOR EN EL COMBOBOX
         return combobox.getSelectionModel().getSelectedItem() != null;
     } // METODO PARA COMPROBAR CAMPOS VACIOS
-
 }

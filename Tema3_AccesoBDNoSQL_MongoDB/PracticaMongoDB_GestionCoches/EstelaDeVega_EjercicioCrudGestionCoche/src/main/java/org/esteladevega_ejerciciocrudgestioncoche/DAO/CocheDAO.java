@@ -74,7 +74,7 @@ public class CocheDAO {
                 ));
     } // METODO PARA MODIFICAR LOS DATOS DE UN COCHE EXISTENTE
 
-    public static boolean estaMatricula(String matricula) {
+    public static boolean estaMatricula(String matriculaNueva, String matriculaActual) {
         // CREAR UN CURSOR PARA ITERAR SOBRE LOS DOCMENTOS DE LA COLECCION
         MongoCursor<Document> cursor3 = collection.find().iterator();
         Gson gson = new Gson(); // CREAR OBJETO GSON PARA LA SERIALIZACION
@@ -94,8 +94,9 @@ public class CocheDAO {
 
         // VERIFICAR SI ALGUNA MATRICULA DE LA LISTA COINCIDE CON EL PARAMETRO
         for (Coche coche1 : listCoches) {
-            if (Objects.equals(coche1.getMatricula(), matricula)) {
-                return true; // SI EXISSTE, DEVUELVE TRUE
+            if (Objects.equals(coche1.getMatricula(), matriculaNueva) &&
+                    (!Objects.equals(coche1.getMatricula(), matriculaActual) || coche1.getMatricula() == null)) {
+                return true; // SI EXISSTE Y NO ES LA MATRICULA ACTUAL O LA MATRICULA ACTUAL ES NULO, DEVUELVE TRUE
             }
         }
         return false; // SI NO EXISTE, DEVUELVE FALSE

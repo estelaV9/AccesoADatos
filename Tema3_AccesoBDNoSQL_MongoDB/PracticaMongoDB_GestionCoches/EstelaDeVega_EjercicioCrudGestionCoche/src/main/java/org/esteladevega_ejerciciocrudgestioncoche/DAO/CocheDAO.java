@@ -1,39 +1,30 @@
 package org.esteladevega_ejerciciocrudgestioncoche.DAO;
 
 import com.google.gson.Gson;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
 import org.bson.Document;
-import org.esteladevega_ejerciciocrudgestioncoche.Connection.ConnectionDB;
 import org.esteladevega_ejerciciocrudgestioncoche.Model.Coche;
 import org.esteladevega_ejerciciocrudgestioncoche.Utilities.StaticCode;
-
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
 import static org.esteladevega_ejerciciocrudgestioncoche.Controller.GestionCocheCtrller.collection;
 
 public class CocheDAO {
     public static void insertCar(Coche coche) {
-        String json;
-        Document doc;
+        String json; // VARIABLE PARA ALMACENAR EL JSON DEL COCHE
+        Document doc; // DOCUMENTO BSON QUE SE INSERTARA EN LA BD
         try {
             // DESERIALIZAR OBJETO A STRING JSON
             Gson gson = new Gson();
             json = gson.toJson(coche); // INSERTAR COCHE
 
-            // INSERTAR DOCUMENTOS, PARA ELLO TENDREMOS QUE CONVERTIRLO Y PARSEAR UN DOC BSON E INSERTAR
+            // INSERTAR DOCUMENTOS -> CONVERTIR LA CADENA JSON EN UN DOCUMENTO BSON
             doc = Document.parse(json); // PARSEAR UN DOCUMENTO BSON E INSERTAR
-            collection.insertOne(doc);
+            collection.insertOne(doc); // INSERTAR EL DOCUMENTO EN LA COLECCION
             StaticCode.Alerts("INFORMATION", "Insertar Coche", "INFORMATION",
                     "Se ha insertado el coche correctamente");
         } catch (Exception e) {
@@ -46,16 +37,18 @@ public class CocheDAO {
     public static ObservableList<Coche> listCar() {
         // CREAR UN CURSOR PARA ITERAR SOBRE LOS DOCMENTOS DE LA COLECCION
         MongoCursor<Document> cursor3 = collection.find().iterator();
-        Gson gson = new Gson(); // CREAR UBSTABCUA DE GSON PARA LA SERIALIZACION
+        Gson gson = new Gson(); // CREAR OBJETO GSON PARA LA SERIALIZACION
         Coche coche;
         ArrayList<Coche> arrayListCoches = new ArrayList<>(); // LISTA PARA ALMACENAR LOS COCHES ANTES DE CONVERTIRLA A UN OBSERVABLELIST
-        ObservableList<Coche> listCoches;
+        ObservableList<Coche> listCoches; // LISTA OBSERVABLE QUE SE DEVOLVERA
         try {
+            // ITERAR CADA DOCUMENTO EN LA COLECCION
             while (cursor3.hasNext()) {
                 //SERIALIZAR: CONVIERTE EL DOCUMENTO A UN OBJETO COCHE
                 coche = gson.fromJson(cursor3.next().toJson(), Coche.class);
                 arrayListCoches.add(coche); // AÑADIR LOS DATOS AL ARRAYLIST
             } // RECORRER EL CURSOR
+            // CONVERTIR LA LISTA TEMPORAL EN UN OBSERVABLELIST
             listCoches = FXCollections.observableArrayList(arrayListCoches); // SE AÑADE EL ARRAYLIST AL OBSERVABLELIST
         } finally {
             cursor3.close(); // SE CIERRA EL CURSOR
@@ -65,11 +58,13 @@ public class CocheDAO {
 
 
     public static void deleteCar(String matricula) {
+        // ELIMINA EL COCHE CUYA MATRICULA COINCIDE CON EL PARAMETRO
         collection.findOneAndDelete(Filters.eq("matricula", matricula));
-    } // METODO PARA ELIMINAR COCHES
+    } // METODO PARA ELIMINAR COCHE POR SU MATRICULA
 
 
     public static void modifyCar(String matricula, Coche coche) {
+        // ACTUALIZA LOS CAMPOS DE UN COCHE POR SU MATRICULA
         collection.findOneAndUpdate(Filters.eq("matricula", matricula),
                 Updates.combine(
                         Updates.set("matricula", coche.getMatricula()),
@@ -77,30 +72,32 @@ public class CocheDAO {
                         Updates.set("modelo", coche.getModelo()),
                         Updates.set("tipo", coche.getTipo())
                 ));
-    }
+    } // METODO PARA MODIFICAR LOS DATOS DE UN COCHE EXISTENTE
 
     public static boolean estaMatricula(String matricula) {
         // CREAR UN CURSOR PARA ITERAR SOBRE LOS DOCMENTOS DE LA COLECCION
         MongoCursor<Document> cursor3 = collection.find().iterator();
-        Gson gson = new Gson(); // CREAR UBSTABCUA DE GSON PARA LA SERIALIZACION
+        Gson gson = new Gson(); // CREAR OBJETO GSON PARA LA SERIALIZACION
         Coche coche;
-        ArrayList<Coche> listaCoches = new ArrayList<>(); // LISTA PARA ALMACENAR LOS COCHES ANTES DE CONVERTIRLA A UN OBSERVABLELIST
+        ArrayList<Coche> listCoches = new ArrayList<>(); // LISTA PARA ALMACENAR LOS COCHES ANTES DE CONVERTIRLA A UN OBSERVABLELIST
         try {
+            // ITERAR CADA DOCUMENTO EN LA COLECCION
             while (cursor3.hasNext()) {
                 //SERIALIZAR: CONVIERTE EL DOCUMENTO A UN OBJETO COCHE
                 coche = gson.fromJson(cursor3.next().toJson(), Coche.class);
-                listaCoches.add(coche); // AÑADIR LOS DATOS AL ARRAYLIST
+                listCoches.add(coche); // AÑADIR LOS DATOS AL ARRAYLIST
             } // RECORRER EL CURSOR
+            // CONVERTIR LA LISTA TEMPORAL EN UN OBSERVABLELIST
         } finally {
             cursor3.close(); // SE CIERRA EL CURSOR
         }
 
-        for (Coche coche1 : listaCoches) {
+        // VERIFICAR SI ALGUNA MATRICULA DE LA LISTA COINCIDE CON EL PARAMETRO
+        for (Coche coche1 : listCoches) {
             if (Objects.equals(coche1.getMatricula(), matricula)) {
-                return true;
+                return true; // SI EXISSTE, DEVUELVE TRUE
             }
         }
-        return false;
-    }
-
+        return false; // SI NO EXISTE, DEVUELVE FALSE
+    } // VERIFICAR SI UNA MTRICULA YA EXISTE
 }

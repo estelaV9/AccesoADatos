@@ -92,20 +92,14 @@ public class CocheDAO {
     } // METODO PARA ELIMINAR COCHES
 
 
-    public static boolean modifyCar(String matricula, Coche coche) {
-        // SI NO HAY UN COCHE CON LA NUEVA MATRICULA ENTONCES LA MODIFICA
-        if (!estaMatricula(coche.getMatricula())) {
-            collection.findOneAndUpdate(Filters.eq("matricula", matricula),
-                    Updates.combine(
-                            Updates.set("matricula", coche.getMatricula()),
-                            Updates.set("marca", coche.getMarca()),
-                            Updates.set("modelo", coche.getModelo()),
-                            Updates.set("tipo", coche.getTipo())
-                    ));
-            return true;
-        } else {
-            return false;
-        }
+    public static void modifyCar(String matricula, Coche coche) {
+        collection.findOneAndUpdate(Filters.eq("matricula", matricula),
+                Updates.combine(
+                        Updates.set("matricula", coche.getMatricula()),
+                        Updates.set("marca", coche.getMarca()),
+                        Updates.set("modelo", coche.getModelo()),
+                        Updates.set("tipo", coche.getTipo())
+                ));
     }
 
     public static boolean estaMatricula(String matricula) {

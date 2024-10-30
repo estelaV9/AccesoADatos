@@ -40,6 +40,7 @@ public class CocheDAO implements CocheInterface {
 
             session.update(existente); // MODIFICAR EL COCHE EXISTENTE
             session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            session.clear(); // SE LIMPIAR LA SESSION DE LOS OBJETOS
             return true; // OPERACION EXITOSA
         } catch (Exception e) {
             if (session.getTransaction() != null) {

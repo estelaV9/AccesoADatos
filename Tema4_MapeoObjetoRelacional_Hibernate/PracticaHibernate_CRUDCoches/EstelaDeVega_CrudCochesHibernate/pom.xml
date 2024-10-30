@@ -70,7 +70,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.esteladevega_crudcocheshibernate/org.esteladevega_crudcocheshibernate.HelloApplication
+                                org.esteladevega_crudcocheshibernate/org.esteladevega_crudcocheshibernate.App
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

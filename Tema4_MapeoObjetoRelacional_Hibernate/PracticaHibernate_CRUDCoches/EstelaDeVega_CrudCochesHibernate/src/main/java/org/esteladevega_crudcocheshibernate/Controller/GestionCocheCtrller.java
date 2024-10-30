@@ -11,7 +11,6 @@ import org.esteladevega_crudcocheshibernate.Model.Coche;
 import org.esteladevega_crudcocheshibernate.StaticCode.StaticCode;
 import org.esteladevega_crudcocheshibernate.Utilities.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import javax.swing.*;
 import java.net.URL;
@@ -138,18 +137,19 @@ public class GestionCocheCtrller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // INICIALIZAR LOS COMBOBOX
-        tipoComboBox.getItems().addAll(tipoCoches); // AÑADIR LOS VALORES AL COMBOBOX
-        refreshTable(); // CARGAR LOS DATOS EN LA TABLA AL INICIAR
-    }
-
-    public void refreshTable() {
         // PASAR LOS DATOS A LA TABLA CUANDO SE INICIE EL PROGRAMA
         idCol.setCellValueFactory(new PropertyValueFactory<>("cocheID"));
         marcaCol.setCellValueFactory(new PropertyValueFactory<>("marcaCoche"));
         tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipoCoche"));
         matriculaCol.setCellValueFactory(new PropertyValueFactory<>("matriculaCoche"));
         modeloCol.setCellValueFactory(new PropertyValueFactory<>("modeloCoche"));
+
+        // INICIALIZAR LOS COMBOBOX
+        tipoComboBox.getItems().addAll(tipoCoches); // AÑADIR LOS VALORES AL COMBOBOX
+        refreshTable(); // CARGAR LOS DATOS EN LA TABLA AL INICIAR
+    }
+
+    public void refreshTable() {
         cochesTable.setItems(cocheDAO.listarCoches(session)); // ESTABLECER LISTA
     } // ACTUALIZA LOS DATOS ACTUALES DE LA BASE DE DATOS
 }

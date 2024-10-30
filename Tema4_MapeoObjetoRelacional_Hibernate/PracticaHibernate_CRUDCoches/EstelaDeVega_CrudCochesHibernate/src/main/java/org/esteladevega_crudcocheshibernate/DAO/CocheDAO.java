@@ -6,13 +6,10 @@ import org.esteladevega_crudcocheshibernate.Model.Coche;
 import org.esteladevega_crudcocheshibernate.StaticCode.StaticCode;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
-public class CocheDAO implements CocheInterface{
+public class CocheDAO implements CocheInterface {
     public boolean insertarCoche(Session session, Coche coche) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
@@ -85,10 +82,10 @@ public class CocheDAO implements CocheInterface{
             StaticCode.Alerts("ERROR", "Error al listar", "¡ERROR!",
                     "Ha ocurrido un error al listar los coches: " + e);
         }
-        return  observableList; // RETORNA LA LISTA DE COCHES
+        return observableList; // RETORNA LA LISTA DE COCHES
     } // METODO PARA LISTAR TODOS LOS COCHES DE LA BASE DE DATOS
 
-    public boolean buscarCoche (Session session, String matricula){
+    public boolean buscarCoche(Session session, String matricula) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             // CREAR LA CONSULTA HQL PARA BUSCAR EL COCHE POR MATRICULA
@@ -98,7 +95,7 @@ public class CocheDAO implements CocheInterface{
             Coche cocheEncontrado = cocheQuery.uniqueResult(); // SE EJECUTA LA CONSULTA Y OBTIENE EL RESULTADO
             session.getTransaction().commit(); // CONFIRMAR TRANSACCION
             return cocheEncontrado != null; // SE RETORNA TRUE SI SE ENCONTRO, FALSE SI NO
-        }catch (Exception e) {
+        } catch (Exception e) {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback(); // HACER UN ROLLBACK
             }// SI OCURRE UN ERROR, SE REVIERTE LA TRANSACCION

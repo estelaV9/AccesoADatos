@@ -34,6 +34,13 @@ public class Coche {
         this.tipoCoche = tipoCoche;
     }
 
+    public Coche(String matriculaCoche, String marcaCoche, String modeloCoche, String tipoCoche) {
+        this.matriculaCoche = matriculaCoche;
+        this.marcaCoche = marcaCoche;
+        this.modeloCoche = modeloCoche;
+        this.tipoCoche = tipoCoche;
+    }
+
 
     public int getCocheID() {
         return cocheID;

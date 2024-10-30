@@ -9,7 +9,7 @@ public class HibernateUtil {
     static SessionFactory factory = null;
     static {
         Configuration cfg = new Configuration();
-        cfg.configure("hibernate.cfg.xml");
+        cfg.configure("Hibernate/hibernate.cfg.xml");
         cfg.addAnnotatedClass(Coche.class);
         factory = cfg.buildSessionFactory();
     } // METODO PARA ACCEDER AL OBJETO SessionFactory QUE SE HA CREADO

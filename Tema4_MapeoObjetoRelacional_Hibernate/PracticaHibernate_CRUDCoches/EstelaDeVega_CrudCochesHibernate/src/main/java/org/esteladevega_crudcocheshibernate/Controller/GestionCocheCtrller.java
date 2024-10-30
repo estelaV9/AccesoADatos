@@ -96,7 +96,7 @@ public class GestionCocheCtrller implements Initializable {
         if (seleccionada != null) {
             // COMPROBAR SI NO HAY CAMPOS VACIOS
             if (StaticCode.camposVacios(tipoComboBox, matriculaTxt, marcaTxt, modeloTxt)) {
-                Coche cocheModificar = new Coche(seleccionada.getCocheID(), matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
+                Coche cocheModificar = new Coche(seleccionada.getCocheID(), seleccionada.getMatriculaCoche(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
                 cocheDAO.modificarCoche(session, cocheModificar); // MODIFICAR
                 StaticCode.Alerts("INFORMATION", "Modificar Coche", "INFORMATION",
                         "Se ha modificado los datos del coche correctamente.");
@@ -115,16 +115,10 @@ public class GestionCocheCtrller implements Initializable {
     void onNuevoCocheAction(ActionEvent event) {
 // COMPROBAR CAMPOS VACIOS, SI HAY ALGUN CAMPO VACIO SALTA UN ERROR
         if (StaticCode.camposVacios(tipoComboBox, marcaTxt, matriculaTxt, modeloTxt)) {
-            // COMPROBAR SI LA MATRICULA QUE SE VA A MODIFICAR YA ESTA EN USO
-            if (!cocheDAO.buscarCoche(session, matriculaTxt.getText())) {
-                Coche coche = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
-                cocheDAO.insertarCoche(session, coche); // INSERTAR
-                onCancelarAction();
-                refreshTable(); // ACTUALIZA LA TABLA
-            } else {
-                StaticCode.Alerts("ERROR", "Error al insertar", "¡ERROR!",
-                        "Ya existe esa matricula.");
-            } // matricula en uso
+            Coche coche = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
+            cocheDAO.insertarCoche(session, coche); // INSERTAR
+            onCancelarAction();
+            refreshTable(); // ACTUALIZA LA TABLA
         } else {
             StaticCode.Alerts("ERROR", "Campo vacio", "¡ERROR!",
                     "Por favor, rellene todos los datos del formulario.");

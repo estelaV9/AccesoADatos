@@ -34,7 +34,14 @@ public class CocheDAO implements CocheInterface{
     public boolean modificarCoche(Session session, Coche coche) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
-            session.update(coche); // MODIFICAR EL COCHE EN LA BASE DE DATOS
+            Coche existente = session.get(Coche.class, coche.getCocheID()); // SE CREA EL COCHE QUE SE VA A MODIFICAR
+
+            //SE SETTEAN LOS DATOS
+            existente.setMarcaCoche(coche.getMarcaCoche());
+            existente.setModeloCoche(coche.getModeloCoche());
+            existente.setTipoCoche(coche.getTipoCoche());
+
+            session.update(existente); // MODIFICAR EL COCHE EXISTENTE
             session.getTransaction().commit(); // CONFIRMAR TRANSACCION
             return true; // OPERACION EXITOSA
         } catch (Exception e) {

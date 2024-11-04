@@ -145,3 +145,86 @@
 
 
 
+
+/************************************ ESTILO MULTAS FXML ****************************/
+#multasPane{
+    -fx-background-image: url("Image/multasBackground.png");
+    -fx-background-size: cover;
+}
+
+/* ESTILOS PARA EL PANE DEL MENU*/
+#paneMenu {
+    -fx-background-color: #3d4745;
+    -fx-opacity: 0.85;
+    -fx-border-color: #000;
+    -fx-border-width: 0 0 2 0; /* SOLO APLICA EL BORDER AL DE ABAJO*/
+}
+
+/* BOTON DEL MENU */
+.multaButton {
+-fx-background-color: #31454a;
+    -fx-border-color: #000;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #fafad8;
+}
+
+/* ESTILO PARA EL BOTON SALIR*/
+#salirApp {
+    -fx-background-color: #9f173a;
+    -fx-border-color: #000;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #fff;
+}
+
+/* LABELS PARA LOS ATRIBUTOS DE LAS MULTAS*/
+#label2 {
+    -fx-text-fill: #f6e8a8;
+}
+
+/* TEXTFIELD DE MULTAS */
+.multaTF {
+    -fx-background-color: #7f8a70;
+    -fx-opacity: 0.8;
+    -fx-background-radius: 20;
+    -fx-border-color: #000;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #000;
+}
+
+
+/* DATEPICKER */
+.date-picker {
+    -fx-background-color: #7f8a70;
+    -fx-background-radius: 15;
+    -fx-border-color: #000;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-padding: 4; /* ESPACIADO INTERNO */
+    -fx-font-size: 14px;
+}
+
+/* TEXTFIELD DEL DATEPICKER */
+.date-picker .text-field {
+    -fx-background-color: #f6e8a8;
+    -fx-text-fill: #31454;
+}
+
+/* COLOR DEL ICONO DEL CALENDARIO */
+.date-picker .arrow {
+    -fx-background-color: #31454;
+}
+
+
+/***** ESTILOS TABLA MULTAS ****/
+#tabla{
+
+}

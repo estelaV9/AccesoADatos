@@ -10,7 +10,7 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Coche.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/ui/Coche.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Multas");
         stage.setScene(scene);

@@ -59,7 +59,7 @@
       <TextField fx:id="idMultaTF" layoutX="270.0" layoutY="170.0" prefHeight="30.0" prefWidth="116.0" styleClass="multaTF" />
       <TextField fx:id="precioTF" layoutX="151.0" layoutY="224.0" prefHeight="30.0" prefWidth="116.0" styleClass="multaTF" />
       <DatePicker fx:id="datePicker" layoutX="130.0" layoutY="279.0" />
-      <TableView fx:id="multaTable" layoutX="85.0" layoutY="605.0" onMouseClicked="#onClickedTable" prefHeight="164.0" prefWidth="292.0">
+      <TableView id="tabla" fx:id="multaTable" layoutX="85.0" layoutY="605.0" onMouseClicked="#onClickedTable" prefHeight="164.0" prefWidth="292.0">
          <columns>
             <TableColumn fx:id="idCol" prefWidth="90.0" text="ID Multa" />
             <TableColumn fx:id="precioCol" prefWidth="101.0" text="Precio" />

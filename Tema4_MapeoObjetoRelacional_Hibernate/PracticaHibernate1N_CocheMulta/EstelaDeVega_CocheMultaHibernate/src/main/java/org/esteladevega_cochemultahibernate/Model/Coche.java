@@ -23,7 +23,7 @@ public class Coche {
     @Column(name = "tipo")
     private String tipo;
 
-    @OneToMany(mappedBy = "Coche", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "coche", cascade = CascadeType.ALL) // NOMBRE DE LA CLASE SIN MAYUSCULAS
     private List<Multa> listaMultas;
 
     public Coche(String matricula, String marca, String modelo, String tipo) {

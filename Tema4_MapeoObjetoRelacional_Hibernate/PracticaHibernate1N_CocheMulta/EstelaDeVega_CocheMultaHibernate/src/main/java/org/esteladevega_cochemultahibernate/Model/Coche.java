@@ -1,11 +1,13 @@
 package org.esteladevega_cochemultahibernate.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "coches")
 public class Coche {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int idCoche;
 
@@ -21,6 +23,9 @@ public class Coche {
     @Column(name = "tipo")
     private String tipo;
 
+    @OneToMany(mappedBy = "Coche", cascade = CascadeType.ALL)
+    private List<Multa> listaMultas;
+
     public Coche(String matricula, String marca, String modelo, String tipo) {
         this.matricula = matricula;
         this.marca = marca;
@@ -35,7 +40,6 @@ public class Coche {
         this.modelo = modelo;
         this.tipo = tipo;
     }
-
 
     public int getIdCoche() {
         return idCoche;

@@ -18,6 +18,7 @@ VALUES ('1234AAA', 'Audi', 'Q5', 'SUV'),
 
 CREATE TABLE IF NOT EXISTS multas (
   id_multa integer unsigned NOT NULL AUTO_INCREMENT,
+  id_coche integer,
   precio DOUBLE NOT NULL,
   fecha DATE DEFAULT NULL,
   matricula varchar(7) NOT NULL,

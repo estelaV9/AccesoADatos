@@ -20,8 +20,8 @@ public class Multa {
     @Column(name = "matricula")
     private String modelo;
 
-    @ManyToMany
-    @JoinColumn(name = "idCoche", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "id_coche", referencedColumnName = "id")
     private Coche coche;
 
     public Multa(Coche coche, String modelo, LocalDate fecha, double precio, int idCoche) {

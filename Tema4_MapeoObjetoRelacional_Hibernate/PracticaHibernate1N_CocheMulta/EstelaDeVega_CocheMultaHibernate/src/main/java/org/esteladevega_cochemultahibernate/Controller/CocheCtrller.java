@@ -51,7 +51,7 @@ public class CocheCtrller {
     private Button nuevoBtt;
 
     @FXML
-    private Button nuevoBtt1;
+    private Button verMultasBtt;
 
     @FXML
     private TableColumn<?, ?> tipoCol;
@@ -85,7 +85,7 @@ public class CocheCtrller {
     }
 
     @FXML
-    void onNuevoCocheAction(ActionEvent event) {
+    void onVerMultasAction(ActionEvent event) {
 
     }
 

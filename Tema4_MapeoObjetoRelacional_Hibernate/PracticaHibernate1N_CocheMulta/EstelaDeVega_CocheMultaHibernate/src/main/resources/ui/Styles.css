@@ -54,7 +54,7 @@
 
 
 /* ESTILO PARA LAS LETRAS */
-#label1, #label2, #label3, #label4 {
+.estiloLabel {
     -fx-font-family: "Britannic Bold";
     -fx-font-size: 25px;
     -fx-text-fill: #9f94df;
@@ -183,7 +183,9 @@
 }
 
 /* LABELS PARA LOS ATRIBUTOS DE LAS MULTAS*/
-#label2 {
+.estiloLabel2 {
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 25px;
     -fx-text-fill: #f6e8a8;
 }
 

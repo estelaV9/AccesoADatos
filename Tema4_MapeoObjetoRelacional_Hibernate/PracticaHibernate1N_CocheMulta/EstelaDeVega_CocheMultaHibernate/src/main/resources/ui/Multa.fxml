@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane id="multasPane" prefHeight="799.0" prefWidth="462.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_cochemultahibernate.Controller.MultaCtrller">
    <children>
       <Pane id="paneMenu" prefHeight="55.0" prefWidth="462.0">
@@ -23,7 +22,7 @@
             <Button id="salirApp" fx:id="exitBtt" layoutX="410.0" layoutY="11.0" mnemonicParsing="false" onAction="#onExitAction" prefHeight="33.0" prefWidth="38.0" text="X" />
          </children>
       </Pane>
-      <Label id="label2" layoutX="39.0" layoutY="117.0" text="Matricula">
+      <Label layoutX="39.0" layoutY="117.0" styleClass="estiloLabel2" text="Matricula">
          <font>
             <Font size="15.0" />
          </font>
@@ -31,7 +30,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label id="label2" layoutX="39.0" layoutY="172.0" text="Identificador Multa">
+      <Label layoutX="39.0" layoutY="172.0" styleClass="estiloLabel2" text="Identificador Multa">
          <font>
             <Font size="15.0" />
          </font>
@@ -39,7 +38,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label id="label2" layoutX="39.0" layoutY="226.0" text="Precio">
+      <Label layoutX="39.0" layoutY="226.0" styleClass="estiloLabel2" text="Precio">
          <font>
             <Font size="15.0" />
          </font>
@@ -47,7 +46,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label id="label2" layoutX="39.0" layoutY="279.0" text="Fecha">
+      <Label layoutX="39.0" layoutY="279.0" styleClass="estiloLabel2" text="Fecha">
          <font>
             <Font size="15.0" />
          </font>

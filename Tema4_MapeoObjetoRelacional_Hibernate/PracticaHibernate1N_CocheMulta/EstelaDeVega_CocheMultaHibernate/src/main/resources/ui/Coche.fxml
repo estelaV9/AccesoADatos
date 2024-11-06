@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="867.0" styleClass="anchor-pane" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_cochemultahibernate.Controller.CocheCtrller">
     <children>
-        <Label id="label1" layoutX="29.0" layoutY="82.0" text="Matricula">
+        <Label layoutX="29.0" layoutY="82.0" styleClass="estiloLabel" text="Matricula">
             <font>
                 <Font size="15.0" />
             </font>
@@ -23,7 +23,7 @@
                 <DropShadow />
             </effect>
         </Label>
-        <Label id="label2" layoutX="29.0" layoutY="118.0" text="Marca">
+        <Label layoutX="29.0" layoutY="118.0" styleClass="estiloLabel" text="Marca">
             <font>
                 <Font size="15.0" />
             </font>
@@ -31,7 +31,7 @@
                 <DropShadow />
             </effect>
         </Label>
-        <Label id="label3" layoutX="29.0" layoutY="154.0" text="Modelo">
+        <Label layoutX="29.0" layoutY="154.0" styleClass="estiloLabel" text="Modelo">
             <font>
                 <Font size="15.0" />
             </font>
@@ -39,7 +39,7 @@
                 <DropShadow />
             </effect>
         </Label>
-        <Label id="label4" layoutX="29.0" layoutY="193.0" text="Tipo">
+        <Label layoutX="29.0" layoutY="193.0" styleClass="estiloLabel" text="Tipo">
             <font>
                 <Font size="15.0" />
             </font>
@@ -87,7 +87,7 @@
                 <Button id="salirApp" fx:id="exitBtt" layoutX="819.0" layoutY="6.0" mnemonicParsing="false" onAction="#onExitAction" prefHeight="29.0" prefWidth="38.0" text="X" />
             </children>
         </Pane>
-      <Button id="verMultasBtt" fx:id="nuevoBtt1" layoutX="635.0" layoutY="364.0" mnemonicParsing="false" onAction="#onNuevoCocheAction" prefHeight="71.0" prefWidth="192.0" text="Ver Multas" />
+      <Button id="verMultasBtt" fx:id="verMultasBtt" layoutX="635.0" layoutY="364.0" mnemonicParsing="false" onAction="#onVerMultasAction" prefHeight="71.0" prefWidth="192.0" text="Ver Multas" />
     </children>
     <effect>
         <GaussianBlur radius="0.0" />

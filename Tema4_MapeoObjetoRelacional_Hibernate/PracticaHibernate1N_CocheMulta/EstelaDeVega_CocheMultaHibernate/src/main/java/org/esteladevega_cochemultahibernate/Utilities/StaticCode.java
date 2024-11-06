@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.esteladevega_cochemultahibernate.App;
+import org.hibernate.Session;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -56,11 +57,12 @@ public class StaticCode {
         }
     } // METODO ESTATICO PARA CAMBIAR DE VISTA CON UN ID DE UN BOTON
 
-    public static void exitApp() throws SQLException {
+    public static void exitApp(Session session) throws SQLException {
         int opcion = JOptionPane.showConfirmDialog(null,
                 "¿Está seguro de que desea salir?", "Confirmación", JOptionPane.YES_NO_OPTION);
         if (opcion == JOptionPane.YES_OPTION) {
             System.exit(0); // CERRAR APLICACIÓN
+            session.close(); // CERRAR SESION
         }
     } // SALIR DE LA APLICACIÓN
 }

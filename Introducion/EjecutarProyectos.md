@@ -1,5 +1,5 @@
 # Guia para Ejecutar Proyectos
-En los proyectos realizados en este repositorio, el archivo `module-info.java` ha sido eliminado de estos proyectos. Para ejecutar el proyecto correctamente sin este archivo, sigue los pasos a continuación.
+En los proyectos de JavaFX realizados en este repositorio, el archivo `module-info.java` ha sido eliminado de estos proyectos. Para ejecutar el proyecto correctamente sin este archivo, sigue los pasos a continuación.
 
 ## Pasos para Ejecutar el Código sin module-info.java
 **Error esperado**: Al intentar ejecutar el código sin module-info.java, es probable que encuentres un error relacionado con los módulos de JavaFX. Para solucionarlo, sigue estos pasos en IntelliJ.

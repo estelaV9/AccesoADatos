@@ -1,6 +1,201 @@
 # TEMA 1: ACCESO A BASE DE DATOS RELACIONALES
 
-## Acceso a Bases de Datos Relacionales 
+## Métodos DAO
+En la clase `ConnectionDB` donde se guardará los métodos de `conectar()` y `desconectar` añadiremos un atributo estático de tipo `Connection`.
+```java
+// ATRIBUTO ESTATICO DE TIPO CONEXION PARA PODER LLAMARLO DESDE CUALQUIER CLASE
+public static Connection con;
+```
+
+### Insertar
+Para el método insertar, utilizaremos un ejemplo de insertar usuario. Este método tiene como objetivo insertar un nuevo usuario.
+1. **Declarar la sentencia SQL**: Definimos la sentencia SQL con una estructura preparada para evitar inyecciones SQL. En este caso, la sentencia tiene cuatro parámetros (`?`) que se llenarán con los valores del usuario.
+
+2. **Crear el `PreparedStatement`**: Usamos `con.prepareStatement(sqlInsert)` para crear un `PreparedStatement` que nos permite asignar valores a los parámetros de la sentencia SQL.
+
+3. **Asignar valores a los parámetros**: Llenamos cada parámetro de la sentencia (`?`) usando el objeto cubeUser. Esto se hace con los métodos `statement.setString`, donde se asignan el nombre de usuario, la contraseña, el correo electrónico y la fecha de registro.
+
+4. **Ejecutar la inserción y devolver el resultado**: Ejecutamos la sentencia con `executeUpdate()`, que devuelve el número de filas afectadas. Si al menos una fila fue insertada, el método devuelve `true`, indicando que la operación fue exitosa; de lo contrario, devuelve `false`.
+
+```java
+public static boolean insertUser(Connection con, CubeUser cubeUser) {
+    try {
+        String sqlInsert = "INSERT INTO cube_users (NAME_USER, PASSWORD_USER, MAIL, REGISTRATION_DATE) " +
+                "VALUES (?, ?, ?, ?);"; // DECLARAR LA SENTENCIA SQL
+
+        PreparedStatement statement = con.prepareStatement(sqlInsert); // CREAR EL PreparedStatement
+
+        // ASIGNAR LOS VALORES A LOS PARAMETROS
+        statement.setString(1, cubeUser.getNameUser());
+        statement.setString(2, cubeUser.getPasswordUser());
+        statement.setString(3, cubeUser.getMail());
+        statement.setString(4, String.valueOf(cubeUser.getRegistrationDate()));
+
+        int rowsInserted = statement.executeUpdate(); // EJECUTAR INSERCION Y VERIFICAR EL RESULTADO
+        if (rowsInserted > 0) {
+            return true;
+        } // SI SE HA INSERTADO, RETORNARA TRUE
+    } catch (SQLException e) {
+        StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                "Error al conectar a la base de datos: " + e.getMessage());
+        return false;
+    }
+    return false;
+} // METODO PARA INSERTAR USUARIO
+```
+
+### Modificar 
+El método `modificar` permite actualizar los datos de un usuario existente en la tabla de la base de datos.
+1. **Declarar la sentencia SQL**: Creamos la sentencia SQL para actualizar el nombre y el correo de un usuario en la tabla `CUBE_USERS`. Usamos `?` como marcadores de posición para asignar los valores dinámicamente.
+
+2. **Crear el `PreparedStatement`**: Con `connection.prepareStatement(sqlUpdate)`, inicializamos el `PreparedStatement`, que nos permite llenar los valores para la sentencia SQL preparada.
+
+3. **Asignar valores a los parámetros**: Utilizamos `statement.setString` para asignar el nuevo nombre y correo electrónico del usuario, y el correo actual (`mailUser`) que sirve como criterio de búsqueda en la tabla.
+
+4. **Ejecutar la actualización y devolver el resultado**: Con `executeUpdate()`, se ejecuta la sentencia de actualización. Si una o más filas fueron actualizadas, el método devuelve `true`, indicando éxito.
+
+```java
+public static boolean modifyUser(Connection connection, String nameUser, String emailUser, String mailUser) {
+    try {
+        String sqlUpdate = "UPDATE CUBE_USERS SET NAME_USER = ?, MAIL = ? WHERE MAIL = ?";
+        PreparedStatement statement = connection.prepareStatement(sqlUpdate);
+        statement.setString(1, nameUser);
+        statement.setString(2, emailUser);
+        statement.setString(3, mailUser);
+        int rowsUpdate = statement.executeUpdate();
+        if (rowsUpdate > 0) {
+            return true;
+        } // SI SE HA ACTUALIZADO CORRECTAMENTE, RETORNARA TRUE
+    } catch (SQLException e) {
+        StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                "Error al conectar a la base de datos: " + e.getMessage());
+        return false;
+    }
+    return false;
+} // METODO PARA MODIFICAR AL USUARIO
+```
+
+### Eliminar 
+El método `eliminar` elimina un usuario de la tabla de la base de datos.
+
+1. **Declarar la sentencia SQL**: Definimos la sentencia SQL para eliminar un usuario. Usamos `?` para el marcador de posición del correo electrónico del usuario.
+
+2. **Crear el `PreparedStatement`**: Inicializamos el `PreparedStatement` para ejecutar la sentencia de eliminación.
+
+3. **Asignar valor al parámetro**: Usamos `statement.setString(1, mailUser)` para establecer el valor del correo del usuario que se quiere eliminar.
+
+4. **Ejecutar la eliminación y devolver el resultado**: Usamos `executeUpdate()` para realizar la eliminación. Si al menos una fila es eliminada, el método devuelve `true`.
+
+```java
+public static boolean deleteUser(Connection con, String mailUser) {
+    try {
+        String sqlDelete = "DELETE FROM CUBE_USERS WHERE MAIL = ?";
+        PreparedStatement statement = con.prepareStatement(sqlDelete);
+        statement.setString(1, mailUser);
+        int rowsDelete = statement.executeUpdate();
+        if (rowsDelete > 0) {
+            RegistrationCtrller.cubeUser = null; // INVALIDAR USUARIO
+            return true;
+        } // SI HA ELIMINADO CORRECTAMETNE RETURN TRUE
+    } catch (SQLException e) {
+        StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                "Error al conectar a la base de datos: " + e.getMessage());
+        return false;
+    }
+    return false;
+} // METODO PARA ELIMINAR USUARIO
+```
+
+> [!Note]
+> Cuando una consulta devuelva resultados, se extraen con `Resulset`.
+> ```java
+> ResultSet resultSet = statementQuery.executeQuery();
+> if (resultSet.next()) {
+>    return resultSet.getString("NAME_USER");
+> } // SI DEVUELVE DATOS EN LA CONSULTA, RETORNARA EL NOMBRE DEL USUARIO
+> ```
+
+
+
+### Ejercicio de Formulario de JavaFx con acceso a base de datos
+<a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/EjercicioFormularioFX/PracticaFormulario.md">Enunciado</a> del ejercicio y manual.
+Desarrollar una <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema1_AccesoBDRelacionales/EjercicioFormularioFX/EstelaDeVega_EjercicioFormulario">aplicación</a> JavaFX con mínimo dos formularios y dos tablas en la base de datos.
+
+Puntos clave de este ejercicio:
+#### Configurar las columnas de una tabla al atributo de la clase 
+1- En el initializable, referenciar las columnas al nombre de los atributos de la clase:
+```java
+nameProductCol.setCellValueFactory(new PropertyValueFactory<>("nameProduct"));
+```
+2- Crear el observableList con el array que contiene la lista de productos
+```java
+ObservableList<Product> listProduct =
+      FXCollections.observableArrayList(ProductDAO.listProduct(ConnectionDB.con));
+```
+3- Añadir el observableList a la tabla
+```java
+CubeTable.setItems(listProduct); // ESTABLECER LISTA
+```
+
+#### Abrir una dirección en un navegador
+```java
+// METODO QUE REDIRIGE A MI PERFIL DE GITHUB
+try {
+    Desktop.getDesktop().browse(new URI("https://github.com/estelaV9"));
+    /*SE USA LA CLASE DESKTOP QUE PERMITE HACER COSAS RELACIONADAS CON EL ESCRITORIO DEL ORDENADOR
+    getDesktop() ES UN METODO QUE PROPORCIONA UNA INSTANCIA, ES DECIR, UN OBJETO DE LA CLASE DESKTOP.
+    EL METODO browse() NOS PERMITE ABRIR UNA URL EN EL NAVEGADOR WEB PREDETERMINADO*/
+} catch (Exception e) {
+    e.printStackTrace();
+}
+```
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+## Leer ficheros properties en Java
+Un `archivo de propiedad` es un fichero con la extension **.properties** con sus contenido almacenado como una pareja clave=valor.
+  ``` java
+# Archivo properties
+usuario=shrek
+password=shrek
+ruta=/home/shrek/resources
+```
+
+**1. Inicializar nuestro objeto y indicarle que cargue el fichero de propiedades.**
+ ``` java
+Properties propiedades = new Properties();
+propiedades.load(new FileReader("config.properties"));
+```
+
+**2. Lectura de un valor en nuestro archivo properties**
+ ``` java
+propiedades.getProperty(miClave)
+```
+
+**3. Leer todas las propiedades**
+Para leer todas las propiedades utilizaremos el objeto **Enumeration** que nos permitirá iterar sobre todas ellas.
+Leeremos la clave de los valores en un bucle y obtendremos la clave. 
+ ``` java
+Enumeration<Object> claves = propiedades.keys(); // El objeto Enumeration almacena todas las claves que
+                                                  // incluye nuestro objeto Properties
+while (claves.hasMoreElements()) {
+  Object clave = claves.nextElement();
+  System.out.println(clave.toString() + " - " + propiedades.get(clave).toString());
+} // SE RECORRE TODOS LOS ELEMENTOS Y LO IMPRIME 
+```
+Todo ello dentro de las excepciones `FileNotFoundException` y `IOException`.
+
 
 ### Conexión a la base de datos
 Para conectar a la base de datos, podremos usar la `clase R` con su archivo `properties` para centralizar los datos de configuración, o hacerlo sin esta clase y definir directamente los datos en el código.
@@ -139,202 +334,6 @@ public static void desconectar() throws SQLException {
 ```
 
 
-### Métodos DAO
-En la clase `ConnectionDB` donde se guardará los métodos de `conectar()` y `desconectar` añadiremos un atributo estático de tipo `Connection`.
-```java
-// ATRIBUTO ESTATICO DE TIPO CONEXION PARA PODER LLAMARLO DESDE CUALQUIER CLASE
-public static Connection con;
-```
-
-#### Insertar
-Para el método insertar, utilizaremos un ejemplo de insertar usuario. Este método tiene como objetivo insertar un nuevo usuario.
-1. **Declarar la sentencia SQL**: Definimos la sentencia SQL con una estructura preparada para evitar inyecciones SQL. En este caso, la sentencia tiene cuatro parámetros (`?`) que se llenarán con los valores del usuario.
-
-2. **Crear el `PreparedStatement`**: Usamos `con.prepareStatement(sqlInsert)` para crear un `PreparedStatement` que nos permite asignar valores a los parámetros de la sentencia SQL.
-
-3. **Asignar valores a los parámetros**: Llenamos cada parámetro de la sentencia (`?`) usando el objeto cubeUser. Esto se hace con los métodos `statement.setString`, donde se asignan el nombre de usuario, la contraseña, el correo electrónico y la fecha de registro.
-
-4. **Ejecutar la inserción y devolver el resultado**: Ejecutamos la sentencia con `executeUpdate()`, que devuelve el número de filas afectadas. Si al menos una fila fue insertada, el método devuelve `true`, indicando que la operación fue exitosa; de lo contrario, devuelve `false`.
-
-```java
-public static boolean insertUser(Connection con, CubeUser cubeUser) {
-    try {
-        String sqlInsert = "INSERT INTO cube_users (NAME_USER, PASSWORD_USER, MAIL, REGISTRATION_DATE) " +
-                "VALUES (?, ?, ?, ?);"; // DECLARAR LA SENTENCIA SQL
-
-        PreparedStatement statement = con.prepareStatement(sqlInsert); // CREAR EL PreparedStatement
-
-        // ASIGNAR LOS VALORES A LOS PARAMETROS
-        statement.setString(1, cubeUser.getNameUser());
-        statement.setString(2, cubeUser.getPasswordUser());
-        statement.setString(3, cubeUser.getMail());
-        statement.setString(4, String.valueOf(cubeUser.getRegistrationDate()));
-
-        int rowsInserted = statement.executeUpdate(); // EJECUTAR INSERCION Y VERIFICAR EL RESULTADO
-        if (rowsInserted > 0) {
-            return true;
-        } // SI SE HA INSERTADO, RETORNARA TRUE
-    } catch (SQLException e) {
-        StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
-                "Error al conectar a la base de datos: " + e.getMessage());
-        return false;
-    }
-    return false;
-} // METODO PARA INSERTAR USUARIO
-```
-
-#### Modificar 
-El método `modificar` permite actualizar los datos de un usuario existente en la tabla de la base de datos.
-1. **Declarar la sentencia SQL**: Creamos la sentencia SQL para actualizar el nombre y el correo de un usuario en la tabla `CUBE_USERS`. Usamos `?` como marcadores de posición para asignar los valores dinámicamente.
-
-2. **Crear el `PreparedStatement`**: Con `connection.prepareStatement(sqlUpdate)`, inicializamos el `PreparedStatement`, que nos permite llenar los valores para la sentencia SQL preparada.
-
-3. **Asignar valores a los parámetros**: Utilizamos `statement.setString` para asignar el nuevo nombre y correo electrónico del usuario, y el correo actual (`mailUser`) que sirve como criterio de búsqueda en la tabla.
-
-4. **Ejecutar la actualización y devolver el resultado**: Con `executeUpdate()`, se ejecuta la sentencia de actualización. Si una o más filas fueron actualizadas, el método devuelve `true`, indicando éxito.
-
-```java
-public static boolean modifyUser(Connection connection, String nameUser, String emailUser, String mailUser) {
-    try {
-        String sqlUpdate = "UPDATE CUBE_USERS SET NAME_USER = ?, MAIL = ? WHERE MAIL = ?";
-        PreparedStatement statement = connection.prepareStatement(sqlUpdate);
-        statement.setString(1, nameUser);
-        statement.setString(2, emailUser);
-        statement.setString(3, mailUser);
-        int rowsUpdate = statement.executeUpdate();
-        if (rowsUpdate > 0) {
-            return true;
-        } // SI SE HA ACTUALIZADO CORRECTAMENTE, RETORNARA TRUE
-    } catch (SQLException e) {
-        StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
-                "Error al conectar a la base de datos: " + e.getMessage());
-        return false;
-    }
-    return false;
-} // METODO PARA MODIFICAR AL USUARIO
-```
-
-#### Eliminar 
-El método `eliminar` elimina un usuario de la tabla de la base de datos.
-
-1. **Declarar la sentencia SQL**: Definimos la sentencia SQL para eliminar un usuario. Usamos `?` para el marcador de posición del correo electrónico del usuario.
-
-2. **Crear el `PreparedStatement`**: Inicializamos el `PreparedStatement` para ejecutar la sentencia de eliminación.
-
-3. **Asignar valor al parámetro**: Usamos `statement.setString(1, mailUser)` para establecer el valor del correo del usuario que se quiere eliminar.
-
-4. **Ejecutar la eliminación y devolver el resultado**: Usamos `executeUpdate()` para realizar la eliminación. Si al menos una fila es eliminada, el método devuelve `true`.
-
-```java
-public static boolean deleteUser(Connection con, String mailUser) {
-    try {
-        String sqlDelete = "DELETE FROM CUBE_USERS WHERE MAIL = ?";
-        PreparedStatement statement = con.prepareStatement(sqlDelete);
-        statement.setString(1, mailUser);
-        int rowsDelete = statement.executeUpdate();
-        if (rowsDelete > 0) {
-            RegistrationCtrller.cubeUser = null; // INVALIDAR USUARIO
-            return true;
-        } // SI HA ELIMINADO CORRECTAMETNE RETURN TRUE
-    } catch (SQLException e) {
-        StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
-                "Error al conectar a la base de datos: " + e.getMessage());
-        return false;
-    }
-    return false;
-} // METODO PARA ELIMINAR USUARIO
-```
-
-> [!Note]
-> Cuando una consulta devuelva resultados, se extraen con `Resulset`.
-> ```java
-> ResultSet resultSet = statementQuery.executeQuery();
-> if (resultSet.next()) {
->    return resultSet.getString("NAME_USER");
-> } // SI DEVUELVE DATOS EN LA CONSULTA, RETORNARA EL NOMBRE DEL USUARIO
-> ```
-
-
-
-### Ejercicio de Formulario de JavaFx con acceso a base de datos
-<a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/EjercicioFormularioFX/PracticaFormulario.md">Enunciado</a> del ejercicio y manual.
-Desarrollar una <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema1_AccesoBDRelacionales/EjercicioFormularioFX/EstelaDeVega_EjercicioFormulario">aplicación</a> JavaFX con mínimo dos formularios y dos tablas en la base de datos.
-
-Puntos clave de este ejercicio:
-#### Configurar las columnas de una tabla al atributo de la clase 
-1- En el initializable, referenciar las columnas al nombre de los atributos de la clase:
-```java
-nameProductCol.setCellValueFactory(new PropertyValueFactory<>("nameProduct"));
-```
-2- Crear el observableList con el array que contiene la lista de productos
-```java
-ObservableList<Product> listProduct =
-      FXCollections.observableArrayList(ProductDAO.listProduct(ConnectionDB.con));
-```
-3- Añadir el observableList a la tabla
-```java
-CubeTable.setItems(listProduct); // ESTABLECER LISTA
-```
-
-#### Abrir una dirección en un navegador
-```java
-// METODO QUE REDIRIGE A MI PERFIL DE GITHUB
-try {
-    Desktop.getDesktop().browse(new URI("https://github.com/estelaV9"));
-    /*SE USA LA CLASE DESKTOP QUE PERMITE HACER COSAS RELACIONADAS CON EL ESCRITORIO DEL ORDENADOR
-    getDesktop() ES UN METODO QUE PROPORCIONA UNA INSTANCIA, ES DECIR, UN OBJETO DE LA CLASE DESKTOP.
-    EL METODO browse() NOS PERMITE ABRIR UNA URL EN EL NAVEGADOR WEB PREDETERMINADO*/
-} catch (Exception e) {
-    e.printStackTrace();
-}
-```
-
-
-
-
-
-
-
----
-
-
-
-
-
-
-## Leer ficheros properties en Java
-Un `archivo de propiedad` es un fichero con la extension **.properties** con sus contenido almacenado como una pareja clave=valor.
-  ``` java
-# Archivo properties
-usuario=shrek
-password=shrek
-ruta=/home/shrek/resources
-```
-
-**1. Inicializar nuestro objeto y indicarle que cargue el fichero de propiedades.**
- ``` java
-Properties propiedades = new Properties();
-propiedades.load(new FileReader("config.properties"));
-```
-
-**2. Lectura de un valor en nuestro archivo properties**
- ``` java
-propiedades.getProperty(miClave)
-```
-
-**3. Leer todas las propiedades**
-Para leer todas las propiedades utilizaremos el objeto **Enumeration** que nos permitirá iterar sobre todas ellas.
-Leeremos la clave de los valores en un bucle y obtendremos la clave. 
- ``` java
-Enumeration<Object> claves = propiedades.keys(); // El objeto Enumeration almacena todas las claves que
-                                                  // incluye nuestro objeto Properties
-while (claves.hasMoreElements()) {
-  Object clave = claves.nextElement();
-  System.out.println(clave.toString() + " - " + propiedades.get(clave).toString());
-} // SE RECORRE TODOS LOS ELEMENTOS Y LO IMPRIME 
-```
-Todo ello dentro de las excepciones `FileNotFoundException` y `IOException`.
-
 > [!NOTE]
 > <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema1_AccesoBDRelacionales/FicheroPropiedades">EJERCICIO DE INICIO</a>
 > 1 - Crear un objeto
@@ -351,6 +350,7 @@ Todo ello dentro de las excepciones `FileNotFoundException` y `IOException`.
 > ```
 > 4 - Leer todas las propiedades.
 > 5 - Poner las excepciones `FileNotFoundException` y `IOException`.
+
 
 
 

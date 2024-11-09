@@ -1,0 +1,50 @@
+[
+    {
+        "nombre": "Pedro",
+        "apellidos": "Sanchez Gomez",
+        "edad": 25,
+        "carnet": true
+    },
+    {
+        "nombre": "Ana",
+        "apellidos": "Alonso Serrrano",
+        "edad": 90,
+        "carnet": false
+    },
+    {
+        "nombre": "Luis",
+        "apellidos": "Gomez Alonso",
+        "edad": 50,
+        "carnet": false
+    },
+    {
+        "nombre": "Sara",
+        "apellidos": "Del Valle Gomez",
+        "edad": 38,
+        "carnet": true
+    },
+    {
+        "nombre": "Alfonso",
+        "apellidos": "Trigueros Gutierrez",
+        "edad": 65,
+        "carnet": false
+    },
+    {
+        "nombre": "Alba",
+        "apellidos": "Lorenzo del Pozo",
+        "edad": 24,
+        "carnet": true
+    },
+    {
+        "nombre": "Miguel",
+        "apellidos": "Garcia Garcia",
+        "edad": 74,
+        "carnet": false
+    },
+    {
+        "nombre": "Sonia",
+        "apellidos": "Perez Lorenzo",
+        "edad": 41,
+        "carnet": true
+    }
+]

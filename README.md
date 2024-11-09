@@ -8,6 +8,9 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
 2. Aplicación en <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Introducion/EjercicioRepasoFX" target="_blank">JavaFX</a>.
 
 ## Tema 0: JavaFX
+> [!WARNING]
+> Para saber cómo ejecutar los proyectos, lea el siguiente <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Introducion/EjecutarProyectos.md">archivo</a> ya que se realizan sin el `module-info`.
+
 ### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Introducion/EjercicioRepasoFX" target="_blank">Ejercicio</a> repaso JavaFx.
 <table>
   <tr>

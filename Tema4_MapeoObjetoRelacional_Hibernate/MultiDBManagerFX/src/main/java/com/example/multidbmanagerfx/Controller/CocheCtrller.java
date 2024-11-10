@@ -1,6 +1,7 @@
 package com.example.multidbmanagerfx.Controller;
 
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
+import com.example.multidbmanagerfx.DAO.MongoDB_CocheDAO;
 import com.example.multidbmanagerfx.DAO.MySQL_CocheDAO;
 import com.example.multidbmanagerfx.DAO.Hibernate_CocheDAO;
 import com.example.multidbmanagerfx.Model.Coche;
@@ -63,7 +64,7 @@ public class CocheCtrller implements Initializable {
     String[] tipoCoche = {"Eléctrico", "Diesel", "Híbrido"}; // ARRAY CON LOS TIPOS DE COCHES
     MySQL_CocheDAO cocheDAO = new MySQL_CocheDAO(); // INSTANCIAR MySQL_CocheDAO
     Hibernate_CocheDAO hibernateCocheDAO = new Hibernate_CocheDAO(); // INSTANCIAR hibernateCocheDAO
-
+    MongoDB_CocheDAO mongoDBCocheDAO = new MongoDB_CocheDAO(); // INSTANCIAR mongoDBCocheDAO
 
     private boolean executeAction(String action, Coche coche, String matricula, Coche modifyCarHibernate) {
         // OBTENER GESTOR SELECCIONADO
@@ -88,20 +89,20 @@ public class CocheCtrller implements Initializable {
                     result = cocheDAO.insertCar(coche); // INSERTAR
                 }
             }
-            /*case "MongoDB" -> {
+            case "MongoDB" -> {
                 // SI LA ACCIÓN ES ELIMINAR, SE EJECUTA LA LÓGICA DE ELIMINACIÓN EN MONGODB
                 if ("eliminar".equals(action)) {
-                    // ELIMINAR
+                    result = mongoDBCocheDAO.deleteCar(coche.getMatricula()); // ELIMINAR
                 }
                 // SI LA ACCIÓN ES MODIFICAR, SE EJECUTA LA LÓGICA DE MODIFICACIÓN EN MONGODB
                 else if ("modificar".equals(action)) {
-                    // MOFICIAR
+                    result = mongoDBCocheDAO.modifyCar(coche, matricula); // MODIFIAR
                 }
                 // SI LA ACCIÓN ES INSERTAR, SE EJECUTA LA LÓGICA DE INSERCIÓN EN MONGODB
                 else if ("insertar".equals(action)) {
-                    // INSERTAR
+                    result = mongoDBCocheDAO.insertCar(coche); // INSERTAR
                 }
-            }*/
+            }
             case "Hibernate" -> {
                 // SI LA ACCIÓN ES ELIMINAR, SE EJECUTA LA LÓGICA DE ELIMINACIÓN EN HIBERNATE
                 if ("eliminar".equals(action)) {
@@ -238,7 +239,21 @@ public class CocheCtrller implements Initializable {
     } // CAMBIAR DE VISTA
 
     private void refreshTable() {
-        cochesTable.setItems(cocheDAO.listOfCars()); // ESTABLECER LISTA
+        // OBTENER GESTOR SELECCIONADO
+        String selectedGestor = ((RadioButton) dbGroup.getSelectedToggle()).getText();
+
+        switch (selectedGestor){
+            case "MySQL" -> {
+                cochesTable.setItems(cocheDAO.listOfCars()); // ESTABLECER LISTA
+            }
+            case "MongoDB" -> {
+                cochesTable.setItems(mongoDBCocheDAO.listOfCars());
+            }
+            case "Hibernate" -> {
+                cochesTable.setItems(hibernateCocheDAO.listarCoches());
+            }
+        }
+
     } // METODO PARA ESTABLECER LOS DATOS EN LA TABLA
 
     @Override
@@ -253,8 +268,8 @@ public class CocheCtrller implements Initializable {
         modeloCol.setCellValueFactory(new PropertyValueFactory<>("modelo"));
         tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 
-        refreshTable(); // AÑADIR LOS DATOS A LA TABLA
-
         mySQLRB.setSelected(true); // POR DEFECTO APARECE SELECCIONADA LA OPCION DE MYSQL
+
+        refreshTable(); // AÑADIR LOS DATOS A LA TABLA
     } // INICIARLIZAR LOS DATOS DEL COMBOBOX Y LA TABLA
 }

@@ -15,7 +15,7 @@ public class App extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         // AÑADIR IMAGEN EN EL STAGE DEL LOGO DE LA APLICACION
         stage.getIcons().add(new Image(this.getClass().getResource("/ui/Image/img.png").toString()));
-        stage.setTitle("Multas");
+        stage.setTitle("Gestión Coches y Multas");
         stage.setScene(scene);
         stage.show();
     }

@@ -1,8 +1,6 @@
 package com.example.multidbmanagerfx.DAO;
 
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
-import com.example.multidbmanagerfx.Controller.MySQL_MultaInterface;
-import com.example.multidbmanagerfx.Model.Coche;
 import com.example.multidbmanagerfx.Model.Multa;
 import com.example.multidbmanagerfx.Utilities.StaticCode;
 import javafx.collections.FXCollections;
@@ -31,7 +29,7 @@ public class MultaDAO implements MySQL_MultaInterface {
                 // AÑADIR LOS DATOS A UN OBSERVABLELIST
                 int id = resultSet.getInt("id_multa");
                 double precio = resultSet.getDouble("precio");
-                String fecha = resultSet.getString("fecha");
+                LocalDate fecha = LocalDate.parse(resultSet.getString("fecha"));
                 String matricula = resultSet.getString("matricula");
                 Multa multa = new Multa(id, precio, fecha, matricula); // OBJETO DE MULTA CON SUS DATOS
                 observableListFine.add(multa); // AÑADIR LAS MULTAS CREADAS
@@ -51,7 +49,7 @@ public class MultaDAO implements MySQL_MultaInterface {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, multa.getIdMulta());
             statement.setDouble(2, multa.getPrecio());
-            statement.setString(3, multa.getFecha());
+            statement.setString(3, multa.getFecha().toString());
             statement.setString(4, multa.getMatricula());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
@@ -87,7 +85,7 @@ public class MultaDAO implements MySQL_MultaInterface {
             String sql = "UPDATE multas SET precio = ?, fecha = ? WHERE id_multa = ?;";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setDouble(1, newMulta.getPrecio());
-            statement.setString(2, newMulta.getFecha());
+            statement.setString(2, newMulta.getFecha().toString());
             statement.setInt(3, id);
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {

@@ -1,4 +1,11 @@
-// CREAR E INSERTAR DOCUMENTOS EN LA COLECCION COCHES
+// Seleccionar la base de datos (se creará si no existe)
+use CarManagementDB;
+
+// Eliminar las colecciones si ya existen
+db.coches.drop();
+db.multas.drop();
+
+// Crear e insertar documentos en la colección 'coches'
 db.coches.insertMany([
     {
         matricula: "1234AAA",
@@ -20,7 +27,7 @@ db.coches.insertMany([
     }
 ]);
 
-// CREAR E INSERTAR DOCUMENTOS EN LA COLECCION MULTAS
+// Crear e insertar documentos en la colección 'multas'
 db.multas.insertMany([
     {
         matricula: "1234AAA",
@@ -48,3 +55,10 @@ db.multas.insertMany([
         fecha: new Date("2024-11-21")
     }
 ]);
+
+// Verificar la inserción de documentos
+print("Datos de coches:");
+db.coches.find().forEach(printjson);
+
+print("\nDatos de multas:");
+db.multas.find().forEach(printjson);

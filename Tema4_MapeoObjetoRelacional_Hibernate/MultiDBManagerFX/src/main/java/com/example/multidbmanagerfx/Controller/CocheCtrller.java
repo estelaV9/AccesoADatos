@@ -143,7 +143,14 @@ public class CocheCtrller implements Initializable {
 
     @FXML
     void onVerMultasAction(ActionEvent event) {
-        StaticCode.changeViewBtt("/ui/Multa.fxml", verMultasBtt, "Multas");
+        Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem();
+        if(seleccionada != null){
+            // CAMBIAR DE VISTA GUARDANDO LOS DATOS DEL COCHE SELECCIONADO
+            StaticCode.changeViewWithPharamsBtt("/ui/Multa.fxml", verMultasBtt, "Multas", seleccionada);
+        }else{
+            StaticCode.Alerts("ERROR", "Selecciona un coche", "¡ERROR!",
+                    "Por favor, seleccione un coche");
+        } // SI SE SELECCIONA VA A LA VISTA MULTAS, Y SI NO LANZA UN MENSAJE
     } // CAMBIAR DE VISTA
 
     private void refreshTable() {

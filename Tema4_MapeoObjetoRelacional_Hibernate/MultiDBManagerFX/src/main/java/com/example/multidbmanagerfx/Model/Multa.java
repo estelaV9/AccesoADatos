@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class Multa {
     private int idMulta;
     private double precio;
-    private LocalDate fecha;
+    private String fecha;
     private String matricula;
 
-    public Multa(double precio, LocalDate fecha, String matricula) {
+    public Multa(double precio, String fecha, String matricula) {
         this.precio = precio;
         this.fecha = fecha;
         this.matricula = matricula;
     }
 
-    public Multa(int idMulta, double precio, LocalDate fecha, String matricula) {
+    public Multa(int idMulta, double precio, String fecha, String matricula) {
         this.idMulta = idMulta;
         this.precio = precio;
         this.fecha = fecha;
@@ -35,10 +35,10 @@ public class Multa {
         this.precio = precio;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

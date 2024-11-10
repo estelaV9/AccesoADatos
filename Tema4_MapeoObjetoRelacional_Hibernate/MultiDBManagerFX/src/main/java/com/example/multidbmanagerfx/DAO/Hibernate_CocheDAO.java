@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hibernate_CocheDAO implements Hibernate_CocheInterface{
@@ -20,6 +21,7 @@ public class Hibernate_CocheDAO implements Hibernate_CocheInterface{
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             session.save(coche); // GUARDAR EL COCHE EN LA BASE DE DATOS
             session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            session.clear(); // LIMPIAR SESSION
             return true; // OPERACION EXITOSA
         } catch (Exception e) {
             if (session.getTransaction() != null) {
@@ -64,6 +66,7 @@ public class Hibernate_CocheDAO implements Hibernate_CocheInterface{
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             session.delete(coche); // ELIMINAR EL COCHE EN LA BASE DE DATOS
             session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            session.clear(); // LIMPIAR SESSION
             return true; // OPERACION EXITOSA
         } catch (Exception e) {
             if (session.getTransaction() != null) {
@@ -78,17 +81,22 @@ public class Hibernate_CocheDAO implements Hibernate_CocheInterface{
     } // METODO PARA ELIMINAR UN COCHE
 
     public ObservableList<Coche> listarCoches() {
-        ObservableList<Coche> observableList = FXCollections.observableArrayList(); // LISTA PARA ALMACENAR LOS COCHES
+        List listaCochesDB = new ArrayList<>();
         try {
+            session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             // CONSULTA PARA OBTENER LOS DATOS DE LOS COCHES DE LA BASE DE DATOS
-            List listaCochesDB = session.createQuery("from Coche").list();
-            observableList.add((Coche) listaCochesDB); // SE AÑADE EL ARRAYLIST AL OBSERVABLELIST
+            listaCochesDB = session.createQuery("from Coche").list();
+            session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            session.clear(); // LIMPIAR SESSION
         } catch (Exception e) {
-            // MENSAJE DE ERROR
-            StaticCode.Alerts("ERROR", "Error al listar", "¡ERROR!",
-                    "Ha ocurrido un error al listar los coches: " + e);
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+                // MENSAJE DE ERROR
+                StaticCode.Alerts("ERROR", "Error al listar", "¡ERROR!",
+                        "Ha ocurrido un error al listar los coches: " + e);
+            }
         }
-        return observableList; // RETORNA LA LISTA DE COCHES
+        return FXCollections.observableArrayList(listaCochesDB); // RETORNA LA LISTA DE COCHES
     } // METODO PARA LISTAR TODOS LOS COCHES DE LA BASE DE DATOS
 
     public boolean buscarCoche(String matricula) {
@@ -100,6 +108,7 @@ public class Hibernate_CocheDAO implements Hibernate_CocheInterface{
             cocheQuery.setParameter("matricula", matricula);
             Coche cocheEncontrado = cocheQuery.uniqueResult(); // SE EJECUTA LA CONSULTA Y OBTIENE EL RESULTADO
             session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            session.clear(); // LIMPIAR SESSION
             return cocheEncontrado != null; // SE RETORNA TRUE SI SE ENCONTRO, FALSE SI NO
         } catch (Exception e) {
             if (session.getTransaction() != null) {

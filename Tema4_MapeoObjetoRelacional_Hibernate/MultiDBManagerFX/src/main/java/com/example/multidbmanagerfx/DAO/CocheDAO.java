@@ -40,23 +40,23 @@ public class CocheDAO implements MySQL_CocheInterface {
     public ObservableList<Coche> listOfCars() {
         ObservableList<Coche> observableListCar = FXCollections.observableArrayList();
         try {
-            String sql = "SELECT matricula, marca, modelo, tipo FROM coches;";
+            String sql = "SELECT * FROM coches;";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 // AÑADIR LOS DATOS A UN OBSERVABLELIST
+                int id = resultSet.getInt("id");
                 String matricula = resultSet.getString("matricula");
                 String marca = resultSet.getString("marca");
                 String modelo = resultSet.getString("modelo");
                 String tipo = resultSet.getString("tipo");
-                Coche cocheList = new Coche(matricula, marca, modelo, tipo);
+                Coche cocheList = new Coche(id, matricula, marca, modelo, tipo);
                 observableListCar.add(cocheList);
             }
         } catch (Exception e) {
             // SI HAY ALGUN PROBLEMA EN EL METODO LISTAR, SALTA UN MENSAJE
             StaticCode.Alerts("ERROR", "Error al listar", "¡ERROR!",
                     "Error al listar los coches de la base de datos: " + e.getMessage());
-            System.out.println(e.getMessage());
         }
         return observableListCar;
     } // METODO PARA LISTAR LOS COCHES DE LA BASE DE DATOS

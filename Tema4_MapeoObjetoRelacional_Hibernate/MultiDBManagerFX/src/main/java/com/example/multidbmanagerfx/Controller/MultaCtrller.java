@@ -74,7 +74,7 @@ public class MultaCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Selecciona una multa", "¡ERROR!",
                     "Por favor, seleccione una multa para eliminar");
         } else {
-            Multa fine = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), datePicker.getValue().toString(), matriculaTF.getText());
+            Multa fine = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), LocalDate.parse(datePicker.getValue().toString()), matriculaTF.getText());
             if(multaDAO.modifyFine(fine, fineSelected.getIdMulta())){
                 // SI SE MODIFICO LA MULTA CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
                 StaticCode.Alerts("INFORMATION", "Modificación de multa",
@@ -119,7 +119,7 @@ public class MultaCtrller implements Initializable {
         if(fineSelected != null){
             idMultaTF.setText(String.valueOf(fineSelected.getIdMulta()));
             precioTF.setText(String.valueOf(fineSelected.getPrecio()));
-            datePicker.setValue(LocalDate.parse(fineSelected.getFecha()));
+            datePicker.setValue(fineSelected.getFecha());
         } // SI SE HA SELECCIONADO UNA MULTA SE SETTEAN SUS DATOS
     } // CUANDO SE PULSA UNA MULTA SE ASIGNAN LOS VALORES DE LA MULTA SELECCIONADA
 
@@ -130,7 +130,7 @@ public class MultaCtrller implements Initializable {
 
     @FXML
     void onInsertarAction(ActionEvent event) {
-        Multa fine = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), datePicker.getValue().toString(), matriculaTF.getText());
+        Multa fine = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), LocalDate.parse(datePicker.getValue().toString()), matriculaTF.getText());
         if(multaDAO.insertFine(fine)){
             // SI SE INSERTO LA MULTA CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
             StaticCode.Alerts("INFORMATION", "Creación de multa", "Creación exitosa",

@@ -38,7 +38,6 @@ public class MultaDAO implements MySQL_MultaInterface {
             // SI HAY ALGUN PROBLEMA EN EL METODO LISTAR, SALTA UN MENSAJE
             StaticCode.Alerts("ERROR", "Error al listar", "¡ERROR!",
                     "Error al listar los coches de la base de datos: " + e.getMessage());
-            System.out.println(e.getMessage());
         }
         return observableListFine;
     } // METODO PARA LISTAR LAS MULTAS DE COCHES DE LA BASE DE DATOS

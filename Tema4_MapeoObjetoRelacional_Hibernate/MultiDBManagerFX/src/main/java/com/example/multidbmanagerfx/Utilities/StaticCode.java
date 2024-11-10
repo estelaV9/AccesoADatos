@@ -34,6 +34,7 @@ public class StaticCode {
         if (opcion == JOptionPane.YES_OPTION) {
             System.exit(0); // CERRAR APLICACIÓN
             MySQL_ConnectionDB.desconectar();// CERRAR SESION
+            // session.close()
         }
     } // SALIR DE LA APLICACIÓN
 

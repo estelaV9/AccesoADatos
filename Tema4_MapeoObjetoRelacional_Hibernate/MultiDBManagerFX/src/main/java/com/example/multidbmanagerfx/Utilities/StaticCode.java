@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javax.swing.*;
@@ -69,7 +70,7 @@ public class StaticCode {
         }
     } // METODO ESTATICO PARA CAMBIAR DE VISTA CON UN ID DE UN BOTON
 
-    public static void changeViewWithPharamsBtt(String nameFxml, Button button, String title, Coche coche) {
+    public static void changeViewWithPharamsBtt(String nameFxml, Button button, ToggleGroup dbGroup, String title, Coche coche) {
         try {
             // CARGAR EL ARCHIVO FXML
             FXMLLoader fxmlLoader = new
@@ -79,7 +80,7 @@ public class StaticCode {
 
             // CREAMOS UNA INSTANCIA CONTROLLER AL QUE VAMOS A PASAR DATOS
             MultaCtrller controller = fxmlLoader.getController();
-            controller.displayCoche(coche);
+            controller.displayCoche(coche, dbGroup);
 
             Scene scene = new Scene(root); // CREAR UNA NUEVA ESCENA
 

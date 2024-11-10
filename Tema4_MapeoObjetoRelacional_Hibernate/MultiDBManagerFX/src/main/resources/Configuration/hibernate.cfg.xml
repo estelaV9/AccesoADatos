@@ -6,7 +6,7 @@
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver
         </property> <!-- DRIVER DE ACCESO A LA BASE DE DATOS -->
-        <property name="connection.url">jdbc:mysql://localhost/cochesmultashibernate
+        <property name="connection.url">jdbc:mysql://localhost/CarManagementDB
         </property> <!-- LA DB A LA QUE SE VA A CONECTAR -->
         <property name="connection.username">root</property> <!-- USER -->
         <property name="connection.password">toor</property> <!-- PASSWORD -->

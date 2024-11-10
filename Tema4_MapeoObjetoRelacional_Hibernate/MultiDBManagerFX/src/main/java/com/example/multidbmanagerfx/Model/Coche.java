@@ -1,11 +1,12 @@
 package com.example.multidbmanagerfx.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "coches")
-public class Coche {
+public class Coche implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

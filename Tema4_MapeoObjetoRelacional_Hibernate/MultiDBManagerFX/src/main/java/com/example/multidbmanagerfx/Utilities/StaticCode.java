@@ -2,6 +2,9 @@ package com.example.multidbmanagerfx.Utilities;
 
 import com.example.multidbmanagerfx.App;
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
+import com.example.multidbmanagerfx.Controller.MultaCtrller;
+import com.example.multidbmanagerfx.Model.Coche;
+import com.example.multidbmanagerfx.Model.Multa;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -65,4 +68,31 @@ public class StaticCode {
             e.printStackTrace(); // SI HAY ERROR EN LA CARGA DEL FXML, SE LANZA LA EXCEPCION
         }
     } // METODO ESTATICO PARA CAMBIAR DE VISTA CON UN ID DE UN BOTON
+
+    public static void changeViewWithPharamsBtt(String nameFxml, Button button, String title, Coche coche) {
+        try {
+            // CARGAR EL ARCHIVO FXML
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(App.class.getResource(nameFxml));
+            // FXMLLoader(R.getUI(nameFxml));
+            Parent root = fxmlLoader.load();
+
+            // CREAMOS UNA INSTANCIA CONTROLLER AL QUE VAMOS A PASAR DATOS
+            MultaCtrller controller = fxmlLoader.getController();
+            controller.displayCoche(coche);
+
+            Scene scene = new Scene(root); // CREAR UNA NUEVA ESCENA
+
+            // OBTENER EL STAGE ACTUAL A PARTIR DEL BOTON QUE SE HA CLICADO
+            Stage stage = (Stage) button.getScene().getWindow();
+            stage.setTitle(title); // TITULO DE LA VENTANA
+            stage.setScene(scene); // ESTABLECER LA NUEVA ESCENA AL STAGE ACTUAL
+
+            if (!stage.isShowing()) {
+                stage.show();
+            } // MOSTRAR VENTANA SI NO ESTA VISIBLE
+        } catch (IOException e) {
+            e.printStackTrace(); // SI HAY ERROR EN LA CARGA DEL FXML, SE LANZA LA EXCEPCION
+        }
+    } // METODO ESTATICO PARA CAMBIAR DE VISTA PASANDOLE PARAMETROS A UN CONTROLADOR
 }

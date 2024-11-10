@@ -81,8 +81,23 @@ public class CocheCtrller implements Initializable {
 
     @FXML
     void onEliminarAction(ActionEvent event) {
-
-    }
+        Coche carSelected = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
+        if (carSelected == null) {
+            StaticCode.Alerts("ERROR", "Selecciona un coche", "¡ERROR!",
+                    "Por favor, seleccione un coche");
+        } else {
+            if(cocheDAO.deleteCar(carSelected.getMatricula())){
+                // SI SE ELIMINO EL COCHE CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("INFORMATION", "Eliminación de coche",
+                        "Eliminación exitosa","Se ha eliminado el coche correctamente.");
+                refreshTable(); // REFRESCAR LOS DATOS
+            } else {
+                // SI NO SE ELIMINO, SE MUESTRA UN ERROR
+                StaticCode.Alerts("ERROR", "Eliminación de coche",
+                        "Eliminación fallida","No se ha podido eliminar el coche.");
+            } // MODIFICAR EL COCHE
+        } // VALIDAR SI HA SELECCIONADO UN COCHE
+    } // BOTON PARA ELIMINAR UN COCHE DE UNA MATRICULA SELECCIONADA
 
     @FXML
     void onExitAction(ActionEvent event) throws SQLException {
@@ -123,7 +138,7 @@ public class CocheCtrller implements Initializable {
             // SI NO SE INSERTO, SE MUESTRA UN ERROR
             StaticCode.Alerts("ERROR", "Creación de coche", "Creación fallida",
                     "No se ha podido crear el coche.");
-        }
+        } // INSERTAR COCHE
     } // BOTON PARA AGREGAR UN COCHE NUEVO
 
     @FXML

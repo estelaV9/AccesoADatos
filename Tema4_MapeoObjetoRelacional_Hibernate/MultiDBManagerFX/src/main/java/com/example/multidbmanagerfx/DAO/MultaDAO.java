@@ -1,6 +1,7 @@
 package com.example.multidbmanagerfx.DAO;
 
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
+import com.example.multidbmanagerfx.Controller.MySQL_MultaInterface;
 import com.example.multidbmanagerfx.Model.Multa;
 import com.example.multidbmanagerfx.Utilities.StaticCode;
 import javafx.collections.FXCollections;
@@ -8,9 +9,10 @@ import javafx.collections.ObservableList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class MultaDAO {
+public class MultaDAO implements MySQL_MultaInterface {
     private Connection connection;
 
     public MultaDAO () {
@@ -28,7 +30,7 @@ public class MultaDAO {
                 // AÑADIR LOS DATOS A UN OBSERVABLELIST
                 int id = resultSet.getInt("id_multa");
                 double precio = resultSet.getDouble("precio");
-                LocalDate fecha = resultSet.getDate("fecha").toLocalDate();
+                String fecha = resultSet.getString("fecha");
                 String matricula = resultSet.getString("matricula");
                 Multa multa = new Multa(id, precio, fecha, matricula); // OBJETO DE MULTA CON SUS DATOS
                 observableListFine.add(multa); // AÑADIR LAS MULTAS CREADAS
@@ -41,4 +43,24 @@ public class MultaDAO {
         }
         return observableListFine;
     } // METODO PARA LISTAR LAS MULTAS DE COCHES DE LA BASE DE DATOS
+
+    public boolean insertFine (Multa multa) {
+        try {
+            String sql = "INSERT INTO multas VALUES (?, ?, ?, ?);";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, multa.getIdMulta());
+            statement.setDouble(2, multa.getPrecio());
+            statement.setString(3, multa.getFecha());
+            statement.setString(4, multa.getMatricula());
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                return true; // SI SE INSERTO, DEVUELVE TRUE
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false; // SI OCURRIO UN ERROR, DEVUELVE FALSE
+        }
+        return false;
+    } // METODO PARA INSERTAR UNA MULTA A UN COCHE
 }

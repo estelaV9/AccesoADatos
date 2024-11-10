@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -81,19 +82,29 @@ public class MultaCtrller implements Initializable {
         if(fineSelected != null){
             idMultaTF.setText(String.valueOf(fineSelected.getIdMulta()));
             precioTF.setText(String.valueOf(fineSelected.getPrecio()));
-            datePicker.setValue(fineSelected.getFecha());
+            datePicker.setValue(LocalDate.parse(fineSelected.getFecha()));
         } // SI SE HA SELECCIONADO UNA MULTA SE SETTEAN SUS DATOS
     } // CUANDO SE PULSA UNA MULTA SE ASIGNAN LOS VALORES DE LA MULTA SELECCIONADA
 
     @FXML
-    void onExitAction(ActionEvent event) {
-
-    }
+    void onExitAction(ActionEvent event) throws SQLException {
+        StaticCode.exitApp();
+    } // BOTON PARA SALIR DE LA APLICACION
 
     @FXML
     void onInsertarAction(ActionEvent event) {
-
-    }
+        Multa fine = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), datePicker.getValue().toString(), matriculaTF.getText());
+        if(multaDAO.insertFine(fine)){
+            // SI SE INSERTO LA MULTA CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
+            StaticCode.Alerts("INFORMATION", "Creación de multa", "Creación exitosa",
+                    "Se ha creado la multa correctamente.");
+            refreshTable(); // REFRESCAR LOS DATOS
+        } else {
+            // SI NO SE INSERTO, SE MUESTRA UN ERROR
+            StaticCode.Alerts("ERROR", "Creación de multa", "Creación fallida",
+                    "No se ha podido crear la multa.");
+        } // INSERTAR COCHE
+    } // BOTON PARA INSERTAR UNA MULTA A UN COCHE
 
     private void refreshTable() {
         // CONFIGURAR COLUMNAS

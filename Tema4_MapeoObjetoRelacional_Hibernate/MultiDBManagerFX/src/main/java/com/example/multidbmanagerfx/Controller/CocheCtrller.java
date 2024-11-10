@@ -1,8 +1,11 @@
 package com.example.multidbmanagerfx.Controller;
 
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
+import com.example.multidbmanagerfx.DAO.CocheDAO;
 import com.example.multidbmanagerfx.Model.Coche;
 import com.example.multidbmanagerfx.Utilities.StaticCode;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
@@ -28,7 +32,7 @@ public class CocheCtrller implements Initializable {
     @FXML
     private Button exitBtt;
     @FXML
-    private TableColumn<Integer,Coche> idCol;
+    private TableColumn<Integer, Coche> idCol;
     @FXML
     private TableColumn<String, Coche> marcaCol;
     @FXML
@@ -52,10 +56,15 @@ public class CocheCtrller implements Initializable {
     @FXML
     private Button verMultasBtt;
 
+    String [] tipoCoche = {"Eléctrico", "Diesel", "Híbrido"};
+
     @FXML
     void onCancelarAction(ActionEvent event) {
-
-    }
+        matriculaTxt.clear();
+        modeloTxt.clear();
+        tipoComboBox.setValue(null);
+        marcaTxt.clear();
+    } // METODO PARA LIMPIAR LOS CAMPOS
 
     @FXML
     void onClickedTable(MouseEvent event) {
@@ -79,16 +88,37 @@ public class CocheCtrller implements Initializable {
 
     @FXML
     void onNuevoCocheAction(ActionEvent event) {
-
-    }
+        Coche insertCarObject = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
+        if (CocheDAO.insertCar(insertCarObject)) {
+            // SI SE INSERTO EL COCHE CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
+            StaticCode.Alerts("INFORMATION", "Creación de coche", "Creación exitosa",
+                    "Se ha creado el coche correctamente.");
+        } else {
+            // SI NO SE INSERTO, SE MUESTRA UN ERROR
+            StaticCode.Alerts("ERROR", "Creación de coche", "Creación fallida",
+                    "No se ha podido crear el coche.");
+        }
+    } // BOTON PARA AGREGAR UN COCHE NUEVO
 
     @FXML
     void onVerMultasAction(ActionEvent event) {
 
     }
 
+    private void refreshTable(){
+        // CONFIGURAR COLUMNAS
+        matriculaCol.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+        marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        modeloCol.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+        tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+
+        cochesTable.setItems(CocheDAO.listOfCars()); // ESTABLECER LISTA
+    } // METODO PARA ESTABLECER LOS DATOS EN LA TABLA
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Connection connection = MySQL_ConnectionDB.conectar();
-    }
+        tipoComboBox.getItems().addAll(tipoCoche); // INICIALIZAR LOS DATOS DEL COMBOBOX
+        refreshTable(); // AÑADIR LOS DATOS A LA TABLA
+    } // INICIARLIZAR LOS DATOS DEL COMBOBOX Y LA TABLA
 }

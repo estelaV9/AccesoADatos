@@ -63,4 +63,21 @@ public class MultaDAO implements MySQL_MultaInterface {
         }
         return false;
     } // METODO PARA INSERTAR UNA MULTA A UN COCHE
+
+    public boolean deleteFine(String carNumberPlate){
+        try {
+            String sql = "DELETE FROM multas WHERE matricula = ?;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, carNumberPlate);
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                return true; // SI SE ELIMINO CORRECTAMENTE, DEVUELVE TRUE
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false; // SI OCURRIO UN ERROR, DEVUELVE FALSE
+        }
+        return false;
+    } // METODO PARA ELIMINAR UNA MULTA DE UN COCHE SEGUN LA MATRICULA
 }

@@ -73,8 +73,23 @@ public class MultaCtrller implements Initializable {
 
     @FXML
     void onBorrarAction(ActionEvent event) {
-
-    }
+        Multa fineSelected = multaTable.getSelectionModel().getSelectedItem(); // OBJETO CON LA MULTA SELECCIONADA
+        if (fineSelected == null) {
+            StaticCode.Alerts("ERROR", "Selecciona una multa", "¡ERROR!",
+                    "Por favor, seleccione una multa para eliminar");
+        } else {
+            if(multaDAO.deleteFine(fineSelected.getMatricula())){
+                // SI SE ELIMINO LA MULTA CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("INFORMATION", "Eliminación de multa",
+                        "Eliminación exitosa","Se ha eliminado la multa correctamente.");
+                refreshTable(); // REFRESCAR LOS DATOS
+            } else {
+                // SI NO SE ELIMINO, SE MUESTRA UN ERROR
+                StaticCode.Alerts("ERROR", "Eliminación de multa",
+                        "Eliminación fallida","No se ha podido eliminar la multa.");
+            } // BORRAR LA MULTA
+        } // VALIDAR SI HA SELECCIONADO UNA MULTA
+    } // BOTON PARA ELIMINAR UNA MULTA DE UNA MATRICULA SELECCIONADA
 
     @FXML
     void onClickedTable(MouseEvent event) {

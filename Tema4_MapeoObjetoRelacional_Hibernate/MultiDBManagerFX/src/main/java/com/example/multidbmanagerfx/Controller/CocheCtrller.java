@@ -143,8 +143,8 @@ public class CocheCtrller implements Initializable {
 
     @FXML
     void onVerMultasAction(ActionEvent event) {
-
-    }
+        StaticCode.changeViewBtt("/ui/Multa.fxml", verMultasBtt, "Multas");
+    } // CAMBIAR DE VISTA
 
     private void refreshTable() {
         // CONFIGURAR COLUMNAS

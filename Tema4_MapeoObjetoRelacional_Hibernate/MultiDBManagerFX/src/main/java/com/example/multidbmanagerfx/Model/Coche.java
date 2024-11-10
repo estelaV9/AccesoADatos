@@ -7,6 +7,12 @@ public class Coche {
     private String modelo;
     private String tipo;
 
+    public Coche(String marca, String modelo, String tipo) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.tipo = tipo;
+    }
+
     public Coche(String matricula, String marca, String modelo, String tipo) {
         this.matricula = matricula;
         this.marca = marca;

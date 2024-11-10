@@ -56,7 +56,8 @@ public class CocheCtrller implements Initializable {
     @FXML
     private Button verMultasBtt;
 
-    String [] tipoCoche = {"Eléctrico", "Diesel", "Híbrido"};
+    String [] tipoCoche = {"Eléctrico", "Diesel", "Híbrido"}; // ARRAY CON LOS TIPOS DE COCHES
+    CocheDAO cocheDAO = new CocheDAO(); // INSTANCIAR CocheDAO
 
     @FXML
     void onCancelarAction(ActionEvent event) {
@@ -89,7 +90,7 @@ public class CocheCtrller implements Initializable {
     @FXML
     void onNuevoCocheAction(ActionEvent event) {
         Coche insertCarObject = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
-        if (CocheDAO.insertCar(insertCarObject)) {
+        if (cocheDAO.insertCar(insertCarObject)) {
             // SI SE INSERTO EL COCHE CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
             StaticCode.Alerts("INFORMATION", "Creación de coche", "Creación exitosa",
                     "Se ha creado el coche correctamente.");
@@ -112,7 +113,7 @@ public class CocheCtrller implements Initializable {
         modeloCol.setCellValueFactory(new PropertyValueFactory<>("modelo"));
         tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 
-        cochesTable.setItems(CocheDAO.listOfCars()); // ESTABLECER LISTA
+        cochesTable.setItems(cocheDAO.listOfCars()); // ESTABLECER LISTA
     } // METODO PARA ESTABLECER LOS DATOS EN LA TABLA
 
     @Override

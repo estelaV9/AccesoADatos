@@ -12,9 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CocheDAO implements MySQL_CocheInterface {
-    private static final Connection connection = MySQL_ConnectionDB.conectar(); // CONECTAR LA BASE DE DATOS
+    private Connection connection;
 
-    public static boolean insertCar(Coche coche) {
+    public CocheDAO () {
+        connection = MySQL_ConnectionDB.conectar(); // CONECTAR LA BASE DE DATOS
+    }
+
+    public boolean insertCar(Coche coche) {
         try {
             String sql = "INSERT INTO coches (matricula, marca, modelo, tipo) VALUES (?, ?, ?, ?);";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -34,7 +38,7 @@ public class CocheDAO implements MySQL_CocheInterface {
         return false;
     } // METODO PARA INSERTAR COCHE
 
-    public static ObservableList<Coche> listOfCars() {
+    public ObservableList<Coche> listOfCars() {
         ObservableList<Coche> observableListCar = FXCollections.observableArrayList();
         try {
             String sql = "SELECT matricula, marca, modelo, tipo FROM coches;";

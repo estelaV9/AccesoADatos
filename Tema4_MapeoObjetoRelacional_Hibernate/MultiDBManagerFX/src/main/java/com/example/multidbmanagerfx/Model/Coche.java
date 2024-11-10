@@ -1,11 +1,30 @@
 package com.example.multidbmanagerfx.Model;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "coches")
 public class Coche {
-    private int id;
-    private String matricula;
-    private String marca;
-    private String modelo;
-    private String tipo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id; // ATRIBUTO PARA GUARDAR EL ID DEL COCHE
+
+    @Column(name = "matricula")
+    private String matricula; // ATRIBUTO PARA GUARDAR LA MATRICULA DEL COCHE
+
+    @Column(name = "marca")
+    private String marca; // ATRIBUTO PARA GUARDAR LA MARCA DEL COCHE
+
+    @Column(name = "modelo")
+    private String modelo; // ATRIBUTO PARA GUARDAR EL MODELO DEL COCHE
+
+    @Column(name = "tipo")
+    private String tipo; // ATRIBUTO PARA GUARDAR EL TIPO DE COCHE
+
+    @OneToMany(mappedBy = "coche", cascade = CascadeType.ALL) // NOMBRE DE LA CLASE SIN MAYUSCULAS
+    private List<Multa> listaMultas;
 
     public Coche(String marca, String modelo, String tipo) {
         this.marca = marca;
@@ -14,6 +33,14 @@ public class Coche {
     }
 
     public Coche(String matricula, String marca, String modelo, String tipo) {
+        this.matricula = matricula;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.tipo = tipo;
+    }
+
+    public Coche(int id, String matricula, String marca, String modelo, String tipo) {
+        this.id = id;
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;

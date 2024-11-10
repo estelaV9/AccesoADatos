@@ -15,6 +15,12 @@
     </properties>
 
     <dependencies>
+        <!-- DEPENDENCIA DE MYSQL -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.0.0</version>
+        </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>

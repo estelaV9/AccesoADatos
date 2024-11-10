@@ -30,6 +30,10 @@ public class Coche {
 
     } // CONSTRUCTOR VACIO
 
+    public Coche(String matricula) {
+        this.matricula = matricula;
+    }
+
     public Coche(String marca, String modelo, String tipo) {
         this.marca = marca;
         this.modelo = modelo;

@@ -1,6 +1,8 @@
 package com.example.multidbmanagerfx.Controller;
 
+import com.example.multidbmanagerfx.DAO.Hibernate_CocheDAO;
 import com.example.multidbmanagerfx.DAO.Hibernate_MultasDAO;
+import com.example.multidbmanagerfx.DAO.MongoDB_CocheDAO;
 import com.example.multidbmanagerfx.DAO.MySQL_MultaDAO;
 import com.example.multidbmanagerfx.Model.Coche;
 import com.example.multidbmanagerfx.Model.Multa;
@@ -48,6 +50,8 @@ public class MultaCtrller implements Initializable {
     private TextField precioTF;
 
     MySQL_MultaDAO multaDAO = new MySQL_MultaDAO();
+    Hibernate_MultasDAO hibernateMultasDAO = new Hibernate_MultasDAO(); // INSTANCIAR hibernateMultasDAO
+    //Mon mongoDBCocheDAO = new MongoDB_CocheDAO(); // INSTANCIAR mongoDBCocheDAO
 
     String numberPlate; // VARIABLE PARA GUARDAR LA MATRICULA DEL COCHE SELECCIONADO
     static String selectedGestor;
@@ -187,16 +191,27 @@ public class MultaCtrller implements Initializable {
     } // BOTON PARA INSERTAR UNA MULTA A UN COCHE
 
     private void refreshTable() {
-        // CONFIGURAR COLUMNAS
-        idCol.setCellValueFactory(new PropertyValueFactory<>("idMulta"));
-        precioCol.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        fechaCol.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+       switch (selectedGestor){
+            case "MySQL" -> {
+                multaTable.setItems(multaDAO.listOfFines(numberPlate)); // ESTABLECER LISTA
+            }
+            case "MongoDB" -> {
+                //multaTable.setItems(mongoDBCocheDAO.listOfCars());
+            }
+            case "Hibernate" -> {
+                multaTable.setItems(hibernateMultasDAO.listOfFines(numberPlate));
+            }
+        }
 
         multaTable.setItems(multaDAO.listOfFines(numberPlate)); // ESTABLECER LISTA
     } // METODO PARA ESTABLECER LOS DATOS EN LA TABLA Y SETTEAR LA MATRICULA
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // CONFIGURAR COLUMNAS
+        idCol.setCellValueFactory(new PropertyValueFactory<>("idMulta"));
+        precioCol.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        fechaCol.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         refreshTable();
     }
 }

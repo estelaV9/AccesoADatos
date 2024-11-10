@@ -11,59 +11,74 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="multasPane" prefHeight="799.0" prefWidth="462.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_cochemultahibernate.Controller.MultaCtrller">
-   <children>
-      <Pane id="paneMenu" prefHeight="55.0" prefWidth="462.0">
-         <children>
-            <Button fx:id="insertarBtt" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#onInsertarAction" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton" text="Insertar" />
-            <Button fx:id="actualizarBtt" layoutX="109.0" layoutY="11.0" mnemonicParsing="false" onAction="#onActualizarAction" prefHeight="33.0" prefWidth="103.0" styleClass="multaButton" text="Actualizar" />
-            <Button fx:id="borrarBtt" layoutX="220.0" layoutY="11.0" mnemonicParsing="false" onAction="#onBorrarAction" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton" text="Borrar" />
-            <Button fx:id="limpiarBtt" layoutX="315.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton" text="Limpiar" />
-            <Button id="salirApp" fx:id="exitBtt" layoutX="410.0" layoutY="11.0" mnemonicParsing="false" onAction="#onExitAction" prefHeight="33.0" prefWidth="38.0" text="X" />
-         </children>
-      </Pane>
-      <Label layoutX="39.0" layoutY="117.0" styleClass="estiloLabel2" text="Matricula">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Label>
-      <Label layoutX="39.0" layoutY="172.0" styleClass="estiloLabel2" text="Identificador Multa">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Label>
-      <Label layoutX="39.0" layoutY="226.0" styleClass="estiloLabel2" text="Precio">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Label>
-      <Label layoutX="39.0" layoutY="279.0" styleClass="estiloLabel2" text="Fecha">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Label>
-      <TextField fx:id="matriculaTF" layoutX="189.0" layoutY="116.0" styleClass="multaTF" />
-      <TextField fx:id="idMultaTF" layoutX="270.0" layoutY="170.0" prefHeight="30.0" prefWidth="116.0" styleClass="multaTF" />
-      <TextField fx:id="precioTF" layoutX="151.0" layoutY="224.0" prefHeight="30.0" prefWidth="116.0" styleClass="multaTF" />
-      <DatePicker fx:id="datePicker" layoutX="130.0" layoutY="279.0" />
-      <TableView id="tabla" fx:id="multaTable" layoutX="85.0" layoutY="605.0" onMouseClicked="#onClickedTable" prefHeight="164.0" prefWidth="292.0">
-         <columns>
-            <TableColumn fx:id="idCol" prefWidth="90.0" text="ID Multa" />
-            <TableColumn fx:id="precioCol" prefWidth="101.0" text="Precio" />
-            <TableColumn fx:id="fechaCol" prefWidth="97.0" text="Fecha" />
-         </columns>
-      </TableView>
-   </children>
+<AnchorPane id="multasPane" prefHeight="799.0" prefWidth="462.0" stylesheets="@Styles.css"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.multidbmanagerfx.Controller.MultaCtrller">
+    <children>
+        <Pane id="paneMenu" prefHeight="55.0" prefWidth="462.0">
+            <children>
+                <Button fx:id="insertarBtt" layoutX="14.0" layoutY="11.0" mnemonicParsing="false"
+                        onAction="#onInsertarAction" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton"
+                        text="Insertar"/>
+                <Button fx:id="actualizarBtt" layoutX="109.0" layoutY="11.0" mnemonicParsing="false"
+                        onAction="#onActualizarAction" prefHeight="33.0" prefWidth="103.0" styleClass="multaButton"
+                        text="Actualizar"/>
+                <Button fx:id="borrarBtt" layoutX="220.0" layoutY="11.0" mnemonicParsing="false"
+                        onAction="#onBorrarAction" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton"
+                        text="Borrar"/>
+                <Button fx:id="limpiarBtt" layoutX="315.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0"
+                        prefWidth="87.0" styleClass="multaButton" text="Limpiar"/>
+                <Button id="salirApp" fx:id="exitBtt" layoutX="410.0" layoutY="11.0" mnemonicParsing="false"
+                        onAction="#onExitAction" prefHeight="33.0" prefWidth="38.0" text="X"/>
+            </children>
+        </Pane>
+        <Label layoutX="39.0" layoutY="117.0" styleClass="estiloLabel2" text="Matricula">
+            <font>
+                <Font size="15.0"/>
+            </font>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Label>
+        <Label layoutX="39.0" layoutY="172.0" styleClass="estiloLabel2" text="Identificador Multa">
+            <font>
+                <Font size="15.0"/>
+            </font>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Label>
+        <Label layoutX="39.0" layoutY="226.0" styleClass="estiloLabel2" text="Precio">
+            <font>
+                <Font size="15.0"/>
+            </font>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Label>
+        <Label layoutX="39.0" layoutY="279.0" styleClass="estiloLabel2" text="Fecha">
+            <font>
+                <Font size="15.0"/>
+            </font>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Label>
+        <TextField fx:id="matriculaTF" layoutX="189.0" layoutY="116.0" styleClass="multaTF"/>
+        <TextField fx:id="idMultaTF" layoutX="270.0" layoutY="170.0" prefHeight="30.0" prefWidth="116.0"
+                   styleClass="multaTF"/>
+        <TextField fx:id="precioTF" layoutX="151.0" layoutY="224.0" prefHeight="30.0" prefWidth="116.0"
+                   styleClass="multaTF"/>
+        <DatePicker fx:id="datePicker" layoutX="130.0" layoutY="279.0"/>
+        <TableView id="tabla" fx:id="multaTable" layoutX="85.0" layoutY="605.0" onMouseClicked="#onClickedTable"
+                   prefHeight="164.0" prefWidth="292.0">
+            <columns>
+                <TableColumn fx:id="idCol" prefWidth="90.0" text="ID Multa"/>
+                <TableColumn fx:id="precioCol" prefWidth="101.0" text="Precio"/>
+                <TableColumn fx:id="fechaCol" prefWidth="97.0" text="Fecha"/>
+            </columns>
+        </TableView>
+        <Button fx:id="backBtt" layoutX="412.0" layoutY="66.0" mnemonicParsing="false" onAction="#onBackAction"
+                prefHeight="34.0" prefWidth="38.0" styleClass="multaButton" text="-&gt;"/>
+    </children>
 </AnchorPane>

@@ -1,4 +1,4 @@
-package com.example.multidbmanagerfx.Controller;
+package com.example.multidbmanagerfx.DAO;
 
 import com.example.multidbmanagerfx.Model.Coche;
 import javafx.collections.ObservableList;

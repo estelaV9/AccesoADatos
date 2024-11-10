@@ -1,5 +1,7 @@
 package com.example.multidbmanagerfx.Model;
 
+import javafx.fxml.FXML;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -17,10 +19,20 @@ public class Multa {
     @Column(name = "fecha")
     private LocalDate fecha;
 
-    @ManyToOne
-    @JoinColumn(name = "matricula", referencedColumnName = "matricula")
+    @Column(name = "matricula")
+    private String matricula;
+
+    @ManyToOne // ID_COCHE A LA CLAVE FORANEA DE LA TABLA MULTAS, EL ID DE LA CLASE COCHE
+    @JoinColumn(name = "id_coche", referencedColumnName = "id")
     private Coche coche;
 
+    public Multa(int idMulta, double precio, LocalDate fecha, String matricula, Coche coche) {
+        this.idMulta = idMulta;
+        this.precio = precio;
+        this.fecha = fecha;
+        this.matricula = matricula;
+        this.coche = coche;
+    }
 
     public Multa(double precio, LocalDate fecha, Coche coche) {
         this.precio = precio;
@@ -59,8 +71,14 @@ public class Multa {
     public Coche getCoche() {
         return coche;
     }
-
     public void setCoche(Coche coche) {
         this.coche = coche;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 }

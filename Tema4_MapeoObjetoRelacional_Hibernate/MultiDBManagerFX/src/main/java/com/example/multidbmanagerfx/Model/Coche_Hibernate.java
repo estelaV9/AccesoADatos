@@ -1,11 +1,11 @@
-package com.example.multidbmanagerfx.DAO.Hibernate;
+package com.example.multidbmanagerfx.Model;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "coches")
-public class Coche {
+public class Coche_Hibernate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -26,14 +26,14 @@ public class Coche {
     @OneToMany(mappedBy = "coche", cascade = CascadeType.ALL) // NOMBRE DE LA CLASE SIN MAYUSCULAS
     private List<Multa> listaMultas;
 
-    public Coche(String matricula, String marca, String modelo, String tipo) {
+    public Coche_Hibernate(String matricula, String marca, String modelo, String tipo) {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
         this.tipo = tipo;
     }
 
-    public Coche(int idCoche, String matricula, String marca, String modelo, String tipo) {
+    public Coche_Hibernate(int idCoche, String matricula, String marca, String modelo, String tipo) {
         this.idCoche = idCoche;
         this.matricula = matricula;
         this.marca = marca;

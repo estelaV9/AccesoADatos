@@ -1,11 +1,13 @@
-package com.example.multidbmanagerfx.DAO.Hibernate;
+package com.example.multidbmanagerfx.Model;
+
+import com.example.multidbmanagerfx.Model.Coche_Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "multas")
-public class Multa {
+public class Multa_Hibernate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_multa")
@@ -22,9 +24,9 @@ public class Multa {
 
     @ManyToOne
     @JoinColumn(name = "id_coche", referencedColumnName = "id")
-    private Coche coche;
+    private Coche_Hibernate coche;
 
-    public Multa(Coche coche, String modelo, LocalDate fecha, double precio, int idCoche) {
+    public Multa_Hibernate(Coche_Hibernate coche, String modelo, LocalDate fecha, double precio, int idCoche) {
         this.coche = coche;
         this.modelo = modelo;
         this.fecha = fecha;
@@ -60,10 +62,10 @@ public class Multa {
         this.modelo = modelo;
     }
 
-    public Coche getCoche() {
+    public Coche_Hibernate getCoche() {
         return coche;
     }
-    public void setCoche(Coche coche) {
+    public void setCoche(Coche_Hibernate coche) {
         this.coche = coche;
     }
 }

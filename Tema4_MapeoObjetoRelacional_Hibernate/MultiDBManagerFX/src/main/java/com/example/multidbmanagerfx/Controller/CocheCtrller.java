@@ -56,7 +56,7 @@ public class CocheCtrller implements Initializable {
     @FXML
     private Button verMultasBtt;
 
-    String [] tipoCoche = {"Eléctrico", "Diesel", "Híbrido"}; // ARRAY CON LOS TIPOS DE COCHES
+    String[] tipoCoche = {"Eléctrico", "Diesel", "Híbrido"}; // ARRAY CON LOS TIPOS DE COCHES
     CocheDAO cocheDAO = new CocheDAO(); // INSTANCIAR CocheDAO
 
     @FXML
@@ -68,9 +68,19 @@ public class CocheCtrller implements Initializable {
     } // METODO PARA LIMPIAR LOS CAMPOS
 
     @FXML
-    void onClickedTable(MouseEvent event) {
+    void onClickedTable() {
+        Coche carSelected = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
+        if (carSelected == null) {
+            StaticCode.Alerts("ERROR", "Selecciona un coche", "¡ERROR!",
+                    "Por favor, seleccione un coche");
+        } else {
+            matriculaTxt.setText(carSelected.getMatricula());
+            marcaTxt.setText(carSelected.getMarca());
+            modeloTxt.setText(carSelected.getModelo());
+            tipoComboBox.setValue(carSelected.getTipo());
+        } // SI SELECCIONADO NO ES NULO, SE PONEN LOS VALORES AL TEXTFIELD
+    } // CUANDO PULSA UN COCHE, SE SETTEAN LOS VALORES
 
-    }
 
     @FXML
     void onEliminarAction(ActionEvent event) {
@@ -106,7 +116,7 @@ public class CocheCtrller implements Initializable {
 
     }
 
-    private void refreshTable(){
+    private void refreshTable() {
         // CONFIGURAR COLUMNAS
         matriculaCol.setCellValueFactory(new PropertyValueFactory<>("matricula"));
         marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));

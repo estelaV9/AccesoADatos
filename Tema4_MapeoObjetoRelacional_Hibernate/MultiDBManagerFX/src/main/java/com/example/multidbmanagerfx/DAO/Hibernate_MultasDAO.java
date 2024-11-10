@@ -6,9 +6,8 @@ import com.example.multidbmanagerfx.Utilities.StaticCode;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hibernate_MultasDAO implements MultaInterface {
@@ -20,17 +19,12 @@ public class Hibernate_MultasDAO implements MultaInterface {
 
     @Override
     public ObservableList<Multa> listOfFines(String carNumberPlate) {
-        ObservableList<Multa> multasList = FXCollections.observableArrayList();
+        List multas = new ArrayList<>();
         try {
             session.beginTransaction(); // INICIAR TRANSACCIÓN
-
-            // CONSULTA HQL PARA OBTENER MULTAS SEGÚN LA MATRÍCULA DEL COCHE
-            Query<Multa> query = session.createQuery("FROM Multa WHERE matricula = :matricula", Multa.class);
-            query.setParameter("matricula", carNumberPlate);
-            List<Multa> multas = query.list(); // OBTENER LA LISTA DE RESULTADOS
-
-            multasList.addAll(multas); // AGREGAR LOS RESULTADOS AL OBSERVABLELIST
+            multas = session.createQuery("from Multa where matricula = '" + carNumberPlate+"'").list(); // OBTENER LA LISTA DE RESULTADOS
             session.getTransaction().commit(); // CONFIRMAR LA TRANSACCIÓN
+            session.clear(); // LIMPIAR SESSION
         } catch (Exception e) {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback(); // HACER ROLLBACK SI OCURRE ERROR
@@ -38,7 +32,7 @@ public class Hibernate_MultasDAO implements MultaInterface {
             StaticCode.Alerts("ERROR", "Error al listar multas", "¡ERROR!",
                     "Ha ocurrido un error al listar las multas: " + e);
         }
-        return multasList; // RETORNAR LA LISTA DE MULTAS
+        return FXCollections.observableArrayList(multas); // RETORNAR LA LISTA DE MULTAS
     }
 
     @Override
@@ -47,6 +41,7 @@ public class Hibernate_MultasDAO implements MultaInterface {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCIÓN
             session.save(multa); // INSERTAR MULTA EN LA BASE DE DATOS
             session.getTransaction().commit(); // CONFIRMAR TRANSACCIÓN
+            session.clear(); // LIMPIAR SESSION
             return true; // OPERACIÓN EXITOSA
         } catch (Exception e) {
             if (session.getTransaction() != null) {
@@ -69,6 +64,7 @@ public class Hibernate_MultasDAO implements MultaInterface {
             int result = query.executeUpdate(); // EJECUTAR ACTUALIZACIÓN
 
             session.getTransaction().commit(); // CONFIRMAR TRANSACCIÓN
+            session.clear(); // LIMPIAR SESSION
             return result > 0; // RETORNAR TRUE SI SE ELIMINÓ ALGUNA FILA
         } catch (Exception e) {
             if (session.getTransaction() != null) {
@@ -95,6 +91,7 @@ public class Hibernate_MultasDAO implements MultaInterface {
 
                 session.update(multaExistente); // ACTUALIZAR LA MULTA
                 session.getTransaction().commit(); // CONFIRMAR TRANSACCIÓN
+                session.clear(); // LIMPIAR SESSION
                 return true; // OPERACIÓN EXITOSA
             } else {
                 StaticCode.Alerts("ERROR", "Multa no encontrada", "¡ERROR!",

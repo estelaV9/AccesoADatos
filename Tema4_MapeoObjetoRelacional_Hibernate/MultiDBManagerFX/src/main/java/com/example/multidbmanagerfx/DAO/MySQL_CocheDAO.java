@@ -10,10 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CocheDAO implements MySQL_CocheInterface {
+public class MySQL_CocheDAO implements CocheInterface {
     private Connection connection;
 
-    public CocheDAO () {
+    public MySQL_CocheDAO() {
         connection = MySQL_ConnectionDB.conectar(); // CONECTAR LA BASE DE DATOS
     }
 

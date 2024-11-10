@@ -1,6 +1,7 @@
 package com.example.multidbmanagerfx.DAO;
 
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
+import com.example.multidbmanagerfx.Model.Coche;
 import com.example.multidbmanagerfx.Model.Multa;
 import com.example.multidbmanagerfx.Utilities.StaticCode;
 import javafx.collections.FXCollections;
@@ -11,10 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class MultaDAO implements MySQL_MultaInterface {
+public class MySQL_MultaDAO implements MultaInterface {
     private Connection connection;
 
-    public MultaDAO () {
+    public MySQL_MultaDAO() {
         connection = MySQL_ConnectionDB.conectar(); // CONECTAR LA BASE DE DATOS
     }
 
@@ -31,7 +32,8 @@ public class MultaDAO implements MySQL_MultaInterface {
                 double precio = resultSet.getDouble("precio");
                 LocalDate fecha = LocalDate.parse(resultSet.getString("fecha"));
                 String matricula = resultSet.getString("matricula");
-                Multa multa = new Multa(id, precio, fecha, matricula); // OBJETO DE MULTA CON SUS DATOS
+                Coche coche = new Coche(matricula);
+                Multa multa = new Multa(id, precio, fecha, coche); // OBJETO DE MULTA CON SUS DATOS
                 observableListFine.add(multa); // AÑADIR LAS MULTAS CREADAS
             }
         } catch (Exception e) {
@@ -49,7 +51,7 @@ public class MultaDAO implements MySQL_MultaInterface {
             statement.setInt(1, multa.getIdMulta());
             statement.setDouble(2, multa.getPrecio());
             statement.setString(3, multa.getFecha().toString());
-            statement.setString(4, multa.getMatricula());
+            statement.setString(4, multa.getCoche().getMatricula());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 return true; // SI SE INSERTO, DEVUELVE TRUE

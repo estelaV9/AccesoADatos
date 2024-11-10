@@ -18,4 +18,8 @@ public class R {
     public static URL getUI(String name) {
         return Thread.currentThread().getContextClassLoader().getResource("ui" + File.separator + name);
     }
+
+    public static URL getHibernateConfig(String path) {
+        return Thread.currentThread().getContextClassLoader().getResource("Configuration/"+path);
+    }
 }

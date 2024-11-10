@@ -4,6 +4,7 @@ import com.example.multidbmanagerfx.Connection.MongoDB_ConnectionDB;
 import com.example.multidbmanagerfx.Model.Coche;
 import com.example.multidbmanagerfx.Utilities.StaticCode;
 import com.google.gson.Gson;
+import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -15,14 +16,16 @@ import org.bson.Document;
 import java.util.ArrayList;
 
 public class MongoDB_CocheDAO implements CocheInterface {
-    MongoDatabase mongoDatabase; // BASE DE DATOS DE MONGO
+    MongoClient mongoClient; // BASE DE DATOS DE MONGO
+    MongoDatabase mongoDatabase;
     Gson gson; // ATRIBUTO GSON PARA CONVERTIR DE JSON A Gson
     MongoCollection<Document> collection;
 
     public MongoDB_CocheDAO() {
-        mongoDatabase = MongoDB_ConnectionDB.getDatabase();
+        mongoClient = MongoDB_ConnectionDB.conectar();
         gson = new Gson(); // CREAR OBJETO GSON PARA LA SERIALIZACION
-        collection = mongoDatabase.getCollection("Coche");
+        mongoDatabase = mongoClient.getDatabase("CarManagementDB");
+        collection = mongoDatabase.getCollection("coches");
     }
 
     public boolean insertCar(Coche coche) {
@@ -34,8 +37,6 @@ public class MongoDB_CocheDAO implements CocheInterface {
             // INSERTAR DOCUMENTOS -> CONVERTIR LA CADENA JSON EN UN DOCUMENTO BSON
             doc = Document.parse(json); // PARSEAR UN DOCUMENTO BSON E INSERTAR
             collection.insertOne(doc); // INSERTAR EL DOCUMENTO EN LA COLECCION
-            StaticCode.Alerts("INFORMATION", "Insertar Coche", "INFORMATION",
-                    "Se ha insertado el coche correctamente");
             return true;
         } catch (Exception e) {
             StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",

@@ -62,5 +62,25 @@ public class CocheDAO implements MySQL_CocheInterface {
         return observableListCar;
     } // METODO PARA LISTAR LOS COCHES DE LA BASE DE DATOS
 
+    public boolean modifyCar(Coche newCar, String carNumberPlate) {
+        try {
+            String sql = "UPDATE coches SET marca = ?, modelo = ?, tipo = ? WHERE matricula = ?;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, newCar.getMarca());
+            statement.setString(2, newCar.getModelo());
+            statement.setString(3, newCar.getTipo());
+            statement.setString(4, carNumberPlate);
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                return true; // SI SE MODIFICO CORRECTAMENTE, DEVUELVE TRUE
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false; // SI OCURRIO UN ERROR, DEVUELVE FALSE
+        }
+        return false;
+    } // METODO PARA MODIFICAR UN COCHE
+
 
 }

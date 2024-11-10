@@ -70,10 +70,7 @@ public class CocheCtrller implements Initializable {
     @FXML
     void onClickedTable() {
         Coche carSelected = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
-        if (carSelected == null) {
-            StaticCode.Alerts("ERROR", "Selecciona un coche", "¡ERROR!",
-                    "Por favor, seleccione un coche");
-        } else {
+        if (carSelected != null) {
             matriculaTxt.setText(carSelected.getMatricula());
             marcaTxt.setText(carSelected.getMarca());
             modeloTxt.setText(carSelected.getModelo());
@@ -94,8 +91,25 @@ public class CocheCtrller implements Initializable {
 
     @FXML
     void onModificarAction(ActionEvent event) {
-
-    }
+        Coche carSelected = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
+        if (carSelected == null) {
+            StaticCode.Alerts("ERROR", "Selecciona un coche", "¡ERROR!",
+                    "Por favor, seleccione un coche");
+        } else {
+            // OBJETO CON LOS NUEVOS DATOS DEL COCHE
+            Coche newCar = new Coche(marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
+            if(cocheDAO.modifyCar(newCar, carSelected.getMatricula())){
+                // SI SE MODIFICO EL COCHE CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("INFORMATION", "Modificación de coche",
+                        "Modificación exitosa","Se ha modificado el coche correctamente.");
+                refreshTable(); // REFRESCAR LOS DATOS
+            } else {
+                // SI NO SE MODIFICO, SE MUESTRA UN ERROR
+                StaticCode.Alerts("ERROR", "Modificación de coche",
+                        "Modificación fallida","No se ha podido modificar el coche.");
+            } // MODIFICAR EL COCHE
+        } // VALIDAR SI HA SELECCIONADO UN COCHE
+    } // BOTON PARA MODIFICAR LOS DATOS DE UN COCHE SELECCIONADO
 
     @FXML
     void onNuevoCocheAction(ActionEvent event) {
@@ -104,6 +118,7 @@ public class CocheCtrller implements Initializable {
             // SI SE INSERTO EL COCHE CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
             StaticCode.Alerts("INFORMATION", "Creación de coche", "Creación exitosa",
                     "Se ha creado el coche correctamente.");
+            refreshTable(); // REFRESCAR LOS DATOS
         } else {
             // SI NO SE INSERTO, SE MUESTRA UN ERROR
             StaticCode.Alerts("ERROR", "Creación de coche", "Creación fallida",

@@ -1,7 +1,7 @@
 package com.example.multidbmanagerfx.Controller;
 
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
-import com.example.multidbmanagerfx.DAO.CocheDAO;
+import com.example.multidbmanagerfx.DAO.MySQL_CocheDAO;
 import com.example.multidbmanagerfx.DAO.Hibernate_CocheDAO;
 import com.example.multidbmanagerfx.Model.Coche;
 import com.example.multidbmanagerfx.Utilities.StaticCode;
@@ -61,7 +61,7 @@ public class CocheCtrller implements Initializable {
 
 
     String[] tipoCoche = {"Eléctrico", "Diesel", "Híbrido"}; // ARRAY CON LOS TIPOS DE COCHES
-    CocheDAO cocheDAO = new CocheDAO(); // INSTANCIAR CocheDAO
+    MySQL_CocheDAO cocheDAO = new MySQL_CocheDAO(); // INSTANCIAR MySQL_CocheDAO
     Hibernate_CocheDAO hibernateCocheDAO = new Hibernate_CocheDAO(); // INSTANCIAR hibernateCocheDAO
 
 
@@ -230,7 +230,7 @@ public class CocheCtrller implements Initializable {
         Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem();
         if (seleccionada != null) {
             // CAMBIAR DE VISTA GUARDANDO LOS DATOS DEL COCHE SELECCIONADO
-            StaticCode.changeViewWithPharamsBtt("/ui/Multa.fxml", verMultasBtt, "Multas", seleccionada);
+            StaticCode.changeViewWithPharamsBtt("/ui/Multa.fxml", verMultasBtt, dbGroup, "Multas", seleccionada);
         } else {
             StaticCode.Alerts("ERROR", "Selecciona un coche", "¡ERROR!",
                     "Por favor, seleccione un coche");

@@ -1,0 +1,50 @@
+// CREAR E INSERTAR DOCUMENTOS EN LA COLECCION COCHES
+db.coches.insertMany([
+    {
+        matricula: "1234AAA",
+        marca: "Audi",
+        modelo: "Q5",
+        tipo: "SUV"
+    },
+    {
+        matricula: "2345BBB",
+        marca: "Ford",
+        modelo: "S-Max",
+        tipo: "SUV"
+    },
+    {
+        matricula: "9876CCC",
+        marca: "Renault",
+        modelo: "Clio",
+        tipo: "SUV"
+    }
+]);
+
+// CREAR E INSERTAR DOCUMENTOS EN LA COLECCION MULTAS
+db.multas.insertMany([
+    {
+        matricula: "1234AAA",
+        precio: 200,
+        fecha: new Date("2023-12-12")
+    },
+    {
+        matricula: "1234AAA",
+        precio: 700,
+        fecha: new Date("2023-12-13")
+    },
+    {
+        matricula: "1234AAA",
+        precio: 50,
+        fecha: new Date("2023-12-14")
+    },
+    {
+        matricula: "2345BBB",
+        precio: 250,
+        fecha: new Date("2024-12-01")
+    },
+    {
+        matricula: "9876CCC",
+        precio: 100,
+        fecha: new Date("2024-11-21")
+    }
+]);

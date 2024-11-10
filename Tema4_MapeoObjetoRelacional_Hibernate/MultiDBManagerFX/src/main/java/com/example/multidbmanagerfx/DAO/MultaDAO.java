@@ -2,6 +2,7 @@ package com.example.multidbmanagerfx.DAO;
 
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
 import com.example.multidbmanagerfx.Controller.MySQL_MultaInterface;
+import com.example.multidbmanagerfx.Model.Coche;
 import com.example.multidbmanagerfx.Model.Multa;
 import com.example.multidbmanagerfx.Utilities.StaticCode;
 import javafx.collections.FXCollections;
@@ -80,4 +81,23 @@ public class MultaDAO implements MySQL_MultaInterface {
         }
         return false;
     } // METODO PARA ELIMINAR UNA MULTA DE UN COCHE SEGUN LA MATRICULA
+
+    public boolean modifyFine(Multa newMulta, int id) {
+        try {
+            String sql = "UPDATE multas SET precio = ?, fecha = ? WHERE id_multa = ?;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setDouble(1, newMulta.getPrecio());
+            statement.setString(2, newMulta.getFecha());
+            statement.setInt(3, id);
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                return true; // SI SE MODIFICO CORRECTAMENTE, DEVUELVE TRUE
+            }
+        } catch (SQLException e) {
+            StaticCode.Alerts("ERROR", "Error de conexión", "¡ERROR!",
+                    "Error al conectar a la base de datos: " + e.getMessage());
+            return false; // SI OCURRIO UN ERROR, DEVUELVE FALSE
+        }
+        return false;
+    } // METODO PARA MODIFICAR UNA MULTA
 }

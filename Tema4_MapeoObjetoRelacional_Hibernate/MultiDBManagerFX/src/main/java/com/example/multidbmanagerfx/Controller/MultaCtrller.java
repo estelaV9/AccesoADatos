@@ -60,11 +60,33 @@ public class MultaCtrller implements Initializable {
         refreshTable(); // LLAMA A refreshTable() DESPUES DE HABER ASIGNADO LA MATRICULA
     } // METODO QUE GUARDA LOS DATOS DEL COCHE SELECCIONADO CUANDO SE CAMBIA DE ESCENA
 
+    @FXML
+    void onLimpiarAction(){
+        idMultaTF.clear();
+        datePicker.setValue(null);
+        precioTF.clear();
+    } // BOTON PARA LIMPIAR LOS CAMPOS
 
     @FXML
     void onActualizarAction(ActionEvent event) {
-
-    }
+        Multa fineSelected = multaTable.getSelectionModel().getSelectedItem(); // OBJETO CON LA MULTA SELECCIONADA
+        if (fineSelected == null) {
+            StaticCode.Alerts("ERROR", "Selecciona una multa", "¡ERROR!",
+                    "Por favor, seleccione una multa para eliminar");
+        } else {
+            Multa fine = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), datePicker.getValue().toString(), matriculaTF.getText());
+            if(multaDAO.modifyFine(fine, fineSelected.getIdMulta())){
+                // SI SE MODIFICO LA MULTA CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
+                StaticCode.Alerts("INFORMATION", "Modificación de multa",
+                        "Modificación exitosa","Se ha modificado la multa correctamente.");
+                refreshTable(); // REFRESCAR LOS DATOS
+            } else {
+                // SI NO SE MODIFICO, SE MUESTRA UN ERROR
+                StaticCode.Alerts("ERROR", "Modificación de multa",
+                        "Modificación fallida","No se ha podido modificar la multa.");
+            } // MODIFICAR LA MULTA
+        } // VALIDAR SI HA SELECCIONADO UNA MULTA
+    } // BOTON PARA MODIFICAR UNA MULTA DE UNA MATRICULA SELECCIONADA
 
     @FXML
     void onBackAction(ActionEvent event) {

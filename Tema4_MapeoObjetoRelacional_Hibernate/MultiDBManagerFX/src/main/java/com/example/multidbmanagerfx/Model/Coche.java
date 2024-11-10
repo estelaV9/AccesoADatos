@@ -26,6 +26,10 @@ public class Coche {
     @OneToMany(mappedBy = "coche", cascade = CascadeType.ALL) // NOMBRE DE LA CLASE SIN MAYUSCULAS
     private List<Multa> listaMultas;
 
+    public Coche(){
+
+    } // CONSTRUCTOR VACIO
+
     public Coche(String marca, String modelo, String tipo) {
         this.marca = marca;
         this.modelo = modelo;

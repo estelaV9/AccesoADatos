@@ -2,17 +2,14 @@ package com.example.multidbmanagerfx.Controller;
 
 import com.example.multidbmanagerfx.Connection.MySQL_ConnectionDB;
 import com.example.multidbmanagerfx.DAO.CocheDAO;
+import com.example.multidbmanagerfx.DAO.Hibernate_CocheDAO;
 import com.example.multidbmanagerfx.Model.Coche;
 import com.example.multidbmanagerfx.Utilities.StaticCode;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -65,9 +62,10 @@ public class CocheCtrller implements Initializable {
 
     String[] tipoCoche = {"Eléctrico", "Diesel", "Híbrido"}; // ARRAY CON LOS TIPOS DE COCHES
     CocheDAO cocheDAO = new CocheDAO(); // INSTANCIAR CocheDAO
+    Hibernate_CocheDAO hibernateCocheDAO = new Hibernate_CocheDAO(); // INSTANCIAR hibernateCocheDAO
 
 
-    private boolean executeAction(String action, Coche coche, String matricula) {
+    private boolean executeAction(String action, Coche coche, String matricula, Coche modifyCarHibernate) {
         // OBTENER GESTOR SELECCIONADO
         String selectedGestor = ((RadioButton) dbGroup.getSelectedToggle()).getText();
 
@@ -103,21 +101,22 @@ public class CocheCtrller implements Initializable {
                 else if ("insertar".equals(action)) {
                     // INSERTAR
                 }
-            }
+            }*/
             case "Hibernate" -> {
                 // SI LA ACCIÓN ES ELIMINAR, SE EJECUTA LA LÓGICA DE ELIMINACIÓN EN HIBERNATE
                 if ("eliminar".equals(action)) {
-                    // ELIMINAR
+                    result = hibernateCocheDAO.eliminarCoche(coche); // LLAMADA A LA FUNCIÓN DE ELIMINACIÓN
                 }
                 // SI LA ACCIÓN ES MODIFICAR, SE EJECUTA LA LÓGICA DE MODIFICACIÓN EN HIBERNATE
                 else if ("modificar".equals(action)) {
-                    // MODIFICAR
+                    result = hibernateCocheDAO.modificarCoche(modifyCarHibernate);
                 }
                 // SI LA ACCIÓN ES INSERTAR, SE EJECUTA LA LÓGICA DE INSERCIÓN EN HIBERNATE
                 else if ("insertar".equals(action)) {
-                    // INSERTAR
+                    result = hibernateCocheDAO.insertarCoche(coche);
                 }
-            }*/
+            }
+
             default ->
                 // SI NO SE SELECCIONA UN GESTOR VÁLIDO, SE MUESTRA UN MENSAJE DE ERROR
                     StaticCode.Alerts("ERROR", "Gestor desconocido", "¡ERROR!", "No se ha seleccionado un gestor válido.");
@@ -156,7 +155,7 @@ public class CocheCtrller implements Initializable {
                     "Por favor, seleccione un coche");
         } else {
             // GUARDA EL RESULTADO DE LLAMAR A LA FUNCION PARA ELIMINAR EL COCHE
-            boolean result = executeAction("eliminar", carSelected, null); // ATRIBUTO PARA SABER SI LA ELIMINACION HA SIDO EXITOSA O NO
+            boolean result = executeAction("eliminar", carSelected, null, null); // ATRIBUTO PARA SABER SI LA ELIMINACION HA SIDO EXITOSA O NO
 
             // MOSTRAR SI SE ELIMINO CORRECTAMENTE O NO
             if (result) {
@@ -188,8 +187,10 @@ public class CocheCtrller implements Initializable {
             // OBJETO CON LOS NUEVOS DATOS DEL COCHE
             Coche newCar = new Coche(marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
 
+            Coche modifyCar = new Coche(carSelected.getId(), carSelected.getMatricula(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
+
             // GUARDA EL RESULTADO DE LLAMAR A LA FUNCION PARA ELIMINAR EL COCHE
-            boolean result = executeAction("modificar", newCar, carSelected.getMatricula());
+            boolean result = executeAction("modificar", newCar, carSelected.getMatricula(), modifyCar);
 
             // MOSTRAR SI SE ELIMINO CORRECTAMENTE O NO
             if (result) {
@@ -210,7 +211,7 @@ public class CocheCtrller implements Initializable {
         Coche insertCarObject = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
 
         // GUARDA EL RESULTADO DE LLAMAR A LA FUNCION PARA INSERTAR EL COCHE
-        boolean result = executeAction("insertar", insertCarObject, null);
+        boolean result = executeAction("insertar", insertCarObject, null, null);
 
         if (result) {
             // SI SE INSERTO EL COCHE CORRECTAMENTE, MOSTRAR UN MENSAJE DE EXITO
@@ -246,6 +247,7 @@ public class CocheCtrller implements Initializable {
         tipoComboBox.getItems().addAll(tipoCoche); // INICIALIZAR LOS DATOS DEL COMBOBOX
 
         // CONFIGURAR COLUMNAS
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         matriculaCol.setCellValueFactory(new PropertyValueFactory<>("matricula"));
         marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));
         modeloCol.setCellValueFactory(new PropertyValueFactory<>("modelo"));

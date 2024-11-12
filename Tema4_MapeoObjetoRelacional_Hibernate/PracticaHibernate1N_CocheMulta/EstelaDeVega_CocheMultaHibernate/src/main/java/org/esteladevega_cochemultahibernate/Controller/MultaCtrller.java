@@ -72,6 +72,13 @@ public class MultaCtrller implements Initializable {
     } // METODO PARA PASAR LA MATRICULA DEL COCHE SELECCIONADO
 
     @FXML
+    void onLimpiarAction() {
+        idMultaTF.clear();
+        precioTF.clear();
+        datePicker.setValue(null);
+    } // BOTON PARA LIMPIAR LOS CAMPOS
+
+    @FXML
     void onActualizarAction(ActionEvent event) {
         Multa multaSeleccionada = multaTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DE A¡LA MULTA SELECCIONADO
         if (multaSeleccionada != null) {
@@ -80,6 +87,7 @@ public class MultaCtrller implements Initializable {
                 StaticCode.Alerts("INFORMATION", "Modificar Multa",
                         "Modificar Multa", "Se ha modificado correctamente la multa");
                 refreshTable(); // ACTUALIZA LA TABLA
+                onLimpiarAction(); // LIMPIAR LOS CAMPOS
             } else {
                 StaticCode.Alerts("ERROR", "Modificar Multa",
                         "Fallo al modificar", "NO se ha modificado correctamente la multa");
@@ -88,7 +96,7 @@ public class MultaCtrller implements Initializable {
             StaticCode.Alerts("ERROR", "Multa vacio", "¡ERROR!",
                     "Por favor, seleccione una multa para eliminar.");
         } // MULTA VACIA
-    }
+    } // BOTON PARA ACTUALIZAR MULTA
 
     @FXML
     void onBorrarAction(ActionEvent event) {
@@ -98,6 +106,7 @@ public class MultaCtrller implements Initializable {
             StaticCode.Alerts("INFORMATION", "Eliminar Multa", "INFORMATION",
                     "Se ha eliminado los datos de la multa correctamente.");
             refreshTable(); // ACTUALIZAR LA TABLA
+            onLimpiarAction(); // LIMPIAR LOS CAMPOS
         } else {
             StaticCode.Alerts("ERROR", "Multa vacia", "¡ERROR!",
                     "Por favor, seleccione una multa para eliminar.");
@@ -126,6 +135,7 @@ public class MultaCtrller implements Initializable {
             StaticCode.Alerts("INFORMATION", "Inserción Multa",
                     "Insertar Multa", "Se ha insertado correctamente la multa");
             refreshTable(); // ACTUALIZA LA TABLA
+            onLimpiarAction(); // LIMPIAR LOS CAMPOS
         } else {
             StaticCode.Alerts("ERROR", "Inserción Multa",
                     "Fallo al insertar", "NO se ha insertado correctamente la multa");

@@ -18,7 +18,7 @@
             <Button fx:id="insertarBtt" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#onInsertarAction" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton" text="Insertar" />
             <Button fx:id="actualizarBtt" layoutX="109.0" layoutY="11.0" mnemonicParsing="false" onAction="#onActualizarAction" prefHeight="33.0" prefWidth="103.0" styleClass="multaButton" text="Actualizar" />
             <Button fx:id="borrarBtt" layoutX="220.0" layoutY="11.0" mnemonicParsing="false" onAction="#onBorrarAction" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton" text="Borrar" />
-            <Button fx:id="limpiarBtt" layoutX="315.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton" text="Limpiar" />
+            <Button fx:id="limpiarBtt" layoutX="315.0" layoutY="11.0" mnemonicParsing="false" onAction="#onLimpiarAction" prefHeight="33.0" prefWidth="87.0" styleClass="multaButton" text="Limpiar" />
             <Button id="salirApp" fx:id="exitBtt" layoutX="410.0" layoutY="11.0" mnemonicParsing="false" onAction="#onExitAction" prefHeight="33.0" prefWidth="38.0" text="X" />
          </children>
       </Pane>

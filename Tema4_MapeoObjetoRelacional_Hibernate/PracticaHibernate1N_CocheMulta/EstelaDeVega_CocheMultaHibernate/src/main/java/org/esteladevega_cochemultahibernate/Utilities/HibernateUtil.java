@@ -11,7 +11,7 @@ public class HibernateUtil {
 
     static {
         Configuration cfg = new Configuration();
-        cfg.configure("hibernate.cfg.xml");
+        cfg.configure("/Configuration/hibernate.cfg.xml");
         cfg.addAnnotatedClass(Coche.class);
         cfg.addAnnotatedClass(Multa.class);
         factory = cfg.buildSessionFactory();

@@ -82,7 +82,8 @@ public class MultaCtrller implements Initializable {
     void onActualizarAction(ActionEvent event) {
         Multa multaSeleccionada = multaTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DE A¡LA MULTA SELECCIONADO
         if (multaSeleccionada != null) {
-            Multa multa = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), datePicker.getValue(), matriculaTF.getText());
+            Multa multa = new Multa(multaSeleccionada.getIdMulta(), Double.parseDouble(precioTF.getText()),
+                    datePicker.getValue(), matriculaTF.getText());
             if (multaDAO.modificarMulta(multa)) {
                 StaticCode.Alerts("INFORMATION", "Modificar Multa",
                         "Modificar Multa", "Se ha modificado correctamente la multa");

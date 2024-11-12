@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver
+        </property> <!-- DRIVER DE ACCESO A LA BASE DE DATOS -->
+        <property name="connection.url">jdbc:mysql://localhost/Multas
+        </property> <!-- LA DB A LA QUE SE VA A CONECTAR -->
+        <property name="connection.username">root</property> <!-- USER -->
+        <property name="connection.password">toor</property> <!-- PASSWORD -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property> <!-- DIALECTO SENTENCIA -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.jdbc.batch_size">50</property>
+    </session-factory>
+</hibernate-configuration>

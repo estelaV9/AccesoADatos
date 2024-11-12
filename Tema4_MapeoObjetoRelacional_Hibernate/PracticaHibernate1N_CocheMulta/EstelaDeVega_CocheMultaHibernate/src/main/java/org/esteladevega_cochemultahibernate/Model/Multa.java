@@ -18,7 +18,7 @@ public class Multa {
     private LocalDate fecha;
 
     @Column(name = "matricula")
-    private String modelo;
+    private String matricula;
 
     @ManyToOne
     @JoinColumn(name = "id_coche", referencedColumnName = "id")
@@ -27,9 +27,16 @@ public class Multa {
     public Multa() {
     }
 
-    public Multa(Coche coche, String modelo, LocalDate fecha, double precio, int idMulta) {
+    public Multa(int idMulta, double precio, LocalDate fecha, String matricula) {
+        this.idMulta = idMulta;
+        this.precio = precio;
+        this.fecha = fecha;
+        this.matricula = matricula;
+    }
+
+    public Multa(Coche coche, String matricula, LocalDate fecha, double precio, int idMulta) {
         this.coche = coche;
-        this.modelo = modelo;
+        this.matricula = matricula;
         this.fecha = fecha;
         this.precio = precio;
         this.idMulta = idMulta;
@@ -59,12 +66,12 @@ public class Multa {
         this.fecha = fecha;
     }
 
-    public String getModelo() {
-        return modelo;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public Coche getCoche() {

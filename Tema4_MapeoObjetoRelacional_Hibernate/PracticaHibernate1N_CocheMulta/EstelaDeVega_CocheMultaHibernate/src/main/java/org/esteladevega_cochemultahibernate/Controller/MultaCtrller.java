@@ -83,8 +83,13 @@ public class MultaCtrller implements Initializable {
 
     @FXML
     void onClickedTable(MouseEvent event) {
-
-    }
+        Multa multaSeleccionada = multaTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DE A¡LA MULTA SELECCIONADO
+        if (multaSeleccionada != null) {
+            idMultaTF.setText(String.valueOf(multaSeleccionada.getIdMulta()));
+            precioTF.setText(String.valueOf(multaSeleccionada.getPrecio()));
+            datePicker.setValue(multaSeleccionada.getFecha());
+        } // SI SELECCIONADO NO ES NULO, SE PONEN LOS VALORES AL TEXTFIELD
+    } // CUANDO PULSA UNA MULTA, SE SETTEAN LOS VALORES
 
     @FXML
     void onExitAction(ActionEvent event) throws SQLException {

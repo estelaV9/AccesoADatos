@@ -151,8 +151,14 @@ public class CocheCtrller implements Initializable {
 
     @FXML
     void onVerMultasAction(ActionEvent event) {
-
-    }
+        Coche cocheSeleccionado = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
+        if (cocheSeleccionado != null) {
+            StaticCode.cambiarVistaBtt("/ui/Multa.fxml", verMultasBtt, cocheSeleccionado, "Multa");
+        } else {
+            StaticCode.Alerts("ERROR", "Coche vacio",
+                    "Seleccion nula", "Para ir al formulario de multas, seleccione un coche.");
+        } // SI SELECCIONADO NO ES NULO, SE VA AL FORMULARIO JUGADORES
+    } // BOTON PARA IR A LA VISTA JUGADORES
 
     private void refreshTable() {
         cochesTable.setItems(cocheDAO.listarCoches());

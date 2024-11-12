@@ -5,13 +5,13 @@ import org.esteladevega_cochemultahibernate.Model.Coche;
 import org.hibernate.Session;
 
 public interface InterfaceCoche {
-    boolean insertarCoche(Session session, Coche coche); // METODO PARA INSERTAR COCHES
+    boolean insertarCoche(Coche coche); // METODO PARA INSERTAR COCHES
 
-    boolean modificarCoche(Session session, Coche coche); // METODO PARA MODIFICAR DATOS DE LOS COCHES
+    boolean modificarCoche(Coche coche); // METODO PARA MODIFICAR DATOS DE LOS COCHES
 
-    boolean eliminarCoche(Session session, Coche coche); // METODO PARA ELIMINAR UN COCHE
+    boolean eliminarCoche(Coche coche); // METODO PARA ELIMINAR UN COCHE
 
-    ObservableList<Coche> listarCoches(Session session); // METODO PARA LISTAR TODOS LOS COCHES DE LA BASE DE DATOS
+    ObservableList<Coche> listarCoches(); // METODO PARA LISTAR TODOS LOS COCHES DE LA BASE DE DATOS
 
-    boolean buscarCoche(Session session, String matricula); // METODO PARA BUSCAR UN COCHE
+    boolean buscarCoche(String matricula); // METODO PARA BUSCAR UN COCHE
 }

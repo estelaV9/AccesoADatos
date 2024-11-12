@@ -17,7 +17,7 @@ public class CocheDAO implements InterfaceCoche {
         session = HibernateUtil.getSession();
     } // CUANDO SE CREA SE ESTABLECE LA SESSION
 
-    public boolean insertarCoche(Session session, Coche coche) {
+    public boolean insertarCoche(Coche coche) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             session.save(coche); // GUARDAR EL COCHE EN LA BASE DE DATOS
@@ -35,7 +35,7 @@ public class CocheDAO implements InterfaceCoche {
         }
     } // METODO PARA INSERTAR COCHES
 
-    public boolean modificarCoche(Session session, Coche coche) {
+    public boolean modificarCoche(Coche coche) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             Coche existente = session.get(Coche.class, coche.getIdCoche()); // SE CREA EL COCHE QUE SE VA A MODIFICAR
@@ -61,7 +61,7 @@ public class CocheDAO implements InterfaceCoche {
         }
     } // METODO PARA MODIFICAR DATOS DE LOS COCHES
 
-    public boolean eliminarCoche(Session session, Coche coche) {
+    public boolean eliminarCoche(Coche coche) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             session.delete(coche); // ELIMINAR EL COCHE EN LA BASE DE DATOS
@@ -79,7 +79,7 @@ public class CocheDAO implements InterfaceCoche {
         }
     } // METODO PARA ELIMINAR UN COCHE
 
-    public ObservableList<Coche> listarCoches(Session session) {
+    public ObservableList<Coche> listarCoches() {
         ObservableList<Coche> observableList = null; // LISTA PARA ALMACENAR LOS COCHES
         try {
             // CONSULTA PARA OBTENER LOS DATOS DE LOS COCHES DE LA BASE DE DATOS
@@ -93,7 +93,7 @@ public class CocheDAO implements InterfaceCoche {
         return observableList; // RETORNA LA LISTA DE COCHES
     } // METODO PARA LISTAR TODOS LOS COCHES DE LA BASE DE DATOS
 
-    public boolean buscarCoche(Session session, String matricula) {
+    public boolean buscarCoche(String matricula) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             // CREAR LA CONSULTA HQL PARA BUSCAR EL COCHE POR MATRICULA

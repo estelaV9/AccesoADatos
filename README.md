@@ -25,9 +25,13 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  </tr>
 </table>
 
+
 ## Tema 1: Acceso a BD Relacionales
-### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/ResumenTema1.md">Explicación</a> sobre como leer ficheros properties.
-### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema1_AccesoBDRelacionales/FicheroPropiedades">Ejercicio inicial</a> para leer ficheros properties.
+### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/ResumenTema1.md">Explicación</a> sobre como leer ficheros properties y el acceso a base de datos relacionales..
+#### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema1_AccesoBDRelacionales/FicheroPropiedades">Ejercicio inicial</a> para leer ficheros properties.
+
+### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/Hashing_SHA/HashingSHA.md">Explicación</a> sobre el hashing SHA-256 y SHA3-256..
+#### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema1_AccesoBDRelacionales/Hashing_SHA/Encriptacion_sha256">Ejercicio encriptar </a> una contraseña.
 
 ### **· Práctica <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema1_AccesoBDRelacionales/EjercicioFormularioFX/PracticaFormulario.md">formulario JavaFX</a>**:
   <table>
@@ -43,8 +47,10 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  </tr>
 </table>
 
+
 ## Tema 2: Leer ficheros JSON
 ### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema2_FicherosJSON/ResumenTema2.md">Explicación</a> sobre cómo leer ficheros JSON.
+### **. Ejemplo de como <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema2_FicherosJSON/Ejemplo_LeerFicheroJSON">leer ficheros JSON</a>**.
 ### **· Práctica <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema2_FicherosJSON/PracticaLeerJSON/EstelaDeVega_EjercicioJSON">ficheros JSON</a>**:
  <table>
   <tr>
@@ -60,8 +66,13 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  </tr>
 </table>
 
+
 ## Tema 3: Acceso A Base de Datos NoSQL
 ### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema3_AccesoBDNoSQL_MongoDB/ResumenTema3.md">Explicación</a> sobre el acceso a base de datos no relacionales.
+### Ejemplo de CRUD en MongoDB:
+#### - <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema3_AccesoBDNoSQL_MongoDB/Mongo_CRUD">Sin Mapear</a>.
+#### - <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema3_AccesoBDNoSQL_MongoDB/Mongo_CRUD_Mapeo">Mapeado</a>.
+
 ### **· Práctica <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema3_AccesoBDNoSQL_MongoDB/PracticaMongoDB_GestionCoches/enunciadoMongoDB.md">MongoDB</a>**:
  <table>
   <tr>
@@ -77,7 +88,8 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  </tr>
 </table>
 
-## Tema 4: Mapeo Objet-Relacional. Hibernate.
+
+## Tema 4: Mapeo Objeto-Relacional. Hibernate.
 ### **· Práctica <a href="">Hibernate</a>** CRUD Coches:
  <table>
   <tr>
@@ -108,6 +120,11 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  </tr>
 </table>
 
+## Repaso Primera Evaluación
+### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/MultiDBManagerFX">Ejercicio relación 1N</a> de Coches y Multas con los tres gestores de base de datos. Ejercicio de repaso para el examen.
+
+### Ejercicio adicional para trabajar con los <a href="">tres gestores de base de datos</a>. 
+<a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/EjercicioAdicional_UnirTresGestoresDB/EnunciadoEjercicioAdicional.md">Enunciado</a> del ejercicio.
 
 
 

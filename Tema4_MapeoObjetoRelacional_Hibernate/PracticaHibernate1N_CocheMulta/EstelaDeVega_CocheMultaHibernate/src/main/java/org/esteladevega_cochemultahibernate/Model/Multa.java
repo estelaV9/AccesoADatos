@@ -9,7 +9,7 @@ public class Multa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_multa")
-    private int idCoche;
+    private int idMulta;
 
     @Column(name = "precio")
     private double precio;
@@ -24,20 +24,23 @@ public class Multa {
     @JoinColumn(name = "id_coche", referencedColumnName = "id")
     private Coche coche;
 
-    public Multa(Coche coche, String modelo, LocalDate fecha, double precio, int idCoche) {
+    public Multa() {
+    }
+
+    public Multa(Coche coche, String modelo, LocalDate fecha, double precio, int idMulta) {
         this.coche = coche;
         this.modelo = modelo;
         this.fecha = fecha;
         this.precio = precio;
-        this.idCoche = idCoche;
+        this.idMulta = idMulta;
     }
 
-    public int getIdCoche() {
-        return idCoche;
+    public int getIdMulta() {
+        return idMulta;
     }
 
-    public void setIdCoche(int idCoche) {
-        this.idCoche = idCoche;
+    public void setIdMulta(int idMulta) {
+        this.idMulta = idMulta;
     }
 
     public double getPrecio() {

@@ -73,7 +73,7 @@ public class CocheCtrller implements Initializable {
 
 
     @FXML
-    void onCancelarAction(ActionEvent event) {
+    void onCancelarAction() {
         matriculaTxt.clear();
         marcaTxt.clear();
         modeloTxt.clear();
@@ -82,13 +82,30 @@ public class CocheCtrller implements Initializable {
 
     @FXML
     void onClickedTable(MouseEvent event) {
-
-    }
+        Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
+        if (seleccionada != null) {
+            matriculaTxt.setText(seleccionada.getMatricula());
+            marcaTxt.setText(seleccionada.getMarca());
+            modeloTxt.setText(seleccionada.getModelo());
+            tipoComboBox.setValue(seleccionada.getTipo());
+        } // SI SELECCIONADO NO ES NULO, SE PONEN LOS VALORES AL TEXTFIELD
+    } // CUANDO PULSA UN COCHE, SE SETTEAN LOS VALORES
 
     @FXML
     void onEliminarAction(ActionEvent event) {
-
-    }
+        Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
+        // COMPROBAR SI EL USUARIO HA SELECCIONADO UN COCHE PARA MODIFICAR
+        if (seleccionada != null) {
+            cocheDAO.eliminarCoche(seleccionada); // SE ELIMINA EL COCHE
+            StaticCode.Alerts("INFORMATION", "Eliminar Coche", "INFORMATION",
+                    "Se ha eliminado los datos del coche correctamente.");
+            onCancelarAction();
+            refreshTable(); // ACTUALIZAR LA TABLA
+        } else {
+            StaticCode.Alerts("ERROR", "Coche vacio", "¡ERROR!",
+                    "Por favor, seleccione un coche para eliminar.");
+        } // coche vacio
+    } // ELIMINAR UN COCHE
 
     @FXML
     void onExitAction(ActionEvent event) throws SQLException {
@@ -97,13 +114,40 @@ public class CocheCtrller implements Initializable {
 
     @FXML
     void onModificarAction(ActionEvent event) {
-
-    }
+        Coche seleccionada = cochesTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DEL COCHE SELECCIONADO
+        // COMPROBAR SI EL USUARIO HA SELECCIONADO UN COCHE PARA MODIFICAR
+        if (seleccionada != null) {
+            // COMPROBAR SI NO HAY CAMPOS VACIOS
+            if (StaticCode.camposVacios(tipoComboBox, matriculaTxt, marcaTxt, modeloTxt)) {
+                Coche cocheModificar = new Coche(seleccionada.getIdCoche(), seleccionada.getMatricula(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
+                cocheDAO.modificarCoche(cocheModificar); // MODIFICAR
+                StaticCode.Alerts("INFORMATION", "Modificar Coche", "INFORMATION",
+                        "Se ha modificado los datos del coche correctamente.");
+                onCancelarAction();
+                refreshTable(); // ACTUALIZAR LA TABLA
+            } else {
+                StaticCode.Alerts("ERROR", "Campo vacio", "¡ERROR!",
+                        "Por favor, rellene todos los datos del formulario.");
+            } // campos vacios
+        } else {
+            StaticCode.Alerts("ERROR", "Coche vacio", "¡ERROR!",
+                    "Por favor, seleccione un coche para eliminar.");
+        } // coche vacio
+    } // METODO PARA MODIFICAR LOS DATOS DE UN COCHE
 
     @FXML
     void onNuevoCocheAction(ActionEvent event) {
-
-    }
+        // COMPROBAR CAMPOS VACIOS, SI HAY ALGUN CAMPO VACIO SALTA UN ERROR
+        if (StaticCode.camposVacios(tipoComboBox, marcaTxt, matriculaTxt, modeloTxt)) {
+            Coche coche = new Coche(matriculaTxt.getText(), marcaTxt.getText(), modeloTxt.getText(), tipoComboBox.getValue());
+            cocheDAO.insertarCoche(coche); // INSERTAR
+            onCancelarAction();
+            refreshTable(); // ACTUALIZA LA TABLA
+        } else {
+            StaticCode.Alerts("ERROR", "Campo vacio", "¡ERROR!",
+                    "Por favor, rellene todos los datos del formulario.");
+        }
+    } // CREAR UN COCHE NUEVO
 
     @FXML
     void onVerMultasAction(ActionEvent event) {

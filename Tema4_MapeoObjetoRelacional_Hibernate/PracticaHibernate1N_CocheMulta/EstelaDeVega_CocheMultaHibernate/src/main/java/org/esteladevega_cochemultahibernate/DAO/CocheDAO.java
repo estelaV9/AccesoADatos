@@ -3,12 +3,20 @@ package org.esteladevega_cochemultahibernate.DAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.esteladevega_cochemultahibernate.Model.Coche;
+import org.esteladevega_cochemultahibernate.Utilities.HibernateUtil;
 import org.esteladevega_cochemultahibernate.Utilities.StaticCode;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import java.util.List;
 
-public class CocheDAO implements InterfaceCoche{
+public class CocheDAO implements InterfaceCoche {
+    public Session session;
+
+    public CocheDAO() {
+        session = HibernateUtil.getSession();
+    } // CUANDO SE CREA SE ESTABLECE LA SESSION
+
     public boolean insertarCoche(Session session, Coche coche) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION

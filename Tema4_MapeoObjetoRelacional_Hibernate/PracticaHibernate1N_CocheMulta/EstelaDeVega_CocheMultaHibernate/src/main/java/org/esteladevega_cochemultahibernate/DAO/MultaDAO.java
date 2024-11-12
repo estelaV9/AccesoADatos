@@ -8,26 +8,30 @@ import org.esteladevega_cochemultahibernate.Utilities.HibernateUtil;
 import org.esteladevega_cochemultahibernate.Utilities.StaticCode;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MultaDAO {
     public Session session;
-    public MultaDAO(){
+
+    public MultaDAO() {
         session = HibernateUtil.getSession();
     } // CUANDO SE CREA SE ESTABLECE LA SESION
 
     public ObservableList<Multa> listarMultas(String matricula) {
-        ObservableList<Multa> observableList = null; // LISTA PARA ALMACENAR LOS MULTAS
+        List listaMultasDB = new ArrayList<>(); // LISTA PARA ALMACENAR LOS MULTAS
         try {
+            session.beginTransaction(); // INICIAR NUEVA TRANSACCION
             // CONSULTA PARA OBTENER LOS DATOS DE LAS MULTAS  SEGUN LA MATRICULA DE LA BASE DE DATOS
-            List listaMultasDB = session.createQuery("from Multa where matricula = '" + matricula+"'").list();
-            observableList = FXCollections.observableArrayList(listaMultasDB); // SE AÑADE EL ARRAYLIST AL OBSERVABLELIST
+            listaMultasDB = session.createQuery("from Multa where matricula = '" + matricula + "'").list();
+            session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            session.clear();
         } catch (Exception e) {
             // MENSAJE DE ERROR
             StaticCode.Alerts("ERROR", "Error al listar", "¡ERROR!",
                     "Ha ocurrido un error al listar las multas: " + e);
         }
-        return observableList; // RETORNA LA LISTA DE MULTAS
+        return FXCollections.observableList(listaMultasDB); // RETORNA LA LISTA DE MULTAS
     } // METODO PARA LISTAR TODOS LAS MULTAS DE ESE COCHE DE LA BASE DE DATOS
 
     public boolean insertarMulta(Multa multa) {
@@ -54,8 +58,8 @@ public class MultaDAO {
             Multa existente = session.get(Multa.class, multa.getIdMulta()); // SE CREA LA MULTA QUE SE VA A MODIFICAR
 
             //SE SETTEAN LOS DATOS
-            existente.setPrecio(existente.getPrecio());
-            existente.setFecha(existente.getFecha());
+            existente.setPrecio(multa.getPrecio());
+            existente.setFecha(multa.getFecha());
 
             session.update(existente); // MODIFICAR LA MULTA EXISTENTE
             session.getTransaction().commit(); // CONFIRMAR TRANSACCION

@@ -9,6 +9,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.esteladevega_cochemultahibernate.App;
+import org.esteladevega_cochemultahibernate.Controller.MultaCtrller;
+import org.esteladevega_cochemultahibernate.Model.Coche;
 import org.hibernate.Session;
 
 import javax.swing.*;
@@ -35,14 +37,17 @@ public class StaticCode {
         return combobox.getSelectionModel().getSelectedItem() != null;
     } // METODO PARA COMPROBAR CAMPOS VACIOS
 
-    public static void cambiarVistaBtt(String nameFxml, Button button, String title) {
+    public static void cambiarVistaBtt(String nameFxml, Button button, Coche coche, String title) {
         try {
             // CARGAR EL ARCHIVO FXML
             FXMLLoader fxmlLoader = new
                     FXMLLoader(App.class.getResource(nameFxml));
             Parent root = fxmlLoader.load();
-            // OBTENER CONTROLLER
-            Object controller = fxmlLoader.getController();
+
+            // CREAMOS UNA INSTANCIA CONTROLLER AL QUE VAMOS A PASAR DATOS
+            MultaCtrller controller = fxmlLoader.getController();
+            controller.displayController(coche);
+
             Scene scene = new Scene(root); // CREAR UNA NUEVA ESCENA
             // OBTENER EL STAGE ACTUAL A PARTIR DEL BOTON QUE SE HA CLICADO
             Stage stage = (Stage) button.getScene().getWindow();

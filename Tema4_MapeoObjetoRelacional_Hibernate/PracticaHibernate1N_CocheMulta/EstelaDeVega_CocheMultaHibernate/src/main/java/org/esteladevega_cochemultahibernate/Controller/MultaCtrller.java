@@ -73,13 +73,36 @@ public class MultaCtrller implements Initializable {
 
     @FXML
     void onActualizarAction(ActionEvent event) {
-
+        Multa multaSeleccionada = multaTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DE A¡LA MULTA SELECCIONADO
+        if (multaSeleccionada != null) {
+            Multa multa = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), datePicker.getValue(), matriculaTF.getText());
+            if (multaDAO.modificarMulta(multa)) {
+                StaticCode.Alerts("INFORMATION", "Modificar Multa",
+                        "Modificar Multa", "Se ha modificado correctamente la multa");
+                refreshTable(); // ACTUALIZA LA TABLA
+            } else {
+                StaticCode.Alerts("ERROR", "Modificar Multa",
+                        "Fallo al modificar", "NO se ha modificado correctamente la multa");
+            }// INSERTAR MULTA
+        } else {
+            StaticCode.Alerts("ERROR", "Multa vacio", "¡ERROR!",
+                    "Por favor, seleccione una multa para eliminar.");
+        } // MULTA VACIA
     }
 
     @FXML
     void onBorrarAction(ActionEvent event) {
-
-    }
+        Multa multaSeleccionada = multaTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DE LA MULTA SELECCIONADA
+        if (multaSeleccionada != null) {
+            multaDAO.eliminarMulta(multaSeleccionada); // SE ELIMINA LA MULTA
+            StaticCode.Alerts("INFORMATION", "Eliminar Multa", "INFORMATION",
+                    "Se ha eliminado los datos de la multa correctamente.");
+            refreshTable(); // ACTUALIZAR LA TABLA
+        } else {
+            StaticCode.Alerts("ERROR", "Multa vacia", "¡ERROR!",
+                    "Por favor, seleccione una multa para eliminar.");
+        } // multa vacia
+    } // BOTON PARA ELIMINAR LA MULTA
 
     @FXML
     void onClickedTable(MouseEvent event) {
@@ -98,8 +121,16 @@ public class MultaCtrller implements Initializable {
 
     @FXML
     void onInsertarAction(ActionEvent event) {
-
-    }
+        Multa multa = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), datePicker.getValue(), matriculaTF.getText());
+        if (multaDAO.insertarMulta(multa)) {
+            StaticCode.Alerts("INFORMATION", "Inserción Multa",
+                    "Insertar Multa", "Se ha insertado correctamente la multa");
+            refreshTable(); // ACTUALIZA LA TABLA
+        } else {
+            StaticCode.Alerts("ERROR", "Inserción Multa",
+                    "Fallo al insertar", "NO se ha insertado correctamente la multa");
+        }// INSERTAR MULTA
+    } // CREAR UN COCHE NUEVO
 
     private void refreshTable() {
         multaTable.setItems(multaDAO.listarMultas(cocheGeneral.getMatricula()));
@@ -107,6 +138,7 @@ public class MultaCtrller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        idMultaTF.setDisable(false); // EL ID DE MULTA NO SE PODRA MODIFICAR
         // CONFIGURAR COLUMNAS
         idCol.setCellValueFactory(new PropertyValueFactory<>("idMulta"));
         precioCol.setCellValueFactory(new PropertyValueFactory<>("precio"));

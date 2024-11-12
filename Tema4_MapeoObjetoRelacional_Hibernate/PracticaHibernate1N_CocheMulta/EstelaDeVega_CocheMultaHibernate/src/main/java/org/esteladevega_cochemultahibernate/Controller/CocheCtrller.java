@@ -2,19 +2,23 @@ package org.esteladevega_cochemultahibernate.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.esteladevega_cochemultahibernate.DAO.CocheDAO;
 import org.esteladevega_cochemultahibernate.Model.Coche;
 import org.esteladevega_cochemultahibernate.Utilities.StaticCode;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class CocheCtrller {
+public class CocheCtrller implements Initializable {
 
     @FXML
     private Button cancelarBtt;
@@ -64,8 +68,8 @@ public class CocheCtrller {
     @FXML
     private Button verMultasBtt;
 
+    String[] listaTipos = {"Familiar", "Monovolumen", "Deportivo", "SUV"};
     CocheDAO cocheDAO = new CocheDAO();
-
 
 
     @FXML
@@ -104,5 +108,25 @@ public class CocheCtrller {
     @FXML
     void onVerMultasAction(ActionEvent event) {
 
+    }
+
+    private void refreshTable() {
+        cochesTable.setItems(cocheDAO.listarCoches());
+    } // METODO PARA AÑADIR LA LSITA DE COCHES A LA TABLA
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // INICIALIZAR LOS COMBOBOX
+        tipoComboBox.getItems().addAll(listaTipos); // AÑADIR LOS VALORES AL COMBOBOX
+
+        // CONFIGURAR COLUMNAS
+        idCol.setCellValueFactory(new PropertyValueFactory<>("idCoche"));
+        marcaCol.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        matriculaCol.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+        modeloCol.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+        tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+
+        refreshTable(); // INSERTAR LOS DATOS EN LA TABLA
     }
 }

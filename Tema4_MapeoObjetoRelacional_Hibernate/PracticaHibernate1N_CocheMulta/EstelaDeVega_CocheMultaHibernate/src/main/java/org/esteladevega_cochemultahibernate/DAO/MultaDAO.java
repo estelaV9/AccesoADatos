@@ -30,4 +30,64 @@ public class MultaDAO {
         return observableList; // RETORNA LA LISTA DE MULTAS
     } // METODO PARA LISTAR TODOS LAS MULTAS DE ESE COCHE DE LA BASE DE DATOS
 
+    public boolean insertarMulta(Multa multa) {
+        try {
+            session.beginTransaction(); // INICIAR NUEVA TRANSACCION
+            session.save(multa); // GUARDAR LA MULTA EN LA BASE DE DATOS
+            session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            return true; // OPERACION EXITOSA
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback(); // HACER UN ROLLBACK
+            }// SI OCURRE UN ERROR, SE REVIERTE LA TRANSACCION
+
+            // MENSAJE DE ERROR
+            StaticCode.Alerts("ERROR", "Error al insertar", "¡ERROR!",
+                    "Ha ocurrido un error al insertar la multa: " + e);
+            return false; // OPERACION FALLIDA
+        }
+    } // METODO PARA INSERTAR MULTAS
+
+    public boolean modificarMulta(Multa multa) {
+        try {
+            session.beginTransaction(); // INICIAR NUEVA TRANSACCION
+            Multa existente = session.get(Multa.class, multa.getIdMulta()); // SE CREA LA MULTA QUE SE VA A MODIFICAR
+
+            //SE SETTEAN LOS DATOS
+            existente.setPrecio(existente.getPrecio());
+            existente.setFecha(existente.getFecha());
+
+            session.update(existente); // MODIFICAR LA MULTA EXISTENTE
+            session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            session.clear(); // SE LIMPIAR LA SESSION DE LOS OBJETOS
+            return true; // OPERACION EXITOSA
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback(); // HACER UN ROLLBACK
+            }// SI OCURRE UN ERROR, SE REVIERTE LA TRANSACCION
+
+            // MENSAJE DE ERROR
+            StaticCode.Alerts("ERROR", "Error al modificar", "¡ERROR!",
+                    "Ha ocurrido un error al modificar la multa: " + e);
+            return false; // OPERACION FALLIDA
+        }
+    } // METODO PARA MODIFICAR DATOS DE LAS MULTAS
+
+    public boolean eliminarMulta(Multa multa) {
+        try {
+            session.beginTransaction(); // INICIAR NUEVA TRANSACCION
+            session.delete(multa); // ELIMINAR LA MULTA EN LA BASE DE DATOS
+            session.getTransaction().commit(); // CONFIRMAR TRANSACCION
+            return true; // OPERACION EXITOSA
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback(); // HACER UN ROLLBACK
+            }// SI OCURRE UN ERROR, SE REVIERTE LA TRANSACCION
+
+            // MENSAJE DE ERROR
+            StaticCode.Alerts("ERROR", "Error al eliminar", "¡ERROR!",
+                    "Ha ocurrido un error al eliminar la multa: " + e);
+            return false; // OPERACION FALLIDA
+        }
+    } // METODO PARA ELIMINAR UNA MULTA
 }

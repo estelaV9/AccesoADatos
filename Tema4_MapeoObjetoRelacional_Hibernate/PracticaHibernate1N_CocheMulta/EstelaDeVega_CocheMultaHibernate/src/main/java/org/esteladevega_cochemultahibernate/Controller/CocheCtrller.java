@@ -8,6 +8,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.esteladevega_cochemultahibernate.DAO.CocheDAO;
+import org.esteladevega_cochemultahibernate.Model.Coche;
+import org.esteladevega_cochemultahibernate.Utilities.StaticCode;
+
+import java.sql.SQLException;
 
 public class CocheCtrller {
 
@@ -15,7 +20,7 @@ public class CocheCtrller {
     private Button cancelarBtt;
 
     @FXML
-    private TableView<?> cochesTable;
+    private TableView<Coche> cochesTable;
 
     @FXML
     private Button eliminarBtt;
@@ -24,22 +29,22 @@ public class CocheCtrller {
     private Button exitBtt;
 
     @FXML
-    private TableColumn<?, ?> idCol;
+    private TableColumn<Integer, Coche> idCol;
 
     @FXML
-    private TableColumn<?, ?> marcaCol;
+    private TableColumn<String, Coche> marcaCol;
 
     @FXML
     private TextField marcaTxt;
 
     @FXML
-    private TableColumn<?, ?> matriculaCol;
+    private TableColumn<String, Coche> matriculaCol;
 
     @FXML
     private TextField matriculaTxt;
 
     @FXML
-    private TableColumn<?, ?> modeloCol;
+    private TableColumn<String, Coche> modeloCol;
 
     @FXML
     private TextField modeloTxt;
@@ -51,18 +56,25 @@ public class CocheCtrller {
     private Button nuevoBtt;
 
     @FXML
+    private TableColumn<String, Coche> tipoCol;
+
+    @FXML
+    private ComboBox<String> tipoComboBox;
+
+    @FXML
     private Button verMultasBtt;
 
-    @FXML
-    private TableColumn<?, ?> tipoCol;
+    CocheDAO cocheDAO = new CocheDAO();
 
-    @FXML
-    private ComboBox<?> tipoComboBox;
+
 
     @FXML
     void onCancelarAction(ActionEvent event) {
-
-    }
+        matriculaTxt.clear();
+        marcaTxt.clear();
+        modeloTxt.clear();
+        tipoComboBox.setValue(null);
+    } // BOTON PARA BORRAR LOS CAMPOS
 
     @FXML
     void onClickedTable(MouseEvent event) {
@@ -75,9 +87,9 @@ public class CocheCtrller {
     }
 
     @FXML
-    void onExitAction(ActionEvent event) {
-
-    }
+    void onExitAction(ActionEvent event) throws SQLException {
+        StaticCode.exitApp(cocheDAO.session);
+    } // BOTON PARA SALIR DE LA APP CERRANDO LA SESION
 
     @FXML
     void onModificarAction(ActionEvent event) {
@@ -85,8 +97,12 @@ public class CocheCtrller {
     }
 
     @FXML
-    void onVerMultasAction(ActionEvent event) {
+    void onNuevoCocheAction(ActionEvent event) {
 
     }
 
+    @FXML
+    void onVerMultasAction(ActionEvent event) {
+
+    }
 }

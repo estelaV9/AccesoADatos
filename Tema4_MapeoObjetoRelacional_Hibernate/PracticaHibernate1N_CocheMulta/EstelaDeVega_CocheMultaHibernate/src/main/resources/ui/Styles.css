@@ -227,6 +227,37 @@
 
 
 /***** ESTILOS TABLA MULTAS ****/
-#tabla{
+#tabla {
+     -fx-background-color: #7f8a70; /* COLOR DEL FONDO DE LA TABLA */
+     -fx-border-color:  #000;
+     -fx-border-width: 1px;
+     -fx-opacity: 0.95;
+ } /* Estilo para la TableView */
 
+
+#tabla .column-header {
+     -fx-background-color: #f6e8a8;
+ }/* Estilo para la cabecera de la columna */
+
+
+#tabla .table-row-cell {
+     -fx-background-color: #7f8a70;
+     -fx-text-fill: #000;
+ } /* Estilo para las filas de la tabla */
+
+
+#tabla .table-row-cell:hover {
+    -fx-background-color: #f6e8a8;
+    -fx-text-fill: black; /* CAMBIA EL COLOR DEL TEXTO AL PASAR EL RATON */
 }
+
+#tabla .table-row-cell:selected {
+    -fx-background-color: #31454a;
+    -fx-text-fill: black;
+} /* Estipo para cuando se seleccione una multa*/
+
+
+.scroll-bar .thumb {
+ -fx-background-color: #7f8a70; /* COLOR DEL THUM */
+ -fx-background-radius: 10;
+}/* Estilo para el "thumb" de la barra de desplazamiento */

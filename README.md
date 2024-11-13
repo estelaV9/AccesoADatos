@@ -94,13 +94,13 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  <table>
   <tr>
     <td width="30%">
-     <a href="" target="_blank">
+     <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate_CRUDCoches/EnunciadoEjerCRUD.md" target="_blank">
         <img src="https://github.com/estelaV9/AccesoADatos/blob/master/Tema3_AccesoBDNoSQL_MongoDB/PracticaMongoDB_GestionCoches/myProjectFiles/vistaGestionCoche.png" width="300" alt="FicheroHibernate">
       </a>
     </td>
     <td width="70%">
          Desarrollar una <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate_CRUDCoches/EstelaDeVega_CrudCochesHibernate">aplicación</a> que gestione coches con <b>Hibernate</b>. 
-      Enunciado del ejercicio: <a href="" target="_blank"> Practica Gestion de Coches</a> en Hibernate.
+      Enunciado del ejercicio: <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate_CRUDCoches/EnunciadoEjerCRUD.md" target="_blank"> Practica Gestion de Coches</a> en Hibernate.
     </td>        
  </tr>
 </table>
@@ -108,14 +108,17 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
 ### **· Práctica <a href="">Hibernate 1N</a>** Coches y Multas:
  <table>
   <tr>
-    <td width="30%">
-     <a href="" target="_blank">
-        <img src="https://github.com/estelaV9/AccesoADatos/blob/master/Tema3_AccesoBDNoSQL_MongoDB/PracticaMongoDB_GestionCoches/myProjectFiles/vistaGestionCoche.png" width="300" alt="FicheroHibernate1N">
+    <td width="55%">
+     <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate1N_CocheMulta/EnunciadoHibernate1N.md" target="_blank">
+        <img src="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate1N_CocheMulta/myProjectFiles/cochesVistaApp.png" width="320" alt="Hibernate1N">
+      </a>
+      <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate1N_CocheMulta/EnunciadoHibernate1N.md" target="_blank">
+        <img src="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate1N_CocheMulta/myProjectFiles/multasVistaApp.png" width="200" alt="Hibernate1N">
       </a>
     </td>
-    <td width="70%">
-         Desarrollar una <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate1N_CocheMulta/EstelaDeVega_CocheMultaHibernate">aplicación</a> que gestione coches y multas con <b>Hibernate</b>. 
-      Enunciado del ejercicio: <a href="" target="_blank"> Practica Gestion de Coches y ultas</a> en Hibernate 1N.
+    <td width="55%">
+         Desarrollar una <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate1N_CocheMulta/EstelaDeVega_CocheMultaHibernate">aplicación</a> que gestione coches y multas con <b>Hibernate</b>. <br>
+      Enunciado del ejercicio: <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate1N_CocheMulta/EnunciadoHibernate1N.md" target="_blank"> Practica Gestion de Coches y multas</a> en Hibernate 1N.
     </td>        
  </tr>
 </table>

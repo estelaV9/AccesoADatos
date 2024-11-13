@@ -90,7 +90,7 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
 
 
 ## Tema 4: Mapeo Objeto-Relacional. Hibernate.
-### **· Práctica <a href="">Hibernate</a>** CRUD Coches:
+### **· Práctica <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate_CRUDCoches/EnunciadoEjerCRUD.md">Hibernate</a>** CRUD Coches:
  <table>
   <tr>
     <td width="30%">
@@ -105,7 +105,7 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  </tr>
 </table>
 
-### **· Práctica <a href="">Hibernate 1N</a>** Coches y Multas:
+### **· Práctica <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate1N_CocheMulta/EnunciadoHibernate1N.md">Hibernate 1N</a>** Coches y Multas:
  <table>
   <tr>
     <td width="55%">

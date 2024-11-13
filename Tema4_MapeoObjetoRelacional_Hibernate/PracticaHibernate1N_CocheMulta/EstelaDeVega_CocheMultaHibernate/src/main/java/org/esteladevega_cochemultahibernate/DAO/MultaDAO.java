@@ -2,7 +2,6 @@ package org.esteladevega_cochemultahibernate.DAO;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.esteladevega_cochemultahibernate.Model.Coche;
 import org.esteladevega_cochemultahibernate.Model.Multa;
 import org.esteladevega_cochemultahibernate.Utilities.HibernateUtil;
 import org.esteladevega_cochemultahibernate.Utilities.StaticCode;
@@ -11,13 +10,14 @@ import org.hibernate.Session;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultaDAO {
+public class MultaDAO implements InterfaceMulta {
     public Session session;
 
     public MultaDAO() {
         session = HibernateUtil.getSession();
     } // CUANDO SE CREA SE ESTABLECE LA SESION
 
+    @Override
     public ObservableList<Multa> listarMultas(String matricula) {
         List listaMultasDB = new ArrayList<>(); // LISTA PARA ALMACENAR LOS MULTAS
         try {
@@ -34,6 +34,7 @@ public class MultaDAO {
         return FXCollections.observableList(listaMultasDB); // RETORNA LA LISTA DE MULTAS
     } // METODO PARA LISTAR TODOS LAS MULTAS DE ESE COCHE DE LA BASE DE DATOS
 
+    @Override
     public boolean insertarMulta(Multa multa) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
@@ -52,6 +53,7 @@ public class MultaDAO {
         }
     } // METODO PARA INSERTAR MULTAS
 
+    @Override
     public boolean modificarMulta(Multa multa) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION
@@ -77,6 +79,7 @@ public class MultaDAO {
         }
     } // METODO PARA MODIFICAR DATOS DE LAS MULTAS
 
+    @Override
     public boolean eliminarMulta(Multa multa) {
         try {
             session.beginTransaction(); // INICIAR NUEVA TRANSACCION

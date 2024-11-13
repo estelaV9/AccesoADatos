@@ -11,13 +11,19 @@ Además, se deberá crear una clase Validar con todos sus métodos estáticos pa
 
 <table>
   <tr>
+    <th>
+      El formulario para la práctica puede ser como el de la imagen:
+    </th>
+    <th>
+      Mi aplicación:
+    </th>
+  </tr>
+  <tr>
     <td>
-      El formulario para la práctica puede ser como el de la imagen: <br> <br> 
-      <img src="myProjectFiles/vistaCoche.png" width="300"> 
+      <img src="myProjectFiles/vistaCoche.png" width="400"> 
     </td>
     <td>
-      Mi aplicación:
-      <img src="myProjectFiles/cochesVistaApp.png" widtg="300">
+      <img src="myProjectFiles/cochesVistaApp.png" width="600">
     </td>
   </tr>
 </table>
@@ -27,13 +33,19 @@ Cuando pulse sobre el botón Ver Multas , nos mostrara el siguiente formulario p
 
 <table>
   <tr>
+    <th>
+      El formulario para las multas puede ser como el de la imagen:
+    </th>
+    <th>
+      Mi aplicación:
+    </th>
+  </tr>
+  <tr>
     <td>
-      El formulario para las multas puede ser como el de la imagen: <br> <br> 
-      <img src="myProjectFiles/vistaMultas.png" width="300">
+      <img src="myProjectFiles/vistaMultas.png" width="400"> 
     </td>
     <td>
-      Mi aplicación:
-      <img src="myProjectFiles/multasVistaApp.png" widtg="300">
+      <img src="myProjectFiles/multasVistaApp.png" width="350">
     </td>
   </tr>
 </table>

@@ -18,8 +18,6 @@ public class CrearProductoProveedor {
             Productos pepino = new Productos("Pepino", "Frances", 5);
             Productos endivia = new Productos("Endivia", "Nada envidiosa", 7);
 
-            paco.addProducto(pepino);
-            paco.addProducto(endivia);
             session.save(pepino);
             session.save(endivia);
 

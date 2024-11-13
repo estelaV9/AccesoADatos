@@ -20,12 +20,13 @@ CREATE TABLE productos (
   descripcion varchar(300) DEFAULT NULL,
   stock integer DEFAULT NULL,
   idcategoria integer DEFAULT NULL,
-  PRIMARY KEY (idproducto)
+  PRIMARY KEY (idproducto),
+  FOREIGN KEY (idcategoria) REFERENCES categorias (idcategoria) ON UPDATE CASCADE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO productos VALUES (1,'Manzana','Manzana saludable',3,1),(2,'Pera','No ha salido de un olmo',13,1),
 (3,'Brócoli','Verdura fractal',5,2),(4,'Salmonete','Salmón chiquitín',30,3),
-(5,'Tomate','Rojo como el pecado',10,2),(6,'Coliflor','Blanca y radiante',7,14);
+(5,'Tomate','Rojo como el pecado',10,2),(6,'Coliflor','Blanca y radiante',7,2);
 
 
 CREATE TABLE proveedores (

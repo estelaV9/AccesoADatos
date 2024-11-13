@@ -141,7 +141,7 @@ public class MultaCtrller implements Initializable {
 
     @FXML
     void onInsertarAction(ActionEvent event) {
-        if (precioTF.getText().isEmpty() || datePicker.getValue() == null) {
+        if (!precioTF.getText().isEmpty() && datePicker.getValue() != null) {
             Multa multa = new Multa(1, Double.parseDouble(precioTF.getText()), datePicker.getValue(), matriculaTF.getText());
             if (multaDAO.insertarMulta(multa)) {
                 StaticCode.Alerts("INFORMATION", "Inserción Multa",
@@ -155,6 +155,7 @@ public class MultaCtrller implements Initializable {
         } else {
             StaticCode.Alerts("ERROR", "Campos vacios", "¡ERROR!",
                     "Por favor, rellene todos los datos.");
+            System.out.println(precioTF.getText() + " " + datePicker.getValue());
         } // CAMPOS VACIOS
     } // CREAR UN COCHE NUEVO
 

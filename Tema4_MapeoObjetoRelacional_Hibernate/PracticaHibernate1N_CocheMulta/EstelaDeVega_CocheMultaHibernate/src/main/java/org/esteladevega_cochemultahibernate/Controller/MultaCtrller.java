@@ -82,17 +82,22 @@ public class MultaCtrller implements Initializable {
     void onActualizarAction(ActionEvent event) {
         Multa multaSeleccionada = multaTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DE A¡LA MULTA SELECCIONADO
         if (multaSeleccionada != null) {
-            Multa multa = new Multa(multaSeleccionada.getIdMulta(), Double.parseDouble(precioTF.getText()),
-                    datePicker.getValue(), matriculaTF.getText());
-            if (multaDAO.modificarMulta(multa)) {
-                StaticCode.Alerts("INFORMATION", "Modificar Multa",
-                        "Modificar Multa", "Se ha modificado correctamente la multa");
-                refreshTable(); // ACTUALIZA LA TABLA
-                onLimpiarAction(); // LIMPIAR LOS CAMPOS
+            if (precioTF.getText().isEmpty() || datePicker.getValue() == null) {
+                Multa multa = new Multa(multaSeleccionada.getIdMulta(), Double.parseDouble(precioTF.getText()),
+                        datePicker.getValue(), matriculaTF.getText());
+                if (multaDAO.modificarMulta(multa)) {
+                    StaticCode.Alerts("INFORMATION", "Modificar Multa",
+                            "Modificar Multa", "Se ha modificado correctamente la multa");
+                    refreshTable(); // ACTUALIZA LA TABLA
+                    onLimpiarAction(); // LIMPIAR LOS CAMPOS
+                } else {
+                    StaticCode.Alerts("ERROR", "Modificar Multa",
+                            "Fallo al modificar", "NO se ha modificado correctamente la multa");
+                }// INSERTAR MULTA
             } else {
-                StaticCode.Alerts("ERROR", "Modificar Multa",
-                        "Fallo al modificar", "NO se ha modificado correctamente la multa");
-            }// INSERTAR MULTA
+                StaticCode.Alerts("ERROR", "Campos vacios", "¡ERROR!",
+                        "Por favor, rellene todos los datos.");
+            } // CAMPOS VACIOS
         } else {
             StaticCode.Alerts("ERROR", "Multa vacio", "¡ERROR!",
                     "Por favor, seleccione una multa para eliminar.");
@@ -103,11 +108,16 @@ public class MultaCtrller implements Initializable {
     void onBorrarAction(ActionEvent event) {
         Multa multaSeleccionada = multaTable.getSelectionModel().getSelectedItem(); // OBTENER LOS DATOS DE LA MULTA SELECCIONADA
         if (multaSeleccionada != null) {
-            multaDAO.eliminarMulta(multaSeleccionada); // SE ELIMINA LA MULTA
-            StaticCode.Alerts("INFORMATION", "Eliminar Multa", "INFORMATION",
-                    "Se ha eliminado los datos de la multa correctamente.");
-            refreshTable(); // ACTUALIZAR LA TABLA
-            onLimpiarAction(); // LIMPIAR LOS CAMPOS
+            if (precioTF.getText().isEmpty() || datePicker.getValue() == null) {
+                multaDAO.eliminarMulta(multaSeleccionada); // SE ELIMINA LA MULTA
+                StaticCode.Alerts("INFORMATION", "Eliminar Multa", "INFORMATION",
+                        "Se ha eliminado los datos de la multa correctamente.");
+                refreshTable(); // ACTUALIZAR LA TABLA
+                onLimpiarAction(); // LIMPIAR LOS CAMPOS
+            } else {
+                StaticCode.Alerts("ERROR", "Campos vacios", "¡ERROR!",
+                        "Por favor, rellene todos los datos.");
+            } // CAMPOS VACIOS
         } else {
             StaticCode.Alerts("ERROR", "Multa vacia", "¡ERROR!",
                     "Por favor, seleccione una multa para eliminar.");
@@ -131,16 +141,21 @@ public class MultaCtrller implements Initializable {
 
     @FXML
     void onInsertarAction(ActionEvent event) {
-        Multa multa = new Multa(1, Double.parseDouble(precioTF.getText()), datePicker.getValue(), matriculaTF.getText());
-        if (multaDAO.insertarMulta(multa)) {
-            StaticCode.Alerts("INFORMATION", "Inserción Multa",
-                    "Insertar Multa", "Se ha insertado correctamente la multa");
-            refreshTable(); // ACTUALIZA LA TABLA
-            onLimpiarAction(); // LIMPIAR LOS CAMPOS
+        if (precioTF.getText().isEmpty() || datePicker.getValue() == null) {
+            Multa multa = new Multa(1, Double.parseDouble(precioTF.getText()), datePicker.getValue(), matriculaTF.getText());
+            if (multaDAO.insertarMulta(multa)) {
+                StaticCode.Alerts("INFORMATION", "Inserción Multa",
+                        "Insertar Multa", "Se ha insertado correctamente la multa");
+                refreshTable(); // ACTUALIZA LA TABLA
+                onLimpiarAction(); // LIMPIAR LOS CAMPOS
+            } else {
+                StaticCode.Alerts("ERROR", "Inserción Multa",
+                        "Fallo al insertar", "NO se ha insertado correctamente la multa");
+            }// INSERTAR MULTA
         } else {
-            StaticCode.Alerts("ERROR", "Inserción Multa",
-                    "Fallo al insertar", "NO se ha insertado correctamente la multa");
-        }// INSERTAR MULTA
+            StaticCode.Alerts("ERROR", "Campos vacios", "¡ERROR!",
+                    "Por favor, rellene todos los datos.");
+        } // CAMPOS VACIOS
     } // CREAR UN COCHE NUEVO
 
     private void refreshTable() {

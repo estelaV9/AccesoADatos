@@ -1,4 +1,4 @@
-# Ejercicio Hibernate con Relación 1N
+# Ejercicio Hibernate Gestión de Coches
 ## Introducción
 Realizar una <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate_CRUDCoches/EstelaDeVega_CrudCochesHibernate">aplicación</a> para la **Gestión de Coches** usando **Hibernate**.
 

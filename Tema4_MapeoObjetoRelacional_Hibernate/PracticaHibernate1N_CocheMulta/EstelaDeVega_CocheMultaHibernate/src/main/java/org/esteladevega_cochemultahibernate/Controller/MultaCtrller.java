@@ -131,7 +131,7 @@ public class MultaCtrller implements Initializable {
 
     @FXML
     void onInsertarAction(ActionEvent event) {
-        Multa multa = new Multa(Integer.parseInt(idMultaTF.getText()), Double.parseDouble(precioTF.getText()), datePicker.getValue(), matriculaTF.getText());
+        Multa multa = new Multa(1, Double.parseDouble(precioTF.getText()), datePicker.getValue(), matriculaTF.getText());
         if (multaDAO.insertarMulta(multa)) {
             StaticCode.Alerts("INFORMATION", "Inserción Multa",
                     "Insertar Multa", "Se ha insertado correctamente la multa");
@@ -149,7 +149,8 @@ public class MultaCtrller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        idMultaTF.setDisable(false); // EL ID DE MULTA NO SE PODRA MODIFICAR
+        idMultaTF.setDisable(true); //  EL ID DE MULTA NO SE PODRA MODIFICAR
+        matriculaTF.setDisable(true); // EL MATRICULA NO SE PODRA MODIFICAR
         // CONFIGURAR COLUMNAS
         idCol.setCellValueFactory(new PropertyValueFactory<>("idMulta"));
         precioCol.setCellValueFactory(new PropertyValueFactory<>("precio"));

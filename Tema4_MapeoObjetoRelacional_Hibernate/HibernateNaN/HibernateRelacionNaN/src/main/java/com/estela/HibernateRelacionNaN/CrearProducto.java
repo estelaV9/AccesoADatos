@@ -13,16 +13,13 @@ public class CrearProducto {
         try {
             session.beginTransaction(); // INICIAR LA TRANSACCION
 
-            Productos tomate = new Productos("Romanescu", "de Almeria", 10);
+            Productos romanescu = new Productos("Romanescu", "de Almeria", 10);
             Categorias cat = session.get(Categorias.class, 2);
-            tomate.setCategoria(cat);
-            session.save(tomate);
+            romanescu.setCategoria(cat);
+            session.save(romanescu);
 
             Productos conejo = new Productos("Conejo", "Soriano", 5);
             Productos yogur = new Productos("Yogur", "Desnatado Pascual", 7);
-
-            cat.addProductos(conejo);
-            cat.addProductos(yogur);
             session.save(conejo);
             session.save(yogur);
 

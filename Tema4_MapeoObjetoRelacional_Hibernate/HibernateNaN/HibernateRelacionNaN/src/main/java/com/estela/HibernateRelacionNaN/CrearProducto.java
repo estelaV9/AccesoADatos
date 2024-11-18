@@ -19,6 +19,9 @@ public class CrearProducto {
             session.save(romanescu);
 
             Productos conejo = new Productos("Conejo", "Soriano", 5);
+            Categorias cat1 = session.get(Categorias.class, 25);
+            conejo.setCategoria(cat1);
+
             Productos yogur = new Productos("Yogur", "Desnatado Pascual", 7);
             session.save(conejo);
             session.save(yogur);

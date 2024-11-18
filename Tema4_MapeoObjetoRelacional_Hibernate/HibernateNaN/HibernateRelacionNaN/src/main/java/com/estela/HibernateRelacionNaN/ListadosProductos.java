@@ -22,13 +22,10 @@ public class ListadosProductos {
 
             //************************** HQL *********************************
             //busquedas
-
             //Obtener un objeto identificado por el id utilizando HQL
-			/*
-			HQL (Hibernate Query Language), muy similar al lenguaje SQL que se usa en las base de datos relacionales,
+			/* HQL (Hibernate Query Language), muy similar al lenguaje SQL que se usa en las base de datos relacionales,
 			pero en este caso totalmente Orientado a Objetos puesto que en vez de trabajar con las tablas se trabaja
-			 con las clases y sus atributos directamente.
-			 */
+			 con las clases y sus atributos directamente. */
 
             //Obtener un objeto identificado por el id
 
@@ -40,11 +37,10 @@ public class ListadosProductos {
 
             ArrayList<Productos> listaProductos = (ArrayList<Productos>) consulta.list();
             for (Productos producto : listaProductos) {
-                //imprimimos el objeto
-                System.out.println(producto);
+                System.out.println(producto); // IMPRIMIR OBJETO PIVOTE
             }
 
-            //con parametros
+            // CON PARAMETROS
             String hql = "FROM Productos WHERE nombre = :nombre";
             consulta = session.createQuery(hql);
             consulta.setParameter("nombre", "Pera");
@@ -58,35 +54,28 @@ public class ListadosProductos {
 //*****************************************  SQL **************************************************************************
             //Tambien podemos utilizar el lenguaje  SQL,trabajando entonces directamente con las tablas y campos de la base de datos
 
-			/*
-				El método createNativeQuery() crea la consulta
+			/* El método createNativeQuery() crea la consulta
 				El método list() la ejecuta y devuelve una lista de arrays de objetos (List<Object[]>)
-				Cuando hacemos consultas que devuelven entidades,  se puede especificar la clase
-			 */
+				Cuando hacemos consultas que devuelven entidades,  se puede especificar la clase */
 
             String sql = "SELECT * from Productos";
 
             List<Productos> listaProductos1 = session.createNativeQuery(sql, Productos.class).list();
             for (Productos producto : listaProductos1) {
-                //imprimimos el objeto pivote
-                System.out.println(producto);
+                System.out.println(producto); // IMPRIMIR OBJETO PIVOTE
             }
 
-            //con parametros
-
+            // CON PARAMETROS
             //List<Person> persons = session.createNativeQuery(    "SELECT * FROM TblPerson" +    "WHERE name like :vname and id > :vid" , Person.class ) .setParameter( "vname", "J%" ) .setParameter( "vid", 5 ) .list()
             sql = "SELECT * FROM Productos WHERE stock >= ?";
 
             List<Productos> resultado1 = session.createNativeQuery(sql, Productos.class).setParameter(1, 5).list();
 
             for (Productos producto1 : resultado1) {
-
-                //imprimimos el objeto pivote
-                System.out.println(producto1);
+                System.out.println(producto1); // IMPRIMIR OBJETO PIVOTE
             }
 
-            // commit de la transaccion
-            session.getTransaction().commit();
+            session.getTransaction().commit(); // COMMIT DE LA TRANSACCION
         } finally {
             factory.close();
         }

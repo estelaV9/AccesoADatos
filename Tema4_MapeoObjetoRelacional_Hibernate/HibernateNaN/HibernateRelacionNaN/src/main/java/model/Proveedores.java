@@ -2,22 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "proveedores")
 public class Proveedores {
-
     @Id
     @Column(name = "idproveedor")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,13 +21,19 @@ public class Proveedores {
     @Column(name = "poblacion")
     private String poblacion;
 
-    // LA DEFINICION VA TODA JUNTA
+    /********* RELACION 1 A N ***********/
+    // EL MAPPED BY RELACIONA EL NOMBRE DEL ATRIBUTO QUE TIENE LA RELACION INVERSA (ManyToOne)
+    @OneToMany(mappedBy = "proveedores", cascade = CascadeType.ALL)
+    private List<Producto_Proveedor> listaProveedores;
+
+    /********* RELACION N A N ***********/
+    /*// LA DEFINICION VA TODA JUNTA
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
             CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinTable(name = "producto_proveedor",
             joinColumns = @JoinColumn(name = "idproveedor"),
             inverseJoinColumns = @JoinColumn(name = "idproducto"))
-    private List<Productos> productos;
+    private List<Productos> productos;*/
 
     public Proveedores() {
 
@@ -51,14 +46,14 @@ public class Proveedores {
         this.poblacion = poblacion;
     }
 
-    //metodos get y set
+    /*//metodos get y set
     public List<Productos> getProductos() {
         return productos;
     }
 
     public void setProductos(List<Productos> productos) {
         this.productos = productos;
-    }
+    }*/
 
     public int getIdproveedor() {
         return idproveedor;
@@ -98,10 +93,10 @@ public class Proveedores {
                 + poblacion + "]";
     }
 
-    public void addProducto(Productos producto) {
+    /*public void addProducto(Productos producto) {
         if (productos == null) {
             productos = new ArrayList<Productos>();
         }
         productos.add(producto);
-    }
+    }*/
 }

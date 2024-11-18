@@ -2,18 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "productos")
@@ -39,14 +28,19 @@ public class Productos {
     @JoinColumn(name = "idcategoria")
     private Categorias categoria;
 
+    /********* RELACION 1 A N ***********/
+    // EL MAPPED BY RELACIONA EL NOMBRE DEL ATRIBUTO QUE TIENE LA RELACION INVERSA (ManyToOne)
+    @OneToMany(mappedBy = "productos", cascade = CascadeType.ALL)
+    private List<Producto_Proveedor> listaProductos;
 
-    // LA DEFINICION VA TODA JUNTA
+    /********* RELACION N A N ***********/
+    /*/// LA DEFINICION VA TODA JUNTA
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
             CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinTable(name = "producto_proveedor", //OJO es donde le digo que se crea la tabla
             joinColumns = @JoinColumn(name = "idproducto"),
             inverseJoinColumns = @JoinColumn(name = "idproveedor"))
-    private List<Proveedores> proveedores;
+    private List<Proveedores> proveedores;*/
 
     public Productos() {
 
@@ -67,13 +61,13 @@ public class Productos {
         this.categoria = categoria;
     }
 
-    public List<Proveedores> getProvedores() {
+    /*public List<Proveedores> getProvedores() {
         return proveedores;
     }
 
     public void setProvedores(List<Proveedores> proveedores) {
         this.proveedores = proveedores;
-    }
+    }*/
 
     public int getIdproducto() {
         return idproducto;
@@ -114,12 +108,12 @@ public class Productos {
                 + ", stock=" + stock + ", categor�a=" + categoria + "]";
     }
 
-    public void addProveedor(Proveedores proveedor) {
+    /*public void addProveedor(Proveedores proveedor) {
         if (proveedores == null) {
             proveedores = new ArrayList<Proveedores>();
             //mas eficiente utilizando set
             //private Set<Proveedores> proveedores=new HashSet();
         }
         proveedores.add(proveedor);
-    }
+    }*/
 }

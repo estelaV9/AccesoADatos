@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -111,5 +112,14 @@ public class Productos {
     public String toString() {
         return "Productos [idproducto=" + idproducto + ", nombre=" + nombre + ", descripcion=" + descripcion
                 + ", stock=" + stock + ", categor�a=" + categoria + "]";
+    }
+
+    public void addProveedor(Proveedores proveedor) {
+        if (proveedores == null) {
+            proveedores = new ArrayList<Proveedores>();
+            //mas eficiente utilizando set
+            //private Set<Proveedores> proveedores=new HashSet();
+        }
+        proveedores.add(proveedor);
     }
 }

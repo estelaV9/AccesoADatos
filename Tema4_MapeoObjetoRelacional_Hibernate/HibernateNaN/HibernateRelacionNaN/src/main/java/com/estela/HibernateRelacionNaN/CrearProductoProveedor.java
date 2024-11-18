@@ -14,6 +14,18 @@ public class CrearProductoProveedor {
 
         try {
             transaction = session.beginTransaction(); // INICIAMOS LA TRANSACCION
+
+            /********* RELACION 1 A N ***********/
+            Productos pepino = new Productos("Pepino", "Frances", 5);
+            session.save(pepino);
+            Proveedores eugenio = new Proveedores("Eugenio", "3", "miCorason");
+            session.save(eugenio);
+            Producto_Proveedor productoProveedor = new Producto_Proveedor(eugenio, pepino, 100);
+            session.save(productoProveedor);
+
+
+            /********* RELACION N A N ***********/
+            /*
             Proveedores ana = new Proveedores("Supermercados Ana", "B221133", "Valladolid");
 
             session.save(ana);
@@ -22,6 +34,7 @@ public class CrearProductoProveedor {
             Productos endivia = new Productos("Endivia", "Nada envidiosa", 7);
 
             ana.addProducto(pepino);
+
             ana.addProducto(endivia);
             session.save(pepino);
             session.save(endivia);
@@ -37,12 +50,13 @@ public class CrearProductoProveedor {
             Proveedores felipe = new Proveedores("Felipe el rey del Huerto", "B4556123", "Leon");
 
             // INSERTARLO EN LA TABLA producto_proveedor
-            garbanzos.addProveedor(rocio);
+            /********* RELACION N A N ***********/
+            /* garbanzos.addProveedor(rocio);
             garbanzos.addProveedor(felipe);
 
             //ESTO SE INSERTA EN LA TABLA PROVEEDORES
             session.save(rocio);
-            session.save(felipe);
+            session.save(felipe);*/
 
             transaction.commit();
             session.close();

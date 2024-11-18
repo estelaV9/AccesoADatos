@@ -1,6 +1,7 @@
 package util;
 
 import model.Categorias;
+import model.Producto_Proveedor;
 import model.Productos;
 import model.Proveedores;
 import org.hibernate.Session;
@@ -19,6 +20,7 @@ public class HibernateUtil {
         cfg.addAnnotatedClass(Categorias.class);
         cfg.addAnnotatedClass(Proveedores.class);
         cfg.addAnnotatedClass(Productos.class);
+        cfg.addAnnotatedClass(Producto_Proveedor.class);
 
         //configuration.addAnnotatedClass(Clase1.class);
         //configuration.addAnnotatedClass(Clase2.class);

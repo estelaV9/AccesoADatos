@@ -14,5 +14,6 @@
 		<mapping class="model.Categorias"/>
 		<mapping class="model.Productos"/>
 		<mapping class="model.Proveedores"/>
+		<mapping class="model.Producto_Proveedor"/>
 	</session-factory>
 </hibernate-configuration>

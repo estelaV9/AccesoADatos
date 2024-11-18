@@ -31,10 +31,7 @@ public class HibernateUtil {
         return factory;
     }
 
-
     public static Session getSession() {
         return factory.openSession();
     }
-
-
 }

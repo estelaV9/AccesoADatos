@@ -1,4 +1,6 @@
-# Ejercicio Adicional Trabajando Con Los Tres Gestores de Base de Datos
+# Examen Primera Evaluación
+Examen donde se trabaja con los tres gestores de base de datos.
+
 ## Enunciado
 Realizar una <a href="">aplicación</a> para gestionar una liga de futbol para un instituto. De momento solo queremos controlar los equipos y jugadores que pertenecen a cada equipo. <br>
 Realizaar las siguientes funciones utilizando `Hibernate (1 a N)` y `MongoDB`: <br>

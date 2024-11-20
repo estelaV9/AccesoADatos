@@ -131,8 +131,9 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
 ## Repaso Primera Evaluación
 ### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/MultiDBManagerFX">Ejercicio relación 1N</a> de Coches y Multas con los tres gestores de base de datos. Ejercicio de repaso para el examen.
 
-### Ejercicio adicional para trabajar con los <a href="">tres gestores de base de datos</a>. 
-<a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/EjercicioAdicional_UnirTresGestoresDB/EnunciadoEjercicioAdicional.md">Enunciado</a> del ejercicio.
+## Examen Primera Evalución
+Examen donde se trabaja con los <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/Examen_PrimeraEvaluacion/EstelaDeVega_Examen1Evaluacion">tres gestores de base de datos</a>. 
+<a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/Examen_PrimeraEvaluacion/EnunciadoExamen.md">Enunciado</a> del ejercicio.
 
 
 

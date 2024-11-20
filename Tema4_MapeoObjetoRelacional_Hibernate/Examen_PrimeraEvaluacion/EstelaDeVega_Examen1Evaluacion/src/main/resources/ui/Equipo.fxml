@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_examen1evaluacion.Controller.EquipoCtrller">
+    <children>
+        <Label layoutX="29.0" layoutY="39.0" text="Identificador de Equipo" textFill="RED" />
+        <Label layoutX="29.0" layoutY="79.0" text="Nombre del Equipo" />
+        <Label layoutX="29.0" layoutY="121.0" text="Patrocinador" />
+        <Label layoutX="29.0" layoutY="168.0" text="Categoria" />
+        <Label layoutX="32.0" layoutY="212.0" text="Sancionado" />
+        <TextField fx:id="idEquipoTF" layoutX="184.0" layoutY="35.0" prefHeight="25.0" prefWidth="81.0" />
+        <TextField fx:id="nombreEquipoTF" layoutX="184.0" layoutY="75.0" prefHeight="25.0" prefWidth="178.0" />
+        <TextField fx:id="patrocinadorTF" layoutX="184.0" layoutY="117.0" prefHeight="25.0" prefWidth="218.0" />
+        <ComboBox fx:id="categoriaCombobox" layoutX="184.0" layoutY="164.0" prefHeight="25.0" prefWidth="160.0" />
+        <RadioButton fx:id="siRB" layoutX="184.0" layoutY="212.0" mnemonicParsing="false" text="Si">
+            <toggleGroup>
+                <ToggleGroup fx:id="sancionadoGroup" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="noRD" layoutX="258.0" layoutY="212.0" mnemonicParsing="false" text="No" toggleGroup="$sancionadoGroup" />
+        <Button fx:id="formularioJugadoresBtt" layoutX="402.0" layoutY="208.0" mnemonicParsing="false" onAction="#onFormularioJugagoresAction" prefHeight="32.0" prefWidth="160.0" text="Formulario Jugadores" />
+        <TableView fx:id="equiposTable" layoutX="53.0" layoutY="271.0" onMouseClicked="#onClickTable" prefHeight="167.0" prefWidth="558.0">
+            <columns>
+                <TableColumn fx:id="idEquipoCol" prefWidth="75.0" text="IdEquipo" />
+                <TableColumn fx:id="nombreEquipoCol" prefWidth="127.0" text="nombreEquipo" />
+                <TableColumn fx:id="patrocinadorCol" prefWidth="127.0" text="patrocinador" />
+                <TableColumn fx:id="categoriaCol" prefWidth="105.0" text="Categoria" />
+                <TableColumn fx:id="sancionadoCol" prefWidth="123.0" text="Sancionado" />
+            </columns>
+        </TableView>
+        <Button fx:id="altaEquipoBtt" layoutX="53.0" layoutY="465.0" mnemonicParsing="false" onAction="#onAltaEquipoAction" prefHeight="32.0" prefWidth="81.0" text="Alta Equipo" />
+        <Button fx:id="modificarEstadoBtt" layoutX="153.0" layoutY="465.0" mnemonicParsing="false" onAction="#onModificarEstadoSancionadoAction" prefHeight="32.0" prefWidth="178.0" text="Modificar estado sancionado" />
+        <Button fx:id="eliminarEquipoBtt" layoutX="362.0" layoutY="465.0" mnemonicParsing="false" onAction="#onEliminarEquipoAction" prefHeight="32.0" prefWidth="124.0" text="Eliminar Equipo" />
+        <Button fx:id="limpiarBtt" layoutX="510.0" layoutY="465.0" mnemonicParsing="false" onAction="#onLimpiarCamposAction" prefHeight="32.0" prefWidth="104.0" text="Limpiar Campos" />
+    </children>
+</AnchorPane>

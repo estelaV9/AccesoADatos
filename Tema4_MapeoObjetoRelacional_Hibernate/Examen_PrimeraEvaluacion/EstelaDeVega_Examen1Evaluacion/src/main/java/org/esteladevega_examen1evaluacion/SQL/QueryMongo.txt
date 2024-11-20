@@ -1,0 +1,43 @@
+db.Equipos.insertMany(
+[
+  {
+    idEquipo: 1,
+    nombreEquipo: 'Robin Hood',
+    patrocinador: 'Coca cola',
+    categoria : 'Educacion Secundaria Obligatoria',
+    sancionado:true
+
+  },
+  {
+    idEquipo: 2,
+    nombreEquipo: 'Carabobo',
+    patrocinador: 'Red Bull',
+    categoria : 'Formación Profesional',
+    sancionado:false
+
+  },
+  {
+    idEquipo: 3,
+    nombreEquipo: 'Abuelos F.C',
+    patrocinador: 'Mercadona',
+    categoria : 'Profesores',
+    sancionado:true
+
+  },
+  {
+    idEquipo: 4,
+    nombreEquipo: 'Rico Pollo',
+    patrocinador: 'Carrefour',
+    categoria : 'Bachillerato',
+    sancionado:false
+
+  },
+  {
+    idEquipo: 5,
+    nombreEquipo: 'Correcaminos',
+    patrocinador: 'Estrella Galicia',
+    categoria : 'Formación Profesional',
+    sancionado:false
+
+  }
+]

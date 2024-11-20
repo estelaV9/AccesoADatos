@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.esteladevega_examen1evaluacion.Controller.JugadorCtrller">
+   <children>
+      <Label layoutX="39.0" layoutY="49.0" text="Identificador de Equipo" textFill="RED" />
+      <TextField fx:id="idEquipoTF" layoutX="194.0" layoutY="45.0" prefHeight="25.0" prefWidth="81.0" />
+      <Label layoutX="39.0" layoutY="93.0" text="Alias del Jugador" />
+      <Label layoutX="39.0" layoutY="139.0" text="Fecha Nacimiento" />
+      <TextField fx:id="aliasJugadorTF" layoutX="194.0" layoutY="89.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="fechaNacimientoTF" layoutX="194.0" layoutY="135.0" prefHeight="25.0" prefWidth="124.0" />
+      <Button fx:id="cambiarEquipoBtt" layoutX="40.0" layoutY="207.0" mnemonicParsing="false" onAction="#onCambiarEquipoJugadorAction" text="Cambiar de equipo a un jugador" />
+      <Button fx:id="cumpleañosBtt" layoutX="300.0" layoutY="207.0" mnemonicParsing="false" onAction="#onCumpleañosAction" text="Cumpleaños" />
+      <ListView fx:id="listView" layoutX="457.0" layoutY="35.0" onMouseClicked="#onClickList" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

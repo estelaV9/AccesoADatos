@@ -1,0 +1,20 @@
+[
+    {
+        "nombre": "Formación Profesional",
+        "abreviatura": "FP"
+    },
+    {
+        "nombre": "Bachillerato",
+        "abreviatura": "B",
+        "edad": 90,
+        "carnet": false
+    },
+    {
+        "nombre": "Educacion Secundaria Obligatoria",
+        "abreviatura": "ESO"
+    },
+    {
+        "nombre": "Profesores",
+        "apellidos": "P"
+    }
+]

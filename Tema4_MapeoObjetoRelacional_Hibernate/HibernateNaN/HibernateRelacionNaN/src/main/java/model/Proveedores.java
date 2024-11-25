@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
@@ -24,7 +26,8 @@ public class Proveedores {
     /********* RELACION 1 A N ***********/
     // EL MAPPED BY RELACIONA EL NOMBRE DEL ATRIBUTO QUE TIENE LA RELACION INVERSA (ManyToOne)
     @OneToMany(mappedBy = "proveedores", cascade = CascadeType.ALL)
-    private List<Producto_Proveedor> listaProveedores;
+    private Set<Producto_Proveedor> listaProveedores = new HashSet<>();
+    // private List<Producto_Proveedor> listaProveedores;
 
     /********* RELACION N A N ***********/
     /*// LA DEFINICION VA TODA JUNTA
@@ -87,10 +90,23 @@ public class Proveedores {
         this.poblacion = poblacion;
     }
 
+    public Set<Producto_Proveedor> getListaProveedores() {
+        return listaProveedores;
+    }
+
+    public void setListaProveedores(Set<Producto_Proveedor> listaProveedores) {
+        this.listaProveedores = listaProveedores;
+    }
+
     @Override
     public String toString() {
         return "Proveedores [idproveedor=" + idproveedor + ", nombre=" + nombre + ", nif=" + nif + ", poblacion="
                 + poblacion + "]";
+    }
+
+    // METODO PARA AGREGAR UN Producto_Proveedor
+    public void addProductoProveedor(Producto_Proveedor productoProveedor) {
+        this.listaProveedores.add(productoProveedor);
     }
 
     /*public void addProducto(Productos producto) {

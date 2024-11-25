@@ -23,6 +23,55 @@ public class CrearProductoProveedor {
             Producto_Proveedor productoProveedor = new Producto_Proveedor(eugenio, pepino, 100);
             session.save(productoProveedor);
 
+            // AÑADIR LA RELACIÓN A AMBOS LADOS (RELACIÓN BIDIRECCIONAL)
+            pepino.addProductoProveedor(productoProveedor);
+            eugenio.addProductoProveedor(productoProveedor);
+
+            // COMMIT DE LA TRANSACCIÓN
+            transaction.commit();
+
+            // -----------------------------------------------------
+            // OBTENER LOS DATOS DESDE LA BASE DE DATOS Y AÑADIR MÁS RELACIONES
+            transaction = session.beginTransaction();
+
+            // OBTENER PRODUCTO Y PROVEEDOR POR SU ID (SUPONIENDO QUE EL ID DE PEPINO ES 1 Y EL DE EUGENIO ES 1)
+            pepino = session.get(Productos.class, 1);
+            eugenio = session.get(Proveedores.class, 1);
+
+            // CREAR MÁS RELACIONES SI SE REQUIERE
+            Producto_Proveedor otroProductoProveedor = new Producto_Proveedor(eugenio, pepino, 50);
+            session.save(otroProductoProveedor);
+
+            // AÑADIR ESTA NUEVA RELACIÓN
+            pepino.addProductoProveedor(otroProductoProveedor);
+            eugenio.addProductoProveedor(otroProductoProveedor);
+
+            // COMMIT DE LA TRANSACCIÓN
+            transaction.commit();
+
+            // -----------------------------------------------------
+            // BORRAR UN REGISTRO DE LA TABLA PRODUCTO_PROVEEDOR
+            transaction = session.beginTransaction();
+            Producto_Proveedor productoProveedor1 = session.get(Producto_Proveedor.class, 1); // OBTENEMOS LA RELACIÓN
+            session.delete(productoProveedor1); // ELIMINA LA RELACIÓN
+            transaction.commit();
+
+            // -----------------------------------------------------
+            // BORRAR UN PRODUCTO Y SU PROVEEDOR
+
+            transaction = session.beginTransaction();
+            Productos producto = session.get(Productos.class, 1);
+            session.delete(producto); // ELIMINANDO EL PRODUCTO
+            transaction.commit();
+
+            // ELIMINAR EL PROVEEDOR DE LA MISMA MANERA
+            transaction = session.beginTransaction();
+            Proveedores proveedor = session.get(Proveedores.class, 1);
+            session.delete(proveedor); // ELIMINAR EL PROVEEDOR
+            transaction.commit();
+
+            session.close();
+
 
             /********* RELACION N A N ***********/
             /*
@@ -56,10 +105,10 @@ public class CrearProductoProveedor {
 
             //ESTO SE INSERTA EN LA TABLA PROVEEDORES
             session.save(rocio);
-            session.save(felipe);*/
+            session.save(felipe);
 
             transaction.commit();
-            session.close();
+            session.close();*/
         } catch (Exception e) {
             System.out.println(e.getMessage());
             if (transaction != null) {

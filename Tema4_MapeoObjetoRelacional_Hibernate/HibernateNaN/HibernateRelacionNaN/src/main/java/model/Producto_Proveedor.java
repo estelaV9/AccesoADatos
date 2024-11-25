@@ -52,4 +52,9 @@ public class Producto_Proveedor implements Serializable {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    @Override
+    public String toString() {
+        return "Producto_Proveedor [proveedores=" + proveedores + ", productos=" + productos + ", cantidad=" + cantidad + "]";
+    }
 }

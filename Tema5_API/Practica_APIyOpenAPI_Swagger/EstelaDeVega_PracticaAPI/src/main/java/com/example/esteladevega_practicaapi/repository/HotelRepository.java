@@ -13,4 +13,9 @@ public interface HotelRepository extends JpaRepository<Hotel, Integer> {
     List<Hotel> buscarHotelLocalidad(
             @Param("localidad") String localidad
     ); // QUERY PERSONALIZADA QUE DEVUELVE UNA LISTA DE HOTELES POR LOCALIDAD
+
+    @Query("SELECT h FROM Hotel h WHERE h.categoria = :categoria")
+    List<Hotel> buscarHotelCategoria(
+            @Param("categoria") String categoria
+    ); // QUERY PERSONALIZADA QUE DEVUELVE UNA LISTA DE HOTELES POR CATEGORIA
 }

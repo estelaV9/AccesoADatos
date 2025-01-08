@@ -25,4 +25,8 @@ public class HotelServices {
     public List<Hotel> findHotelByLocalidad(String localidad){
         return hotelRepository.buscarHotelLocalidad(localidad);
     } // METODO PARA BUSCAR HOTELES POR LOCALIDAD
+
+    public List<Hotel> findHotelByCategoria(String categoria){
+        return hotelRepository.buscarHotelCategoria(categoria);
+    } // METODO PARA BUSCAR HOTELES POR CATEGORIA
 }

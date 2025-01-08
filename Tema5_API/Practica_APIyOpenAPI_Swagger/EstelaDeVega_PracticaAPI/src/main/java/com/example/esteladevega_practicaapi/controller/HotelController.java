@@ -48,4 +48,14 @@ public class HotelController {
         }
     } // METODO PARA BUSCAR UN HOTEL POR LOCALIDAD, PETICION HTTP GET EN LA RUTA "/localidad"
 
+    @GetMapping("/categoria")
+    public List<Hotel> findHotelByCategoria(String categoria){
+        try{
+            return hotelServices.findHotelByCategoria(categoria);
+        } catch (Exception e){
+            // SE MANEJA UNA EXCEPCION Y SE LANZA UN BAD REQUEST SI FALLA
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Error buscar hotel por categoria: ", e);
+        }
+    } // METODO PARA BUSCAR UN HOTEL POR CATEGORIA, PETICION HTTP GET EN LA RUTA "/categoria"
 }

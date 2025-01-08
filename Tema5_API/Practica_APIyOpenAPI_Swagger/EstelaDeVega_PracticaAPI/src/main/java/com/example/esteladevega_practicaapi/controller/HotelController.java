@@ -37,4 +37,15 @@ public class HotelController {
         }
     } // METODO PARA LISTAR TODOS LOS HOTELES, PETICION HTTP GET EN LA RUTA "/all"
 
+    @GetMapping("/localidad")
+    public List<Hotel> findHotelByLocalidad(String localidad){
+        try{
+            return hotelServices.findHotelByLocalidad(localidad);
+        } catch (Exception e){
+            // SE MANEJA UNA EXCEPCION Y SE LANZA UN BAD REQUEST SI FALLA
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Error buscar hotel por localidad: ", e);
+        }
+    } // METODO PARA BUSCAR UN HOTEL POR LOCALIDAD, PETICION HTTP GET EN LA RUTA "/localidad"
+
 }

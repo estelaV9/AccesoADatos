@@ -2,7 +2,7 @@
 Crea una API que ofrezca servicios web de búsqueda de hoteles.
 
 Se mantendrá un base de datos de hoteles(`nombre`, `descripción`, `categoría`, `¿piscina?`, `localidad`) 
-y de las habitaciones de los mismos(`tamaño`, `1 ó 2 personas`, `precio/noche`, `¿incluye desayuno?`, `¿ocupada?`).
+y de las habitaciones de los mismos(`tamaño 1 ó 2 personas`, `precio/noche`, `¿incluye desayuno?`, `¿ocupada?`).
 
 Deberá ofrecer, sobre esos datos, las siguientes operaciones:
    - Búsqueda de hotel por localidad o categoría

@@ -31,4 +31,9 @@ public class HabitacionServices {
     public Optional<Habitacion> findById(Integer integer) {
         return habitacionRepository.findById(integer);
     } // METODO PARA BUSCAR POR ID UNA HABITACION
+
+    public List<Habitacion> buscarHabitacionesLibresPorRango
+            (int idHotel, int tamanioMin, int tamanioMax, double precioMin, double precioMax) {
+        return habitacionRepository.buscarHabitacionRangoLibre(idHotel, tamanioMin, tamanioMax, precioMin, precioMax);
+    } // METODO PARA BUSCAR HABITACIONES POR TAMAÑO Y PRECIO Y QUE ESTEN LIBRES
 }

@@ -8,6 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
+/* {
+    "nombreHotel": "Hotel Playa Dorada",
+    "descripcion": "Un hermoso hotel frente a la playa con todas las comodidades.",
+    "categoria": "5 estrellas",
+    "piscina": true,
+    "localidad": "Playa del Carmen",
+    "habitacionList": []
+  } */
+
 @RestController // CONTROLADOR REST
 @RequestMapping("/api/hotel") // RUTA BASE DE LAS PETICIONES DEL CONTROLADOR DE HOTEL
 public class HotelController {

@@ -1,9 +1,7 @@
 package com.example.esteladevega_practicaapi.controller;
 
 import com.example.esteladevega_practicaapi.model.Habitacion;
-import com.example.esteladevega_practicaapi.model.Hotel;
 import com.example.esteladevega_practicaapi.service.HabitacionServices;
-import jakarta.persistence.PostUpdate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +9,17 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+
+/* {
+  "tamanio": 1,
+  "precioNoche": 23323.50,
+  "desayuno": true,
+  "ocupada": false,
+  "localidad": "afdsfasd",
+  "hotel": {
+    "idHotel": 1
+  }
+} */
 
 @RestController // CONTROLADOR REST
 @RequestMapping("/api/habitacion") // RUTA BASE DE LAS PETICIONES DEL CONTROLADOR DE HABITACION
@@ -41,14 +50,14 @@ public class HabitacionController {
     } // METODO PARA CREAR UNA HABITACION, MANEJANDO LA PETICION HTTP POST EN LA RUTA "/save"
 
     @DeleteMapping("/delete/{idHabitacion}")
-    public ResponseEntity<?> deleteHabitacionByHotel(@PathVariable int idHabitacion){
+    public ResponseEntity<?> deleteHabitacionByHotel(@PathVariable int idHabitacion) {
         habitacionServices.deleteById(idHabitacion); // SE ELIMNA LA HABITACION
         // SE RETORNA UNA RESPUESTA HTTP CON EL ESTADO CREADO
         return new ResponseEntity<>(HttpStatus.CREATED);
     } // METODO PARA ELIMINAR UNA HABITACION DETERMINADA DE UN HOTEL
 
     @PostMapping("/update/{idHabitacion}")
-    public ResponseEntity<?> updateOcupada(@PathVariable int idHabitacion){
+    public ResponseEntity<?> updateOcupada(@PathVariable int idHabitacion) {
         // ASIGNAMOS LA HABITACION BUSCADA POR EL ID
         Optional<Habitacion> habitacion = habitacionServices.findById(idHabitacion);
 
@@ -64,4 +73,20 @@ public class HabitacionController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } // SI NO ESTA VACIO LA HABITACION, SE MODIFICA Y SE GUARDA
     } // METODO PARA MODIFICAR UNA HABITACION PARA INDICAR QUE ESTA OCUPADA
+
+
+    // http://localhost:9999/api/habitacion/habitacionesLibres/1/0/100/21/400
+    @GetMapping("/habitacionesLibres/{idHotel}/{tamanioMin}/{tamanioMax}/{precioMin}/{precioMax}")
+    public ResponseEntity<List<Habitacion>> buscarHabitacionesLibres(
+            @PathVariable int idHotel,
+            @PathVariable int tamanioMin,
+            @PathVariable int tamanioMax,
+            @PathVariable double precioMin,
+            @PathVariable double precioMax) {
+
+        // LISTA CON LAS HABITACIONES DISPONIBLES
+        List<Habitacion> habitaciones = habitacionServices.buscarHabitacionesLibresPorRango(idHotel, tamanioMin, tamanioMax, precioMin, precioMax);
+
+        return ResponseEntity.ok(habitaciones);
+    } // METODO PERSONALIZADO PARA HACER UNA BUSQUEDA DE HABITACIONES POR TAMAÑO Y PRECIO Y QUE ESTEN LIBRES
 }

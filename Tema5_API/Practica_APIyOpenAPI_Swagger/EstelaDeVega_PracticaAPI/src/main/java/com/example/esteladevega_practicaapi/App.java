@@ -41,6 +41,8 @@ public class App {
                     .antMatchers(HttpMethod.POST, "/api/hotel/save").authenticated()
                     .antMatchers(HttpMethod.GET, "/api/hotel/all").authenticated()
 
+                    .antMatchers("/v3/api-docs/**", "/swagger-ui/**", "/doc/swagger-ui.html").permitAll()
+
                     // CUALQUIER SOLICITUD DEBE SER AUTENT  ICADA, DE LO CONTRARIO DEVOLVERA UNA RESPUESTA 401
                     .anyRequest().authenticated();
         }

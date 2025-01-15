@@ -1,7 +1,8 @@
 package com.example.esteladevega_practicaapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
+import javax.persistence.*;
+
 import lombok.Data;
 import java.util.List;
 

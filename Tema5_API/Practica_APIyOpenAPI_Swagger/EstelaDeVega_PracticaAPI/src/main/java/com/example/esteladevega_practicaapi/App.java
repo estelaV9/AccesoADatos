@@ -30,6 +30,7 @@ public class App {
                     .antMatchers(HttpMethod.GET, "/api/hotel/localidad").permitAll()
                     .antMatchers(HttpMethod.GET, "/api/hotel/categoria").permitAll()
                     .antMatchers(HttpMethod.GET, "/api/habitacion/habitacionesLibres/{idHotel}/{tamanioMin}/{tamanioMax}/{precioMin}/{precioMax}").permitAll()
+                    .antMatchers(HttpMethod.POST, "/user").permitAll()
 
                     // REQUIERE AUTORIZACION
                     .antMatchers(HttpMethod.POST, "/api/habitacion/update/{idHabitacion}").authenticated()
@@ -39,6 +40,7 @@ public class App {
 
                     .antMatchers(HttpMethod.POST, "/api/hotel/save").authenticated()
                     .antMatchers(HttpMethod.GET, "/api/hotel/all").authenticated()
+
                     // CUALQUIER SOLICITUD DEBE SER AUTENT  ICADA, DE LO CONTRARIO DEVOLVERA UNA RESPUESTA 401
                     .anyRequest().authenticated();
         }

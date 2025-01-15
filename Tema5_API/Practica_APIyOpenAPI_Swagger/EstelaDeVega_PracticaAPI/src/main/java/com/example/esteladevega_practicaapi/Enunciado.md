@@ -13,5 +13,14 @@ Deberá ofrecer, sobre esos datos, las siguientes operaciones:
    - Modificar una habitación para indicar que está ocupada ✅
 
 
+## API REST
+Adaptar la API REST para darla seguridad utilizando JWT.
+
+Crear al menos un usuario con `id = juan` y `password =juan`
+
+Las opciones a y b podrán ser accedidas por cualquier usuario.
+
+El resto de opciones SOLO serán accesibles por usuarios autorizados y utilizando JWT.
+
 ---
 >_Estela de Vega Martín | IES Ribera de Castilla 24/25_

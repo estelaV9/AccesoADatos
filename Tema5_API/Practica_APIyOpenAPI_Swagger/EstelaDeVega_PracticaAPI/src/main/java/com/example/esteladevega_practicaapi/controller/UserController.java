@@ -1,33 +1,61 @@
 package com.example.esteladevega_practicaapi.controller;
 
+import com.example.esteladevega_practicaapi.service.HabitacionServices;
+import com.example.esteladevega_practicaapi.service.UserServices;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.esteladevega_practicaapi.model.User;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/api") // RUTA BASE DE LAS PETICIONES DEL CONTROLADOR DE USER
 public class UserController {
-    // localhost:9999/user
-    @PostMapping("user")
-    public User login(@RequestParam("id") String id, @RequestParam("password") String pwd) {
-        if ((id.equals("juan")) && (pwd.equals("juan"))) {
+    // localhost:9999/api/loginUser
+
+    private final UserServices userServices; // SERVICIO USUARIO
+
+    public UserController(UserServices userServices) {
+        this.userServices = userServices;
+    } // CONSTRUCTOR PARA AÑADIR EL SERVICIO USUARIO EN EL CONTROLADOR
+
+    @PostMapping("/loginUser")
+    public User login(@RequestParam("name") String name, @RequestParam("password") String pwd) {
+        try {
+            // VERIFICAMOS SI EL USUARIO EXISTE EN LA BASE DE DATOS
+            Optional<User> optionalUser = userServices.isExistsUser(name, pwd);
+
+            if (optionalUser.isEmpty()) {
+                System.out.println("aaaa");
+                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
+                        "Usuario o contraseña incorrectos");
+            } // SI EL USUARIO NO EXISTE, SE LANZA UNA EXCEPCIÓN 401
+
+            // SI EL USUARIO EXISTE, SE CREA EL TOKEN
             System.out.println("Token creado");
-            String token = getJWTToken(id); // OBTENEMOS EL TOKEN
-            User user = new User(); // CREAMOS UNA INSTANCIA DE USUARIO
-            user.setId(id);
-            user.setPassword(pwd);
+            String token = getJWTToken(name); // OBTENEMOS EL TOKEN
+            User user = userServices.isExistsUser(name, pwd).get();
             user.setToken(token);
+            userServices.save(user);
+
             return user;  // RETORNAMOS EL OBJETO USER CON EL TOKEN GENERADO
-        } else
-            return null;  // SI LAS CREDENCIALES SON INCORRECTAS, RETORNAMOS NULL
+
+        } catch (Exception e) {
+            // SE MANEJA UNA EXCEPCION Y SE LANZA UN BAD REQUEST SI FALLA
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Error al logear usuario", e);
+        }
     } // METODO PARA INTERCEPTAR LAS PETICIONES POST AL endpoint /user
 
 

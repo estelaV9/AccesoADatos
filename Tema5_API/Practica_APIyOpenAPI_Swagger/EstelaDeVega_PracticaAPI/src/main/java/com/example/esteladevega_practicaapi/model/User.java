@@ -1,26 +1,24 @@
 package com.example.esteladevega_practicaapi.model;
 
-public class User {
-    private String id;
-    private String password;
-    private String token;
+import lombok.Data;
 
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public String getToken() {
-        return token;
-    }
-    public void setToken(String token) {
-        this.token = token;
-    }
+import javax.persistence.*;
+
+@Entity
+@Data
+@Table(name = "usuario")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idUser")
+    private String idUser;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "token")
+    private String token;
 }

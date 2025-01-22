@@ -1,10 +1,10 @@
 package com.example.esteladevega_practicaapi.controller;
 
-import com.example.esteladevega_practicaapi.service.HabitacionServices;
 import com.example.esteladevega_practicaapi.service.UserServices;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +31,7 @@ public class UserController {
     } // CONSTRUCTOR PARA AÑADIR EL SERVICIO USUARIO EN EL CONTROLADOR
 
     @PostMapping("/loginUser")
-    public User login(@RequestParam("name") String name, @RequestParam("password") String pwd) {
+    public ResponseEntity<User> login(@RequestParam("name") String name, @RequestParam("password") String pwd) {
         try {
             // VERIFICAMOS SI EL USUARIO EXISTE EN LA BASE DE DATOS
             Optional<User> optionalUser = userServices.isExistsUser(name, pwd);
@@ -49,7 +49,7 @@ public class UserController {
             user.setToken(token);
             userServices.save(user);
 
-            return user;  // RETORNAMOS EL OBJETO USER CON EL TOKEN GENERADO
+            return ResponseEntity.ok(user);  // RETORNAMOS EL OBJETO USER CON EL TOKEN GENERADO
 
         } catch (Exception e) {
             // SE MANEJA UNA EXCEPCION Y SE LANZA UN BAD REQUEST SI FALLA

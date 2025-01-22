@@ -9,7 +9,7 @@ import lombok.Data;
 @Table(name = "habitacion")
 public class Habitacion {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idHabitacion")
     private int idHabitacion;
 
@@ -24,9 +24,6 @@ public class Habitacion {
 
     @Column(name = "ocupada")
     private boolean ocupada;
-
-    @Column(name = "localidad")
-    private String localidad;
 
     // UNA HABITACION PERTENECE A UN HOTEL
     @ManyToOne

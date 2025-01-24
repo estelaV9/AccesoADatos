@@ -10,13 +10,13 @@ import lombok.Data;
 public class Habitacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idHabitacion")
+    @Column(name = "id_habitacion")
     private int idHabitacion;
 
     @Column(name = "tamanio")
     private int tamanio;
 
-    @Column(name = "precioNoche")
+    @Column(name = "precio_noche")
     private double precioNoche;
 
     @Column(name = "desayuno")
@@ -27,7 +27,7 @@ public class Habitacion {
 
     // UNA HABITACION PERTENECE A UN HOTEL
     @ManyToOne
-    @JoinColumn(name = "idHotel", referencedColumnName = "idHotel")
+    @JoinColumn(name = "id_hotel", referencedColumnName = "id_hotel")
     @JsonBackReference // SE PONE PARA QUE NO SEA UN BUCLE INFINITO
     private Hotel hotel;
 }

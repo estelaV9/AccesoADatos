@@ -3,6 +3,7 @@ package com.example.esteladevega_practicaapi.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idHotel")
+    @Column(name = "id_hotel")
     private int idHotel;
 
     @Column(name = "nombreHotel")
@@ -33,6 +34,6 @@ public class Hotel {
     // UN HOTEL POSEE VARIAS HABITACIONES
     // NOMBRE ATRIBUTO-OBJETO DE LA RELACION ManyToOne DE HABITACION
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
-    @JsonBackReference // SE PONE PARA QUE NO SEA UN BUCLE INFINITO
+    @JsonManagedReference
     private List<Habitacion> habitacionList;
 }

@@ -11,11 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 /* {
-  "tamanio": 1,
-  "precioNoche": 23323.50,
+  "tamanio": 30,
+  "precioNoche": 150.0,
   "desayuno": true,
   "ocupada": false,
-  "localidad": "afdsfasd",
   "hotel": {
     "idHotel": 1
   }

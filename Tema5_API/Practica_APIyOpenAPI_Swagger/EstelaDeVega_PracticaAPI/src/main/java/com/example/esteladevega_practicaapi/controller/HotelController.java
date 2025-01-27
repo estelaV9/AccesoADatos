@@ -46,8 +46,8 @@ public class HotelController {
         }
     } // METODO PARA LISTAR TODOS LOS HOTELES, PETICION HTTP GET EN LA RUTA "/all"
 
-    @GetMapping("/localidad")
-    public List<Hotel> findHotelByLocalidad(String localidad){
+    @GetMapping("/localidad/{localidad}")
+    public List<Hotel> findHotelByLocalidad(@PathVariable String localidad){
         try{
             return hotelServices.findHotelByLocalidad(localidad);
         } catch (Exception e){
@@ -57,8 +57,8 @@ public class HotelController {
         }
     } // METODO PARA BUSCAR UN HOTEL POR LOCALIDAD, PETICION HTTP GET EN LA RUTA "/localidad"
 
-    @GetMapping("/categoria")
-    public List<Hotel> findHotelByCategoria(String categoria){
+    @GetMapping("/categoria{categoria}")
+    public List<Hotel> findHotelByCategoria(@PathVariable String categoria){
         try{
             return hotelServices.findHotelByCategoria(categoria);
         } catch (Exception e){

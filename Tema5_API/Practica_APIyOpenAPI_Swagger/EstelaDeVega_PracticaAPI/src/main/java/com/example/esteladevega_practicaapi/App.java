@@ -44,8 +44,8 @@ public class App {
                     .authorizeRequests()
                     // PERMITE QUE LA BUSQUEDA DE HOTEL POR LOCALIDAD O CATEGORIA Y LA BUSQUEDA
                     // DE UN HOTEL POR TAMAÑO Y PRECIO NO REQUIERAN NINGUN AUTENTIFICACION
-                    .antMatchers(HttpMethod.GET, "/api/hotel/localidad").permitAll()
-                    .antMatchers(HttpMethod.GET, "/api/hotel/categoria").permitAll()
+                    .antMatchers(HttpMethod.GET, "/api/hotel/localidad/{localidad}").permitAll()
+                    .antMatchers(HttpMethod.GET, "/api/hotel/categoria{categoria}").permitAll()
                     .antMatchers(HttpMethod.GET, "/api/habitacion/habitacionesLibres/{idHotel}/{tamanioMin}/{tamanioMax}/{precioMin}/{precioMax}").permitAll()
                     .antMatchers(HttpMethod.POST, "/api/loginUser").permitAll()
 

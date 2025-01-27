@@ -30,10 +30,16 @@ public class HabitacionController {
     } // CONSTRUCTOR PARA AÑADIR EL SERVICIO HOTEL EN EL CONTROLADOR
 
     @GetMapping("/all")
-    public List<Habitacion> getAllHabitaciones() {
+    public ResponseEntity<?> getAllHabitaciones() {
         try {
             // SE LLAMA AL SERVICIO PARA OBTENER TODAS LAS HABITACIONES
-            return habitacionServices.findAll();
+            List<Habitacion> habitaciones = habitacionServices.findAll();
+
+            if(habitaciones.isEmpty()) {
+                return new ResponseEntity<>("No existe ninguna habitacion", HttpStatus.NOT_FOUND);
+            } // SI NO HAY HABITACIONES, DEVUELVE UN MENSAJE
+
+            return new ResponseEntity<>(habitaciones, HttpStatus.OK);
         } catch (Exception e) {
             // SE MANEJA UNA EXCEPCION Y SE LANZA UN BAD REQUEST SI FALLA
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -43,16 +49,26 @@ public class HabitacionController {
 
     @PostMapping("/save")
     public ResponseEntity<?> createHabitacion(@RequestBody Habitacion habitacion) {
-        habitacionServices.save(habitacion); // SE GUARDA LA HABITACION
-        // SE RETORNA UNA RESPUESTA HTTP CON EL ESTADO CREADO
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        try {
+            habitacionServices.save(habitacion); // SE GUARDA LA HABITACION
+            // SE RETORNA UNA RESPUESTA HTTP CON EL ESTADO CREADO (si se guardó correctamente)
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            // SI HAY UN ERROR AL GUARDAR LA HABITACION, SE MANEJA LA EXCEPCION Y SE DEVUELVE UN MENSAJE DE ERROR
+            return new ResponseEntity<>("Error al guardar la habitación: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     } // METODO PARA CREAR UNA HABITACION, MANEJANDO LA PETICION HTTP POST EN LA RUTA "/save"
 
     @DeleteMapping("/delete/{idHabitacion}")
     public ResponseEntity<?> deleteHabitacionByHotel(@PathVariable int idHabitacion) {
-        habitacionServices.deleteById(idHabitacion); // SE ELIMNA LA HABITACION
-        // SE RETORNA UNA RESPUESTA HTTP CON EL ESTADO CREADO
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        try {
+            habitacionServices.deleteById(idHabitacion); // SE ELIMINA LA HABITACION
+            // SE RETORNA UNA RESPUESTA HTTP CON EL ESTADO ELIMINADO (si se eliminó correctamente)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            // SI HAY UN ERROR AL ELIMINAR LA HABITACION, SE MANEJA LA EXCEPCION Y SE DEVUELVE UN MENSAJE DE ERROR
+            return new ResponseEntity<>("Error al eliminar la habitación: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     } // METODO PARA ELIMINAR UNA HABITACION DETERMINADA DE UN HOTEL
 
     @PostMapping("/update/{idHabitacion}")
@@ -69,14 +85,14 @@ public class HabitacionController {
             // SE RETORNA UNA RESPUESTA HTTP CON EL ESTADO CREADO
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Habitación no encontrada", HttpStatus.NOT_FOUND);
         } // SI NO ESTA VACIO LA HABITACION, SE MODIFICA Y SE GUARDA
     } // METODO PARA MODIFICAR UNA HABITACION PARA INDICAR QUE ESTA OCUPADA
 
 
     // http://localhost:9999/api/habitacion/habitacionesLibres/1/0/100/21/400
     @GetMapping("/habitacionesLibres/{idHotel}/{tamanioMin}/{tamanioMax}/{precioMin}/{precioMax}")
-    public ResponseEntity<List<Habitacion>> buscarHabitacionesLibres(
+    public ResponseEntity<?> buscarHabitacionesLibres(
             @PathVariable int idHotel,
             @PathVariable int tamanioMin,
             @PathVariable int tamanioMax,
@@ -86,6 +102,10 @@ public class HabitacionController {
         // LISTA CON LAS HABITACIONES DISPONIBLES
         List<Habitacion> habitaciones = habitacionServices.buscarHabitacionesLibresPorRango(idHotel, tamanioMin, tamanioMax, precioMin, precioMax);
 
-        return ResponseEntity.ok(habitaciones);
+        if (habitaciones.isEmpty()) {
+            return new ResponseEntity<>("No hay habitaciones libres que coincidan con los filtros", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(habitaciones, HttpStatus.OK);
     } // METODO PERSONALIZADO PARA HACER UNA BUSQUEDA DE HABITACIONES POR TAMAÑO Y PRECIO Y QUE ESTEN LIBRES
 }

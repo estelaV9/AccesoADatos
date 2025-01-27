@@ -31,15 +31,14 @@ public class UserController {
     } // CONSTRUCTOR PARA AÑADIR EL SERVICIO USUARIO EN EL CONTROLADOR
 
     @PostMapping("/loginUser")
-    public ResponseEntity<User> login(@RequestParam("name") String name, @RequestParam("password") String pwd) {
+    public ResponseEntity<?> login(@RequestParam("name") String name, @RequestParam("password") String pwd) {
         try {
             // VERIFICAMOS SI EL USUARIO EXISTE EN LA BASE DE DATOS
             Optional<User> optionalUser = userServices.isExistsUser(name, pwd);
 
             if (optionalUser.isEmpty()) {
-                System.out.println("aaaa");
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
-                        "Usuario o contraseña incorrectos");
+                return new ResponseEntity<>(
+                        "Usuario o contraseña incorrectos", HttpStatus.UNAUTHORIZED);
             } // SI EL USUARIO NO EXISTE, SE LANZA UNA EXCEPCIÓN 401
 
             // SI EL USUARIO EXISTE, SE CREA EL TOKEN

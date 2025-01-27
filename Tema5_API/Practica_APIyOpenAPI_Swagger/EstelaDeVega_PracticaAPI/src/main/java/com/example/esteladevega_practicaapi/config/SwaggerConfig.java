@@ -15,7 +15,7 @@ public class SwaggerConfig {
                 .components(new Components())
                 .info(new Info().title("HotelesAPI")
                         .description("API de Hoteles y Habitaciones")
-                        .contact(new Contact().name("juan").email("a@a.com").url("a.com"))
+                        .contact(new Contact().name("Estela").email("esteladevega.dev9@gmail.com").url("https://github.com/estelaV9"))
                         .version("1.0"));
     }
 }

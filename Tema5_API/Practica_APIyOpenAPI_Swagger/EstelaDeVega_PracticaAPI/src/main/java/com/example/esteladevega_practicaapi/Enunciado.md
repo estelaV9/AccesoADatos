@@ -14,13 +14,13 @@ Deberá ofrecer, sobre esos datos, las siguientes operaciones:
 
 
 ## API REST
-Adaptar la API REST para darla seguridad utilizando JWT.
+Adaptar la API REST para darla seguridad utilizando JWT. ✅
 
-Crear al menos un usuario con `id = juan` y `password =juan`
+Crear al menos un usuario con `id = juan` y `password =juan` ✅
 
-Las opciones a y b podrán ser accedidas por cualquier usuario.
+Las opciones a y b podrán ser accedidas por cualquier usuario. ✅
 
-El resto de opciones SOLO serán accesibles por usuarios autorizados y utilizando JWT.
+El resto de opciones SOLO serán accesibles por usuarios autorizados y utilizando JWT. ✅
 
 ---
 >_Estela de Vega Martín | IES Ribera de Castilla 24/25_

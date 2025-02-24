@@ -90,6 +90,8 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
 
 
 ## Tema 4: Mapeo Objeto-Relacional. Hibernate.
+### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/Resumen_MapeoObjetoRelacional.md">Explicación</a> sobre el mapeo Objeto-Relacional.
+
 ### **· Práctica <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/PracticaHibernate_CRUDCoches/EnunciadoEjerCRUD.md">Hibernate</a>** CRUD Coches:
  <table>
   <tr>
@@ -123,24 +125,59 @@ Realizar una <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Intro
  </tr>
 </table>
 
-### Relación **<a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/HibernateNaN">Hibernate N a N</a>**
+### · Relación **<a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/HibernateNaN">Hibernate N a N</a>**
 #### <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/HibernateNaN/HibernateRelacionNaN">Ejemplo</a> relación N a N con Hibernate.
+
+### · **<a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/CRUD_Hibernate_cfg">CRUD</a> Hibernate cfg**
+
+
+
+## Tema 5: API y JWT.
+### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema5_APIyJWT/Resumen_APIRest.md">Explicación</a> sobre API Rest.
+### <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema5_APIyJWT/Resumen_JWT.md">Explicación</a> sobre JWT.
+
+### · Ejercicios del tema
+- <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema5_APIyJWT/EjemploOpenApiSwagger">Ejemplo</a> OpenApiSwagger.
+- <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema5_APIyJWT/Ejemplo_JWT">Ejemplo</a> JWT.
+- <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema5_APIyJWT/Ejemplo_basico_api_rest">Ejemplo</a> básico APIRest.
+- <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema5_APIyJWT/agricultoresGranja">Ejercicio</a> granja.
+- <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema5_APIyJWT/demoJasperReport">Ejemplo</a> demo Jasper Report.
+- <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema5_APIyJWT/java-spring-boot-user-rest-api">Ejmplo</a> Java SpringBoot User RestAPI.
+- <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema5_APIyJWT/Practica_APIyOpenAPI_Swagger/EstelaDeVega_PracticaAPI">Práctica</a> API y OpenAPI con Swagger. <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema5_APIyJWT/Practica_APIyOpenAPI_Swagger/EstelaDeVega_PracticaAPI/src/main/java/com/example/esteladevega_practicaapi/Enunciado.md">Enunciado</a> de la práctica.
 
 
 
 ## Repaso Primera Evaluación
 ### · <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/MultiDBManagerFX">Ejercicio relación 1N</a> de Coches y Multas con los tres gestores de base de datos. Ejercicio de repaso para el examen.
 
-## Examen Primera Evalución
-Examen donde se trabaja con los <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/Examen_PrimeraEvaluacion/EstelaDeVega_Examen1Evaluacion">tres gestores de base de datos</a>. <br>
-<a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/Examen_PrimeraEvaluacion/EnunciadoExamen.md">Enunciado</a> del ejercicio.
+## Examenes
+- ### Examen Primera Evalución
+  Examen donde se trabaja con los <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Tema4_MapeoObjetoRelacional_Hibernate/Examen_PrimeraEvaluacion/EstelaDeVega_Examen1Evaluacion">tres gestores de base de datos</a>. <br>
+  <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Tema4_MapeoObjetoRelacional_Hibernate/Examen_PrimeraEvaluacion/EnunciadoExamen.md">Enunciado</a> del ejercicio.
 
-<table>
+- ### Examen Segunda Evalución
+  <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Examenes/EstelaDeVega_Examen2eva">Examen</a> API. <br>
+  <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Examenes/EstelaDeVega_Examen2eva/Enunciado.md">Enunciado</a> del ejercicio.
+
+- ### Examen Final
+  <a href="https://github.com/estelaV9/AccesoADatos/tree/master/Examenes/ExamenFinal/EstelaDeVega_ExamenFinal">Examen final</a> muy parecido al examen de la segunda evaluación. <br>
+  <a href="https://github.com/estelaV9/AccesoADatos/blob/master/Examenes/ExamenFinal/EstelaDeVega_ExamenFinal_Documentacion.pdf">Enunciado y documentación</a> del ejercicio.
+
+<br>
+
+<table align="center">
   <tr>
-    <th>Nota</th>
+    <th>Nota 1ª evaluación</th>
+    <th>Nota 2ª evaluación</th>
+    <th>Nota examen final</th>
+    <th>Nota final del módulo</th>
   </tr>
   <tr>
-    <td>9.25</td>
+    <td align="center">9.25</td>
+    <td align="center">9 (olvidé una relación)</td>
+    <td align="center">5 (nota máxima)</td>
+    <td align="center">7 (podría haber sido un 9 si no se me hubiese olvidado la relación :c)</td>
+    
   </tr>
 </table>
 
@@ -151,4 +188,4 @@ Examen donde se trabaja con los <a href="https://github.com/estelaV9/AccesoADato
   <h2>¡Disfruta de los ejercicios del módulo!</h2>
 </div>
 
->_IES Ribera de Castilla 24/25._
+>_Estela de Vega Martín | IES Ribera de Castilla 24/25._
